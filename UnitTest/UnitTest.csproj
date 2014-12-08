@@ -51,13 +51,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Connecto.BusinessObjects\Connecto.BusinessObjects.csproj">
+      <Project>{0f58834e-44cd-4360-a004-c16e72847dfa}</Project>
+      <Name>Connecto.BusinessObjects</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Connecto.Repositories\Connecto.Repositories.csproj">
       <Project>{c2007667-b9b7-4923-9dfb-09d91a3f6758}</Project>
       <Name>Connecto.Repositories</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Sample.BusinessObjects\Connecto.BusinessObjects.csproj">
-      <Project>{0f58834e-44cd-4360-a004-c16e72847dfa}</Project>
-      <Name>Connecto.BusinessObjects</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

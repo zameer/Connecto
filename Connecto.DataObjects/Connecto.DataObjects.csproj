@@ -80,7 +80,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Sample.BusinessObjects\Connecto.BusinessObjects.csproj">
+    <ProjectReference Include="..\Connecto.BusinessObjects\Connecto.BusinessObjects.csproj">
       <Project>{0F58834E-44CD-4360-A004-C16E72847DFA}</Project>
       <Name>Connecto.BusinessObjects</Name>
     </ProjectReference>

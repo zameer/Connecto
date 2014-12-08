@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Connecto.DataObjects", "Sample.DataObjects\Connecto.DataObjects.csproj", "{9DEF5150-7B6D-44AB-BC89-3E13917AA7E8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Connecto.DataObjects", "Connecto.DataObjects\Connecto.DataObjects.csproj", "{9DEF5150-7B6D-44AB-BC89-3E13917AA7E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Connecto.BusinessObjects", "Sample.BusinessObjects\Connecto.BusinessObjects.csproj", "{0F58834E-44CD-4360-A004-C16E72847DFA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Connecto.BusinessObjects", "Connecto.BusinessObjects\Connecto.BusinessObjects.csproj", "{0F58834E-44CD-4360-A004-C16E72847DFA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{4161D24E-27FD-4C82-97F2-4BB8DC577A76}"
 EndProject
