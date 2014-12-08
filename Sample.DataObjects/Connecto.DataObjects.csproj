@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9DEF5150-7B6D-44AB-BC89-3E13917AA7E8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Connecto.DataObjects</RootNamespace>
+    <AssemblyName>Connecto.DataObjects</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DaoFactory.cs" />
+    <Compile Include="DataAccess.cs" />
+    <Compile Include="EntityFramework\DataObjectFactory.cs" />
+    <Compile Include="EntityFramework\EntityCompanyLocation.cs" />
+    <Compile Include="EntityFramework\EntityCompany.cs" />
+    <Compile Include="EntityFramework\EntityContact.cs" />
+    <Compile Include="EntityFramework\EntityEmployee.cs" />
+    <Compile Include="EntityFramework\EntityMeasure.cs" />
+    <Compile Include="EntityFramework\EntityCurrency.cs" />
+    <Compile Include="EntityFramework\EntityConnecto.cs" />
+    <Compile Include="EntityFramework\EntityProductSupplier.cs" />
+    <Compile Include="EntityFramework\EntityProductDetail.cs" />
+    <Compile Include="EntityFramework\EntityProductType.cs" />
+    <Compile Include="EntityFramework\EntitySupplier.cs" />
+    <Compile Include="EntityFramework\EntityProduct.cs" />
+    <Compile Include="EntityFramework\EntityVendor.cs" />
+    <Compile Include="EntityFramework\ConnectoManagerEntities.cs" />
+    <Compile Include="EntityFramework\Implementation\EntityDaoFactory.cs" />
+    <Compile Include="EntityFramework\Implementation\EntityCompanyDao.cs" />
+    <Compile Include="EntityFramework\Implementation\EntityProductDao.cs" />
+    <Compile Include="EntityFramework\Implementation\EntityVendorDao.cs" />
+    <Compile Include="EntityFramework\ModelMapper\Mapper.cs" />
+    <Compile Include="ICompanyDao.cs" />
+    <Compile Include="IProductDao.cs" />
+    <Compile Include="ISupplierDao.cs" />
+    <Compile Include="IVendorDao.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sample.BusinessObjects\Connecto.BusinessObjects.csproj">
+      <Project>{0F58834E-44CD-4360-A004-C16E72847DFA}</Project>
+      <Name>Connecto.BusinessObjects</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
