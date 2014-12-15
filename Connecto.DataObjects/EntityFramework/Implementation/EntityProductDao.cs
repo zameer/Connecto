@@ -18,7 +18,14 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                 return products.Select(Mapper.Map).ToList();
             }
         }
-
+        public Product GetProduct(int productId)
+        {
+            using (var context = DataObjectFactory.CreateContext())
+            {
+                var entity = context.Products.FirstOrDefault(e => e.ProductId == productId);
+                return entity == null ? null : Mapper.Map(entity);
+            }
+        }
         public int AddProduct(Product product)
         {
             using (var context = DataObjectFactory.CreateContext())

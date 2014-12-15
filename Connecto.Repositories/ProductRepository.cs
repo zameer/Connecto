@@ -20,6 +20,15 @@ namespace Connecto.Repositories
             return ProductDao.GetProducts();
         }
 
+        /// <summary>
+        /// Get List of Vendors
+        /// </summary>
+        /// <returns>IList of Vendors</returns>
+        public Product Get(int id)
+        {
+            return ProductDao.GetProduct(id);
+        }
+
         ///// <summary>
         ///// Removes specific vendor
         ///// </summary>

@@ -16,7 +16,7 @@ namespace Connecto.DataObjects
     public interface IProductDao
     {
         List<Product> GetProducts();
-
+        Product GetProduct(int id);
         int AddProduct(Product product);
     }
 }
