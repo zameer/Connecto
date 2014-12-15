@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Connecto.Repositories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -11,6 +11,7 @@ namespace Connecto.Test
         [TestMethod]
         public void CompanyAndLocation()
         {
+            //Just a comment
             var company = _company.Get(2);
             var locations = _company.Locations(company.CompanyId);
             Assert.AreEqual(2, locations.Count);
