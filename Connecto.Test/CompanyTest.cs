@@ -1,4 +1,5 @@
 ﻿using System;
+using Connecto.BusinessObjects;
 using Connecto.Repositories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
