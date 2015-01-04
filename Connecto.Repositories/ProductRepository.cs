@@ -43,9 +43,9 @@ namespace Connecto.Repositories
         /// Create new vendor
         /// </summary>
         /// <param name="product">Create vendor object</param>
-        public void Add(Product product)
+        public int Add(Product product)
         {
-            ProductDao.AddProduct(product);
+            return ProductDao.AddProduct(product);
         }
     }
 }
