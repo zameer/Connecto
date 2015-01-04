@@ -1,0 +1,71 @@
+﻿@model Connecto.BusinessObjects.Supplier
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Supplier</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SupplierGuid)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SupplierGuid)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LocationId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LocationId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Status)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Status)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CreatedBy)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreatedBy)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CreatedOn)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreatedOn)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EditedBy)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EditedBy)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EditedOn)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EditedOn)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.SupplierId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

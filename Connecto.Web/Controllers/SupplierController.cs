@@ -25,7 +25,8 @@ namespace Connecto.Web.Controllers
 
         public ActionResult Details(int id)
         {
-            return View();
+            var supplier = _supplier.GetSupplierById(id);
+            return View(supplier);
         }
 
         //
