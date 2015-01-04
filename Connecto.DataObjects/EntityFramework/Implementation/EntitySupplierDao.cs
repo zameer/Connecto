@@ -8,45 +8,45 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
     /// <summary>
     /// Entity Framework implementation of the IVendorDao interface.
     /// </summary>
-    public class EntityVendorDao : IVendorDao
+    public class EntitySupplierDao : ISupplierDao
     {
-        public IList<Vendor> GetVendors()
+        public IList<Supplier> GetSuppliers()
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var vendors = context.Vendors.ToList();
-                return vendors.Select(Mapper.Map).ToList();
+                var suppliers = context.Suppliers.ToList();
+                return suppliers.Select(Mapper.Map).ToList();
             }
         }
 
-        // get Vendor by id
-        public Vendor GetVendorById(int vendorId)
+        // get Supplier by id
+        public Supplier GetSupplierById(int supplierId)
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var entity = context.Vendors.FirstOrDefault(e => e.VendorId == vendorId);
+                var entity = context.Suppliers.FirstOrDefault(e => e.SupplierId == supplierId);
                 return entity == null ? null : Mapper.Map(entity);
             }
         }
 
-        public int DeleteVendor(int id = 0)
+        public int DeleteSupplier(int id = 0)
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var entity = context.Vendors.FirstOrDefault(s => s.VendorId == id);
-                context.Vendors.Remove(entity);
+                var entity = context.Suppliers.FirstOrDefault(s => s.SupplierId == id);
+                context.Suppliers.Remove(entity);
                 return context.SaveChanges();
             }
         } 
 
-        public int AddVendor(Vendor vendor)
+        public int AddSupplier(Supplier supplier)
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var entity = new EntityVendor {Name = vendor.Name};
-                context.Vendors.Add(entity);
+                var entity = new EntitySupplier {Name = supplier.Name};
+                context.Suppliers.Add(entity);
                 context.SaveChanges();
-                return entity.VendorId;
+                return entity.SupplierId;
             }
         }
     }

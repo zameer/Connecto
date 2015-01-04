@@ -6,47 +6,47 @@ using Connecto.DataObjects.EntityFramework.ModelMapper;
 namespace Connecto.DataObjects.EntityFramework.Implementation
 {
     /// <summary>
-    /// Entity Framework implementation of the IVendorDao interface.
+    /// Entity Framework implementation of the IEmployeeDao interface.
     /// </summary>
-    public class EntityVendorDao : IVendorDao
+    public class EntityEmployeeDao : IEmployeeDao
     {
-        public IList<Vendor> GetVendors()
+        public IList<Employee> GetEmployees()
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var vendors = context.Vendors.ToList();
-                return vendors.Select(Mapper.Map).ToList();
+                var employees = context.Employees.ToList();
+                return employees.Select(Mapper.Map).ToList();
             }
         }
 
-        // get Vendor by id
-        public Vendor GetVendorById(int vendorId)
+        // get Employee by id
+        public Employee GetEmployeeById(int employeeId)
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var entity = context.Vendors.FirstOrDefault(e => e.VendorId == vendorId);
+                var entity = context.Employees.FirstOrDefault(e => e.EmployeeId == employeeId);
                 return entity == null ? null : Mapper.Map(entity);
             }
         }
 
-        public int DeleteVendor(int id = 0)
+        public int DeleteEmployee(int id = 0)
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var entity = context.Vendors.FirstOrDefault(s => s.VendorId == id);
-                context.Vendors.Remove(entity);
+                var entity = context.Employees.FirstOrDefault(s => s.EmployeeId == id);
+                context.Employees.Remove(entity);
                 return context.SaveChanges();
             }
-        } 
+        }
 
-        public int AddVendor(Vendor vendor)
+        public int AddEmployee(Employee employee)
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var entity = new EntityVendor {Name = vendor.Name};
-                context.Vendors.Add(entity);
+                var entity = Mapper.Map(employee);
+                context.Employees.Add(entity);
                 context.SaveChanges();
-                return entity.VendorId;
+                return entity.EmployeeId;
             }
         }
     }

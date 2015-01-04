@@ -22,8 +22,15 @@ namespace Connecto.DataObjects.EntityFramework
         public ConnectoManagerEntities() : base("name=ConnectoDb") { }
 
         public DbSet<EntityVendor> Vendors { get; set; }
+        public DbSet<EntitySupplier> Suppliers { get; set; }
         public DbSet<EntityProduct> Products { get; set; }
         public DbSet<EntityCompany> Companies { get; set; }
         public DbSet<EntityCompanyLocation> CompanyLocations { get; set; }
+        public DbSet<EntityEmployee> Employees { get; set; }
+        public DbSet<EntityCurrency> Currencys { get; set; }
+        public DbSet<EntityProductDetail> ProductDetails { get; set; }
+        public DbSet<EntityProductSupplier> ProductSuppliers { get; set; }
+        public DbSet<EntityMeasure> Measures { get; set; }
+        public DbSet<EntityContact> Contacts { get; set; }
     }
 }

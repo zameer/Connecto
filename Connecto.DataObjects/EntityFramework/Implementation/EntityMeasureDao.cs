@@ -6,47 +6,47 @@ using Connecto.DataObjects.EntityFramework.ModelMapper;
 namespace Connecto.DataObjects.EntityFramework.Implementation
 {
     /// <summary>
-    /// Entity Framework implementation of the IVendorDao interface.
+    /// Entity Framework implementation of the IMeasureDao interface.
     /// </summary>
-    public class EntityVendorDao : IVendorDao
+    public class EntityMeasureDao : IMeasureDao
     {
-        public IList<Vendor> GetVendors()
+        public IList<Measure> GetMeasures()
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var vendors = context.Vendors.ToList();
-                return vendors.Select(Mapper.Map).ToList();
+                var measures = context.Measures.ToList();
+                return measures.Select(Mapper.Map).ToList();
             }
         }
 
-        // get Vendor by id
-        public Vendor GetVendorById(int vendorId)
+        // get Measure by id
+        public Measure GetMeasureById(int measureId)
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var entity = context.Vendors.FirstOrDefault(e => e.VendorId == vendorId);
+                var entity = context.Measures.FirstOrDefault(e => e.MeasureId == measureId);
                 return entity == null ? null : Mapper.Map(entity);
             }
         }
 
-        public int DeleteVendor(int id = 0)
+        public int DeleteMeasure(int id = 0)
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var entity = context.Vendors.FirstOrDefault(s => s.VendorId == id);
-                context.Vendors.Remove(entity);
+                var entity = context.Measures.FirstOrDefault(s => s.MeasureId == id);
+                context.Measures.Remove(entity);
                 return context.SaveChanges();
             }
-        } 
+        }
 
-        public int AddVendor(Vendor vendor)
+        public int AddMeasure(Measure measure)
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var entity = new EntityVendor {Name = vendor.Name};
-                context.Vendors.Add(entity);
+                var entity = Mapper.Map(measure);
+                context.Measures.Add(entity);
                 context.SaveChanges();
-                return entity.VendorId;
+                return entity.MeasureId;
             }
         }
     }

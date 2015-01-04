@@ -18,5 +18,25 @@
         {
             get { return new LocationRepository(); }
         }
+        public static SupplierRepository SupplierRepository
+        {
+            get { return new SupplierRepository(); }
+        }
+        public static EmployeeRepository EmployeeRepository
+        {
+            get { return new EmployeeRepository(); }
+        }
+        public static MeasureRepository MeasureRepository
+        {
+            get { return new MeasureRepository(); }
+        }
+        public static CurrencyRepository CurrencyRepository
+        {
+            get { return new CurrencyRepository(); }
+        }
+        public static ContactRepository ContactRepository
+        {
+            get { return new ContactRepository(); }
+        }
     }
 }

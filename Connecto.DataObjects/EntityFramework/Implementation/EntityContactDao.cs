@@ -6,48 +6,48 @@ using Connecto.DataObjects.EntityFramework.ModelMapper;
 namespace Connecto.DataObjects.EntityFramework.Implementation
 {
     /// <summary>
-    /// Entity Framework implementation of the IProductDao interface.
+    /// Entity Framework implementation of the IContactDao interface.
     /// </summary>
-    public class EntityProductDao : IProductDao
+    public class EntityContactDao : IContactDao
     {
-        // get all products
-        public List<Product> GetProducts()
+        // get all Contacts
+        public List<Contact> GetContacts()
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var products = context.Products.ToList();
-                return products.Select(Mapper.Map).ToList();
+                var contacts = context.Contacts.ToList();
+                return contacts.Select(Mapper.Map).ToList();
             }
         }
 
-        
-        // get product by id
-        public Product GetProduct(int productId)
+
+        // get Contact by id
+        public Contact GetContact(int contactId)
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var entity = context.Products.FirstOrDefault(e => e.ProductId == productId);
+                var entity = context.Contacts.FirstOrDefault(e => e.ContactId == contactId);
                 return entity == null ? null : Mapper.Map(entity);
             }
         }
-        
-        public int AddProduct(Product product)
+
+        public int AddContact(Contact contact)
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var entity = Mapper.Map(product);
-                context.Products.Add(entity);
+                var entity = Mapper.Map(contact);
+                context.Contacts.Add(entity);
                 context.SaveChanges();
-                return entity.ProductId;
+                return entity.ContactId;
             }
         }
 
-        public int DeleteProduct(int id = 0)
+        public int DeleteContact(int id = 0)
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var entity = context.Products.FirstOrDefault(s => s.ProductId == id);
-                context.Products.Remove(entity);
+                var entity = context.Contacts.FirstOrDefault(s => s.ContactId == id);
+                context.Contacts.Remove(entity);
                 return context.SaveChanges();
             }
         }
