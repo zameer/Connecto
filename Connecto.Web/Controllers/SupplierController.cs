@@ -65,7 +65,8 @@ namespace Connecto.Web.Controllers
 
         public ActionResult Edit(int id)
         {
-            return View();
+            var supplier = _supplier.GetSupplierById(id);
+            return View(supplier);
         }
 
         //
