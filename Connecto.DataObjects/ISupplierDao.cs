@@ -10,6 +10,7 @@ namespace Connecto.DataObjects
     public interface ISupplierDao
     {
         IList<Supplier> GetSuppliers();
+        Supplier GetSupplierById(int id);
         int DeleteSupplier(int id = 0);
         int AddSupplier(Supplier vendor);
     }

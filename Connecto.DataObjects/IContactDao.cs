@@ -8,22 +8,22 @@ using Connecto.BusinessObjects;
 namespace Connecto.DataObjects
 {
     /// <summary>
-    /// Defines methods to access Products
+    /// Defines methods to access Contacts
     /// </summary>
     /// <remarks>
     /// This is a database independent interface, implementations are database specific
     /// </remarks>
-    public interface IProductDao
+    public interface IContactDao
     {
-        List<Product> GetProducts();
-        Product GetProduct(int id);
-        int AddProduct(Product product);
+        List<Contact> GetContacts();
+        Contact GetContact(int id);
+        int AddContact(Contact contact);
 
         /// <summary>
-        /// Remove specific Product
+        /// Remove specific Contact
         /// </summary>
-        /// <param name="id">Unique Product identifier</param>
-        /// <returns>No of Product Deleted</returns>
-        int DeleteProduct(int id = 0);
+        /// <param name="id">Unique Contact identifier</param>
+        /// <returns>No of Contact Deleted</returns>
+        int DeleteContact(int id = 0);
     }
 }

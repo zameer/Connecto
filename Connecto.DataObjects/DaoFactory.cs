@@ -11,5 +11,10 @@
         IVendorDao VendorDao { get; }
         IProductDao ProductDao { get; }
         ICompanyDao CompanyDao { get; }
+        ISupplierDao SupplierDao { get; }
+        IEmployeeDao EmployeeDao { get; }
+        IMeasureDao MeasureDao { get; }
+        ICurrencyDao CurrencyDao { get; }
+        IContactDao ContactDao { get; }
     }
 }
