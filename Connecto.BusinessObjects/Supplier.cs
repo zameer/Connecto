@@ -1,8 +1,10 @@
-﻿namespace Connecto.BusinessObjects
+﻿using System;
+
+namespace Connecto.BusinessObjects
 {
     public class Supplier
     {
-        public int VendorId { get; set; }
+        public int SupplierId { get; set; }
         public string Name { get; set; }
     }
 }
