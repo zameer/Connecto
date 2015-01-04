@@ -42,6 +42,7 @@
     <Compile Include="Company.cs" />
     <Compile Include="Connecto.cs" />
     <Compile Include="CompanyLocation.cs" />
+    <Compile Include="Employee.cs" />
     <Compile Include="Measure.cs" />
     <Compile Include="ProductType.cs" />
     <Compile Include="Product.cs" />
