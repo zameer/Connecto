@@ -48,5 +48,13 @@ namespace Connecto.Repositories
         {
             SupplierDao.AddSupplier(supplier);
         }
+        /// <summary>
+        /// Create new Supplier
+        /// </summary>
+        /// <param name="vendor">Create Supplier object</param>
+        public void Edit(Supplier supplier)
+        {
+            SupplierDao.EditSupplier(supplier);
+        }
     }
 }

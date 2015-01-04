@@ -12,6 +12,7 @@ namespace Connecto.DataObjects
         IList<Supplier> GetSuppliers();
         Supplier GetSupplierById(int id);
         int DeleteSupplier(int id = 0);
-        int AddSupplier(Supplier vendor);
+        int AddSupplier(Supplier supplier);
+        bool EditSupplier(Supplier supplier);
     }
 }

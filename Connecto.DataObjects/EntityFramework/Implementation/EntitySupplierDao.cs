@@ -49,5 +49,16 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                 return entity.SupplierId;
             }
         }
+        public bool EditSupplier(Supplier supplier)
+        {
+            using (var context = DataObjectFactory.CreateContext())
+            {
+                var entity = context.Suppliers.FirstOrDefault(s => s.SupplierId == supplier.SupplierId);
+                entity.Name = supplier.Name;
+                entity.EditedBy = supplier.EditedBy;
+                entity.EditedOn = supplier.EditedOn;
+                return context.SaveChanges() > 0;
+            }
+        }
     }
 }
