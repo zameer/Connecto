@@ -1,4 +1,5 @@
-﻿using Connecto.Repositories;
+﻿using Connecto.BusinessObjects;
+using Connecto.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,19 +33,24 @@ namespace Connecto.Web.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            return View(new Supplier());
         }
 
         //
         // POST: /Supplier/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Supplier supplier)
         {
             try
             {
                 // TODO: Add insert logic here
-
+                supplier.SupplierGuid = Guid.NewGuid();
+                supplier.LocationId = 1;
+                supplier.Status = 1;
+                supplier.CreatedBy = 1;
+                supplier.CreatedOn = DateTime.Now;
+                _supplier.Add(supplier);
                 return RedirectToAction("Index");
             }
             catch

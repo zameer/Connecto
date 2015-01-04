@@ -43,7 +43,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var entity = new EntitySupplier {Name = supplier.Name};
+                var entity = Mapper.Map(supplier);
                 context.Suppliers.Add(entity);
                 context.SaveChanges();
                 return entity.SupplierId;

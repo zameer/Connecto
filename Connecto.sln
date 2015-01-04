@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2012 YU
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Connecto.DataObjects", "Connecto.DataObjects\Connecto.DataObjects.csproj", "{9DEF5150-7B6D-44AB-BC89-3E13917AA7E8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Connecto.BusinessObjects", "Connecto.BusinessObjects\Connecto.BusinessObjects.csproj", "{0F58834E-44CD-4360-A004-C16E72847DFA}"

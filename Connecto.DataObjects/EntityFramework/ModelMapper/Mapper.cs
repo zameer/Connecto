@@ -174,7 +174,13 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
             return new Supplier
             {
                 SupplierId = entity.SupplierId,
-                Name = entity.Name
+                Name = entity.Name,
+                LocationId = entity.LocationId,
+                Status = entity.Status,
+                CreatedBy = entity.CreatedBy,
+                CreatedOn = entity.CreatedOn,
+                EditedBy = entity.EditedBy,
+                EditedOn = entity.EditedOn
             };
         }
         internal static EntitySupplier Map(Supplier entity)
@@ -182,7 +188,13 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
             return new EntitySupplier
             {
                 SupplierId = entity.SupplierId,
-                Name = entity.Name
+                Name = entity.Name,
+                LocationId = entity.LocationId,
+                Status = entity.Status,
+                CreatedBy = entity.CreatedBy,
+                CreatedOn = entity.CreatedOn,
+                EditedBy = entity.EditedBy,
+                EditedOn = entity.EditedOn
             };
         }
         internal static Employee Map(EntityEmployee entity)
