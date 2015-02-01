@@ -47,6 +47,8 @@ namespace Connecto.Web.Controllers
             try
             {
                 // TODO: Add insert logic here
+                measure.LocationId = 1;
+                measure.MeasureGuid = Guid.NewGuid();
                 measure.CreatedBy = 1;
                 measure.CreatedOn = DateTime.Now;
                 measure.Status = RecordStatus.Active;
@@ -76,11 +78,9 @@ namespace Connecto.Web.Controllers
         {
             try
             {
-                // TODO: Add update logic here
-                //supplier.EditedBy = 1;
-                //supplier.EditedOn = DateTime.Now;
-                //_measure.Edit(measure);
-
+                measure.EditedBy = 2;
+                measure.EditedOn = DateTime.Now;
+                _measure.Edit(measure);
                 return RedirectToAction("Index");
             }
             catch
@@ -94,7 +94,8 @@ namespace Connecto.Web.Controllers
 
         public ActionResult Delete(int id)
         {
-            return View();
+            var measure = _measure.GetMeasureById(id);
+            return View(measure);
         }
 
         //
@@ -105,8 +106,7 @@ namespace Connecto.Web.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
-
+                _measure.Delete(id, 3);
                 return RedirectToAction("Index");
             }
             catch

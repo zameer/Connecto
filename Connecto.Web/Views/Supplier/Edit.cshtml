@@ -14,7 +14,7 @@
         <legend>Supplier</legend>
 
         @Html.HiddenFor(model => model.SupplierId)
-        @Html.HiddenFor(model => model.Person.PersonGuid)
+        @Html.HiddenFor(model => model.Person.PersonId)
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Person.FirstName)
@@ -25,57 +25,29 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Person.LocationId)
+            @Html.LabelFor(model => model.Person.LastName)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Person.LocationId)
-            @Html.ValidationMessageFor(model => model.Person.LocationId)
+            @Html.EditorFor(model => model.Person.LastName)
+            @Html.ValidationMessageFor(model => model.Person.LastName)
         </div>
-
+        
         <div class="editor-label">
-            @Html.LabelFor(model => model.Person.Status)
+            @Html.LabelFor(model => model.Person.Description)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Person.Status)
-            @Html.ValidationMessageFor(model => model.Person.Status)
+            @Html.EditorFor(model => model.Person.Description)
+            @Html.ValidationMessageFor(model => model.Person.Description)
         </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Person.CreatedBy)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Person.CreatedBy)
-            @Html.ValidationMessageFor(model => model.Person.CreatedBy)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Person.CreatedOn)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Person.CreatedOn)
-            @Html.ValidationMessageFor(model => model.Person.CreatedOn)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Person.EditedBy)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Person.EditedBy)
-            @Html.ValidationMessageFor(model => model.Person.EditedBy)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Person.EditedOn)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Person.EditedOn)
-            @Html.ValidationMessageFor(model => model.Person.EditedOn)
-        </div>
-
         <p>
             <input type="submit" value="Save" />
         </p>
     </fieldset>
+    
+<p>
+    @Html.ActionLink("New Contact", "CreateContact", new { id = Model.Person.PersonId })
+</p>
+    @Html.Action("Contacts", "Supplier", new { contacts = Model.Person.Contacts })
 }
 
 <div>

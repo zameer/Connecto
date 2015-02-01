@@ -2,6 +2,8 @@
 using System.Linq;
 using Connecto.BusinessObjects;
 using Connecto.DataObjects.EntityFramework.ModelMapper;
+using Connecto.Common.Enumeration;
+using System;
 
 namespace Connecto.DataObjects.EntityFramework.Implementation
 {
@@ -14,7 +16,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var measures = context.Measures.ToList();
+                var measures = context.Measures.Where(e => e.Status==RecordStatus.Active).ToList();
                 return measures.Select(Mapper.Map).ToList();
             }
         }
@@ -29,12 +31,14 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
             }
         }
 
-        public int DeleteMeasure(int id = 0)
+        public int DeleteMeasure(int id, int deletedBy)
         {
             using (var context = DataObjectFactory.CreateContext())
             {
                 var entity = context.Measures.FirstOrDefault(s => s.MeasureId == id);
-                context.Measures.Remove(entity);
+                entity.Status = RecordStatus.Deleted;
+                entity.EditedOn = DateTime.Now;
+                entity.EditedBy = deletedBy;
                 return context.SaveChanges();
             }
         }
@@ -47,6 +51,19 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                 context.Measures.Add(entity);
                 context.SaveChanges();
                 return entity.MeasureId;
+            }
+        }
+        public bool EditMeasure(Measure measure)
+        {
+            using (var context = DataObjectFactory.CreateContext())
+            {
+                var entity = context.Measures.FirstOrDefault(s => s.MeasureId == measure.MeasureId);
+                entity.Lower = measure.Lower;
+                entity.Actual = measure.Actual;
+                entity.Volume = measure.Volume;
+                entity.EditedBy = measure.EditedBy;
+                entity.EditedOn = measure.EditedOn;
+                return context.SaveChanges() > 0;
             }
         }
     }

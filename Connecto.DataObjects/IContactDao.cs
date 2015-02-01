@@ -18,12 +18,7 @@ namespace Connecto.DataObjects
         List<Contact> GetContacts();
         Contact GetContact(int id);
         int AddContact(Contact contact);
-
-        /// <summary>
-        /// Remove specific Contact
-        /// </summary>
-        /// <param name="id">Unique Contact identifier</param>
-        /// <returns>No of Contact Deleted</returns>
-        int DeleteContact(int id = 0);
+        bool EditContact(Contact contact);
+        int DeleteContact(int id, int deletedBy);
     }
 }

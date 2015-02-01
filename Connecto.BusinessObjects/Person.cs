@@ -14,6 +14,6 @@ namespace Connecto.BusinessObjects
         {
             get { return FirstName + " " + LastName; }
         }
-        public IList<Contact> Contact { get; set; }
+        public IList<Contact> Contacts { get; set; }
     }
 }

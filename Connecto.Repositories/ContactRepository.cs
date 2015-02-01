@@ -25,7 +25,7 @@ namespace Connecto.Repositories
         /// </summary>
         /// <param name="id">Identifier</param>
         /// <returns>Return Contact ID</returns>
-        public Contact GetContactById(int id)
+        public Contact GetContact(int id)
         {
             return ContactDao.GetContact(id);
         }
@@ -35,9 +35,9 @@ namespace Connecto.Repositories
         /// </summary>
         /// <param name="id">Identifier</param>
         /// <returns>No of Contact Deleted</returns>
-        public int Delete(int id = 0)
+        public int Delete(int id, int deletedBy)
         {
-            return ContactDao.DeleteContact(id);
+            return ContactDao.DeleteContact(id, deletedBy);
         }
 
         /// <summary>
@@ -47,6 +47,10 @@ namespace Connecto.Repositories
         public void Add(Contact contact)
         {
             ContactDao.AddContact(contact);
+        }
+        public void Edit(Contact contact)
+        {
+            ContactDao.EditContact(contact);
         }
     }
 }

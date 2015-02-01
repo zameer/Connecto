@@ -2,6 +2,8 @@
 using System.Linq;
 using Connecto.BusinessObjects;
 using Connecto.DataObjects.EntityFramework.ModelMapper;
+using Connecto.Common.Enumeration;
+using System;
 
 namespace Connecto.DataObjects.EntityFramework.Implementation
 {
@@ -41,13 +43,30 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                 return entity.ContactId;
             }
         }
-
-        public int DeleteContact(int id = 0)
+        public bool EditContact(Contact contact)
+        {
+            using (var context = DataObjectFactory.CreateContext())
+            {
+                var entity = context.Contacts.FirstOrDefault(s => s.ContactId == contact.ContactId);
+                entity.AddressNo = contact.AddressNo;
+                entity.AddressStreet = contact.AddressStreet;
+                entity.City = contact.City;
+                entity.LandNumber = contact.LandNumber;
+                entity.MobileNumber = contact.MobileNumber;
+                entity.Province = contact.Province;
+                entity.EditedBy = contact.EditedBy;
+                entity.EditedOn = contact.EditedOn;
+                return context.SaveChanges() > 0;
+            }
+        }
+        public int DeleteContact(int id, int deletedBy)
         {
             using (var context = DataObjectFactory.CreateContext())
             {
                 var entity = context.Contacts.FirstOrDefault(s => s.ContactId == id);
-                context.Contacts.Remove(entity);
+                entity.Status = RecordStatus.Deleted;
+                entity.EditedOn = DateTime.Now;
+                entity.EditedBy = deletedBy;
                 return context.SaveChanges();
             }
         }

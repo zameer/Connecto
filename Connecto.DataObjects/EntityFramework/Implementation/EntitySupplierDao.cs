@@ -2,6 +2,7 @@
 using System.Linq;
 using Connecto.BusinessObjects;
 using Connecto.DataObjects.EntityFramework.ModelMapper;
+using System;
 
 namespace Connecto.DataObjects.EntityFramework.Implementation
 {
@@ -56,9 +57,12 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var entity = context.People.FirstOrDefault(s => s.PersonId == supplier.PersonId);
-                //entity.EditedBy = supplier.EditedBy;
-                //entity.EditedOn = supplier.EditedOn;
+                var entity = context.People.FirstOrDefault(s => s.PersonId == supplier.Person.PersonId);
+                entity.FirstName = supplier.Person.FirstName;
+                entity.LastName = supplier.Person.LastName;
+                entity.Description = supplier.Person.Description;
+                entity.EditedBy = supplier.Person.EditedBy;
+                entity.EditedOn = DateTime.Now;
                 return context.SaveChanges() > 0;
             }
         }

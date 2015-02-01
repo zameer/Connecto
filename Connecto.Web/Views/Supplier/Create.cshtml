@@ -12,7 +12,7 @@
 
     <fieldset>
         <legend>Supplier</legend>
-
+        
         <div class="editor-label">
             @Html.LabelFor(model => model.Person.FirstName)
         </div>
@@ -21,6 +21,21 @@
             @Html.ValidationMessageFor(model => model.Person.FirstName)
         </div>
 
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Person.LastName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Person.LastName)
+            @Html.ValidationMessageFor(model => model.Person.LastName)
+        </div>
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Person.Description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Person.Description)
+            @Html.ValidationMessageFor(model => model.Person.Description)
+        </div>
         <p>
             <input type="submit" value="Create" />
         </p>

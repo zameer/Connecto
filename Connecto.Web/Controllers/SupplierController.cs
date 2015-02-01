@@ -12,6 +12,7 @@ namespace Connecto.Web.Controllers
     public class SupplierController : Controller
     {
         private readonly SupplierRepository _supplier = ConnectoFactory.SupplierRepository;
+        private readonly ContactRepository _contact = ConnectoFactory.ContactRepository;
         //
         // GET: /Supplier/
 
@@ -30,12 +31,32 @@ namespace Connecto.Web.Controllers
             return View(supplier);
         }
 
+        public ActionResult Contacts(List<Contact> contacts)
+        {
+            return PartialView("_Contacts", contacts);
+        }
+
         //
         // GET: /Supplier/Create
 
         public ActionResult Create()
         {
             return View(new Supplier());
+        }
+        public ActionResult CreateContact(int id)
+        {
+            return View(new Contact { PersonId = id });
+        }
+
+        [HttpPost]
+        public ActionResult CreateContact(Contact contact)
+        {
+            contact.ContactGuid = Guid.NewGuid();
+            contact.CreatedBy = 1;
+            contact.CreatedOn = DateTime.Now;
+            contact.Status = RecordStatus.Active;
+            _contact.Add(contact);
+            return RedirectToAction("Edit", new { id = contact.PersonId });
         }
 
         //
@@ -46,17 +67,11 @@ namespace Connecto.Web.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
-                supplier.Person = new Person
-                {
-                    FirstName = "Ahamed",
-                    LastName = "Zameer",
-                    PersonGuid = Guid.NewGuid(),
-                    LocationId = 1,
-                    Status = RecordStatus.Active,
-                    CreatedBy = 1,
-                    CreatedOn = DateTime.Now
-                };
+                supplier.Person.PersonGuid = Guid.NewGuid();
+                supplier.Person.Status = RecordStatus.Active;
+                supplier.Person.LocationId = 1;
+                supplier.Person.CreatedBy = 1;
+                supplier.Person.CreatedOn = DateTime.Now;
                 _supplier.Add(supplier);
                 return RedirectToAction("Index");
             }
@@ -83,9 +98,8 @@ namespace Connecto.Web.Controllers
         {
             try
             {
-                // TODO: Add update logic here
-                //supplier.EditedBy = 1;
-                //supplier.EditedOn = DateTime.Now;
+                supplier.Person.EditedBy = 1;
+                supplier.Person.EditedOn = DateTime.Now;
                 _supplier.Edit(supplier);
 
                 return RedirectToAction("Index");

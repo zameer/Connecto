@@ -35,9 +35,9 @@ namespace Connecto.Repositories
         /// </summary>
         /// <param name="id">Identifier</param>
         /// <returns>No of Measure Deleted</returns>
-        public int Delete(int id = 0)
+        public int Delete(int id, int deletedBy)
         {
-            return MeasureDao.DeleteMeasure(id);
+            return MeasureDao.DeleteMeasure(id, deletedBy);
         }
 
         /// <summary>
@@ -47,6 +47,10 @@ namespace Connecto.Repositories
         public void Add(Measure measure)
         {
             MeasureDao.AddMeasure(measure);
+        }
+        public void Edit(Measure measure)
+        {
+            MeasureDao.EditMeasure(measure);
         }
     }
 }

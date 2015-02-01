@@ -144,7 +144,13 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 MeasureGuid = entity.MeasureGuid,
                 Lower = entity.Lower,
                 Volume = entity.Volume,
-                Actual = entity.Actual
+                Actual = entity.Actual,
+                LocationId = entity.LocationId,
+                Status = entity.Status,
+                CreatedBy = entity.CreatedBy,
+                CreatedOn = entity.CreatedOn,
+                EditedBy = entity.EditedBy,
+                EditedOn = entity.EditedOn
             };
         }
         internal static ProductType Map(EntityProductType entity)
@@ -236,8 +242,19 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 CreatedBy = entity.CreatedBy,
                 CreatedOn = entity.CreatedOn,
                 EditedBy = entity.EditedBy,
-                EditedOn = entity.EditedOn
+                EditedOn = entity.EditedOn,
+                Contacts = entity.Contacts !=null ? Map(entity.Contacts.ToList()) : null
             };
+        }
+        internal static List<Contact> Map(List<EntityContact> entities) {
+            var items = new List<Contact>();
+            foreach(EntityContact entity in entities){
+                items.Add(new Contact { AddressNo = entity.AddressNo, 
+                    AddressStreet = entity.AddressStreet, ContactId = entity.ContactId,
+                    City = entity.City,ContactGuid = entity.ContactGuid
+                });
+            }
+            return items;
         }
         internal static Currency Map(EntityCurrency entity)
         {
@@ -332,6 +349,12 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 AddressStreet = entity.AddressStreet,
                 City = entity.City,
                 Province = entity.Province,
+                LocationId = entity.LocationId,
+                Status = entity.Status,
+                CreatedBy = entity.CreatedBy,
+                CreatedOn = entity.CreatedOn,
+                EditedBy = entity.EditedBy,
+                EditedOn = entity.EditedOn
             };
         }
     }

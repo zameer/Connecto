@@ -12,7 +12,8 @@
 
     <fieldset>
         <legend>Measure</legend>
-
+        
+        @Html.HiddenFor(model => model.MeasureId)
         <div class="editor-label">
             @Html.LabelFor(model => model.Lower)
         </div>
@@ -37,7 +38,7 @@
             @Html.ValidationMessageFor(model => model.Actual)
         </div>
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Save" />
         </p>
     </fieldset>
 }

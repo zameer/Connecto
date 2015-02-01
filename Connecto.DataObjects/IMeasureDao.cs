@@ -33,7 +33,7 @@ namespace Connecto.DataObjects
         /// </summary>
         /// <param name="id">Unique Measure identifier</param>
         /// <returns>No of Measures Deleted</returns>
-        int DeleteMeasure(int id = 0);
+        int DeleteMeasure(int id, int deletedBy);
 
         /// <summary>
         /// Add specific Measure
@@ -41,5 +41,7 @@ namespace Connecto.DataObjects
         /// <param name="id">Unique Measure identifier</param>
         /// <returns>Measure ID</returns>
         int AddMeasure(Measure measure);
+
+        bool EditMeasure(Measure measure);
     }
 }
