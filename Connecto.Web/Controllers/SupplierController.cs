@@ -83,8 +83,8 @@ namespace Connecto.Web.Controllers
             try
             {
                 // TODO: Add update logic here
-                supplier.EditedBy = 1;
-                supplier.EditedOn = DateTime.Now;
+                //supplier.EditedBy = 1;
+                //supplier.EditedOn = DateTime.Now;
                 _supplier.Edit(supplier);
 
                 return RedirectToAction("Index");

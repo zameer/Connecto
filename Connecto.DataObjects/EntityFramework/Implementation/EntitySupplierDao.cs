@@ -56,10 +56,9 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var entity = context.Suppliers.FirstOrDefault(s => s.SupplierId == supplier.SupplierId);
-                entity.Name = supplier.Name;
-                entity.EditedBy = supplier.EditedBy;
-                entity.EditedOn = supplier.EditedOn;
+                var entity = context.People.FirstOrDefault(s => s.PersonId == supplier.PersonId);
+                //entity.EditedBy = supplier.EditedBy;
+                //entity.EditedOn = supplier.EditedOn;
                 return context.SaveChanges() > 0;
             }
         }
