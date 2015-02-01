@@ -6,7 +6,7 @@ namespace Connecto.BusinessObjects
     {
         public int ContactId { get; set; }
         public Guid ContactGuid { get; set; }
-        public int EmployeeId { get; set; }
+        public int PersonId { get; set; }
         public string LandNumber { get; set; }
         public string MobileNumber { get; set; }
         public string AddressNo { get; set; }

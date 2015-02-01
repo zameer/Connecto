@@ -46,6 +46,7 @@
     <Compile Include="Currency.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="Measure.cs" />
+    <Compile Include="Person.cs" />
     <Compile Include="ProductDetail.cs" />
     <Compile Include="ProductSupplier.cs" />
     <Compile Include="ProductType.cs" />

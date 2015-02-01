@@ -32,5 +32,6 @@ namespace Connecto.DataObjects.EntityFramework
         public DbSet<EntityProductSupplier> ProductSuppliers { get; set; }
         public DbSet<EntityMeasure> Measures { get; set; }
         public DbSet<EntityContact> Contacts { get; set; }
+        public DbSet<EntityPerson> People { get; set; }
     }
 }

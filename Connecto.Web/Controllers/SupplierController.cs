@@ -46,11 +46,16 @@ namespace Connecto.Web.Controllers
             try
             {
                 // TODO: Add insert logic here
-                supplier.SupplierGuid = Guid.NewGuid();
-                supplier.LocationId = 1;
-                supplier.Status = 1;
-                supplier.CreatedBy = 1;
-                supplier.CreatedOn = DateTime.Now;
+                supplier.Person = new Person
+                {
+                    FirstName = "Ahamed",
+                    LastName = "Zameer",
+                    PersonGuid = Guid.NewGuid(),
+                    LocationId = 1,
+                    Status = 1,
+                    CreatedBy = 1,
+                    CreatedOn = DateTime.Now
+                };
                 _supplier.Add(supplier);
                 return RedirectToAction("Index");
             }

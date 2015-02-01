@@ -52,6 +52,7 @@
     <Compile Include="EntityFramework\EntityCompanyLocation.cs" />
     <Compile Include="EntityFramework\EntityCompany.cs" />
     <Compile Include="EntityFramework\EntityContact.cs" />
+    <Compile Include="EntityFramework\EntityPerson.cs" />
     <Compile Include="EntityFramework\EntityEmployee.cs" />
     <Compile Include="EntityFramework\EntityMeasure.cs" />
     <Compile Include="EntityFramework\EntityCurrency.cs" />

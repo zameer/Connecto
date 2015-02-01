@@ -6,13 +6,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Connecto.DataObjects.EntityFramework
 {
     [Table("Employee", Schema = "HumanResource")]
-    public class EntityEmployee : EntityConnecto
+    public class EntityEmployee
     {
         [Key]
         public int EmployeeId { get; set; }
-        public Guid EmployeeGuid { get; set; }
-        public string Description { get; set; }
-        public string Name { get; set; }
-        public ICollection<EntityContact> Contacts { get; set; }
+        public int PersonId { get; set; }
+        public virtual EntityPerson Person { get; set; }
     }
 }

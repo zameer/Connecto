@@ -14,11 +14,11 @@
         <legend>Supplier</legend>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
+            @Html.LabelFor(model => model.Person.FirstName)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Name)
-            @Html.ValidationMessageFor(model => model.Name)
+            @Html.EditorFor(model => model.Person.FirstName)
+            @Html.ValidationMessageFor(model => model.Person.FirstName)
         </div>
 
         <p>

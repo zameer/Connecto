@@ -1,11 +1,9 @@
-﻿using System;
-
-namespace Connecto.BusinessObjects
+﻿namespace Connecto.BusinessObjects
 {
-    public class Supplier : Connecto
+    public class Supplier
     {
         public int SupplierId { get; set; }
-        public Guid SupplierGuid { get; set; }
-        public string Name { get; set; }
+        public int PersonId { get; set; }
+        public Person Person { get; set; }
     }
 }

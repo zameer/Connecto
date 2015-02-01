@@ -44,6 +44,9 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
             using (var context = DataObjectFactory.CreateContext())
             {
                 var entity = Mapper.Map(supplier);
+                context.People.Add(entity.Person);
+                entity.PersonId = entity.Person.PersonId;
+
                 context.Suppliers.Add(entity);
                 context.SaveChanges();
                 return entity.SupplierId;

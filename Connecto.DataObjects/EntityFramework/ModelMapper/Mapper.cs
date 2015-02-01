@@ -174,13 +174,8 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
             return new Supplier
             {
                 SupplierId = entity.SupplierId,
-                Name = entity.Name,
-                LocationId = entity.LocationId,
-                Status = entity.Status,
-                CreatedBy = entity.CreatedBy,
-                CreatedOn = entity.CreatedOn,
-                EditedBy = entity.EditedBy,
-                EditedOn = entity.EditedOn
+                PersonId = entity.Person.PersonId,
+                Person = Map(entity.Person)
             };
         }
         internal static EntitySupplier Map(Supplier entity)
@@ -188,7 +183,37 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
             return new EntitySupplier
             {
                 SupplierId = entity.SupplierId,
-                Name = entity.Name,
+                PersonId = entity.Person.PersonId,
+                Person = Map(entity.Person)
+            };
+        }
+        internal static Employee Map(EntityEmployee entity)
+        {
+            return new Employee
+            {
+                EmployeeId = entity.EmployeeId,
+                PersonId = entity.Person.PersonId,
+                Person = Map(entity.Person)
+            };
+        }
+        internal static EntityEmployee Map(Employee entity)
+        {
+            return new EntityEmployee
+            {
+                EmployeeId = entity.EmployeeId,
+                PersonId = entity.Person.PersonId,
+                Person = Map(entity.Person)
+            };
+        }
+        internal static EntityPerson Map(Person entity)
+        {
+            return new EntityPerson
+            {
+                PersonId = entity.PersonId,
+                PersonGuid = entity.PersonGuid,
+                Description = entity.Description,
+                FirstName = entity.FirstName,
+                LastName = entity.LastName,
                 LocationId = entity.LocationId,
                 Status = entity.Status,
                 CreatedBy = entity.CreatedBy,
@@ -197,24 +222,21 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 EditedOn = entity.EditedOn
             };
         }
-        internal static Employee Map(EntityEmployee entity)
+        internal static Person Map(EntityPerson entity)
         {
-            return new Employee
+            return new Person
             {
-                EmployeeId = entity.EmployeeId,
-                EmployeeGuid = entity.EmployeeGuid,
+                PersonId = entity.PersonId,
+                PersonGuid = entity.PersonGuid,
                 Description = entity.Description,
-                Name = entity.Name
-            };
-        }
-        internal static EntityEmployee Map(Employee entity)
-        {
-            return new EntityEmployee
-            {
-                EmployeeId = entity.EmployeeId,
-                EmployeeGuid = entity.EmployeeGuid,
-                Description = entity.Description,
-                Name = entity.Name
+                FirstName = entity.FirstName,
+                LastName = entity.LastName,
+                LocationId = entity.LocationId,
+                Status = entity.Status,
+                CreatedBy = entity.CreatedBy,
+                CreatedOn = entity.CreatedOn,
+                EditedBy = entity.EditedBy,
+                EditedOn = entity.EditedOn
             };
         }
         internal static Currency Map(EntityCurrency entity)
@@ -289,7 +311,6 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
             {
                 ContactId = entity.ContactId,
                 ContactGuid = entity.ContactGuid,
-                EmployeeId = entity.EmployeeId,
                 LandNumber = entity.LandNumber,
                 MobileNumber = entity.MobileNumber,
                 AddressNo = entity.AddressNo,
@@ -304,7 +325,7 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
             {
                 ContactId = entity.ContactId,
                 ContactGuid = entity.ContactGuid,
-                EmployeeId = entity.EmployeeId,
+                PersonId = entity.PersonId,
                 LandNumber = entity.LandNumber,
                 MobileNumber = entity.MobileNumber,
                 AddressNo = entity.AddressNo,

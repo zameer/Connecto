@@ -14,62 +14,62 @@
         <legend>Supplier</legend>
 
         @Html.HiddenFor(model => model.SupplierId)
-        @Html.HiddenFor(model => model.SupplierGuid)
+        @Html.HiddenFor(model => model.Person.PersonGuid)
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
+            @Html.LabelFor(model => model.Person.FirstName)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Name)
-            @Html.ValidationMessageFor(model => model.Name)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.LocationId)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.LocationId)
-            @Html.ValidationMessageFor(model => model.LocationId)
+            @Html.EditorFor(model => model.Person.FirstName)
+            @Html.ValidationMessageFor(model => model.Person.FirstName)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Status)
+            @Html.LabelFor(model => model.Person.LocationId)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Status)
-            @Html.ValidationMessageFor(model => model.Status)
+            @Html.EditorFor(model => model.Person.LocationId)
+            @Html.ValidationMessageFor(model => model.Person.LocationId)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.CreatedBy)
+            @Html.LabelFor(model => model.Person.Status)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.CreatedBy)
-            @Html.ValidationMessageFor(model => model.CreatedBy)
+            @Html.EditorFor(model => model.Person.Status)
+            @Html.ValidationMessageFor(model => model.Person.Status)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.CreatedOn)
+            @Html.LabelFor(model => model.Person.CreatedBy)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.CreatedOn)
-            @Html.ValidationMessageFor(model => model.CreatedOn)
+            @Html.EditorFor(model => model.Person.CreatedBy)
+            @Html.ValidationMessageFor(model => model.Person.CreatedBy)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.EditedBy)
+            @Html.LabelFor(model => model.Person.CreatedOn)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.EditedBy)
-            @Html.ValidationMessageFor(model => model.EditedBy)
+            @Html.EditorFor(model => model.Person.CreatedOn)
+            @Html.ValidationMessageFor(model => model.Person.CreatedOn)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.EditedOn)
+            @Html.LabelFor(model => model.Person.EditedBy)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.EditedOn)
-            @Html.ValidationMessageFor(model => model.EditedOn)
+            @Html.EditorFor(model => model.Person.EditedBy)
+            @Html.ValidationMessageFor(model => model.Person.EditedBy)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Person.EditedOn)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Person.EditedOn)
+            @Html.ValidationMessageFor(model => model.Person.EditedOn)
         </div>
 
         <p>

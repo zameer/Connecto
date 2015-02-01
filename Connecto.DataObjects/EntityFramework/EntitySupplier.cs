@@ -5,11 +5,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Connecto.DataObjects.EntityFramework
 {
     [Table("Supplier", Schema = "Product")]
-    public class EntitySupplier : EntityConnecto
+    public class EntitySupplier
     {
         [Key]
         public int SupplierId { get; set; }
-        public Guid SupplierGuid { get; set; }
-        public string Name { get; set; }
+        public int PersonId { get; set; }
+        public virtual EntityPerson Person { get; set; }
     }
 }

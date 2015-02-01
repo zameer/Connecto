@@ -43,7 +43,7 @@ namespace Connecto.Repositories
         /// <summary>
         /// Create new Supplier
         /// </summary>
-        /// <param name="vendor">Create Supplier object</param>
+        /// <param name="supplier">Create Supplier object</param>
         public void Add(Supplier supplier)
         {
             SupplierDao.AddSupplier(supplier);
