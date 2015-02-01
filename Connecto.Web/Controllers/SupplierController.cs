@@ -78,11 +78,14 @@ namespace Connecto.Web.Controllers
         // POST: /Supplier/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Supplier supplier)
         {
             try
             {
                 // TODO: Add update logic here
+                supplier.EditedBy = 1;
+                supplier.EditedOn = DateTime.Now;
+                _supplier.Edit(supplier);
 
                 return RedirectToAction("Index");
             }
