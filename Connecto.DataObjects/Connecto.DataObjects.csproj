@@ -82,6 +82,10 @@
     <Compile Include="IProductDao.cs" />
     <Compile Include="ISupplierDao.cs" />
     <Compile Include="IVendorDao.cs" />
+    <Compile Include="Migrations\201502010757595_new schema.cs" />
+    <Compile Include="Migrations\201502010757595_new schema.Designer.cs">
+      <DependentUpon>201502010757595_new schema.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -94,6 +98,15 @@
       <Project>{0F58834E-44CD-4360-A004-C16E72847DFA}</Project>
       <Name>Connecto.BusinessObjects</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Connecto.Common\Connecto.Common.csproj">
+      <Project>{8abb07ee-a696-4145-8e7e-cec3c785c153}</Project>
+      <Name>Connecto.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201502010757595_new schema.resx">
+      <DependentUpon>201502010757595_new schema.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

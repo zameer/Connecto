@@ -9,55 +9,48 @@ using System.Web.Mvc;
 
 namespace Connecto.Web.Controllers
 {
-    public class SupplierController : Controller
+    public class MeasureController : Controller
     {
-        private readonly SupplierRepository _supplier = ConnectoFactory.SupplierRepository;
+        private readonly MeasureRepository _measure = ConnectoFactory.MeasureRepository;
         //
-        // GET: /Supplier/
+        // GET: /Measure/
 
         public ActionResult Index()
         {
-            var suppliers = _supplier.GetAll();
-            return View(suppliers);
+            var measures = _measure.GetAll();
+            return View(measures);
         }
 
         //
-        // GET: /Supplier/Details/5
+        // GET: /Measure/Details/5
 
         public ActionResult Details(int id)
         {
-            var supplier = _supplier.GetSupplierById(id);
-            return View(supplier);
+            var measure = _measure.GetMeasureById(id);
+            return View(measure);
         }
 
         //
-        // GET: /Supplier/Create
+        // GET: /Measure/Create
 
         public ActionResult Create()
         {
-            return View(new Supplier());
+            return View(new Measure());
         }
 
         //
-        // POST: /Supplier/Create
+        // POST: /Measure/Create
 
         [HttpPost]
-        public ActionResult Create(Supplier supplier)
+        public ActionResult Create(Measure measure)
         {
             try
             {
                 // TODO: Add insert logic here
-                supplier.Person = new Person
-                {
-                    FirstName = "Ahamed",
-                    LastName = "Zameer",
-                    PersonGuid = Guid.NewGuid(),
-                    LocationId = 1,
-                    Status = RecordStatus.Active,
-                    CreatedBy = 1,
-                    CreatedOn = DateTime.Now
-                };
-                _supplier.Add(supplier);
+                measure.CreatedBy = 1;
+                measure.CreatedOn = DateTime.Now;
+                measure.Status = RecordStatus.Active;
+                _measure.Add(measure);
                 return RedirectToAction("Index");
             }
             catch
@@ -67,26 +60,26 @@ namespace Connecto.Web.Controllers
         }
 
         //
-        // GET: /Supplier/Edit/5
+        // GET: /Measure/Edit/5
 
         public ActionResult Edit(int id)
         {
-            var supplier = _supplier.GetSupplierById(id);
-            return View(supplier);
+            var measure = _measure.GetMeasureById(id);
+            return View(measure);
         }
 
         //
-        // POST: /Supplier/Edit/5
+        // POST: /Measure/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(Supplier supplier)
+        public ActionResult Edit(Measure measure)
         {
             try
             {
                 // TODO: Add update logic here
                 //supplier.EditedBy = 1;
                 //supplier.EditedOn = DateTime.Now;
-                _supplier.Edit(supplier);
+                //_measure.Edit(measure);
 
                 return RedirectToAction("Index");
             }
@@ -97,7 +90,7 @@ namespace Connecto.Web.Controllers
         }
 
         //
-        // GET: /Supplier/Delete/5
+        // GET: /Measure/Delete/5
 
         public ActionResult Delete(int id)
         {
@@ -105,7 +98,7 @@ namespace Connecto.Web.Controllers
         }
 
         //
-        // POST: /Supplier/Delete/5
+        // POST: /Measure/Delete/5
 
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)

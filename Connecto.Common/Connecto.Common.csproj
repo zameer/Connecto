@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0F58834E-44CD-4360-A004-C16E72847DFA}</ProjectGuid>
+    <ProjectGuid>{8ABB07EE-A696-4145-8E7E-CEC3C785C153}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Connecto.BusinessObjects</RootNamespace>
-    <AssemblyName>Connecto.BusinessObjects</AssemblyName>
+    <RootNamespace>Connecto.Common</RootNamespace>
+    <AssemblyName>Connecto.Common</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,27 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Company.cs" />
-    <Compile Include="Connecto.cs" />
-    <Compile Include="CompanyLocation.cs" />
-    <Compile Include="Contact.cs" />
-    <Compile Include="Currency.cs" />
-    <Compile Include="Employee.cs" />
-    <Compile Include="Measure.cs" />
-    <Compile Include="Person.cs" />
-    <Compile Include="ProductDetail.cs" />
-    <Compile Include="ProductSupplier.cs" />
-    <Compile Include="ProductType.cs" />
-    <Compile Include="Product.cs" />
-    <Compile Include="Supplier.cs" />
-    <Compile Include="Vendor.cs" />
+    <Compile Include="Enumeration\RecordStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Connecto.Common\Connecto.Common.csproj">
-      <Project>{8abb07ee-a696-4145-8e7e-cec3c785c153}</Project>
-      <Name>Connecto.Common</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

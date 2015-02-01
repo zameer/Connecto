@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012 YU
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Connecto.DataObjects", "Connecto.DataObjects\Connecto.DataObjects.csproj", "{9DEF5150-7B6D-44AB-BC89-3E13917AA7E8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Connecto.BusinessObjects", "Connecto.BusinessObjects\Connecto.BusinessObjects.csproj", "{0F58834E-44CD-4360-A004-C16E72847DFA}"
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Connecto.Test", "Connecto.Test\Connecto.Test.csproj", "{E5605226-9A8A-4DB4-BCDD-8F6CA2ACEF0F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Connecto.Web", "Connecto.Web\Connecto.Web.csproj", "{8E700398-7FE9-4A08-B7FC-26D84A4BD0D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Connecto.Common", "Connecto.Common\Connecto.Common.csproj", "{8ABB07EE-A696-4145-8E7E-CEC3C785C153}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,10 @@ Global
 		{8E700398-7FE9-4A08-B7FC-26D84A4BD0D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E700398-7FE9-4A08-B7FC-26D84A4BD0D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E700398-7FE9-4A08-B7FC-26D84A4BD0D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8ABB07EE-A696-4145-8E7E-CEC3C785C153}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8ABB07EE-A696-4145-8E7E-CEC3C785C153}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8ABB07EE-A696-4145-8E7E-CEC3C785C153}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8ABB07EE-A696-4145-8E7E-CEC3C785C153}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
