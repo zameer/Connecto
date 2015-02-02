@@ -256,11 +256,14 @@
     <Content Include="Content\themes\connecto\ace-fonts.css" />
     <Content Include="Content\themes\connecto\ace-ie.css" />
     <Content Include="Content\themes\connecto\ace-part2.css" />
+    <Content Include="Content\themes\connecto\ace-skins.css" />
     <Content Include="Content\themes\connecto\ace.css" />
     <Content Include="Content\themes\connecto\bootstrap.css" />
     <Content Include="Content\themes\connecto\font-awesome.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Content\fonts\OpenSans-300.woff" />
+    <Content Include="Content\fonts\OpenSans-400.woff" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\avatars\avatar.png" />
     <Content Include="Images\avatars\avatar1.png" />
@@ -270,6 +273,7 @@
     <Content Include="Images\avatars\avatar5.png" />
     <Content Include="Images\avatars\profile-pic.jpg" />
     <Content Include="Images\avatars\user.jpg" />
+    <Content Include="Images\avatars\user.png" />
     <Content Include="Scripts\connecto\ace-extra.js" />
     <Content Include="Scripts\connecto\bootstrap.js" />
     <Content Include="Scripts\connecto\html5shiv.js" />
