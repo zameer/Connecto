@@ -41,5 +41,12 @@ namespace Connecto.DataObjects
         /// <param name="id">Unique employee identifier</param>
         /// <returns>Employee ID</returns>
         int AddEmployee(Employee employee);
+
+        /// <summary>
+        /// edit specific employee
+        /// </summary>
+        /// <param name="id">Unique employee identifier</param>
+        /// <returns>Employee ID</returns>
+        bool EditEmployee(Employee employee);
     }
 }

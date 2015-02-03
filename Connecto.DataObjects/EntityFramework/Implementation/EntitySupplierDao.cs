@@ -21,11 +21,11 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
         }
 
         // get Supplier by id
-        public Supplier GetSupplierById(int supplierId)
+        public Supplier GetSupplierById(int personId)
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var entity = context.Suppliers.FirstOrDefault(e => e.SupplierId == supplierId);
+                var entity = context.Suppliers.FirstOrDefault(e => e.PersonId == personId);
                 return entity == null ? null : Mapper.Map(entity);
             }
         }

@@ -1,9 +1,11 @@
-﻿@model IEnumerable<Connecto.BusinessObjects.Supplier>
+﻿@model IEnumerable<Connecto.BusinessObjects.Employee>
 
 @{
-    ViewBag.Title = "Suppliers";
+    ViewBag.Title = "Employee";
 }
-<h3 class="header smaller lighter red">Supplier List</h3>
+
+<h3 class="header smaller lighter red">Employee List</h3>
+
 <table id="simple-table" class="table table-striped table-bordered table-hover">
     <tr>
         <th>First Name</th>
@@ -21,9 +23,9 @@
             <td class="hidden-480"><span class="label label-sm label-warning">Expiring</span></td>
             <td>
                 <div class="hidden-sm hidden-xs btn-group">
-                    <a class="btn btn-xs btn-info" href="@Url.Action("Edit", "Supplier", new { id = item.Person.PersonId })"><i class="ace-icon fa fa-pencil bigger-120"></i></a>
-                    <a class="btn btn-xs btn-danger" href="@Url.Action("Delete", "Supplier", new { id = item.Person.PersonId })"><i class="ace-icon fa fa-trash-o bigger-120"></i></a>
-                    <a class="btn btn-xs btn-warning" href="@Url.Action("Details", "Supplier", new { id = item.Person.PersonId })"><i class="ace-icon fa fa-eye bigger-120"></i></a>
+                    <a class="btn btn-xs btn-info" href="@Url.Action("Edit", "Employee", new { id = item.Person.PersonId })"><i class="ace-icon fa fa-pencil bigger-120"></i></a>
+                    <a class="btn btn-xs btn-danger" href="@Url.Action("Delete", "Employee", new { id = item.Person.PersonId })"><i class="ace-icon fa fa-trash-o bigger-120"></i></a>
+                    <a class="btn btn-xs btn-warning" href="@Url.Action("Details", "Employee", new { id = item.Person.PersonId })"><i class="ace-icon fa fa-eye bigger-120"></i></a>
                 </div>
             </td>
         </tr>

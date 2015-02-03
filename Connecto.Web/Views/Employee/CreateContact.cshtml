@@ -9,11 +9,10 @@
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-
+    @Html.HiddenFor(model => model.PersonId)
     <fieldset>
-        <legend>Measure</legend>
-        @Html.HiddenFor(model => model.ContactId)
-        @Html.HiddenFor(model => model.PersonId)
+        <legend>Contact</legend>
+
         <div class="editor-label">
             @Html.LabelFor(model => model.LandNumber)
         </div>
@@ -59,7 +58,7 @@
             @Html.ValidationMessageFor(model => model.Province)
         </div>
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Create" />
         </p>
     </fieldset>
 }
@@ -67,4 +66,5 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
 

@@ -48,5 +48,14 @@ namespace Connecto.Repositories
         {
             EmployeeDao.AddEmployee(employee);
         }
+
+        /// <summary>
+        /// Create new Employee
+        /// </summary>
+        /// <param name="vendor">Create Employee object</param>
+        public void Edit(Employee employee)
+        {
+            EmployeeDao.EditEmployee(employee);
+        }
     }
 }

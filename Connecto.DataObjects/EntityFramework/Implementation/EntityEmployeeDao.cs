@@ -2,6 +2,7 @@
 using System.Linq;
 using Connecto.BusinessObjects;
 using Connecto.DataObjects.EntityFramework.ModelMapper;
+using System;
 
 namespace Connecto.DataObjects.EntityFramework.Implementation
 {
@@ -20,11 +21,11 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
         }
 
         // get Employee by id
-        public Employee GetEmployeeById(int employeeId)
+        public Employee GetEmployeeById(int personId)
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var entity = context.Employees.FirstOrDefault(e => e.EmployeeId == employeeId);
+                var entity = context.Employees.FirstOrDefault(e => e.PersonId == personId);
                 return entity == null ? null : Mapper.Map(entity);
             }
         }
@@ -47,6 +48,20 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                 context.Employees.Add(entity);
                 context.SaveChanges();
                 return entity.EmployeeId;
+            }
+        }
+
+        public bool EditEmployee(Employee employee)
+        {
+            using (var context = DataObjectFactory.CreateContext())
+            {
+                var entity = context.People.FirstOrDefault(s => s.PersonId == employee.Person.PersonId);
+                entity.FirstName = employee.Person.FirstName;
+                entity.LastName = employee.Person.LastName;
+                entity.Description = employee.Person.Description;
+                entity.EditedBy = employee.Person.EditedBy;
+                entity.EditedOn = DateTime.Now;
+                return context.SaveChanges() > 0;
             }
         }
     }
