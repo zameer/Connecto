@@ -281,6 +281,8 @@
     <Content Include="Images\avatars\profile-pic.jpg" />
     <Content Include="Images\avatars\user.jpg" />
     <Content Include="Images\avatars\user.png" />
+    <Content Include="Scripts\angular\angular-resource.js" />
+    <Content Include="Scripts\angular\angular.js" />
     <Content Include="Scripts\connecto\ace-extra.js" />
     <Content Include="Scripts\connecto\bootstrap.js" />
     <Content Include="Scripts\connecto\html5shiv.js" />
@@ -308,6 +310,7 @@
     <Content Include="Scripts\connecto\plugins\elements.typeahead.js" />
     <Content Include="Scripts\connecto\plugins\elements.wizard.js" />
     <Content Include="Scripts\connecto\plugins\elements.wysiwyg.js" />
+    <Content Include="Scripts\connecto\purchasing\controllers.js" />
     <Content Include="Scripts\connecto\respond.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />

@@ -13,5 +13,6 @@ namespace Connecto.BusinessObjects
         public string AddressStreet { get; set; }
         public string City { get; set; }
         public string Province { get; set; }
+        public Person Person { get; set; }
     }
 }

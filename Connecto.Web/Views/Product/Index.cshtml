@@ -4,4 +4,16 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div ng-app="phonecatApp">
+    <div ng-controller="PhoneListCtrl">
+
+        <ul>
+            <li ng-repeat="phone in phones">
+                <span>{{phone.name}}</span>
+                <p>{{phone.snippet}}</p>
+            </li>
+        </ul>
+
+    </div>
+</div>
+<script src="~/Scripts/connecto/purchasing/controllers.js"></script>

@@ -334,6 +334,7 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 AddressStreet = entity.AddressStreet,
                 City = entity.City,
                 Province = entity.Province,
+                Person = Map(entity.Person)
             };
         }
         internal static EntityContact Map(Contact entity)
