@@ -16,9 +16,9 @@ namespace Connecto.Web.Controllers
 
         public ActionResult Index()
         {
-            var productId = _product.Add(new Product {  });
-            var product = _product.Get(productId);
-            return View(product);
+            //var productId = _product.Add(new Product {  });
+            //var product = _product.Get(productId);
+            return View();
         }
 
     }
