@@ -10,6 +10,10 @@
         {
             get { return new ProductRepository(); }
         }
+        public static ProductTypeRepository ProductTypeRepository
+        {
+            get { return new ProductTypeRepository(); }
+        }
         public static CompanyRepository CompanyRepository
         {
             get { return new CompanyRepository(); }

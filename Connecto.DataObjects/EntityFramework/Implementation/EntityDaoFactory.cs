@@ -32,6 +32,14 @@
         }
 
         /// <summary>
+        /// Gets an Entity Framework specific product type data access object.
+        /// </summary>
+        public IProductTypeDao ProductTypeDao
+        {
+            get { return new EntityProductTypeDao(); }
+        }
+
+        /// <summary>
         /// Gets an Entity Framework specific company data access object.
         /// </summary>
         public ICompanyDao CompanyDao

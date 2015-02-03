@@ -14,7 +14,14 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
             return new Vendor
             {
                 VendorId = entity.VendorId,
-                Name = entity.Name
+                VendorGuid = entity.VendorGuid,
+                Name = entity.Name,
+                LocationId = entity.LocationId,
+                Status = entity.Status,
+                CreatedBy = entity.CreatedBy,
+                CreatedOn = entity.CreatedOn,
+                EditedBy = entity.EditedBy,
+                EditedOn = entity.EditedOn
             };
         }
         internal static EntityVendor Map(Vendor entity)
@@ -22,7 +29,14 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
             return new EntityVendor
             {
                 VendorId = entity.VendorId,
-                Name = entity.Name
+                VendorGuid = entity.VendorGuid,
+                Name = entity.Name,
+                LocationId = entity.LocationId,
+                Status = entity.Status,
+                CreatedBy = entity.CreatedBy,
+                CreatedOn = entity.CreatedOn,
+                EditedBy = entity.EditedBy,
+                EditedOn = entity.EditedOn
             };
         }
         internal static Product Map(EntityProduct entity)
@@ -161,7 +175,13 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 ProductTypeGuid = entity.ProductTypeGuid,
                 MeasureId = entity.MeasureId,
                 Type = entity.Type,
-                StockAs = entity.StockAs
+                StockAs = entity.StockAs,
+                LocationId = entity.LocationId,
+                Status = entity.Status,
+                CreatedBy = entity.CreatedBy,
+                CreatedOn = entity.CreatedOn,
+                EditedBy = entity.CreatedBy,
+                EditedOn = entity.CreatedOn
             };
         }
         internal static EntityProductType Map(ProductType entity)
@@ -172,7 +192,13 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 ProductTypeGuid = entity.ProductTypeGuid,
                 MeasureId = entity.MeasureId,
                 Type = entity.Type,
-                StockAs = entity.StockAs
+                StockAs = entity.StockAs,
+                LocationId = entity.LocationId,
+                Status = entity.Status,
+                CreatedBy = entity.CreatedBy,
+                CreatedOn = entity.CreatedOn,
+                EditedBy = entity.CreatedBy,
+                EditedOn = entity.CreatedOn
             };
         }
         internal static Supplier Map(EntitySupplier entity)

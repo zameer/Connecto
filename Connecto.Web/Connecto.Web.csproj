@@ -186,6 +186,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\ProductTypeController.cs" />
+    <Compile Include="Controllers\VenderController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\MeasureController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -386,6 +388,10 @@
     <Content Include="Views\Employee\CreateContact.cshtml" />
     <Content Include="Views\Employee\Edit.cshtml" />
     <Content Include="Views\Contact\Details.cshtml" />
+    <Content Include="Views\Vendor\Index.cshtml" />
+    <Content Include="Views\Vendor\Details.cshtml" />
+    <Content Include="Views\Vendor\Create.cshtml" />
+    <Content Include="Views\Vendor\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

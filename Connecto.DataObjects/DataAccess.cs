@@ -20,6 +20,11 @@ namespace Connecto.DataObjects
             get { return _factory.ProductDao; }
         }
 
+        public static IProductTypeDao ProductTypeDao
+        {
+            get { return _factory.ProductTypeDao; }
+        }
+
         public static ICompanyDao CompanyDao
         {
             get { return _factory.CompanyDao; }

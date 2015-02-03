@@ -2,6 +2,7 @@
 using System.Linq;
 using Connecto.BusinessObjects;
 using Connecto.DataObjects.EntityFramework.ModelMapper;
+using System;
 
 namespace Connecto.DataObjects.EntityFramework.Implementation
 {
@@ -29,7 +30,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
             }
         }
 
-        public int DeleteVendor(int id = 0)
+        public int DeleteVendor(int id, int deletedBy)
         {
             using (var context = DataObjectFactory.CreateContext())
             {
@@ -43,10 +44,22 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var entity = new EntityVendor {Name = vendor.Name};
+                var entity = Mapper.Map(vendor);
                 context.Vendors.Add(entity);
                 context.SaveChanges();
                 return entity.VendorId;
+            }
+        }
+
+        public bool EditVendor(Vendor vendor)
+        {
+            using (var context = DataObjectFactory.CreateContext())
+            {
+                var entity = context.Vendors.FirstOrDefault(s => s.VendorId == vendor.VendorId);
+                entity.Name = vendor.Name;
+                entity.EditedBy = vendor.EditedBy;
+                entity.EditedOn = DateTime.Now;
+                return context.SaveChanges() > 0;
             }
         }
     }

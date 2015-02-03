@@ -9,37 +9,31 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table>
+<table class="table table-striped table-bordered table-hover">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ContactId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AddressNo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AddressStreet)
-        </th>
+        <th>Address Number</th>
+        <th>Address</th>
         <th></th>
     </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ContactId)
-        </td>
+    @foreach (var item in Model)
+    {
+        <tr>
         <td>
             @Html.DisplayFor(modelItem => item.AddressNo)
         </td>
         <td>
-            1 @Html.DisplayFor(modelItem => item.AddressStreet)
+            @Html.DisplayFor(modelItem => item.AddressStreet)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ContactId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ContactId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ContactId })
-        </td>
-    </tr>
-}
+            <td>
+                <div class="hidden-sm hidden-xs btn-group">
+                    <a class="btn btn-xs btn-info" href="@Url.Action("Edit", "Contact", new { id = item.ContactId })"><i class="ace-icon fa fa-pencil bigger-120"></i></a>
+                    <a class="btn btn-xs btn-warning" href="@Url.Action("Details", "Contact", new { id = item.ContactId })"><i class="ace-icon fa fa-eye bigger-120"></i></a>
+                    <a class="btn btn-xs btn-danger" href="@Url.Action("Delete", "Contact", new { id = item.ContactId })"><i class="ace-icon fa fa-trash-o bigger-120"></i></a>
+                </div>
+            </td>
+        </tr>
+    }
 
 </table>
+
+

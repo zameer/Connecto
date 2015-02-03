@@ -9,49 +9,49 @@ using System.Web.Mvc;
 
 namespace Connecto.Web.Controllers
 {
-    public class ContactController : Controller
+    public class VendorController : Controller
     {
-        private readonly ContactRepository _contact = ConnectoFactory.ContactRepository;
+        private readonly VendorRepository _vendor = ConnectoFactory.VendorRepository;
         //
-        // GET: /Contact/
+        // GET: /Vendor/
 
         public ActionResult Index()
         {
-            var contact = _contact.GetAll();
-            return View(contact);
+            var vendor = _vendor.GetAll();
+            return View(vendor);
         }
 
         //
-        // GET: /Contact/Details/5
+        // GET: /Vendor/Details/5
 
         public ActionResult Details(int id)
         {
-            var contact = _contact.GetContact(id);
-            return View(contact);
+            var vendor = _vendor.GetVendorById(id);
+            return View(vendor);
         }
 
         //
-        // GET: /Contact/Create
+        // GET: /Vendor/Create
 
         public ActionResult Create()
         {
-            return View(new Contact());
+            return View(new Vendor());
         }
 
         //
-        // POST: /Contact/Create
+        // POST: /Vendor/Create
 
         [HttpPost]
-        public ActionResult Create(Contact contact)
+        public ActionResult Create(Vendor vendor)
         {
             try
             {
-                contact.PersonId = 1;
-                contact.ContactGuid = Guid.NewGuid();
-                contact.CreatedBy = 1;
-                contact.CreatedOn = DateTime.Now;
-                contact.Status = RecordStatus.Active;
-                _contact.Add(contact);
+                vendor.VendorId = 1;
+                vendor.VendorGuid = Guid.NewGuid();
+                vendor.CreatedBy = 1;
+                vendor.CreatedOn = DateTime.Now;
+                vendor.Status = RecordStatus.Active;
+                _vendor.Add(vendor);
                 return RedirectToAction("Index");
             }
             catch
@@ -61,25 +61,25 @@ namespace Connecto.Web.Controllers
         }
 
         //
-        // GET: /Contact/Edit/5
+        // GET: /Vendor/Edit/5
 
         public ActionResult Edit(int id)
         {
-            var contact = _contact.GetContact(id);
-            return View(contact);
+            var vendor = _vendor.GetVendorById(id);
+            return View(vendor);
         }
 
         //
-        // POST: /Contact/Edit/5
+        // POST: /Vendor/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(Contact contact)
+        public ActionResult Edit(Vendor vendor)
         {
             try
             {
-                contact.EditedBy = 1;
-                contact.EditedOn = DateTime.Now;
-                _contact.Edit(contact);
+                vendor.EditedBy = 1;
+                vendor.EditedOn = DateTime.Now;
+                _vendor.Edit(vendor);
 
                 return RedirectToAction("Index");
             }
@@ -90,23 +90,23 @@ namespace Connecto.Web.Controllers
         }
 
         //
-        // GET: /Contact/Delete/5
+        // GET: /Vendor/Delete/5
 
         public ActionResult Delete(int id)
         {
-            var contact = _contact.GetContact(id);
-            return View(contact);
+            var vendor = _vendor.GetVendorById(id);
+            return View(vendor);
         }
 
         //
-        // POST: /Contact/Delete/5
+        // POST: /Vendor/Delete/5
 
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
             try
             {
-                _contact.Delete(id, 3);
+                _vendor.Delete(id, 3);
                 return RedirectToAction("Index");
             }
             catch

@@ -21,13 +21,23 @@ namespace Connecto.Repositories
         }
 
         /// <summary>
+        /// Get a specific Vendor
+        /// </summary>
+        /// <param name="id">Identifier</param>
+        /// <returns>Return Vendor ID</returns>
+        public Vendor GetVendorById(int id)
+        {
+            return VendorDao.GetVendorById(id);
+        }
+
+        /// <summary>
         /// Removes specific vendor
         /// </summary>
         /// <param name="id">Identifier</param>
         /// <returns>No of vendors Deleted</returns>
-        public int Delete(int id = 0)
+        public int Delete(int id, int deletedBy)
         {
-            return VendorDao.DeleteVendor(id);
+            return VendorDao.DeleteVendor(id, deletedBy);
         }
 
         /// <summary>
@@ -37,6 +47,15 @@ namespace Connecto.Repositories
         public void Add(Vendor vendor)
         {
             VendorDao.AddVendor(vendor);
+        }
+
+        /// <summary>
+        /// Create new Vendor
+        /// </summary>
+        /// <param name="vendor">Create Vendor object</param>
+        public void Edit(Vendor vendor)
+        {
+            VendorDao.EditVendor(vendor);
         }
     }
 }

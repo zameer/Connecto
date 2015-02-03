@@ -10,6 +10,7 @@
     {
         IVendorDao VendorDao { get; }
         IProductDao ProductDao { get; }
+        IProductTypeDao ProductTypeDao { get; }
         ICompanyDao CompanyDao { get; }
         ISupplierDao SupplierDao { get; }
         IEmployeeDao EmployeeDao { get; }

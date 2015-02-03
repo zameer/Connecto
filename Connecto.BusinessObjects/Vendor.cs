@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Connecto.BusinessObjects
 {
-    public class Vendor
+    public class Vendor : Connecto
     {
         public int VendorId { get; set; }
+        public Guid VendorGuid { get; set; }
         public string Name { get; set; }
     }
 }

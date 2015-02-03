@@ -33,9 +33,7 @@ namespace Connecto.DataObjects
         /// </summary>
         /// <param name="id">Unique vendor identifier</param>
         /// <returns>No of vendors Deleted</returns>
-        int DeleteVendor(int id = 0);
-
-        
+        int DeleteVendor(int id, int deletedBy);
 
         /// <summary>
         /// Add specific vendor
@@ -43,5 +41,12 @@ namespace Connecto.DataObjects
         /// <param name="id">Unique vendor identifier</param>
         /// <returns>Vendor ID</returns>
         int AddVendor(Vendor vendor);
+
+        /// <summary>
+        /// Edit specific vendor
+        /// </summary>
+        /// <param name="id">Unique vendor identifier</param>
+        /// <returns>Vendor ID</returns>
+        bool EditVendor(Vendor vendor);
     }
 }
