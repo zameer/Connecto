@@ -1,15 +1,6 @@
-﻿@model Connecto.BusinessObjects.Product
+﻿@{ Layout = null; }
+<div ng-controller="ProductNewCtrl">
 
-@{
-    ViewBag.Title = "Index";
-}
-<div class="page-header">
-    <h1>Add Product </h1>
-</div>
-
-<div ng-app="phonecatApp">
-    <div ng-controller="PhoneListCtrl">
-        
         <div class="row">
             <div class="col-xs-12">
                 <!-- PAGE CONTENT BEGINS -->
@@ -21,7 +12,7 @@
                                 <option></option>
                                 <option ng-repeat="item in vendors" value="{{item.VendorId}}">{{item.Name}}</option>
                             </select>
-                            
+
                         </div>
                     </div>
                     <div class="space-6"></div>
@@ -88,13 +79,9 @@
             </div><!-- /.col -->
         </div>
     </div>
-</div>
-
-<script src="~/Scripts/connecto/purchasing/controllers.js"></script>
 <script type="text/javascript">
     $(function () {
         $('.select2').select2({ allowClear: true });
         $('.select2').css('width', '200px').select2({ allowClear: true });
     });
-    
 </script>

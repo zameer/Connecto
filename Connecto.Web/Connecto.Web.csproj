@@ -192,7 +192,7 @@
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\MeasureController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -289,6 +289,7 @@
     <Content Include="Images\avatars\user.jpg" />
     <Content Include="Images\avatars\user.png" />
     <Content Include="Scripts\angular\angular-resource.js" />
+    <Content Include="Scripts\angular\angular-route.js" />
     <Content Include="Scripts\angular\angular.js" />
     <Content Include="Scripts\connecto\ace-extra.js" />
     <Content Include="Scripts\connecto\bootstrap.js" />
@@ -318,6 +319,7 @@
     <Content Include="Scripts\connecto\plugins\elements.wizard.js" />
     <Content Include="Scripts\connecto\plugins\elements.wysiwyg.js" />
     <Content Include="Scripts\connecto\plugins\select2.js" />
+    <Content Include="Scripts\connecto\purchasing\app.js" />
     <Content Include="Scripts\connecto\purchasing\controllers.js" />
     <Content Include="Scripts\connecto\respond.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
@@ -334,6 +336,10 @@
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Views\Products\partials\login.html" />
+    <Content Include="Views\Products\phone-detail.html" />
+    <Content Include="Views\Products\partials\phone-list.html" />
+    <Content Include="Views\Products\partials\techniques.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -373,7 +379,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Supplier\Index.cshtml" />
     <Content Include="Views\Supplier\Create.cshtml" />
     <Content Include="Views\Supplier\Details.cshtml" />
@@ -398,6 +404,10 @@
     <Content Include="Views\Vendor\Details.cshtml" />
     <Content Include="Views\Vendor\Create.cshtml" />
     <Content Include="Views\Vendor\Edit.cshtml" />
+    <Content Include="Views\Products\List.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
