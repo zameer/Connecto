@@ -19,6 +19,10 @@ namespace Connecto.Web.Controllers
         {
             return View();
         }
+        public ActionResult Create()
+        {
+            return View();
+        }
         public ActionResult List()
         {
             return View();
