@@ -1,5 +1,9 @@
 ﻿@{ Layout = null; }
 <div ng-controller="ProductEditCtrl">
     Product is {{product.Name}}
-    <a href="/products/">List</a>
 </div>
+<script type="text/javascript">
+    $(function () {
+        $('#menu-prod-main').syncMenu([{ name: "products", option: "o", }], { title: 'Products', link: '/Products' });
+    });
+</script>
