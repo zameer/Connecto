@@ -58,6 +58,6 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
-    @*@section Scripts {
-            @Scripts.Render("~/bundles/jqueryval")
-        }*@
+<script type="text/javascript">
+    $('#menu-hr').syncMenu([{ name: "supplier", option: "ao" }, { name: "supplier-view", option: "a" }]);
+</script>

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="~/Content/themes/connecto/bootstrap.css" />
     <link rel="stylesheet" href="~/Content/themes/connecto/font-awesome.css" />
     <script src="~/Scripts/connecto/jquery.js"></script>
+    <script src="~/Scripts/connecto/Connectojs.js"></script>
     <script src="~/Scripts/angular/angular.js"></script>
     <script src="~/Scripts/angular/angular-route.js"></script>
     <script src="~/Scripts/angular/angular-resource.js"></script>
@@ -177,7 +178,7 @@
                     <b class="arrow"></b>
                 </li>
 
-                <li class="">
+                <li id="menu-hr" class="">
                     <a href="#" class="dropdown-toggle">
                         <i class="menu-icon fa fa-desktop"></i>
                         <span class="menu-text"> Human Resource</span>
@@ -186,7 +187,7 @@
                     <b class="arrow"></b>
 
                     <ul class="submenu">
-                        <li class="">
+                        <li id="menu-supplier" class="">
                             <a href="#" class="dropdown-toggle">
                                 <i class="menu-icon fa fa-caret-right"></i>
                                 Supplier
@@ -195,7 +196,7 @@
                             <b class="arrow"></b>
 
                             <ul class="submenu">
-                                <li class="">
+                                <li id="menu-supplier-add" class="">
                                     <a href="@Url.Action("Create", "Supplier")">
                                         <i class="menu-icon fa fa-plus purple"></i>
                                         Add Supplier
@@ -203,7 +204,7 @@
 
                                     <b class="arrow"></b>
                                 </li>
-                                <li class="">
+                                <li id="menu-supplier-view" class="">
                                     <a href="@Url.Action("Index", "Supplier")">
                                         <i class="menu-icon fa fa-eye pink"></i>
                                         View Supplier
@@ -244,7 +245,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="active open">
+                <li id="menu-prod-main"class="">
                     <a href="#" class="dropdown-toggle">
                         <i class="menu-icon fa fa-pencil-square-o"></i>
                         <span class="menu-text"> Product Setting </span>
@@ -255,7 +256,7 @@
                     <b class="arrow"></b>
 
                     <ul class="submenu">
-                        <li class="active">
+                        <li id="menu-products" data-menu="products" class="">
                             <a href="@Url.Action("Index", "Products")">
                                 <i class="menu-icon fa fa-caret-right"></i>
                                 Products

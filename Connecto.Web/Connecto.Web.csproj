@@ -291,6 +291,7 @@
     <Content Include="Scripts\angular\angular-resource.js" />
     <Content Include="Scripts\angular\angular-route.js" />
     <Content Include="Scripts\angular\angular.js" />
+    <Content Include="Scripts\connecto\Connectojs.js" />
     <Content Include="Scripts\connecto\ace-extra.js" />
     <Content Include="Scripts\connecto\bootstrap.js" />
     <Content Include="Scripts\connecto\html5shiv.js" />
