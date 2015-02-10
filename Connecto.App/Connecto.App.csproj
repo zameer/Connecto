@@ -323,6 +323,8 @@
     <Content Include="Views\Vendor\Details.cshtml" />
     <Content Include="Views\Vendor\Edit.cshtml" />
     <Content Include="Views\Vendor\Index.cshtml" />
+    <Content Include="Views\Account\Connect.cshtml" />
+    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

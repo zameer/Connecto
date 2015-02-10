@@ -26,6 +26,23 @@ namespace Connecto.App.Controllers
         }
 
         public UserManager<ApplicationUser> UserManager { get; private set; }
+        //
+        // GET: /Account/Login
+        [AllowAnonymous]
+        public ActionResult Connect(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
+        //
+        // POST: /Account/Login
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult Connect(LoginViewModel model, string returnUrl)
+        {
+            return RedirectToLocal("/");
+        }
 
         //
         // GET: /Account/Login
