@@ -1,4 +1,6 @@
-﻿using Connecto.BusinessObjects;
+﻿using System.Security.Claims;
+using System.Security.Principal;
+using Connecto.BusinessObjects;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Connecto.App.Models
@@ -15,6 +17,20 @@ namespace Connecto.App.Models
         public ApplicationDbContext()
             : base("ConnectoDb")
         {
+        }
+    }
+    public static class GenericPrincipalExtensions
+    {
+        public static string DisplayName(this IPrincipal user)
+        {
+            if (!user.Identity.IsAuthenticated) return string.Empty;
+            var claimsIdentity = user.Identity as ClaimsIdentity;
+            foreach (var claim in claimsIdentity.Claims)
+            {
+                if (claim.Type == "DisplayName")
+                    return claim.Value;
+            }
+            return user.Identity.Name;
         }
     }
 }

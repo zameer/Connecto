@@ -1,4 +1,5 @@
-﻿@using Connecto.App.Models
+﻿@using System.Security.Claims
+@using Connecto.App.Models
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -84,7 +85,7 @@
                             <img class="nav-user-photo" src="/Images/avatars/user.png" alt="Jason's Photo" />
                             <span class="user-info">
                                 <small>Welcome,</small>
-                                @User.Identity.Name
+                                @User.DisplayName()
                             </span>
 
                             <i class="ace-icon fa fa-caret-down"></i>
