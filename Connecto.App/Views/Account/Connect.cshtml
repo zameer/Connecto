@@ -5,7 +5,8 @@
 }
 
 <h2>@ViewBag.Title.</h2>
-
+@using (Html.BeginForm("Login", "Account", new {ReturnUrl = ViewBag.ReturnUrl}, FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
+{
 <div class="position-relative">
     <div id="login-box" class="login-box visible widget-box no-border">
         <div class="widget-body">
@@ -16,19 +17,20 @@
                 </h4>
 
                 <div class="space-6"></div>
-
+                @Html.AntiForgeryToken()
                 <form>
                     <fieldset>
                         <label class="block clearfix">
                             <span class="block input-icon input-icon-right">
-                                <input type="text" class="form-control" placeholder="Username" />
+                                <input type="text" id="UserName" name="UserName" class="form-control" placeholder="Username" />
+                                @*@Html.ValidationMessageFor(m => m.UserName)*@
                                 <i class="ace-icon fa fa-user"></i>
                             </span>
                         </label>
 
                         <label class="block clearfix">
                             <span class="block input-icon input-icon-right">
-                                <input type="password" class="form-control" placeholder="Password" />
+                                <input type="password" id="Password" name="Password" class="form-control" placeholder="Password" />
                                 <i class="ace-icon fa fa-lock"></i>
                             </span>
                         </label>
@@ -37,14 +39,14 @@
 
                         <div class="clearfix">
                             <label class="inline">
-                                <input type="checkbox" class="ace" />
+                                <input id="RememberMe" name="RememberMe" type="checkbox" class="ace" />
                                 <span class="lbl"> Remember Me</span>
                             </label>
 
-                            <a href="/" class="width-35 pull-right btn btn-sm btn-primary">
+                            <button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
                                 <i class="ace-icon fa fa-key"></i>
                                 <span class="bigger-110">Login</span>
-                            </a>
+                            </button>
                         </div>
 
                         <div class="space-4"></div>
@@ -104,3 +106,4 @@
         </div><!-- /.widget-body -->
     </div><!-- /.forgot-box -->
 </div><!-- /.position-relative -->
+}

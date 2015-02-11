@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Connecto.App.Models
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -83,7 +84,7 @@
                             <img class="nav-user-photo" src="/Images/avatars/user.png" alt="Jason's Photo" />
                             <span class="user-info">
                                 <small>Welcome,</small>
-                                Developer
+                                @User.Identity.Name
                             </span>
 
                             <i class="ace-icon fa fa-caret-down"></i>
@@ -107,7 +108,7 @@
                             <li class="divider"></li>
 
                             <li>
-                                <a href="@Url.Action("Connect", "Account")">
+                                <a href="@Url.Action("LogOff", "Account")">
                                     <i class="ace-icon fa fa-power-off"></i>
                                     Logout
                                 </a>
