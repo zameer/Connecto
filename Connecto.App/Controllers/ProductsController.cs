@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace Connecto.App.Controllers
 {
+    [Authorize]
     public class ProductsController : Controller
     {
         private readonly ProductRepository _product = ConnectoFactory.ProductRepository;

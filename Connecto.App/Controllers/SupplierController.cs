@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace Connecto.App.Controllers
 {
+    [Authorize]
     public class SupplierController : Controller
     {
         private readonly SupplierRepository _supplier = ConnectoFactory.SupplierRepository;
