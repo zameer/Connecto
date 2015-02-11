@@ -66,6 +66,7 @@ namespace Connecto.App.Controllers
                 if (user != null)
                 {
                     await SignInAsync(user, model.RememberMe);
+                    var claims = (ClaimsIdentity)User.Identity;
                     return RedirectToLocal(returnUrl);
                 }
                 else
