@@ -9,7 +9,7 @@ namespace Connecto.DataObjects.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(Connecto.DataObjects.EntityFramework.ConnectoManagerEntities context)

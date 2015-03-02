@@ -1,4 +1,5 @@
-﻿using Connecto.BusinessObjects;
+﻿using Connecto.App.Models;
+using Connecto.BusinessObjects;
 using Connecto.Common.Enumeration;
 using Connecto.Repositories;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 
 namespace Connecto.App.Controllers
 {
@@ -17,10 +19,34 @@ namespace Connecto.App.Controllers
 
         public ActionResult Index()
         {
-            var measures = _measure.GetAll();
-            return View(measures);
+            return View();
         }
-
+        public ActionResult Create()
+        {
+            return View();
+        }
+        public ActionResult List()
+        {
+            return View();
+        }
+        public ActionResult Details()
+        {
+            return View();
+        }
+        public ActionResult Edit()
+        {
+            return View();
+        }
+        public JsonResult Get()
+        {
+            var measures = _measure.GetAll();
+            return Json(measures, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetItem(int id)
+        {
+            var measure = _measure.GetMeasureById(id);
+            return Json(measure, JsonRequestBehavior.AllowGet);
+        }
         //
         // GET: /Measure/Details/5
 
@@ -31,43 +57,18 @@ namespace Connecto.App.Controllers
         }
 
         //
-        // GET: /Measure/Create
-
-        public ActionResult Create()
-        {
-            return View(new Measure());
-        }
-
-        //
         // POST: /Measure/Create
 
         [HttpPost]
-        public ActionResult Create(Measure measure)
+        public JsonResult Create(Measure measure)
         {
-            try
-            {
-                // TODO: Add insert logic here
-                measure.LocationId = 1;
-                measure.MeasureGuid = Guid.NewGuid();
-                measure.CreatedBy = 1;
-                measure.CreatedOn = DateTime.Now;
-                measure.Status = RecordStatus.Active;
-                _measure.Add(measure);
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /Measure/Edit/5
-
-        public ActionResult Edit(int id)
-        {
-            var measure = _measure.GetMeasureById(id);
-            return View(measure);
+            measure.LocationId = 1;
+            measure.MeasureGuid = Guid.NewGuid();
+            measure.CreatedBy = User.UserId();
+            measure.CreatedOn = DateTime.Now;
+            measure.Status = RecordStatus.Active;
+            _measure.Add(measure);
+            return Json(true, JsonRequestBehavior.AllowGet);
         }
 
         //
@@ -76,17 +77,10 @@ namespace Connecto.App.Controllers
         [HttpPost]
         public ActionResult Edit(Measure measure)
         {
-            try
-            {
-                measure.EditedBy = 2;
-                measure.EditedOn = DateTime.Now;
-                _measure.Edit(measure);
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            measure.EditedBy = User.UserId();
+            measure.EditedOn = DateTime.Now;
+            _measure.Edit(measure);
+            return Json(true, JsonRequestBehavior.AllowGet);
         }
 
         //

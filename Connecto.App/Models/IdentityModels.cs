@@ -30,7 +30,18 @@ namespace Connecto.App.Models
                 if (claim.Type == "DisplayName")
                     return claim.Value;
             }
-            return user.Identity.Name;
+            return string.Empty;
+        }
+        public static int UserId(this IPrincipal user)
+        {
+            if (!user.Identity.IsAuthenticated) return 0;
+            var claimsIdentity = user.Identity as ClaimsIdentity;
+            foreach (var claim in claimsIdentity.Claims)
+            {
+                if (claim.Type == "EmployeeId")
+                    return int.Parse(claim.Value);
+            }
+            return 0;
         }
     }
 }

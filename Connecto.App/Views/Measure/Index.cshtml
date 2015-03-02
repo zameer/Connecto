@@ -1,41 +1,12 @@
-﻿@model IEnumerable<Connecto.BusinessObjects.Measure>
-
+﻿@model Connecto.BusinessObjects.Measure
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Products";
 }
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table table-striped table-bordered table-hover">
-    <tr>
-        <th>Volume</th>
-        <th>Lower</th>
-        <th>Actual</th>
-    </tr>
-    
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Volume)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Lower)
-        </td>
-        <td>
-            1 @Html.DisplayFor(modelItem => item.Actual)
-        </td>
-        <td>
-        <div class="hidden-sm hidden-xs btn-group">
-                    <a class="btn btn-xs btn-info" href="@Url.Action("Edit", "Measure", new { id = item.MeasureId })"><i class="ace-icon fa fa-pencil bigger-120"></i></a>
-                    <a class="btn btn-xs btn-warning" href="@Url.Action("Details", "Measure", new { id = item.MeasureId })"><i class="ace-icon fa fa-eye bigger-120"></i></a>
-                    <a class="btn btn-xs btn-danger" href="@Url.Action("Delete", "Measure", new { id = item.MeasureId })"><i class="ace-icon fa fa-trash-o bigger-120"></i></a>
-        </div>
-        </td>
-    </tr>
-}
-
-</table>
+<div ng-app="cSettingApp">
+    <div ng-view></div>
+</div>
+<script src="~/Scripts/connecto/csettings/app.js"></script>
+<script src="~/Scripts/connecto/csettings/measureController.js"></script>
+<script type="text/javascript">
+    $('#menu-measure-main').syncMenu([{ name: "measures", option: "a" }]);
+</script>

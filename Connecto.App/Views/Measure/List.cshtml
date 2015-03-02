@@ -1,0 +1,25 @@
+﻿@{ Layout = null; }
+<div ng-controller="MeasureListCtrl">
+    <a href="#/Create/" class="btn btn-white btn-info btn-bold">
+        <i class="ace-icon fa glyphicon-plus bigger-120 blue"></i>
+        New Measure
+    </a>
+    <table class="table table-striped table-bordered table-hover">
+        <tr>
+            <th>Id</th>
+            <th>Description</th>
+            <th></th>
+        </tr>
+        <tr ng-repeat="item in measures">
+            <td>{{item.MeasureId}}</td>
+            <td>{{item.Volume}} {{item.Lower}} = 1{{item.Actual}}</td>
+            <td>
+                <div class="hidden-sm hidden-xs btn-group">
+                    <a class="btn btn-xs btn-info" href="#/Edit/{{item.MeasureId}}"><i class="ace-icon fa fa-pencil bigger-120"></i></a>
+                    <a class="btn btn-xs btn-warning" href="#/{{item.MeasureId}}"><i class="ace-icon fa fa-eye bigger-120"></i></a>
+                    <a class="btn btn-xs btn-danger" href=""><i class="ace-icon fa fa-trash-o bigger-120"></i></a>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>

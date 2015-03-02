@@ -1,5 +1,4 @@
 ﻿@model Connecto.BusinessObjects.Product
-
 @{
     ViewBag.Title = "Products";
 }
@@ -9,8 +8,8 @@
 <div ng-app="productApp">
     <div ng-view></div>
 </div>
-<script src="~/Scripts/connecto/purchasing/controllers.js"></script>
 <script src="~/Scripts/connecto/purchasing/app.js"></script>
+<script src="~/Scripts/connecto/purchasing/controllers.js"></script>
 <script type="text/javascript">
     $('#menu-prod-main').syncMenu([{ name: "products", option: "a" }]);
 </script>

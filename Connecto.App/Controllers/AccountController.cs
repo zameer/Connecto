@@ -67,6 +67,7 @@ namespace Connecto.App.Controllers
                 {
                     await SignInAsync(user, model.RememberMe);
                     await UserManager.AddClaimAsync(user.Id, new Claim("DisplayName", user.DisplayName));
+                    await UserManager.AddClaimAsync(user.Id, new Claim("EmployeeId", string.Format("{0}", user.EmployeeId)));
 
                     return RedirectToLocal(returnUrl);
                 }

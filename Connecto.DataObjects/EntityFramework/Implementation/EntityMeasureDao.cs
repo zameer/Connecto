@@ -16,7 +16,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var measures = context.Measures.Where(e => e.Status==RecordStatus.Active).ToList();
+                var measures = context.Measures.Where(e => e.Status == RecordStatus.Active).ToList();
                 return measures.Select(Mapper.Map).ToList();
             }
         }
