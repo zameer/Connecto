@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Company.cs" />
+    <Compile Include="ConnectoValidation.cs" />
     <Compile Include="Connecto.cs" />
     <Compile Include="CompanyLocation.cs" />
     <Compile Include="Contact.cs" />

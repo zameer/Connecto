@@ -62,6 +62,13 @@ namespace Connecto.App.Controllers
         [HttpPost]
         public JsonResult Create(Measure measure)
         {
+            var errors = new List<ConnectoException>();
+            if (string.IsNullOrEmpty(measure.Lower)) errors.Add(new ConnectoException { Message = "Please provide lower" });
+            if (measure.Volume == 0) errors.Add(new ConnectoException { Message = "Please provide Volume" });
+            if (string.IsNullOrEmpty(measure.Actual)) errors.Add(new ConnectoException { Message = "Please provide Actual" });
+            if (errors.Count > 0) return Json(new ConnectoValidation{ Status = "Failure", Exceptions = errors}, JsonRequestBehavior.AllowGet);
+
+
             measure.LocationId = 1;
             measure.MeasureGuid = Guid.NewGuid();
             measure.CreatedBy = User.UserId();

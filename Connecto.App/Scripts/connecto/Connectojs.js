@@ -10,3 +10,27 @@ $.fn.syncMenu = function (settings, breadcrump) {
         $("#breadcrumbs ul").append('<li><a href="' + bc.link + '">' + bc.title + '</a></li>');
     }
 };
+function showMessage(data) {
+    var message = null;
+    var isSuccess = false;
+    if (data.Status == "Success") {
+        showNotification({ message: data.Message, type: 'success', autoClose: false, duration: 5 });
+        isSuccess = true;
+    }
+    else if (data.Status == "Fail") {
+        showNotification({ message: data.Message, type: 'error', autoClose: false, duration: 5 });
+        isSuccess = false;
+    }
+    else if (data.Status == "Failure") {
+            $('input,select,textarea').removeClass('input-error');
+            message = "<ul>";
+            $.each(data.Exceptions, function (index) {
+                $("#" + data.Exceptions[index].Message).addClass('input-validation-error');
+
+                message += "<li> " + data.Exceptions[index].Message + " </li>";
+            });
+            message += "</ul>";
+            showNotification({ message: message, type: 'error', autoClose: false, duration: 5 });
+    }
+    return isSuccess;
+}

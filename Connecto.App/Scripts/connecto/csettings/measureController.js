@@ -2,6 +2,7 @@
 /* Controllers */
 cSettingControllers.controller('MeasureListCtrl', ['$scope', '$http', '$routeParams',
   function ($scope, $http) {
+      //showMessage({ Messages: [{ Message: 'Hi' }, { Message: 'Hi' }], Status: 'Failure' });
       $http.get('/Measure/Get/').success(function (data) {
           $scope.measures = data;
       });
@@ -9,7 +10,8 @@ cSettingControllers.controller('MeasureListCtrl', ['$scope', '$http', '$routePar
 cSettingControllers.controller('MeasureNewCtrl', function ($scope, $location, $http) {
     $scope.add = function () {
         $http.post('/Measure/Create/', $scope.Measure).success(function (data) {
-            $location.path('/');
+            if(data.Status == "Failure")showMessage(data);
+            else $location.path('/');
         });
     };
 });
