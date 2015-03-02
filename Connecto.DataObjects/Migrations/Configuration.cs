@@ -5,14 +5,14 @@ namespace Connecto.DataObjects.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Connecto.DataObjects.EntityFramework.ConnectoManagerEntities>
+    internal sealed class Configuration : DbMigrationsConfiguration<EntityFramework.ConnectoManagerEntities>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Connecto.DataObjects.EntityFramework.ConnectoManagerEntities context)
+        protected override void Seed(EntityFramework.ConnectoManagerEntities context)
         {
             //  This method will be called after migrating to the latest version.
 
