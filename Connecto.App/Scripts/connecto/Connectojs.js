@@ -34,3 +34,39 @@ function showMessage(data) {
     }
     return isSuccess;
 }
+var AppCommonFunction = function () {
+    return {
+        ShowWaitBlock: function () {
+            $.blockUI({
+                css: {
+                    border: 'none',
+                    padding: '5px',
+                    'border-radius': '0px',
+                    backgroundColor: 'none',
+                    width: '12%',
+                    top: '40%',
+                    left: '45%',
+                    color: '#fff',
+                },
+                overlayCSS: { backgroundColor: 'none' },
+                message: "<div class='spinner'></div>",
+                baseZ: 2000
+            });
+        },
+
+        HideWaitBlock: function () {
+            $.unblockUI();
+        },
+        shortenText: function (string, lenght) {
+
+
+
+            //trim the string to the maximum length
+            var trimmedString = string.substr(0, lenght);
+
+            //re-trim if we are in the middle of a word
+            return trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" ")));
+
+        }
+    };
+}();

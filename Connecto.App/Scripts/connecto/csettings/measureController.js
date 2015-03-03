@@ -2,10 +2,21 @@
 /* Controllers */
 cSettingControllers.controller('MeasureListCtrl', ['$scope', '$http', '$routeParams',
   function ($scope, $http) {
-      //showMessage({ Messages: [{ Message: 'Hi' }, { Message: 'Hi' }], Status: 'Failure' });
+      AppCommonFunction.ShowWaitBlock();
       $http.get('/Measure/Get/').success(function (data) {
           $scope.measures = data;
+          AppCommonFunction.HideWaitBlock();
       });
+      $scope.delete = function (measureId) {
+          bootbox.confirm("Are you sure want to delete?", function (result) {
+              if (result) {
+                  $http.post('/Measure/Delete/', { id: measureId }).success(function (data) {
+                      if (data.Status == "Failure") showMessage(data);
+                      else $location.path('/');
+                  });
+              }
+          });
+      };
   }]);
 cSettingControllers.controller('MeasureNewCtrl', function ($scope, $location, $http) {
     $scope.add = function () {

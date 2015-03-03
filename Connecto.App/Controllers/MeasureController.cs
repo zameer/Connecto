@@ -91,29 +91,13 @@ namespace Connecto.App.Controllers
         }
 
         //
-        // GET: /Measure/Delete/5
-
-        public ActionResult Delete(int id)
-        {
-            var measure = _measure.GetMeasureById(id);
-            return View(measure);
-        }
-
-        //
         // POST: /Measure/Delete/5
 
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id)
         {
-            try
-            {
-                _measure.Delete(id, 3);
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            _measure.Delete(id, User.UserId());
+            return Json(true, JsonRequestBehavior.AllowGet);
         }
     }
 }
