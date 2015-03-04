@@ -58,13 +58,12 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
             using (var context = DataObjectFactory.CreateContext())
             {
                 var entity = context.ProductTypes.FirstOrDefault(s => s.ProductTypeId == productType.ProductTypeId);
+                entity.MeasureId = productType.MeasureId;
                 entity.Type = productType.Type;
                 entity.StockAs = productType.StockAs;
                 entity.LocationId = productType.LocationId;
-                entity.CreatedBy = productType.CreatedBy;
-                entity.CreatedOn = productType.CreatedOn;
                 entity.EditedBy = productType.EditedBy;
-                entity.EditedOn = DateTime.Now;
+                entity.EditedOn = productType.EditedOn;
                 return context.SaveChanges() > 0;
             }
         }

@@ -9,4 +9,12 @@
 <script src="~/Scripts/connecto/csettings/measureController.js"></script>
 <script type="text/javascript">
     $('#menu-measure-main').syncMenu([{ name: "measures", option: "a" }]);
+    cSettingApp.config(['$routeProvider',
+    function ($routeProvider) {
+        $routeProvider.
+             when('/', { templateUrl: '/Measure/List', controller: 'MeasureListCtrl' })
+            .when('/Create/', { templateUrl: '/Measure/Create', controller: 'MeasureNewCtrl' })
+            .when('/Edit/:measureId', { templateUrl: '/measure/Edit', controller: 'MeasureEditCtrl' })
+            .otherwise({ redirectTo: '/' });
+    }]);
 </script>

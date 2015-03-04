@@ -1,0 +1,66 @@
+﻿@{ Layout = null; }
+<div ng-controller="ProductTypeNewCtrl">
+    <div class="page-header">
+        <h1>Add Product Type </h1>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <!-- PAGE CONTENT BEGINS -->
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-top"> Measure </label>
+                    <div class="col-sm-9">
+                        <select ng-model="productType.MeasureId" id="product-vendor" class="select2" data-placeholder="Click to Choose...">
+                            <option></option>
+                            <option ng-repeat="item in measures" value="{{item.MeasureId}}">{{item.Actual}}</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="space-6"></div>
+                <div class="hr hr-16 hr-dotted"></div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <label class="col-sm-6 control-label no-padding-top"> Type </label>
+                            <div class="col-sm-3">
+                                <input ng-model="ProductType.Type" type="text" id="form-field-6" placeholder="Volume">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label no-padding-top"> Stock As </label>
+                            <div class="col-sm-3">
+                                <input ng-model="ProductType.StockAs" type="text" id="form-field-6" placeholder="Lower">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix form-actions">
+                    <div class="col-md-offset-3 col-md-9">
+                        <button class="btn btn-info" type="button" ng-click="add()">
+                            <i class="ace-icon fa fa-check bigger-110"></i>
+                            Submit
+                        </button>
+
+                        &nbsp; &nbsp; &nbsp;
+                        <button class="btn" type="reset">
+                            <i class="ace-icon fa fa-undo bigger-110"></i>
+                            Reset
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <!-- PAGE CONTENT ENDS -->
+        </div><!-- /.col -->
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('.select2').select2({ allowClear: true });
+        $('.select2').css('width', '200px').select2({ allowClear: true });
+        $('#menu-measure-main').syncMenu([{ name: "producttype", option: "o", }], { title: 'Product Types', link: '/ProductType' });
+    });
+</script>

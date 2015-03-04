@@ -181,7 +181,8 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 CreatedBy = entity.CreatedBy,
                 CreatedOn = entity.CreatedOn,
                 EditedBy = entity.CreatedBy,
-                EditedOn = entity.CreatedOn
+                EditedOn = entity.CreatedOn,
+                Measure = Map(entity.Measure)
             };
         }
         internal static EntityProductType Map(ProductType entity)
