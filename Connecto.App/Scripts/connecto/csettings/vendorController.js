@@ -1,7 +1,7 @@
 'use strict';
 /* Controllers */
-var cName = 'ProductType';
-cSettingControllers.controller(cName + 'ListCtrl', ['$scope', '$http', '$routeParams',
+var cName = 'Vendor';
+cSettingControllers.controller('ListCtrl', ['$scope', '$http', '$routeParams',
   function ($scope, $http) {
       AppCommonFunction.ShowWaitBlock();
       $http.get('/' + cName + '/Get/').success(function (data) {
@@ -19,10 +19,7 @@ cSettingControllers.controller(cName + 'ListCtrl', ['$scope', '$http', '$routePa
           });
       };
   }]);
-cSettingControllers.controller(cName + 'NewCtrl', function ($scope, $location, $http) {
-    $http.get('/Measure/Get/').success(function (measures) {
-        $scope.measures = measures;
-    });
+cSettingControllers.controller('NewCtrl', function ($scope, $location, $http) {
     $scope.add = function () {
         $http.post('/' + cName + '/Create/', $scope.item).success(function (data) {
             if(data.Status == "Failure")showMessage(data);
@@ -30,18 +27,11 @@ cSettingControllers.controller(cName + 'NewCtrl', function ($scope, $location, $
         });
     };
 });
-cSettingControllers.controller(cName + 'EditCtrl', ['$scope', '$http', '$location', '$routeParams',
+cSettingControllers.controller('EditCtrl', ['$scope', '$http', '$location', '$routeParams',
   function ($scope, $http, $location, $routeParams) {
       $http.get('/' + cName + '/GetItem/' + $routeParams.itemId).success(function (data) {
           $scope.item = data;
-          
-          $http.get('/Measure/Get/').success(function (measures) {
-              $scope.measures = measures;
-              $('.select2').select2();
-              $('.select2').css('width', '200px').select2();
-          });
       });
-
       $scope.edit = function () {
           $http.post('/' + cName + '/Edit/', $scope.item).success(function (data) {
               $location.path('/');

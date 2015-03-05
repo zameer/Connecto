@@ -1,84 +1,40 @@
-﻿@model Connecto.BusinessObjects.Vendor
+﻿@{ Layout = null; }
+<div ng-controller="EditCtrl">
+    <div class="page-header">
+        <h1>Edit Product Type </h1>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <!-- PAGE CONTENT BEGINS -->
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-top"> Name </label>
+                    <div class="col-sm-9">
+                        <input ng-model="item.Name" type="text" id="form-field-6" placeholder="Name">
+                    </div>
+                </div>
+                <div class="space-6"></div>
+                <div class="clearfix form-actions">
+                    <div class="col-md-offset-3 col-md-9">
+                        <button class="btn btn-info" type="button" ng-click="edit()">
+                            <i class="ace-icon fa fa-check bigger-110"></i>
+                            Submit
+                        </button>
 
-@{
-    ViewBag.Title = "Edit";
-}
-
-<h2>Edit</h2>
-
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
-
-    <fieldset>
-        <legend>Vendor</legend>
-
-        @Html.HiddenFor(model => model.VendorId)
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.VendorGuid)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.VendorGuid)
-            @Html.ValidationMessageFor(model => model.VendorGuid)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Name)
-            @Html.ValidationMessageFor(model => model.Name)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.LocationId)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.LocationId)
-            @Html.ValidationMessageFor(model => model.LocationId)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.CreatedBy)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.CreatedBy)
-            @Html.ValidationMessageFor(model => model.CreatedBy)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.CreatedOn)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.CreatedOn)
-            @Html.ValidationMessageFor(model => model.CreatedOn)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.EditedBy)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.EditedBy)
-            @Html.ValidationMessageFor(model => model.EditedBy)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.EditedOn)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.EditedOn)
-            @Html.ValidationMessageFor(model => model.EditedOn)
-        </div>
-
-        <p>
-            <input type="submit" value="Save" />
-        </p>
-    </fieldset>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+                        &nbsp; &nbsp; &nbsp;
+                        <button class="btn" type="reset">
+                            <i class="ace-icon fa fa-undo bigger-110"></i>
+                            Reset
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <!-- PAGE CONTENT ENDS -->
+        </div><!-- /.col -->
+    </div>
 </div>
-
-
+<script type="text/javascript">
+    $(function () {
+        $('#menu-csettings-main').syncMenu([{ name: "vendor", option: "o", }], { title: 'Vendors', link: '/Vendor' });
+    });
+</script>

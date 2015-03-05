@@ -182,7 +182,7 @@
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ProductTypeController.cs" />
     <Compile Include="Controllers\SupplierController.cs" />
-    <Compile Include="Controllers\VenderController.cs" />
+    <Compile Include="Controllers\VendorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -235,6 +235,7 @@
     <Content Include="Scripts\connecto\bootstrap.js" />
     <Content Include="Scripts\connecto\Connectojs.js" />
     <Content Include="Scripts\connecto\csettings\app.js" />
+    <Content Include="Scripts\connecto\csettings\vendorController.js" />
     <Content Include="Scripts\connecto\csettings\productTypeController.js" />
     <Content Include="Scripts\connecto\csettings\measureController.js" />
     <Content Include="Scripts\connecto\html5shiv.js" />
@@ -327,10 +328,6 @@
     <Content Include="Views\Supplier\Edit.cshtml" />
     <Content Include="Views\Supplier\Index.cshtml" />
     <Content Include="Views\Supplier\_Contacts.cshtml" />
-    <Content Include="Views\Vendor\Create.cshtml" />
-    <Content Include="Views\Vendor\Details.cshtml" />
-    <Content Include="Views\Vendor\Edit.cshtml" />
-    <Content Include="Views\Vendor\Index.cshtml" />
     <Content Include="Views\Account\Connect.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
     <Content Include="Views\Measure\Create.cshtml" />
@@ -341,6 +338,10 @@
     <Content Include="Views\ProductType\Edit.cshtml" />
     <Content Include="Views\ProductType\Index.cshtml" />
     <Content Include="Views\ProductType\List.cshtml" />
+    <Content Include="Views\Vendor\Create.cshtml" />
+    <Content Include="Views\Vendor\Edit.cshtml" />
+    <Content Include="Views\Vendor\Index.cshtml" />
+    <Content Include="Views\Vendor\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

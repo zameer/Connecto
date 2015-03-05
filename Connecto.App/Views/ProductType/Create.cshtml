@@ -10,9 +10,9 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-top"> Measure </label>
                     <div class="col-sm-9">
-                        <select ng-model="productType.MeasureId" id="product-vendor" class="select2" data-placeholder="Click to Choose...">
+                        <select ng-model="item.MeasureId" id="product-vendor" class="select2" data-placeholder="Click to Choose...">
                             <option></option>
-                            <option ng-repeat="item in measures" value="{{item.MeasureId}}">{{item.Actual}}</option>
+                            <option ng-repeat="e in measures" value="{{e.MeasureId}}">{{e.Actual}}</option>
                         </select>
 
                     </div>
@@ -24,7 +24,7 @@
                         <div class="form-group">
                             <label class="col-sm-6 control-label no-padding-top"> Type </label>
                             <div class="col-sm-3">
-                                <input ng-model="ProductType.Type" type="text" id="form-field-6" placeholder="Volume">
+                                <input ng-model="item.Type" type="text" id="form-field-6" placeholder="Volume">
                             </div>
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                         <div class="form-group">
                             <label class="col-sm-4 control-label no-padding-top"> Stock As </label>
                             <div class="col-sm-3">
-                                <input ng-model="ProductType.StockAs" type="text" id="form-field-6" placeholder="Lower">
+                                <input ng-model="item.StockAs" type="text" id="form-field-6" placeholder="Lower">
                             </div>
                         </div>
                     </div>
@@ -61,6 +61,6 @@
     $(function () {
         $('.select2').select2({ allowClear: true });
         $('.select2').css('width', '200px').select2({ allowClear: true });
-        $('#menu-measure-main').syncMenu([{ name: "producttype", option: "o", }], { title: 'Product Types', link: '/ProductType' });
+        $('#menu-csettings-main').syncMenu([{ name: "productType", option: "o", }], { title: 'Product Types', link: '/ProductType' });
     });
 </script>

@@ -1,34 +1,40 @@
-﻿@model Connecto.BusinessObjects.Vendor
+﻿@{ Layout = null; }
+<div ng-controller="NewCtrl">
+    <div class="page-header">
+        <h1>Add Vendor </h1>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <!-- PAGE CONTENT BEGINS -->
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-top"> Name </label>
+                    <div class="col-sm-9">
+                        <input ng-model="item.Name" type="text" id="form-field-6" placeholder="Name">
+                    </div>
+                </div>
+                <div class="space-6"></div>
+                <div class="clearfix form-actions">
+                    <div class="col-md-offset-3 col-md-9">
+                        <button class="btn btn-info" type="button" ng-click="add()">
+                            <i class="ace-icon fa fa-check bigger-110"></i>
+                            Submit
+                        </button>
 
-@{
-    ViewBag.Title = "Create";
-}
-
-<h2>Create</h2>
-
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
-
-    <fieldset>
-        <legend>Vendor</legend>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Name)
-            @Html.ValidationMessageFor(model => model.Name)
-        </div>
-
-        <p>
-            <input type="submit" value="Create" />
-        </p>
-    </fieldset>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+                        &nbsp; &nbsp; &nbsp;
+                        <button class="btn" type="reset">
+                            <i class="ace-icon fa fa-undo bigger-110"></i>
+                            Reset
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <!-- PAGE CONTENT ENDS -->
+        </div><!-- /.col -->
+    </div>
 </div>
-
-
+<script type="text/javascript">
+    $(function () {
+        $('#menu-csettings-main').syncMenu([{ name: "vendor", option: "o", }], { title: 'Vendors', link: '/Vendor' });
+    });
+</script>

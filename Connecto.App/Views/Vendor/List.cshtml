@@ -1,25 +1,23 @@
 ﻿@{ Layout = null; }
-<div ng-controller="ProductTypeListCtrl">
+<div ng-controller="ListCtrl">
     <a href="#/Create/" class="btn btn-white btn-info btn-bold">
         <i class="ace-icon fa glyphicon-plus bigger-120 blue"></i>
-        New Product Type
+        New Vendor
     </a>
     <table class="table table-striped table-bordered table-hover">
         <tr>
             <th>Id</th>
             <th>Name</th>
-            <th>Measurement</th>
             <th></th>
         </tr>
         <tr ng-repeat="item in items">
-            <td>{{item.ProductTypeId}}</td>
-            <td>{{item.Type}}</td>
-            <td>{{item.Measure.Actual}}</td>
+            <td>{{item.VendorId}}</td>
+            <td>{{item.Name}}</td>
             <td>
                 <div class="hidden-sm hidden-xs btn-group">
-                    <a class="btn btn-xs btn-info" href="#/Edit/{{item.ProductTypeId}}"><i class="ace-icon fa fa-pencil bigger-120"></i></a>
+                    <a class="btn btn-xs btn-info" href="#/Edit/{{item.VendorId}}"><i class="ace-icon fa fa-pencil bigger-120"></i></a>
                     <a class="btn btn-xs btn-warning" href="#"><i class="ace-icon fa fa-eye bigger-120"></i></a>
-                    <button class="btn btn-xs btn-danger" ng-click="delete(item.ProductTypeId)"><i class="ace-icon fa fa-trash-o bigger-120"></i></button>
+                    <button class="btn btn-xs btn-danger" ng-click="delete(item.VendorId)"><i class="ace-icon fa fa-trash-o bigger-120"></i></button>
                 </div>
             </td>
         </tr>

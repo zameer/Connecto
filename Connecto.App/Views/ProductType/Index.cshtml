@@ -5,16 +5,15 @@
 <div ng-app="cSettingApp">
     <div ng-view></div>
 </div>
-<script src="~/Scripts/connecto/csettings/app.js"></script>
 <script src="~/Scripts/connecto/csettings/productTypeController.js"></script>
 <script type="text/javascript">
-    $('#menu-measure-main').syncMenu([{ name: "producttypes", option: "a" }]);
+    $('#menu-csettings-main').syncMenu([{ name: "producttypes", option: "a" }]);
     cSettingApp.config(['$routeProvider',
     function ($routeProvider) {
         $routeProvider.
              when('/', { templateUrl: '/ProductType/List', controller: 'ProductTypeListCtrl' })
             .when('/Create/', { templateUrl: '/ProductType/Create', controller: 'ProductTypeNewCtrl' })
-            .when('/Edit/:productTypeId', { templateUrl: '/ProductType/Edit', controller: 'ProductTypeEditCtrl' })
+            .when('/Edit/:itemId', { templateUrl: '/ProductType/Edit', controller: 'ProductTypeEditCtrl' })
             .otherwise({ redirectTo: '/' });
     }]);
 </script>

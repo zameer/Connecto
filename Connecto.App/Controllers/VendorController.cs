@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Web.Mvc;
+﻿using System.Collections.Generic;
 using Connecto.App.Models;
 using Connecto.BusinessObjects;
 using Connecto.Common.Enumeration;
 using Connecto.Repositories;
+using System;
+using System.Web.Mvc;
 
 namespace Connecto.App.Controllers
 {
-    public class ProductTypeController : Controller
+    public class VendorController : Controller
     {
-        private readonly ProductTypeRepository _repo = ConnectoFactory.ProductTypeRepository;
+        private readonly VendorRepository _repo = ConnectoFactory.VendorRepository;
         public JsonResult Get()
         {
             var items = _repo.GetAll();
@@ -18,23 +18,21 @@ namespace Connecto.App.Controllers
         }
         public JsonResult GetItem(int id)
         {
-            var item = _repo.GetProductTypeById(id);
+            var item = _repo.GetVendorById(id);
             return Json(item, JsonRequestBehavior.AllowGet);
         }
 
         //
-        // POST: /ProductType/Create
+        // POST: /Vendor/Create
         [HttpPost]
-        public JsonResult Create(ProductType item)
+        public JsonResult Create(Vendor item)
         {
             var errors = new List<ConnectoException>();
-            if (item.MeasureId.Equals(0)) errors.Add(new ConnectoException { Message = "Please select measure" });
-            if (string.IsNullOrEmpty(item.Type)) errors.Add(new ConnectoException { Message = "Please provide Type" });
-            if (string.IsNullOrEmpty(item.StockAs)) errors.Add(new ConnectoException { Message = "Please provide Stock As" });
+            if (string.IsNullOrEmpty(item.Name)) errors.Add(new ConnectoException { Message = "Please provide Name" });
             if (errors.Count > 0) return Json(new ConnectoValidation { Status = "Failure", Exceptions = errors }, JsonRequestBehavior.AllowGet);
 
             item.LocationId = 1;
-            item.ProductTypeGuid = Guid.NewGuid();
+            item.VendorGuid = Guid.NewGuid();
             item.CreatedBy = User.UserId();
             item.CreatedOn = DateTime.Now;
             item.Status = RecordStatus.Active;
@@ -43,9 +41,9 @@ namespace Connecto.App.Controllers
         }
 
         //
-        // POST: /ProductType/Edit/5
+        // POST: /Vendor/Edit/5
         [HttpPost]
-        public ActionResult Edit(ProductType item)
+        public ActionResult Edit(Vendor item)
         {
             item.EditedBy = User.UserId();
             item.EditedOn = DateTime.Now;
@@ -54,16 +52,16 @@ namespace Connecto.App.Controllers
         }
 
         //
-        // POST: /ProductType/Delete/5
+        // POST: /Vendor/Delete/5
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            //_productType.(id, User.UserId());
+            _repo.Delete(id, User.UserId());
             return Json(true, JsonRequestBehavior.AllowGet);
         }
 
         //
-        // GET: /ProductType/
+        // GET: /Vendor/
         public ActionResult Index()
         {
             return View();
@@ -80,6 +78,5 @@ namespace Connecto.App.Controllers
         {
             return View();
         }
-
     }
 }

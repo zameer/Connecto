@@ -22,6 +22,7 @@
     <script src="~/Scripts/angular/angular.js"></script>
     <script src="~/Scripts/angular/angular-route.js"></script>
     <script src="~/Scripts/angular/angular-resource.js"></script>
+    <script src="~/Scripts/connecto/csettings/app.js"></script>
     <!-- page specific plugin styles -->
     <!-- text fonts -->
     <link rel="stylesheet" href="~/Content/connecto/ace-fonts.css" />
@@ -271,7 +272,7 @@
                         </li>
                     </ul>
                 </li>
-                <li id="menu-measure-main" class="">
+                <li id="menu-csettings-main" class="">
                     <a href="#" class="dropdown-toggle">
                         <i class="menu-icon fa fa-pencil-square-o"></i>
                         <span class="menu-text"> Common Settings </span>
@@ -279,6 +280,13 @@
                     </a>
                     <b class="arrow"></b>
                     <ul class="submenu">
+                        <li id="menu-vendors" data-menu="vendors" class="">
+                            <a href="@Url.Action("Index", "Vendor")">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Vendors
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
                         <li id="menu-measures" data-menu="measures" class="">
                             <a href="@Url.Action("Index", "Measure")">
                                 <i class="menu-icon fa fa-caret-right"></i>

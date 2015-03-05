@@ -10,7 +10,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-top"> Measure </label>
                     <div class="col-sm-9">
-                        <select ng-model="productType.MeasureId" id="product-vendor" ng-options="item.MeasureId as item.Actual for item in measures" class="select2" data-placeholder="Click to Choose..."></select>
+                        <select ng-model="item.MeasureId" id="product-vendor" ng-options="item.MeasureId as item.Actual for item in measures" class="select2" data-placeholder="Click to Choose..."></select>
                     </div>
                 </div>
                 <div class="space-6"></div>
@@ -20,7 +20,7 @@
                         <div class="form-group">
                             <label class="col-sm-6 control-label no-padding-top"> Type </label>
                             <div class="col-sm-3">
-                                <input ng-model="productType.Type" type="text" id="form-field-6" placeholder="Volume">
+                                <input ng-model="item.Type" type="text" id="form-field-6" placeholder="Volume">
                             </div>
                         </div>
                     </div>
@@ -29,7 +29,7 @@
                         <div class="form-group">
                             <label class="col-sm-4 control-label no-padding-top"> Stock As </label>
                             <div class="col-sm-3">
-                                <input ng-model="productType.StockAs" type="text" id="form-field-6" placeholder="Lower">
+                                <input ng-model="item.StockAs" type="text" id="form-field-6" placeholder="Lower">
                             </div>
                         </div>
                     </div>
@@ -55,6 +55,6 @@
 </div>
 <script type="text/javascript">
     $(function () {
-        $('#menu-measure-main').syncMenu([{ name: "measure", option: "o", }], { title: 'Measures', link: '/Measure' });
+        $('#menu-csettings-main').syncMenu([{ name: "productType", option: "o", }], { title: 'Product Types', link: '/ProductType' });
     });
 </script>
