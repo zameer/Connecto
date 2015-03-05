@@ -1,5 +1,5 @@
 ﻿@{ Layout = null; }
-<div ng-controller="EditCtrl">
+<div ng-controller="MeasureEditCtrl">
     <div class="page-header">
         <h1>Edit Measure </h1>
     </div>
@@ -12,7 +12,7 @@
                         <div class="form-group">
                             <label class="col-sm-6 control-label no-padding-top"> Volume </label>
                             <div class="col-sm-3">
-                                <input ng-model="measure.Volume" type="text" id="form-field-6" placeholder="Volume">
+                                <input ng-model="item.Volume" type="text" id="form-field-6" placeholder="Volume">
                             </div>
                         </div>
                     </div>
@@ -21,7 +21,7 @@
                         <div class="form-group">
                             <label class="col-sm-4 control-label no-padding-top"> Lower </label>
                             <div class="col-sm-3">
-                                <input ng-model="measure.Lower" type="text" id="form-field-6" placeholder="Lower">
+                                <input ng-model="item.Lower" type="text" id="form-field-6" placeholder="Lower">
                             </div>
                         </div>
                     </div>
@@ -29,7 +29,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-top"> Actual </label>
                     <div class="col-sm-9">
-                        <input ng-model="measure.Actual" type="text" id="form-field-6" placeholder="Actual">
+                        <input ng-model="item.Actual" type="text" id="form-field-6" placeholder="Actual">
                     </div>
                 </div>
                 <div class="clearfix form-actions">

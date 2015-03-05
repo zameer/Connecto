@@ -1,7 +1,7 @@
 'use strict';
 /* Controllers */
 var cName = 'Measure';
-cSettingControllers.controller('ListCtrl', ['$scope', '$http', '$routeParams',
+cSettingControllers.controller(cName + 'ListCtrl', ['$scope', '$http', '$routeParams',
   function ($scope, $http) {
       AppCommonFunction.ShowWaitBlock();
       $http.get('/' + cName + '/Get/').success(function (data) {
@@ -19,7 +19,7 @@ cSettingControllers.controller('ListCtrl', ['$scope', '$http', '$routeParams',
           });
       };
   }]);
-cSettingControllers.controller('NewCtrl', function ($scope, $location, $http) {
+cSettingControllers.controller(cName + 'NewCtrl', function ($scope, $location, $http) {
     $scope.add = function () {
         $http.post('/' + cName + '/Create/', $scope.item).success(function (data) {
             if(data.Status == "Failure")showMessage(data);
@@ -27,7 +27,7 @@ cSettingControllers.controller('NewCtrl', function ($scope, $location, $http) {
         });
     };
 });
-cSettingControllers.controller('EditCtrl', ['$scope', '$http', '$location', '$routeParams',
+cSettingControllers.controller(cName + 'EditCtrl', ['$scope', '$http', '$location', '$routeParams',
   function ($scope, $http, $location, $routeParams) {
       $http.get('/' + cName + '/GetItem/' + $routeParams.itemId).success(function (data) {
           $scope.item = data;

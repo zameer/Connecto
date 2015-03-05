@@ -1,5 +1,5 @@
 ﻿@{ Layout = null; }
-<div ng-controller="ListCtrl">
+<div ng-controller="MeasureListCtrl">
     <a href="#/Create/" class="btn btn-white btn-info btn-bold">
         <i class="ace-icon fa glyphicon-plus bigger-120 blue"></i>
         New Measure
@@ -10,7 +10,7 @@
             <th>Description</th>
             <th></th>
         </tr>
-        <tr ng-repeat="item in measures">
+        <tr ng-repeat="item in items">
             <td>{{item.MeasureId}}</td>
             <td>{{item.Volume}} {{item.Lower}} = 1{{item.Actual}}</td>
             <td>
