@@ -182,6 +182,7 @@
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ProductTypeController.cs" />
     <Compile Include="Controllers\SupplierController.cs" />
+    <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\VendorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -234,7 +235,10 @@
     <Content Include="Scripts\connecto\ace-extra.js" />
     <Content Include="Scripts\connecto\bootstrap.js" />
     <Content Include="Scripts\connecto\Connectojs.js" />
-    <Content Include="Scripts\connecto\csettings\app.js" />
+    <Content Include="Scripts\connecto\hr\measureController.js" />
+    <Content Include="Scripts\connecto\hr\productTypeController.js" />
+    <Content Include="Scripts\connecto\hr\personController.js" />
+    <Content Include="Scripts\connecto\app.js" />
     <Content Include="Scripts\connecto\csettings\vendorController.js" />
     <Content Include="Scripts\connecto\csettings\productTypeController.js" />
     <Content Include="Scripts\connecto\csettings\measureController.js" />
@@ -342,6 +346,10 @@
     <Content Include="Views\Vendor\Edit.cshtml" />
     <Content Include="Views\Vendor\Index.cshtml" />
     <Content Include="Views\Vendor\List.cshtml" />
+    <Content Include="Views\Person\Create.cshtml" />
+    <Content Include="Views\Person\Edit.cshtml" />
+    <Content Include="Views\Person\Index.cshtml" />
+    <Content Include="Views\Person\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

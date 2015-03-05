@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntityFramework\Implementation\EntityProductTypeDao.cs" />
+    <Compile Include="EntityFramework\Implementation\EntityPersonDao.cs" />
     <Compile Include="IProductTypeDao.cs" />
     <Compile Include="DaoFactory.cs" />
     <Compile Include="DataAccess.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="IMeasureDao.cs" />
     <Compile Include="IProductDao.cs" />
     <Compile Include="ISupplierDao.cs" />
+    <Compile Include="IPersonDao.cs" />
     <Compile Include="IVendorDao.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

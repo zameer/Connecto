@@ -42,5 +42,9 @@
         {
             get { return new ContactRepository(); }
         }
+        public static PersonRepository PersonRepository
+        {
+            get { return new PersonRepository(); }
+        }
     }
 }

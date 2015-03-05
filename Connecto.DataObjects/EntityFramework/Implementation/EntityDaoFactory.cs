@@ -78,5 +78,9 @@
         {
             get { return new EntityContactDao(); }
         }
+        public IPersonDao PersonDao
+        {
+            get { return new EntityPersonDao(); }
+        }
     }
 }

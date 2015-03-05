@@ -1,7 +1,7 @@
 ﻿@{ Layout = null; }
-<div ng-controller="VendorEditCtrl">
+<div ng-controller="PersonNewCtrl">
     <div class="page-header">
-        <h1>Edit Vendor </h1>
+        <h1>Add Person </h1>
     </div>
     <div class="row">
         <div class="col-xs-12">
@@ -10,13 +10,20 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-top"> Name </label>
                     <div class="col-sm-9">
-                        <input ng-model="item.Name" type="text" id="form-field-6" placeholder="Name">
+                        <input ng-model="item.FirstName" type="text" id="form-field-6" placeholder="First Name">
                     </div>
                 </div>
                 <div class="space-6"></div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-top"> Actual </label>
+                    <div class="col-sm-9">
+                        <input ng-model="item.LastName" type="text" id="form-field-6" placeholder="Last Name">
+                    </div>
+                </div>
                 <div class="clearfix form-actions">
                     <div class="col-md-offset-3 col-md-9">
-                        <button class="btn btn-info" type="button" ng-click="edit()">
+                        <button class="btn btn-info" type="button" ng-click="add()">
                             <i class="ace-icon fa fa-check bigger-110"></i>
                             Submit
                         </button>
@@ -35,6 +42,6 @@
 </div>
 <script type="text/javascript">
     $(function () {
-        $('#menu-csettings-main').syncMenu([{ name: "vendor", option: "o", }], { title: 'Vendors', link: '/Vendor' });
+        $('#menu-hr').syncMenu([{ name: "person", option: "o", }], { title: 'People', link: '/Person' });
     });
 </script>

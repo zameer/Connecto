@@ -1,0 +1,19 @@
+﻿@model Connecto.BusinessObjects.Person
+@{
+    ViewBag.Title = "People";
+}
+<div ng-app="hrApp">
+    <div ng-view></div>
+</div>
+<script src="~/Scripts/connecto/hr/personController.js"></script>
+<script type="text/javascript">
+    $('#menu-hr').syncMenu([{ name: "people", option: "a" }]);
+    hrApp.config(['$routeProvider',
+    function ($routeProvider) {
+        $routeProvider.
+             when('/', { templateUrl: '/Person/List', controller: 'PersonListCtrl' })
+            .when('/Create/', { templateUrl: '/Person/Create', controller: 'PersonNewCtrl' })
+            .when('/Edit/:itemId', { templateUrl: '/Person/Edit', controller: 'PersonEditCtrl' })
+            .otherwise({ redirectTo: '/' });
+    }]);
+</script>

@@ -1,6 +1,6 @@
 'use strict';
 /* Controllers */
-var cName = 'Vendor';
+var cName = 'Measure';
 cSettingControllers.controller(cName + 'ListCtrl', ['$scope', '$http', '$routeParams',
   function ($scope, $http) {
       AppCommonFunction.ShowWaitBlock();

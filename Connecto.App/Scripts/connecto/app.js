@@ -6,3 +6,8 @@ var cSettingApp = angular.module('cSettingApp', [
   'cSettingControllers'
 ]);
 
+var hrControllers = angular.module('hrControllers', []);
+var hrApp = angular.module('hrApp', [
+  'ngRoute',
+  'hrControllers'
+]);

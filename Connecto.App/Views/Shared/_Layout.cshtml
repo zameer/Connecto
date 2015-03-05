@@ -22,7 +22,7 @@
     <script src="~/Scripts/angular/angular.js"></script>
     <script src="~/Scripts/angular/angular-route.js"></script>
     <script src="~/Scripts/angular/angular-resource.js"></script>
-    <script src="~/Scripts/connecto/csettings/app.js"></script>
+    <script src="~/Scripts/connecto/app.js"></script>
     <!-- page specific plugin styles -->
     <!-- text fonts -->
     <link rel="stylesheet" href="~/Content/connecto/ace-fonts.css" />
@@ -194,6 +194,15 @@
                     <b class="arrow"></b>
 
                     <ul class="submenu">
+
+                        <li id="menu-people" data-menu="people" class="">
+                            <a href="@Url.Action("Index", "Person")">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                People
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
+
                         <li id="menu-supplier" class="">
                             <a href="#" class="dropdown-toggle">
                                 <i class="menu-icon fa fa-caret-right"></i>

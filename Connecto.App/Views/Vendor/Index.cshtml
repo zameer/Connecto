@@ -11,9 +11,9 @@
     cSettingApp.config(['$routeProvider',
     function ($routeProvider) {
         $routeProvider.
-             when('/', { templateUrl: '/Vendor/List', controller: 'ListCtrl' })
-            .when('/Create/', { templateUrl: '/Vendor/Create', controller: 'NewCtrl' })
-            .when('/Edit/:itemId', { templateUrl: '/Vendor/Edit', controller: 'EditCtrl' })
+             when('/', { templateUrl: '/Vendor/List', controller: 'VendorListCtrl' })
+            .when('/Create/', { templateUrl: '/Vendor/Create', controller: 'VendorNewCtrl' })
+            .when('/Edit/:itemId', { templateUrl: '/Vendor/Edit', controller: 'VendorEditCtrl' })
             .otherwise({ redirectTo: '/' });
     }]);
 </script>

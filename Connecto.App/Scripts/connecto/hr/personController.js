@@ -1,7 +1,7 @@
 'use strict';
 /* Controllers */
-var cName = 'Vendor';
-cSettingControllers.controller(cName + 'ListCtrl', ['$scope', '$http', '$routeParams',
+var cName = 'Person';
+hrControllers.controller(cName + 'ListCtrl', ['$scope', '$http', '$routeParams',
   function ($scope, $http) {
       AppCommonFunction.ShowWaitBlock();
       $http.get('/' + cName + '/Get/').success(function (data) {
@@ -19,7 +19,7 @@ cSettingControllers.controller(cName + 'ListCtrl', ['$scope', '$http', '$routePa
           });
       };
   }]);
-cSettingControllers.controller(cName + 'NewCtrl', function ($scope, $location, $http) {
+hrControllers.controller(cName + 'NewCtrl', function ($scope, $location, $http) {
     $scope.add = function () {
         $http.post('/' + cName + '/Create/', $scope.item).success(function (data) {
             if(data.Status == "Failure")showMessage(data);
@@ -27,7 +27,7 @@ cSettingControllers.controller(cName + 'NewCtrl', function ($scope, $location, $
         });
     };
 });
-cSettingControllers.controller(cName + 'EditCtrl', ['$scope', '$http', '$location', '$routeParams',
+hrControllers.controller(cName + 'EditCtrl', ['$scope', '$http', '$location', '$routeParams',
   function ($scope, $http, $location, $routeParams) {
       $http.get('/' + cName + '/GetItem/' + $routeParams.itemId).success(function (data) {
           $scope.item = data;

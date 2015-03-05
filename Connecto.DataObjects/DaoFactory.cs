@@ -17,5 +17,6 @@
         IMeasureDao MeasureDao { get; }
         ICurrencyDao CurrencyDao { get; }
         IContactDao ContactDao { get; }
+        IPersonDao PersonDao { get; }
     }
 }
