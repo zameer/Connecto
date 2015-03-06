@@ -1,6 +1,7 @@
 'use strict';
 /* Controllers */
 var cName = 'Person';
+var contact = 'Contact';
 hrControllers.controller(cName + 'ListCtrl', ['$scope', '$http', '$routeParams',
   function ($scope, $http) {
       AppCommonFunction.ShowWaitBlock();
@@ -35,6 +36,22 @@ hrControllers.controller(cName + 'EditCtrl', ['$scope', '$http', '$location', '$
       $scope.edit = function () {
           $http.post('/' + cName + '/Edit/', $scope.item).success(function (data) {
               $location.path('/');
+          });
+      };
+  }]);
+
+hrControllers.controller(cName + 'ContactsCtrl', ['$scope', '$http', '$location', '$routeParams',
+  function ($scope, $http, $location, $routeParams) {
+      $http.get('/' + contact + '/Get/' + $routeParams.itemId).success(function (data) {
+          $scope.PersonId = $routeParams.itemId;
+          $scope.items = data;
+          AppCommonFunction.HideWaitBlock();
+      });
+      
+      $scope.addContact = function () {
+          $scope.item.PersonId = $scope.PersonId;
+          $http.post('/' + contact + '/Create/', $scope.item).success(function (data) {
+              if (data.Status == "Failure") showMessage(data);
           });
       };
   }]);

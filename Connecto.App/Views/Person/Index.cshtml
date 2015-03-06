@@ -14,6 +14,7 @@
              when('/', { templateUrl: '/Person/List', controller: 'PersonListCtrl' })
             .when('/Create/', { templateUrl: '/Person/Create', controller: 'PersonNewCtrl' })
             .when('/Edit/:itemId', { templateUrl: '/Person/Edit', controller: 'PersonEditCtrl' })
+            .when('/Contacts/:itemId', { templateUrl: '/Person/Contacts', controller: 'PersonContactsCtrl' })
             .otherwise({ redirectTo: '/' });
     }]);
 </script>

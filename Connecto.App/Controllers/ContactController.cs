@@ -1,4 +1,6 @@
-﻿using Connecto.BusinessObjects;
+﻿using System.Collections.Generic;
+using Connecto.App.Models;
+using Connecto.BusinessObjects;
 using Connecto.Common.Enumeration;
 using Connecto.Repositories;
 using System;
@@ -8,108 +10,30 @@ namespace Connecto.App.Controllers
 {
     public class ContactController : Controller
     {
-        private readonly ContactRepository _contact = ConnectoFactory.ContactRepository;
-        //
-        // GET: /Contact/
+        private readonly ContactRepository _repo = ConnectoFactory.ContactRepository;
 
-        public ActionResult Index()
+        public JsonResult Get(int id)
         {
-            var contact = _contact.GetAll();
-            return View(contact);
-        }
-
-        //
-        // GET: /Contact/Details/5
-
-        public ActionResult Details(int id)
-        {
-            var contact = _contact.GetContact(id);
-            return View(contact);
-        }
-
-        //
-        // GET: /Contact/Create
-
-        public ActionResult Create()
-        {
-            return View(new Contact());
+            var items = _repo.GetAll();
+            return Json(items, JsonRequestBehavior.AllowGet);
         }
 
         //
         // POST: /Contact/Create
-
         [HttpPost]
-        public ActionResult Create(Contact contact)
+        public JsonResult Create(Contact item)
         {
-            try
-            {
-                contact.PersonId = 1;
-                contact.ContactGuid = Guid.NewGuid();
-                contact.CreatedBy = 1;
-                contact.CreatedOn = DateTime.Now;
-                contact.Status = RecordStatus.Active;
-                _contact.Add(contact);
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+            var errors = new List<ConnectoException>();
+            if (string.IsNullOrEmpty(item.LandNumber)) errors.Add(new ConnectoException { Message = "Please provide Land Number" });
+            if (errors.Count > 0) return Json(new ConnectoValidation { Status = "Failure", Exceptions = errors }, JsonRequestBehavior.AllowGet);
 
-        //
-        // GET: /Contact/Edit/5
-
-        public ActionResult Edit(int id)
-        {
-            var contact = _contact.GetContact(id);
-            return View(contact);
-        }
-
-        //
-        // POST: /Contact/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(Contact contact)
-        {
-            try
-            {
-                contact.EditedBy = 1;
-                contact.EditedOn = DateTime.Now;
-                _contact.Edit(contact);
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /Contact/Delete/5
-
-        public ActionResult Delete(int id)
-        {
-            var contact = _contact.GetContact(id);
-            return View(contact);
-        }
-
-        //
-        // POST: /Contact/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                _contact.Delete(id, 3);
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            item.LocationId = 1;
+            item.ContactGuid = Guid.NewGuid();
+            item.CreatedBy = User.UserId();
+            item.CreatedOn = DateTime.Now;
+            item.Status = RecordStatus.Active;
+            _repo.Add(item);
+            return Json(true, JsonRequestBehavior.AllowGet);
         }
     }
 }

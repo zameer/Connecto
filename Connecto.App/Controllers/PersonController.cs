@@ -23,7 +23,7 @@ namespace Connecto.App.Controllers
         }
 
         //
-        // POST: /Vendor/Create
+        // POST: /Person/Create
         [HttpPost]
         public JsonResult Create(Person item)
         {
@@ -41,7 +41,7 @@ namespace Connecto.App.Controllers
         }
 
         //
-        // POST: /Vendor/Edit/5
+        // POST: /Person/Edit/5
         [HttpPost]
         public ActionResult Edit(Person item)
         {
@@ -52,7 +52,7 @@ namespace Connecto.App.Controllers
         }
 
         //
-        // POST: /Vendor/Delete/5
+        // POST: /Person/Delete/5
         [HttpPost]
         public ActionResult Delete(int id)
         {
@@ -61,7 +61,7 @@ namespace Connecto.App.Controllers
         }
 
         //
-        // GET: /Vendor/
+        // GET: /Person/
         public ActionResult Index()
         {
             return View();
@@ -75,6 +75,10 @@ namespace Connecto.App.Controllers
             return View();
         }
         public ActionResult Edit()
+        {
+            return View();
+        }
+        public ActionResult Contacts()
         {
             return View();
         }
