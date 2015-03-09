@@ -43,23 +43,29 @@ hrControllers.controller(cName + 'EditCtrl', ['$scope', '$http', '$location', '$
 
 hrControllers.controller(cName + 'ContactsCtrl', ['$scope', '$http', '$location', '$routeParams',
   function ($scope, $http, $location, $routeParams) {
-      $http.get('/' + contact + '/Get/' + $routeParams.itemId).success(function (data) {
-          $scope.PersonId = $routeParams.itemId;
-          $scope.items = data;
-          AppCommonFunction.HideWaitBlock();
-      });
+      $scope.loadItems = function(id) {
+          $http.get('/' + contact + '/Get/' + id).success(function(data) {
+              $scope.PersonId = id;
+              $scope.items = data;
+              AppCommonFunction.HideWaitBlock();
+          });
+      };
+      $scope.loadItems($routeParams.itemId);
       
       $scope.addContact = function () {
           if (!($scope.editing != undefined && $scope.editing)) {
               $scope.item.PersonId = $scope.PersonId;
               $http.post('/' + contact + '/Create/', $scope.item).success(function (data) {
                   if (data.Status == "Failure") showMessage(data);
+                  $scope.loadItems($routeParams.itemId);
               });
           } else {
               $http.post('/' + contact + '/Edit/', $scope.item).success(function (data) {
                   if (data.Status == "Failure") showMessage(data);
+                  $scope.loadItems($routeParams.itemId);
               });
           }
+          
       };
       
       $scope.select = function (contactId) {
