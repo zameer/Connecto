@@ -17,7 +17,11 @@ namespace Connecto.App.Controllers
             var items = _repo.GetAll();
             return Json(items, JsonRequestBehavior.AllowGet);
         }
-
+        public JsonResult GetItem(int id)
+        {
+            var item = _repo.GetContact(id);
+            return Json(item, JsonRequestBehavior.AllowGet);
+        }
         //
         // POST: /Contact/Create
         [HttpPost]
@@ -33,6 +37,16 @@ namespace Connecto.App.Controllers
             item.CreatedOn = DateTime.Now;
             item.Status = RecordStatus.Active;
             _repo.Add(item);
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+        //
+        // POST: /Person/Edit/5
+        [HttpPost]
+        public ActionResult Edit(Contact item)
+        {
+            item.EditedBy = User.UserId();
+            item.EditedOn = DateTime.Now;
+            _repo.Edit(item);
             return Json(true, JsonRequestBehavior.AllowGet);
         }
     }

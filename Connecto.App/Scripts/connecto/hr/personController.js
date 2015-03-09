@@ -31,6 +31,7 @@ hrControllers.controller(cName + 'NewCtrl', function ($scope, $location, $http) 
 hrControllers.controller(cName + 'EditCtrl', ['$scope', '$http', '$location', '$routeParams',
   function ($scope, $http, $location, $routeParams) {
       $http.get('/' + cName + '/GetItem/' + $routeParams.itemId).success(function (data) {
+          data.PersonId = $routeParams.itemId;
           $scope.item = data;
       });
       $scope.edit = function () {
@@ -49,9 +50,23 @@ hrControllers.controller(cName + 'ContactsCtrl', ['$scope', '$http', '$location'
       });
       
       $scope.addContact = function () {
-          $scope.item.PersonId = $scope.PersonId;
-          $http.post('/' + contact + '/Create/', $scope.item).success(function (data) {
+          if (!($scope.editing != undefined && $scope.editing)) {
+              $scope.item.PersonId = $scope.PersonId;
+              $http.post('/' + contact + '/Create/', $scope.item).success(function (data) {
+                  if (data.Status == "Failure") showMessage(data);
+              });
+          } else {
+              $http.post('/' + contact + '/Edit/', $scope.item).success(function (data) {
+                  if (data.Status == "Failure") showMessage(data);
+              });
+          }
+      };
+      
+      $scope.select = function (contactId) {
+          $http.get('/' + contact + '/GetItem/' + contactId).success(function (data) {
               if (data.Status == "Failure") showMessage(data);
+              $scope.item = data;
+              $scope.editing = true;
           });
       };
   }]);
