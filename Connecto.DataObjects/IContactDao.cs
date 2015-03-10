@@ -16,6 +16,7 @@ namespace Connecto.DataObjects
     public interface IContactDao
     {
         List<Contact> GetContacts();
+        List<Contact> GetContacts(int personId);
         Contact GetContact(int id);
         int AddContact(Contact contact);
         bool EditContact(Contact contact);

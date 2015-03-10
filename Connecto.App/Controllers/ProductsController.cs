@@ -1,4 +1,5 @@
-﻿using Connecto.BusinessObjects;
+﻿using Connecto.App.Models;
+using Connecto.BusinessObjects;
 using Connecto.Common.Enumeration;
 using Connecto.Repositories;
 using System;
@@ -10,7 +11,9 @@ namespace Connecto.App.Controllers
     [Authorize]
     public class ProductsController : Controller
     {
-        private readonly ProductRepository _product = ConnectoFactory.ProductRepository;
+        private readonly ProductRepository _repo = ConnectoFactory.ProductRepository;
+        private readonly VendorRepository _repoVendor = ConnectoFactory.VendorRepository;
+        private readonly ProductTypeRepository _repoProductType = ConnectoFactory.ProductTypeRepository;
         //
         // GET: /Product/
 
@@ -36,37 +39,36 @@ namespace Connecto.App.Controllers
         }
         public JsonResult Get(int id)
         {
-            var products = new[] { new Product { ProductId = 1, Name = "Cement" }, new Product { ProductId = 2, Name = "Tile" } };
-            var product = products.FirstOrDefault(e => e.ProductId == id);
+            var product = _repo.Get(id);
             return Json(product, JsonRequestBehavior.AllowGet);
         }
         public JsonResult GetProducts()
         {
-            var products = new[] { new Product { ProductId = 1, Name = "Cement" }, new Product { ProductId = 2, Name = "Tile" } };
+            var products = _repo.GetAll();
             return Json(products, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
-        public JsonResult Create(Product product)
+        public JsonResult Create(Product item)
         {
 
-            product.ProductGuid = Guid.NewGuid();
-            product.CreatedBy = 1;
-            product.CreatedOn = DateTime.Now;
-            product.Status = RecordStatus.Active;
+            item.ProductGuid = Guid.NewGuid();
+            item.CreatedBy = User.UserId();
+            item.CreatedOn = DateTime.Now;
+            item.Status = RecordStatus.Active;
+            _repo.Add(item);
             return Json(1, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
         public JsonResult Vendors()
         {
-            var vendors = new[] { new Vendor { VendorId = 1, Name = "Sanstha" }, new Vendor { VendorId = 2, Name = "Holcim" } };
-
+            var vendors = _repoVendor.GetAll();
             return Json(vendors, JsonRequestBehavior.AllowGet);
         }
         [HttpGet]
         public JsonResult ProductTypes()
         {
-            var productTypes = new[] { new ProductType { ProductTypeId = 1, Type = "Cement" }, new ProductType { ProductTypeId = 1, Type = "Tile" } };
+            var productTypes = _repoProductType.GetAll();
             return Json(productTypes, JsonRequestBehavior.AllowGet);
         }
        

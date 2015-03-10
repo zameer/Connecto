@@ -17,12 +17,18 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var contacts = context.Contacts.ToList();
+                var contacts = context.Contacts.Where(e => e.Status == RecordStatus.Active).ToList();
                 return contacts.Select(Mapper.Map).ToList();
             }
         }
-
-
+        public List<Contact> GetContacts(int personId)
+        {
+            using (var context = DataObjectFactory.CreateContext())
+            {
+                var contacts = context.Contacts.Where(e => e.PersonId == personId && e.Status == RecordStatus.Active).ToList();
+                return contacts.Select(Mapper.Map).ToList();
+            }
+        }
         // get Contact by id
         public Contact GetContact(int contactId)
         {

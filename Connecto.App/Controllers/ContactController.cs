@@ -14,7 +14,7 @@ namespace Connecto.App.Controllers
 
         public JsonResult Get(int id)
         {
-            var items = _repo.GetAll();
+            var items = _repo.GetAll(id);
             return Json(items, JsonRequestBehavior.AllowGet);
         }
         public JsonResult GetItem(int id)
@@ -40,13 +40,21 @@ namespace Connecto.App.Controllers
             return Json(true, JsonRequestBehavior.AllowGet);
         }
         //
-        // POST: /Person/Edit/5
+        // POST: /Contact/Edit/5
         [HttpPost]
         public ActionResult Edit(Contact item)
         {
             item.EditedBy = User.UserId();
             item.EditedOn = DateTime.Now;
             _repo.Edit(item);
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+        //
+        // POST: /Contact/Delete/5
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            _repo.Delete(id, User.UserId());
             return Json(true, JsonRequestBehavior.AllowGet);
         }
     }

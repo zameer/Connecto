@@ -43,7 +43,8 @@ hrControllers.controller(cName + 'EditCtrl', ['$scope', '$http', '$location', '$
 
 hrControllers.controller(cName + 'ContactsCtrl', ['$scope', '$http', '$location', '$routeParams',
   function ($scope, $http, $location, $routeParams) {
-      $scope.loadItems = function(id) {
+      $scope.loadItems = function (id) {
+          AppCommonFunction.ShowWaitBlock();
           $http.get('/' + contact + '/Get/' + id).success(function(data) {
               $scope.PersonId = id;
               $scope.items = data;
@@ -53,6 +54,7 @@ hrControllers.controller(cName + 'ContactsCtrl', ['$scope', '$http', '$location'
       $scope.loadItems($routeParams.itemId);
       
       $scope.addContact = function () {
+          AppCommonFunction.ShowWaitBlock();
           if (!($scope.editing != undefined && $scope.editing)) {
               $scope.item.PersonId = $scope.PersonId;
               $http.post('/' + contact + '/Create/', $scope.item).success(function (data) {
@@ -67,12 +69,24 @@ hrControllers.controller(cName + 'ContactsCtrl', ['$scope', '$http', '$location'
           }
           
       };
-      
       $scope.select = function (contactId) {
           $http.get('/' + contact + '/GetItem/' + contactId).success(function (data) {
               if (data.Status == "Failure") showMessage(data);
               $scope.item = data;
               $scope.editing = true;
           });
+      };
+      $scope.delete = function (itemId) {
+          bootbox.confirm("Are you sure want to delete?", function (result) {
+              if (result) {
+                  $http.post('/' + contact + '/Delete/', { id: itemId }).success(function (data) {
+                      if (data.Status == "Failure") showMessage(data);
+                      $scope.loadItems($routeParams.itemId);
+                  });
+              }
+          });
+      };
+      $scope.resetContact = function () {
+          $scope.editing = false;
       };
   }]);

@@ -50,7 +50,13 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 Quantity = entity.Quantity,
                 Reorderlevel = entity.Reorderlevel,
                 ProductTypeId = entity.ProductTypeId,
-                VendorId = entity.VendorId
+                VendorId = entity.VendorId,
+                LocationId = entity.LocationId,
+                Status = entity.Status,
+                CreatedBy = entity.CreatedBy,
+                CreatedOn = entity.CreatedOn,
+                EditedBy = entity.EditedBy,
+                EditedOn = entity.EditedOn
             };
         }
         internal static EntityProduct Map(Product entity)
@@ -64,7 +70,13 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 Quantity = entity.Quantity,
                 Reorderlevel = entity.Reorderlevel,
                 ProductTypeId = entity.ProductTypeId,
-                VendorId = entity.VendorId
+                VendorId = entity.VendorId,
+                LocationId = entity.LocationId,
+                Status = entity.Status,
+                CreatedBy = entity.CreatedBy,
+                CreatedOn = entity.CreatedOn,
+                EditedBy = entity.EditedBy,
+                EditedOn = entity.EditedOn
             };
         }
 

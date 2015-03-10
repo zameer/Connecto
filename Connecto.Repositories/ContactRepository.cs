@@ -19,6 +19,15 @@ namespace Connecto.Repositories
         {
             return ContactDao.GetContacts();
         }
+        /// <summary>
+        /// Get List of Contact
+        /// </summary>
+        /// <param name="personId">by person Id</param>
+        /// <returns>IList of Contact</returns>
+        public IList<Contact> GetAll(int personId)
+        {
+            return ContactDao.GetContacts(personId);
+        }
 
         /// <summary>
         /// Get a specific Contact
