@@ -9,14 +9,11 @@ using System.Web.Mvc;
 namespace Connecto.App.Controllers
 {
     [Authorize]
-    public class ProductsController : Controller
+    public class ProductController : Controller
     {
         private readonly ProductRepository _repo = ConnectoFactory.ProductRepository;
-        private readonly VendorRepository _repoVendor = ConnectoFactory.VendorRepository;
-        private readonly ProductTypeRepository _repoProductType = ConnectoFactory.ProductTypeRepository;
         //
         // GET: /Product/
-
         public ActionResult Index()
         {
             return View();
@@ -29,28 +26,26 @@ namespace Connecto.App.Controllers
         {
             return View();
         }
-        public ActionResult Details()
-        {
-            return View();
-        }
         public ActionResult Edit()
         {
             return View();
         }
-        public JsonResult Get(int id)
+        public JsonResult GetItem(int id)
         {
             var product = _repo.Get(id);
             return Json(product, JsonRequestBehavior.AllowGet);
         }
-        public JsonResult GetProducts()
+        public JsonResult Get()
         {
             var products = _repo.GetAll();
             return Json(products, JsonRequestBehavior.AllowGet);
         }
+
+        //
+        // POST: /Product/Create
         [HttpPost]
         public JsonResult Create(Product item)
         {
-
             item.ProductGuid = Guid.NewGuid();
             item.CreatedBy = User.UserId();
             item.CreatedOn = DateTime.Now;
@@ -59,18 +54,24 @@ namespace Connecto.App.Controllers
             return Json(1, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpGet]
-        public JsonResult Vendors()
+        //
+        // POST: /Product/Edit/5
+        [HttpPost]
+        public ActionResult Edit(Product item)
         {
-            var vendors = _repoVendor.GetAll();
-            return Json(vendors, JsonRequestBehavior.AllowGet);
+            item.EditedBy = User.UserId();
+            item.EditedOn = DateTime.Now;
+            _repo.Edit(item);
+            return Json(true, JsonRequestBehavior.AllowGet);
         }
-        [HttpGet]
-        public JsonResult ProductTypes()
+
+        //
+        // POST: /Product/Delete/5
+        [HttpPost]
+        public ActionResult Delete(int id)
         {
-            var productTypes = _repoProductType.GetAll();
-            return Json(productTypes, JsonRequestBehavior.AllowGet);
+            _repo.Delete(id, User.UserId());
+            return Json(true, JsonRequestBehavior.AllowGet);
         }
-       
     }
 }

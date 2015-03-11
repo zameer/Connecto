@@ -8,21 +8,14 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-top"> Vendor </label>
                     <div class="col-sm-9">
-                        <select ng-model="Product.VendorId" id="product-vendor" class="select2" data-placeholder="Click to Choose...">
-                            <option></option>
-                            <option ng-repeat="item in vendors" value="{{item.VendorId}}">{{item.Name}}</option>
-                        </select>
-
+                        <select ng-model="item.VendorId" id="product-vendor" ng-options="e.VendorId as e.Name for e in vendors" class="select2" data-placeholder="Click to Choose..."></select>
                     </div>
                 </div>
                 <div class="space-6"></div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-top"> Product Type </label>
                     <div class="col-sm-9">
-                        <select ng-model="Product.ProductTypeId" id="product-type" class="select2" data-placeholder="Click to Choose...">
-                            <option></option>
-                            <option ng-repeat="item in productTypes" value="{{item.ProductTypeId}}">{{item.Type}}</option>
-                        </select>
+                        <select ng-model="item.ProductTypeId" id="product-type" ng-options="e.ProductTypeId as e.Type for e in productTypes" class="select2" data-placeholder="Click to Choose..."></select>
                     </div>
                 </div>
                 <div class="space-6"></div>
@@ -31,14 +24,14 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-top"> Name </label>
                     <div class="col-sm-9">
-                        <input ng-model="Product.Name" type="text" id="form-field-1" placeholder="Product Name" class="col-xs-10 col-sm-5">
+                        <input ng-model="item.Name" type="text" id="form-field-1" placeholder="Product Name" class="col-xs-10 col-sm-5">
                     </div>
                 </div>
                 <div class="space-6"></div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-top"> Quantity </label>
                     <div class="col-sm-9">
-                        <input ng-model="Product.Quantity" type="text" id="form-field-6" placeholder="Quantity">
+                        <input ng-model="item.Quantity" type="text" id="form-field-6" placeholder="Quantity">
                     </div>
                 </div>
                 <div class="row">
@@ -46,7 +39,7 @@
                         <div class="form-group">
                             <label class="col-sm-6 control-label no-padding-top"> Stock In Hand </label>
                             <div class="col-sm-3">
-                                <input ng-model="Product.StockInHand" type="text" id="form-field-6" placeholder="Stock In Hand">
+                                <input ng-model="item.StockInHand" type="text" id="form-field-6" placeholder="Stock In Hand">
                             </div>
                         </div>
                     </div>
@@ -55,14 +48,14 @@
                         <div class="form-group">
                             <label class="col-sm-4 control-label no-padding-top"> Re Order Level </label>
                             <div class="col-sm-3">
-                                <input ng-model="Product.Reorderlevel" type="text" id="form-field-6" placeholder="Re Order Level">
+                                <input ng-model="item.Reorderlevel" type="text" id="form-field-6" placeholder="Re Order Level">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="clearfix form-actions">
                     <div class="col-md-offset-3 col-md-9">
-                        <button class="btn btn-info" type="button" ng-click="addProduct()">
+                        <button class="btn btn-info" type="button" ng-click="edit()">
                             <i class="ace-icon fa fa-check bigger-110"></i>
                             Submit
                         </button>
@@ -81,6 +74,6 @@
 </div>
 <script type="text/javascript">
     $(function () {
-        $('#menu-prod-main').syncMenu([{ name: "products", option: "o", }], { title: 'Products', link: '/Products' });
+        $('#menu-csettings-main').syncMenu([{ name: "products", option: "a", }], { title: 'Products', link: '/Product' });
     });
 </script>

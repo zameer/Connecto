@@ -10,14 +10,13 @@
             <th>Name</th>
             <th></th>
         </tr>
-        <tr ng-repeat="item in products">
+        <tr ng-repeat="item in items">
             <td>{{item.ProductId}}</td>
             <td>{{item.Name}}</td>
             <td>
                 <div class="hidden-sm hidden-xs btn-group">
                     <a class="btn btn-xs btn-info" href="#/Edit/{{item.ProductId}}"><i class="ace-icon fa fa-pencil bigger-120"></i></a>
-                    <a class="btn btn-xs btn-warning" href="#/{{item.ProductId}}"><i class="ace-icon fa fa-eye bigger-120"></i></a>
-                    <a class="btn btn-xs btn-danger" href=""><i class="ace-icon fa fa-trash-o bigger-120"></i></a>
+                    <button class="btn btn-xs btn-danger" ng-click="delete(item.ProductId)"><i class="ace-icon fa fa-trash-o bigger-120"></i></button>
                 </div>
             </td>
         </tr>

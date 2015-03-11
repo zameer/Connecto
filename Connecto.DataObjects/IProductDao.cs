@@ -18,12 +18,7 @@ namespace Connecto.DataObjects
         List<Product> GetProducts();
         Product GetProduct(int id);
         int AddProduct(Product product);
-
-        /// <summary>
-        /// Remove specific Product
-        /// </summary>
-        /// <param name="id">Unique Product identifier</param>
-        /// <returns>No of Product Deleted</returns>
-        int DeleteProduct(int id = 0);
+        bool EditProduct(Product product);
+        int DeleteProduct(int id, int deletedBy);
     }
 }

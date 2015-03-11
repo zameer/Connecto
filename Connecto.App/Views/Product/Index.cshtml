@@ -1,0 +1,22 @@
+﻿@model Connecto.BusinessObjects.Product
+@{
+    ViewBag.Title = "Products";
+}
+<div class="page-header">
+    <h1>Add Product </h1>
+</div>
+<div ng-app="cSettingApp">
+    <div ng-view></div>
+</div>
+<script src="~/Scripts/connecto/csettings/productController.js"></script>
+<script type="text/javascript">
+    $('#menu-csettings-main').syncMenu([{ name: "products", option: "a" }]);
+    cSettingApp.config(['$routeProvider',
+    function ($routeProvider) {
+        $routeProvider.
+             when('/', { templateUrl: '/Product/List', controller: 'ProductListCtrl' })
+            .when('/Create/', { templateUrl: '/Product/Create', controller: 'ProductNewCtrl' })
+            .when('/Edit/:itemId', { templateUrl: '/Product/Edit', controller: 'ProductEditCtrl' })
+            .otherwise({ redirectTo: '/' });
+    }]);
+</script>

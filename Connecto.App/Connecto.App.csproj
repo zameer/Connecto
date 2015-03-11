@@ -179,7 +179,7 @@
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MeasureController.cs" />
-    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ProductTypeController.cs" />
     <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
@@ -235,6 +235,7 @@
     <Content Include="Scripts\connecto\ace-extra.js" />
     <Content Include="Scripts\connecto\bootstrap.js" />
     <Content Include="Scripts\connecto\Connectojs.js" />
+    <Content Include="Scripts\connecto\csettings\productController.js" />
     <Content Include="Scripts\connecto\hr\measureController.js" />
     <Content Include="Scripts\connecto\hr\productTypeController.js" />
     <Content Include="Scripts\connecto\hr\personController.js" />
@@ -268,8 +269,6 @@
     <Content Include="Scripts\connecto\plugins\elements.wizard.js" />
     <Content Include="Scripts\connecto\plugins\elements.wysiwyg.js" />
     <Content Include="Scripts\connecto\plugins\select2.js" />
-    <Content Include="Scripts\connecto\purchasing\app.js" />
-    <Content Include="Scripts\connecto\purchasing\controllers.js" />
     <Content Include="Scripts\connecto\respond.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -317,11 +316,10 @@
     <Content Include="Views\Employee\Edit.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Employee\_Contacts.cshtml" />
-    <Content Include="Views\Products\Create.cshtml" />
-    <Content Include="Views\Products\Details.cshtml" />
-    <Content Include="Views\Products\Edit.cshtml" />
-    <Content Include="Views\Products\Index.cshtml" />
-    <Content Include="Views\Products\List.cshtml" />
+    <Content Include="Views\Product\Create.cshtml" />
+    <Content Include="Views\Product\Edit.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Product\List.cshtml" />
     <Content Include="Views\Supplier\Create.cshtml" />
     <Content Include="Views\Supplier\CreateContact.cshtml" />
     <Content Include="Views\Supplier\Details.cshtml" />

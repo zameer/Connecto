@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Connecto.BusinessObjects;
+using Connecto.Common.Enumeration;
 using Connecto.DataObjects.EntityFramework.ModelMapper;
 
 namespace Connecto.DataObjects.EntityFramework.Implementation
@@ -15,7 +17,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var products = context.Products.ToList();
+                var products = context.Products.Where(e => e.Status == RecordStatus.Active).ToList();
                 return products.Select(Mapper.Map).ToList();
             }
         }
@@ -41,13 +43,30 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                 return entity.ProductId;
             }
         }
-
-        public int DeleteProduct(int id = 0)
+        public bool EditProduct(Product product)
+        {
+            using (var context = DataObjectFactory.CreateContext())
+            {
+                var entity = context.Products.FirstOrDefault(s => s.ProductId == product.ProductId);
+                entity.ProductTypeId = product.ProductTypeId;
+                entity.VendorId = product.VendorId;
+                entity.Name = product.Name;
+                entity.StockInHand = product.StockInHand;
+                entity.Quantity = product.Quantity;
+                entity.Reorderlevel = product.Reorderlevel;
+                entity.EditedBy = product.EditedBy;
+                entity.EditedOn = product.EditedOn;
+                return context.SaveChanges() > 0;
+            }
+        }
+        public int DeleteProduct(int id, int deletedBy)
         {
             using (var context = DataObjectFactory.CreateContext())
             {
                 var entity = context.Products.FirstOrDefault(s => s.ProductId == id);
-                context.Products.Remove(entity);
+                entity.Status = RecordStatus.Deleted;
+                entity.EditedOn = DateTime.Now;
+                entity.EditedBy = deletedBy;
                 return context.SaveChanges();
             }
         }
