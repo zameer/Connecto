@@ -236,8 +236,8 @@
     <Content Include="Scripts\connecto\bootstrap.js" />
     <Content Include="Scripts\connecto\Connectojs.js" />
     <Content Include="Scripts\connecto\csettings\productController.js" />
-    <Content Include="Scripts\connecto\hr\measureController.js" />
-    <Content Include="Scripts\connecto\hr\productTypeController.js" />
+    <Content Include="Scripts\connecto\hr\supplierController.js" />
+    <Content Include="Scripts\connecto\hr\employeeController.js" />
     <Content Include="Scripts\connecto\hr\personController.js" />
     <Content Include="Scripts\connecto\app.js" />
     <Content Include="Scripts\connecto\csettings\vendorController.js" />
@@ -310,22 +310,11 @@
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Employee\Create.cshtml" />
-    <Content Include="Views\Employee\CreateContact.cshtml" />
-    <Content Include="Views\Employee\Details.cshtml" />
-    <Content Include="Views\Employee\Edit.cshtml" />
-    <Content Include="Views\Employee\Index.cshtml" />
-    <Content Include="Views\Employee\_Contacts.cshtml" />
     <Content Include="Views\Product\Create.cshtml" />
     <Content Include="Views\Product\Edit.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Product\List.cshtml" />
-    <Content Include="Views\Supplier\Create.cshtml" />
-    <Content Include="Views\Supplier\CreateContact.cshtml" />
-    <Content Include="Views\Supplier\Details.cshtml" />
-    <Content Include="Views\Supplier\Edit.cshtml" />
     <Content Include="Views\Supplier\Index.cshtml" />
-    <Content Include="Views\Supplier\_Contacts.cshtml" />
     <Content Include="Views\Account\Connect.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
     <Content Include="Views\Measure\Create.cshtml" />
@@ -345,6 +334,11 @@
     <Content Include="Views\Person\Index.cshtml" />
     <Content Include="Views\Person\List.cshtml" />
     <Content Include="Views\Person\Contacts.cshtml" />
+    <Content Include="Views\Supplier\List.cshtml" />
+    <Content Include="Views\Supplier\People.cshtml" />
+    <Content Include="Views\Employee\Index.cshtml" />
+    <Content Include="Views\Employee\List.cshtml" />
+    <Content Include="Views\Employee\People.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

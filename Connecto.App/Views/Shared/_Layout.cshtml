@@ -203,61 +203,20 @@
                             <b class="arrow"></b>
                         </li>
 
-                        <li id="menu-supplier" class="">
-                            <a href="#" class="dropdown-toggle">
+                        <li id="menu-supplier" data-menu="suppliers" class="">
+                            <a href="@Url.Action("Index", "Supplier")">
                                 <i class="menu-icon fa fa-caret-right"></i>
-                                Supplier
-                                <b class="arrow fa fa-angle-down"></b>
+                                Suppliers
                             </a>
                             <b class="arrow"></b>
-
-                            <ul class="submenu">
-                                <li id="menu-supplier-add" class="">
-                                    <a href="@Url.Action("Create", "Supplier")">
-                                        <i class="menu-icon fa fa-plus purple"></i>
-                                        Add Supplier
-                                    </a>
-
-                                    <b class="arrow"></b>
-                                </li>
-                                <li id="menu-supplier-view" class="">
-                                    <a href="@Url.Action("Index", "Supplier")">
-                                        <i class="menu-icon fa fa-eye pink"></i>
-                                        View Supplier
-                                    </a>
-
-                                    <b class="arrow"></b>
-                                </li>
-                            </ul>
                         </li>
 
-                        <li class="">
-                            <a href="#" class="dropdown-toggle">
+                        <li id="menu-employee" data-menu="employees" class="">
+                            <a href="@Url.Action("Index", "Employee")">
                                 <i class="menu-icon fa fa-caret-right"></i>
-                                Employee
-                                <b class="arrow fa fa-angle-down"></b>
+                                Employees
                             </a>
-
                             <b class="arrow"></b>
-
-                            <ul class="submenu">
-                                <li class="">
-                                    <a href="#">
-                                        <i class="menu-icon fa fa-plus purple"></i>
-                                        Add Employee
-                                    </a>
-
-                                    <b class="arrow"></b>
-                                </li>
-                                <li class="">
-                                    <a href="#">
-                                        <i class="menu-icon fa fa-eye pink"></i>
-                                        View Employee
-                                    </a>
-
-                                    <b class="arrow"></b>
-                                </li>
-                            </ul>
                         </li>
                     </ul>
                 </li>

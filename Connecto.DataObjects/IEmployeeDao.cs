@@ -20,6 +20,7 @@ namespace Connecto.DataObjects
         /// </summary>
         /// <returns>List of Employee</returns>
         IList<Employee> GetEmployees();
+        IList<Person> GetPeople();
 
         /// <summary>
         /// Get specific Employee
@@ -33,7 +34,7 @@ namespace Connecto.DataObjects
         /// </summary>
         /// <param name="id">Unique employee identifier</param>
         /// <returns>No of employee Deleted</returns>
-        int DeleteEmployee(int id = 0);
+        int DeleteEmployee(int id, int deletedBy);
 
         /// <summary>
         /// Add specific employee

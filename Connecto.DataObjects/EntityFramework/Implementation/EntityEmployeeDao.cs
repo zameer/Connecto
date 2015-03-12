@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Connecto.BusinessObjects;
+using Connecto.Common.Enumeration;
 using Connecto.DataObjects.EntityFramework.ModelMapper;
 using System;
 
@@ -15,11 +16,19 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var employees = context.Employees.ToList();
+                var employees = context.Employees.Where(e => e.Status == RecordStatus.Active).ToList();
                 return employees.Select(Mapper.Map).ToList();
             }
         }
-
+        public IList<Person> GetPeople()
+        {
+            using (var context = DataObjectFactory.CreateContext())
+            {
+                var personIds = context.Employees.Where(e => e.Status == RecordStatus.Active).Select(e => e.PersonId).ToArray();
+                var people = context.People.Where(e => !personIds.Contains(e.PersonId)).ToList();
+                return people.Select(Mapper.Map).ToList();
+            }
+        }
         // get Employee by id
         public Employee GetEmployeeById(int personId)
         {
@@ -30,12 +39,14 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
             }
         }
 
-        public int DeleteEmployee(int id = 0)
+        public int DeleteEmployee(int id, int deletedBy)
         {
             using (var context = DataObjectFactory.CreateContext())
             {
                 var entity = context.Employees.FirstOrDefault(s => s.EmployeeId == id);
-                context.Employees.Remove(entity);
+                entity.Status = RecordStatus.Deleted;
+                entity.EditedOn = DateTime.Now;
+                entity.EditedBy = deletedBy;
                 return context.SaveChanges();
             }
         }

@@ -19,6 +19,14 @@ namespace Connecto.Repositories
         {
             return SupplierDao.GetSuppliers();
         }
+        /// <summary>
+        /// Get List of Person
+        /// </summary>
+        /// <returns>IList of Person</returns>
+        public IList<Person> GetPeople()
+        {
+            return SupplierDao.GetPeople();
+        }
 
         /// <summary>
         /// Get a specific Supplier
@@ -35,9 +43,9 @@ namespace Connecto.Repositories
         /// </summary>
         /// <param name="id">Identifier</param>
         /// <returns>No of Supplier Deleted</returns>
-        public int Delete(int id = 0)
+        public int Delete(int id, int deletedBy)
         {
-            return SupplierDao.DeleteSupplier(id);
+            return SupplierDao.DeleteSupplier(id, deletedBy);
         }
 
         /// <summary>

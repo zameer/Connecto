@@ -1,0 +1,23 @@
+﻿@{ Layout = null; }
+<div ng-controller="EmployeeListCtrl">
+    <a href="#/People/" class="btn btn-white btn-info btn-bold">
+        <i class="ace-icon fa glyphicon-plus bigger-120 blue"></i>
+        Assign Employee
+    </a>
+    <table class="table table-striped table-bordered table-hover">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th></th>
+        </tr>
+        <tr ng-repeat="item in items">
+            <td>{{item.EmployeeId}}</td>
+            <td>{{item.Person.FirstName}} {{item.Person.LastName}}</td>
+            <td>
+                <div class="hidden-sm hidden-xs btn-group">
+                    <button class="btn btn-xs btn-danger" ng-click="delete(item.EmployeeId)"><i class="ace-icon fa fa-trash-o bigger-120"></i></button>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>

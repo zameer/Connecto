@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Connecto.DataObjects.EntityFramework
 {
     [Table("Employee", Schema = "HumanResource")]
-    public class EntityEmployee
+    public class EntityEmployee : EntityConnecto
     {
         [Key]
         public int EmployeeId { get; set; }

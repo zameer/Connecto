@@ -20,6 +20,11 @@ namespace Connecto.Repositories
             return EmployeeDao.GetEmployees();
         }
 
+        public IList<Person> GetPeople()
+        {
+            return EmployeeDao.GetPeople();
+        }
+
         /// <summary>
         /// Get a specific Employee
         /// </summary>
@@ -35,9 +40,9 @@ namespace Connecto.Repositories
         /// </summary>
         /// <param name="id">Identifier</param>
         /// <returns>No of Employee Deleted</returns>
-        public int Delete(int id = 0)
+        public int Delete(int id, int deletedBy)
         {
-            return EmployeeDao.DeleteEmployee(id);
+            return EmployeeDao.DeleteEmployee(id, deletedBy);
         }
 
         /// <summary>

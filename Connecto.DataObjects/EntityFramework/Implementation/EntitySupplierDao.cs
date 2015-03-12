@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Connecto.BusinessObjects;
+using Connecto.Common.Enumeration;
 using Connecto.DataObjects.EntityFramework.ModelMapper;
 using System;
 
@@ -15,11 +16,19 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var suppliers = context.Suppliers.ToList();
+                var suppliers = context.Suppliers.Where(e => e.Status == RecordStatus.Active).ToList();
                 return suppliers.Select(Mapper.Map).ToList();
             }
         }
-
+        public IList<Person> GetPeople()
+        {
+            using (var context = DataObjectFactory.CreateContext())
+            {
+                var personIds = context.Suppliers.Where(e => e.Status == RecordStatus.Active).Select(e => e.PersonId).ToArray();
+                var people = context.People.Where(e=> !personIds.Contains(e.PersonId)).ToList();
+                return people.Select(Mapper.Map).ToList();
+            }
+        }
         // get Supplier by id
         public Supplier GetSupplierById(int personId)
         {
@@ -30,12 +39,14 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
             }
         }
 
-        public int DeleteSupplier(int id = 0)
+        public int DeleteSupplier(int id, int deletedBy)
         {
             using (var context = DataObjectFactory.CreateContext())
             {
                 var entity = context.Suppliers.FirstOrDefault(s => s.SupplierId == id);
-                context.Suppliers.Remove(entity);
+                entity.Status = RecordStatus.Deleted;
+                entity.EditedOn = DateTime.Now;
+                entity.EditedBy = deletedBy;
                 return context.SaveChanges();
             }
         } 
@@ -45,9 +56,6 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
             using (var context = DataObjectFactory.CreateContext())
             {
                 var entity = Mapper.Map(supplier);
-                context.People.Add(entity.Person);
-                entity.PersonId = entity.Person.PersonId;
-
                 context.Suppliers.Add(entity);
                 context.SaveChanges();
                 return entity.SupplierId;

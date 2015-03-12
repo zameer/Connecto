@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Connecto.DataObjects.EntityFramework
 {
     [Table("Supplier", Schema = "Product")]
-    public class EntitySupplier
+    public class EntitySupplier : EntityConnecto
     {
         [Key]
         public int SupplierId { get; set; }

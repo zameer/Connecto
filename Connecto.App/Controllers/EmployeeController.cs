@@ -1,4 +1,5 @@
-﻿using Connecto.BusinessObjects;
+﻿using Connecto.App.Models;
+using Connecto.BusinessObjects;
 using Connecto.Common.Enumeration;
 using Connecto.Repositories;
 using System;
@@ -9,129 +10,53 @@ namespace Connecto.App.Controllers
 {
     public class EmployeeController : Controller
     {
-        private readonly EmployeeRepository _employee = ConnectoFactory.EmployeeRepository;
-        private readonly ContactRepository _contact = ConnectoFactory.ContactRepository;
+        private readonly EmployeeRepository _repo = ConnectoFactory.EmployeeRepository;
         //
         // GET: /Employee/
 
+        public JsonResult Get()
+        {
+            var items = _repo.GetAll();
+            return Json(items, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetPeople()
+        {
+            var items = _repo.GetPeople();
+            return Json(items, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult Create(int id)
+        {
+            var errors = new List<ConnectoException>();
+            if (id <= 0) errors.Add(new ConnectoException { Message = "Please provide none" });
+            if (errors.Count > 0) return Json(new ConnectoValidation { Status = "Failure", Exceptions = errors }, JsonRequestBehavior.AllowGet);
+
+            _repo.Add(new Employee { PersonId = id, LocationId = 1, CreatedBy = User.UserId(), CreatedOn = DateTime.Now, Status = RecordStatus.Active });
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+
+        //
+        // GET: /Supplier/
         public ActionResult Index()
-        {
-            var employee = _employee.GetAll();
-            return View(employee);
-        }
-
-        //
-        // GET: /Employee/Details/5
-
-        public ActionResult Details(int id)
-        {
-            var employee = _employee.GetEmployeeById(id);
-            return View(employee);
-        }
-
-        public ActionResult Contacts(List<Contact> contacts)
-        {
-            return PartialView("_Contacts", contacts);
-        }
-
-        //
-        // GET: /Employee/Create
-
-        public ActionResult Create()
-        {
-            return View(new Employee());
-        }
-        public ActionResult CreateContact(int id)
-        {
-            return View(new Contact { PersonId = id });
-        }
-
-        [HttpPost]
-        public ActionResult CreateContact(Contact contact)
-        {
-            contact.ContactGuid = Guid.NewGuid();
-            contact.CreatedBy = 1;
-            contact.CreatedOn = DateTime.Now;
-            contact.Status = RecordStatus.Active;
-            _contact.Add(contact);
-            return RedirectToAction("Edit", new { id = contact.PersonId });
-        }
-
-        //
-        // POST: /Employee/Create
-
-        [HttpPost]
-        public ActionResult Create(Employee employee)
-        {
-            try
-            {
-                employee.Person.PersonGuid = Guid.NewGuid();
-                employee.Person.Status = RecordStatus.Active;
-                employee.Person.LocationId = 1;
-                employee.Person.CreatedBy = 1;
-                employee.Person.CreatedOn = DateTime.Now;
-                _employee.Add(employee);
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /Employee/Edit/5
-
-        public ActionResult Edit(int id)
-        {
-            var employee = _employee.GetEmployeeById(id);
-            return View(employee);
-        }
-
-        //
-        // POST: /Employee/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(Employee employee)
-        {
-            try
-            {
-                employee.Person.EditedBy = 1;
-                employee.Person.EditedOn = DateTime.Now;
-                _employee.Edit(employee);
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /Employee/Delete/5
-
-        public ActionResult Delete(int id)
         {
             return View();
         }
-
-        //
-        // POST: /Supplier/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult List()
         {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return View();
+        }
+        public ActionResult People()
+        {
+            return View();
+        }
+        //
+        // POST: /Person/Delete/5
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            _repo.Delete(id, User.UserId());
+            return Json(true, JsonRequestBehavior.AllowGet);
         }
     }
 }
