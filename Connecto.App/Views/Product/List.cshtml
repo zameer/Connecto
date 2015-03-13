@@ -8,11 +8,15 @@
         <tr>
             <th>Id</th>
             <th>Name</th>
+            <th>Type</th>
+            <th>Vendor</th>
             <th></th>
         </tr>
         <tr ng-repeat="item in items">
             <td>{{item.ProductId}}</td>
             <td>{{item.Name}}</td>
+            <td>{{item.ProductType.Type}} {{item.ProductType.StockAs}}</td>
+            <td>{{item.Vendor.Name}}</td>
             <td>
                 <div class="hidden-sm hidden-xs btn-group">
                     <a class="btn btn-xs btn-info" href="#/Edit/{{item.ProductId}}"><i class="ace-icon fa fa-pencil bigger-120"></i></a>

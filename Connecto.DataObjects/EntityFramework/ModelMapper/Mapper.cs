@@ -56,7 +56,9 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 CreatedBy = entity.CreatedBy,
                 CreatedOn = entity.CreatedOn,
                 EditedBy = entity.EditedBy,
-                EditedOn = entity.EditedOn
+                EditedOn = entity.EditedOn,
+                Vendor = Map(entity.Vendor),
+                ProductType = Map(entity.ProductType)
             };
         }
         internal static EntityProduct Map(Product entity)
