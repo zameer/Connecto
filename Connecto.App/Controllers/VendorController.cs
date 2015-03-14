@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Connecto.App.Models;
+using Connecto.App.ModelValidator;
 using Connecto.BusinessObjects;
 using Connecto.Common.Enumeration;
 using Connecto.Repositories;
@@ -27,8 +28,7 @@ namespace Connecto.App.Controllers
         [HttpPost]
         public JsonResult Create(Vendor item)
         {
-            var errors = new List<ConnectoException>();
-            if (string.IsNullOrEmpty(item.Name)) errors.Add(new ConnectoException { Message = "Please provide Name" });
+            var errors = new VendorModelValidator(item).Validate();
             if (errors.Count > 0) return Json(new ConnectoValidation { Status = "Failure", Exceptions = errors }, JsonRequestBehavior.AllowGet);
 
             item.LocationId = 1;
