@@ -16,8 +16,8 @@ hrControllers.controller(cName + 'ListCtrl', ['$scope', '$http', '$routeParams',
           bootbox.confirm("Are you sure want to delete?", function (result) {
               if (result) {
                   $http.post('/' + cName + '/Delete/', { id: itemId }).success(function (data) {
-                      if (data.Status == "Failure") showMessage(data);
-                      $scope.loadItems();
+                      showMessage(data);
+                      if (data.Status != "Failure") $scope.loadItems();
                   });
               }
           });
@@ -26,8 +26,8 @@ hrControllers.controller(cName + 'ListCtrl', ['$scope', '$http', '$routeParams',
 hrControllers.controller(cName + 'NewCtrl', function ($scope, $location, $http) {
     $scope.add = function () {
         $http.post('/' + cName + '/Create/', $scope.item).success(function (data) {
-            if(data.Status == "Failure")showMessage(data);
-            else $location.path('/');
+            showMessage(data);
+            if (data.Status != "Failure") $location.path('/');
         });
     };
 });
@@ -38,8 +38,11 @@ hrControllers.controller(cName + 'EditCtrl', ['$scope', '$http', '$location', '$
           $scope.item = data;
       });
       $scope.edit = function () {
+          AppCommonFunction.ShowWaitBlock();
           $http.post('/' + cName + '/Edit/', $scope.item).success(function (data) {
-              $location.path('/');
+              showMessage(data);
+              if (data.Status != "Failure") $location.path('/');
+              AppCommonFunction.HideWaitBlock();
           });
       };
   }]);

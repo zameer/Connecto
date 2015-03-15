@@ -38,7 +38,7 @@ namespace Connecto.App.Controllers
             item.CreatedOn = DateTime.Now;
             item.Status = RecordStatus.Active;
             _repo.Add(item);
-            return Json(true, JsonRequestBehavior.AllowGet);
+            return Json(new { Status = "Success", Message = "Person Successfully Saved." }, JsonRequestBehavior.AllowGet);
         }
 
         //
@@ -49,7 +49,7 @@ namespace Connecto.App.Controllers
             item.EditedBy = User.UserId();
             item.EditedOn = DateTime.Now;
             _repo.Edit(item);
-            return Json(true, JsonRequestBehavior.AllowGet);
+            return Json(new { Status = "Success", Message = "Person Successfully Updated." }, JsonRequestBehavior.AllowGet);
         }
 
         //
@@ -61,7 +61,7 @@ namespace Connecto.App.Controllers
             if (errors.Count > 0) return Json(new ConnectoValidation { Status = "Failure", Exceptions = errors }, JsonRequestBehavior.AllowGet);
 
             _repo.Delete(id, User.UserId());
-            return Json(true, JsonRequestBehavior.AllowGet);
+            return Json(new { Status = "Success", Message = "Person Successfully Deleted." }, JsonRequestBehavior.AllowGet);
         }
 
         //
