@@ -187,10 +187,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201503150418531_next update.cs" />
-    <Compile Include="Migrations\201503150418531_next update.Designer.cs">
-      <DependentUpon>201503150418531_next update.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -372,11 +368,6 @@
       <Project>{c2007667-b9b7-4923-9dfb-09d91a3f6758}</Project>
       <Name>Connecto.Repositories</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201503150418531_next update.resx">
-      <DependentUpon>201503150418531_next update.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
