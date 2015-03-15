@@ -66,5 +66,21 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                 return context.SaveChanges() > 0;
             }
         }
+        public bool IsExist(Measure measure)
+        {
+            using (var context = DataObjectFactory.CreateContext())
+            {
+                if (measure.MeasureId > 0)
+                    return context.Measures.Any(e => e.MeasureId != measure.MeasureId && e.Volume == measure.Volume && e.Lower.ToLower() == measure.Lower.ToLower() && e.Actual.ToLower() == measure.Actual.ToLower());
+                return context.Measures.Any(e => e.Volume == measure.Volume && e.Lower.ToLower() == measure.Lower.ToLower() && e.Actual.ToLower() == measure.Actual.ToLower());
+            }
+        }
+        public bool IsUsed(int id)
+        {
+            using (var context = DataObjectFactory.CreateContext())
+            {
+                return context.ProductTypes.Any(s => s.MeasureId == id && s.Status == RecordStatus.Active);
+            }
+        }
     }
 }

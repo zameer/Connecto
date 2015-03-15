@@ -5,6 +5,7 @@ using Connecto.App.Models;
 using Connecto.BusinessObjects;
 using Connecto.Common.Enumeration;
 using Connecto.Repositories;
+using Connecto.App.ModelValidator;
 
 namespace Connecto.App.Controllers
 {
@@ -27,10 +28,7 @@ namespace Connecto.App.Controllers
         [HttpPost]
         public JsonResult Create(ProductType item)
         {
-            var errors = new List<ConnectoException>();
-            if (item.MeasureId.Equals(0)) errors.Add(new ConnectoException { Message = "Please select measure" });
-            if (string.IsNullOrEmpty(item.Type)) errors.Add(new ConnectoException { Message = "Please provide Type" });
-            if (string.IsNullOrEmpty(item.StockAs)) errors.Add(new ConnectoException { Message = "Please provide Stock As" });
+            var errors = new ProductTypeValidator(item, _repo).Validate();
             if (errors.Count > 0) return Json(new ConnectoValidation { Status = "Failure", Exceptions = errors }, JsonRequestBehavior.AllowGet);
 
             item.LocationId = 1;
@@ -47,6 +45,9 @@ namespace Connecto.App.Controllers
         [HttpPost]
         public ActionResult Edit(ProductType item)
         {
+            var errors = new ProductTypeValidator(item, _repo).Validate();
+            if (errors.Count > 0) return Json(new ConnectoValidation { Status = "Failure", Exceptions = errors }, JsonRequestBehavior.AllowGet);
+
             item.EditedBy = User.UserId();
             item.EditedOn = DateTime.Now;
             _repo.Edit(item);
@@ -58,7 +59,10 @@ namespace Connecto.App.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            //_productType.(id, User.UserId());
+            var errors = new ProductTypeValidator(_repo).Validate(id);
+            if (errors.Count > 0) return Json(new ConnectoValidation { Status = "Failure", Exceptions = errors }, JsonRequestBehavior.AllowGet);
+
+            _repo.Delete(id, User.UserId());
             return Json(true, JsonRequestBehavior.AllowGet);
         }
 

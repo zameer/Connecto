@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using Connecto.App.ModelValidator;
 
 namespace Connecto.App.Controllers
 {
@@ -50,12 +51,8 @@ namespace Connecto.App.Controllers
         [HttpPost]
         public JsonResult Create(Measure item)
         {
-            var errors = new List<ConnectoException>();
-            if (string.IsNullOrEmpty(item.Lower)) errors.Add(new ConnectoException { Message = "Please provide lower" });
-            if (item.Volume == 0) errors.Add(new ConnectoException { Message = "Please provide Volume" });
-            if (string.IsNullOrEmpty(item.Actual)) errors.Add(new ConnectoException { Message = "Please provide Actual" });
-            if (errors.Count > 0) return Json(new ConnectoValidation{ Status = "Failure", Exceptions = errors}, JsonRequestBehavior.AllowGet);
-
+            var errors = new MeasureValidator(item, _repo).Validate();
+            if (errors.Count > 0) return Json(new ConnectoValidation { Status = "Failure", Exceptions = errors }, JsonRequestBehavior.AllowGet);
 
             item.LocationId = 1;
             item.MeasureGuid = Guid.NewGuid();
@@ -72,6 +69,9 @@ namespace Connecto.App.Controllers
         [HttpPost]
         public ActionResult Edit(Measure item)
         {
+            var errors = new MeasureValidator(item, _repo).Validate();
+            if (errors.Count > 0) return Json(new ConnectoValidation { Status = "Failure", Exceptions = errors }, JsonRequestBehavior.AllowGet);
+
             item.EditedBy = User.UserId();
             item.EditedOn = DateTime.Now;
             _repo.Edit(item);
@@ -84,6 +84,9 @@ namespace Connecto.App.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
+            var errors = new MeasureValidator(_repo).Validate(id);
+            if (errors.Count > 0) return Json(new ConnectoValidation { Status = "Failure", Exceptions = errors }, JsonRequestBehavior.AllowGet);
+
             _repo.Delete(id, User.UserId());
             return Json(true, JsonRequestBehavior.AllowGet);
         }

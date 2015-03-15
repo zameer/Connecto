@@ -52,5 +52,14 @@ namespace Connecto.Repositories
         {
             MeasureDao.EditMeasure(measure);
         }
+        public bool IsExist(Measure measure)
+        {
+            return MeasureDao.IsExist(measure);
+        }
+
+        public bool IsUsed(int id)
+        {
+            return MeasureDao.IsUsed(id);
+        }
     }
 }

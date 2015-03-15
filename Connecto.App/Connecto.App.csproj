@@ -187,10 +187,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201503150418531_next update.cs" />
+    <Compile Include="Migrations\201503150418531_next update.Designer.cs">
+      <DependentUpon>201503150418531_next update.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="ModelValidator\CompanyModelValidator.cs" />
+    <Compile Include="ModelValidator\PersonValidator.cs" />
+    <Compile Include="ModelValidator\ProductTypeValidator.cs" />
+    <Compile Include="ModelValidator\MeasureValidator.cs" />
+    <Compile Include="ModelValidator\VendorValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -342,8 +349,8 @@
     <Content Include="Views\Employee\People.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Areas\" />
+    <Folder Include="Properties\App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
@@ -365,6 +372,11 @@
       <Project>{c2007667-b9b7-4923-9dfb-09d91a3f6758}</Project>
       <Name>Connecto.Repositories</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201503150418531_next update.resx">
+      <DependentUpon>201503150418531_next update.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

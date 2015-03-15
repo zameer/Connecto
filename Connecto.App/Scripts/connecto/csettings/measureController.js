@@ -3,17 +3,20 @@
 var cName = 'Measure';
 cSettingControllers.controller(cName + 'ListCtrl', ['$scope', '$http', '$routeParams',
   function ($scope, $http) {
-      AppCommonFunction.ShowWaitBlock();
-      $http.get('/' + cName + '/Get/').success(function (data) {
-          $scope.items = data;
-          AppCommonFunction.HideWaitBlock();
-      });
+      $scope.loadItems = function () {
+          AppCommonFunction.ShowWaitBlock();
+          $http.get('/' + cName + '/Get/').success(function (data) {
+              $scope.items = data;
+              AppCommonFunction.HideWaitBlock();
+          });
+      };
+      $scope.loadItems();
       $scope.delete = function (itemId) {
           bootbox.confirm("Are you sure want to delete?", function (result) {
               if (result) {
                   $http.post('/' + cName + '/Delete/', { id: itemId }).success(function (data) {
                       if (data.Status == "Failure") showMessage(data);
-                      else $location.path('/');
+                      else $scope.loadItems();
                   });
               }
           });
@@ -34,7 +37,8 @@ cSettingControllers.controller(cName + 'EditCtrl', ['$scope', '$http', '$locatio
       });
       $scope.edit = function () {
           $http.post('/' + cName + '/Edit/', $scope.item).success(function (data) {
-              $location.path('/');
+              if (data.Status == "Failure") showMessage(data);
+              else $location.path('/');
           });
       };
   }]);

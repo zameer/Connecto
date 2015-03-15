@@ -57,5 +57,15 @@ namespace Connecto.Repositories
         {
             VendorDao.EditVendor(vendor);
         }
+
+        public bool IsExist(Vendor vendor)
+        {
+            return VendorDao.IsExist(vendor);
+        }
+
+        public bool IsUsed(int id)
+        {
+            return VendorDao.IsUsed(id);
+        }
     }
 }

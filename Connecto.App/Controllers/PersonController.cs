@@ -5,6 +5,7 @@ using Connecto.Common.Enumeration;
 using Connecto.Repositories;
 using System;
 using System.Web.Mvc;
+using Connecto.App.ModelValidator;
 
 namespace Connecto.App.Controllers
 {
@@ -56,6 +57,9 @@ namespace Connecto.App.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
+            var errors = new PersonValidator(_repo).Validate(id);
+            if (errors.Count > 0) return Json(new ConnectoValidation { Status = "Failure", Exceptions = errors }, JsonRequestBehavior.AllowGet);
+
             _repo.Delete(id, User.UserId());
             return Json(true, JsonRequestBehavior.AllowGet);
         }

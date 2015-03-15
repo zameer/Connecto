@@ -3,6 +3,7 @@ using System.Linq;
 using Connecto.BusinessObjects;
 using Connecto.DataObjects.EntityFramework.ModelMapper;
 using System;
+using Connecto.Common.Enumeration;
 
 namespace Connecto.DataObjects.EntityFramework.Implementation
 {
@@ -16,7 +17,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var productTypes = context.ProductTypes.ToList();
+                var productTypes = context.ProductTypes.Where(e => e.Status == RecordStatus.Active).ToList();
                 return productTypes.Select(Mapper.Map).ToList();
             }
         }
@@ -43,15 +44,18 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
             }
         }
 
-        public int DeleteProductType(int id = 0)
+        public int DeleteProductType(int id, int deletedBy)
         {
             using (var context = DataObjectFactory.CreateContext())
             {
                 var entity = context.ProductTypes.FirstOrDefault(s => s.ProductTypeId == id);
-                context.ProductTypes.Remove(entity);
+                entity.Status = RecordStatus.Deleted;
+                entity.EditedOn = DateTime.Now;
+                entity.EditedBy = deletedBy;
                 return context.SaveChanges();
             }
-        }
+        } 
+
 
         public bool EditProductType(ProductType productType)
         {
@@ -67,6 +71,22 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                 return context.SaveChanges() > 0;
             }
         }
+        public bool IsExist(ProductType productType)
+        {
+            using (var context = DataObjectFactory.CreateContext())
+            {
+                if (productType.ProductTypeId > 0)
+                    return context.ProductTypes.Any(e => e.ProductTypeId != productType.ProductTypeId && e.MeasureId == productType.MeasureId && e.Type.ToLower() == productType.Type.ToLower());
+                return context.ProductTypes.Any(e => e.MeasureId == productType.MeasureId && e.Type.ToLower() == productType.Type.ToLower());
+            }
+        }
 
+        public bool IsUsed(int id)
+        {
+            using (var context = DataObjectFactory.CreateContext())
+            {
+                return context.Products.Any(s => s.ProductTypeId == id && s.Status == RecordStatus.Active);
+            }
+        }
     }
 }

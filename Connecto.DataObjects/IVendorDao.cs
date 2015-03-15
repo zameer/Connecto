@@ -48,5 +48,9 @@ namespace Connecto.DataObjects
         /// <param name="id">Unique vendor identifier</param>
         /// <returns>Vendor ID</returns>
         bool EditVendor(Vendor vendor);
+
+        bool IsExist(Vendor vendor);
+
+        bool IsUsed(int id);
     }
 }

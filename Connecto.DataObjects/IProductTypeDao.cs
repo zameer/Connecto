@@ -18,13 +18,9 @@ namespace Connecto.DataObjects
         List<ProductType> GetProductTypes();
         ProductType GetProductType(int id);
         int AddProductType(ProductType productType);
-
-        /// <summary>
-        /// Remove specific Product
-        /// </summary>
-        /// <param name="id">Unique Product identifier</param>
-        /// <returns>No of Product Deleted</returns>
-        int DeleteProductType(int id = 0);
+        int DeleteProductType(int id, int deletedBy);
         bool EditProductType(ProductType productType);
+        bool IsExist(ProductType productType);
+        bool IsUsed(int id);
     }
 }

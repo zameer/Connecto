@@ -31,5 +31,10 @@ namespace Connecto.Repositories
         {
             PersonDao.EditPerson(person);
         }
+
+        public bool IsUsed(int id)
+        {
+            return PersonDao.IsUsed(id);
+        }
     }
 }

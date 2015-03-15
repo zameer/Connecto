@@ -62,5 +62,14 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                 return context.SaveChanges() > 0;
             }
         }
+
+        public bool IsUsed(int id) {
+            using (var context = DataObjectFactory.CreateContext())
+            {
+                var isUsed = context.Employees.Any(s => s.PersonId == id && s.Status == Common.Enumeration.RecordStatus.Active);
+                if (!isUsed) isUsed = context.Suppliers.Any(s => s.PersonId == id && s.Status == Common.Enumeration.RecordStatus.Active);
+                return isUsed;
+            }
+        }
     }
 }

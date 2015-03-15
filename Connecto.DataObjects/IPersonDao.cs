@@ -20,5 +20,6 @@ namespace Connecto.DataObjects
         int DeletePerson(int id, int deletedBy);
         int AddPerson(Person person);
         bool EditPerson(Person person);
+        bool IsUsed(int id);
     }
 }

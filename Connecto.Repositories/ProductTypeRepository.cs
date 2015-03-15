@@ -29,15 +29,15 @@ namespace Connecto.Repositories
             return ProductTypeDao.GetProductType(id);
         }
 
-        ///// <summary>
-        ///// Removes specific ProductType
-        ///// </summary>
-        ///// <param name="id">Identifier</param>
-        ///// <returns>No of ProductTypes Deleted</returns>
-        //public int Delete(int id = 0)
-        //{
-        //    return ProductDao.De(id);
-        //}
+        /// <summary>
+        /// Removes specific ProductType
+        /// </summary>
+        /// <param name="id">Identifier</param>
+        /// <returns>No of ProductTypes Deleted</returns>
+        public int Delete(int id, int deletedBy)
+        {
+            return ProductTypeDao.DeleteProductType(id, deletedBy);
+        }
 
         /// <summary>
         /// Create new ProductType
@@ -55,6 +55,16 @@ namespace Connecto.Repositories
         public void Edit(ProductType productType)
         {
             ProductTypeDao.EditProductType(productType);
+        }
+
+        public bool IsExist(ProductType productType)
+        {
+            return ProductTypeDao.IsExist(productType);
+        }
+
+        public bool IsUsed(int id)
+        {
+            return ProductTypeDao.IsUsed(id);
         }
     }
 }

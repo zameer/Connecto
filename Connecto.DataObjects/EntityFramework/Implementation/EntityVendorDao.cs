@@ -3,6 +3,7 @@ using System.Linq;
 using Connecto.BusinessObjects;
 using Connecto.DataObjects.EntityFramework.ModelMapper;
 using System;
+using Connecto.Common.Enumeration;
 
 namespace Connecto.DataObjects.EntityFramework.Implementation
 {
@@ -60,6 +61,24 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                 entity.EditedBy = vendor.EditedBy;
                 entity.EditedOn = DateTime.Now;
                 return context.SaveChanges() > 0;
+            }
+        }
+
+        public bool IsExist(Vendor vendor)
+        {
+            using (var context = DataObjectFactory.CreateContext())
+            {
+                if (vendor.VendorId > 0)
+                    return context.Vendors.Any(e => e.VendorId != vendor.VendorId && e.Name.ToLower() == vendor.Name.ToLower());
+                return context.Vendors.Any(e => e.Name.ToLower() == vendor.Name.ToLower());
+            }
+        }
+
+        public bool IsUsed(int id)
+        {
+            using (var context = DataObjectFactory.CreateContext())
+            {
+                return context.Products.Any(s => s.VendorId == id && s.Status == RecordStatus.Active);
             }
         }
     }

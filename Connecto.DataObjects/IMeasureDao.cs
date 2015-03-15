@@ -43,5 +43,9 @@ namespace Connecto.DataObjects
         int AddMeasure(Measure measure);
 
         bool EditMeasure(Measure measure);
+
+        bool IsExist(Measure measure);
+
+        bool IsUsed(int id);
     }
 }
