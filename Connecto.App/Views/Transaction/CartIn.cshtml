@@ -1,0 +1,51 @@
+﻿@{ Layout = null; }
+<div ng-controller="TransactionCartInCtrl">
+    <div class="page-header">
+        <h1>NEW CART </h1>
+    </div>
+
+    <form class="form-horizontal" role="form">
+        <div class="row">
+            <div class="col-xs-12">
+                <!-- PAGE CONTENT BEGINS -->
+                <div class="row">
+                    <div class="col-sm-6">
+                        <!-- #section:elements.tab -->
+                        <div class="form-group">
+                            <div class="col-sm-11">
+                                <input class="col-xs-4" type="text" placeholder="Product Code">
+                                <div class="col-xs-8">
+                                    <select ng-model="item.ProductId" id="product" class="select2" data-placeholder="Choose Product...">
+                                        <option></option>
+                                        <option ng-repeat="e in products" value="{{e.ProductId}}">{{e.Name}}</option>
+                                    </select>
+                                    <select ng-model="item.SupplierId" id="product-supplier" class="select2" data-placeholder="Choose Supplier...">
+                                        <option></option>
+                                        <option ng-repeat="e in suppliers" value="{{e.SupplierId}}">{{e.Person.FirstName}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-9">
+                            </div>
+                        </div>
+                        <div class="space-6"></div>
+
+                        <!-- /section:elements.tab -->
+                    </div><!-- /.col -->
+
+                    <div class="col-sm-6">
+                        asasa
+                    </div>
+                </div><!-- /.row -->
+                <div class="space"></div>
+                <div class="hr hr-double hr-dotted hr18"></div>
+            </div><!-- /.col -->
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('.select2').select2({ allowClear: true });
+        $('#menu-tr').syncMenu([{ name: "cartIn", option: "a" }]);
+    });
+</script>

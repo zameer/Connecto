@@ -179,6 +179,7 @@
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MeasureController.cs" />
+    <Compile Include="Controllers\TransactionController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ProductTypeController.cs" />
     <Compile Include="Controllers\SupplierController.cs" />
@@ -274,6 +275,7 @@
     <Content Include="Scripts\connecto\plugins\elements.wysiwyg.js" />
     <Content Include="Scripts\connecto\plugins\select2.js" />
     <Content Include="Scripts\connecto\respond.js" />
+    <Content Include="Scripts\connecto\tr\cartInController.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -343,6 +345,8 @@
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Employee\List.cshtml" />
     <Content Include="Views\Employee\People.cshtml" />
+    <Content Include="Views\Transaction\CartIn.cshtml" />
+    <Content Include="Views\Transaction\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\" />

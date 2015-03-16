@@ -33,9 +33,7 @@ cSettingControllers.controller(cName + 'NewCtrl', function ($scope, $location, $
 cSettingControllers.controller(cName + 'EditCtrl', ['$scope', '$http', '$location', '$routeParams',
   function ($scope, $http, $location, $routeParams) {
       $http.get('/' + cName + '/GetItem/' + $routeParams.itemId).success(function (data) {
-          if (data.Status == "Failure") showMessage(data);
-          else $location.path('/');
-          
+          $scope.item = data;
       });
       $scope.edit = function () {
           $http.post('/' + cName + '/Edit/', $scope.item).success(function (data) {

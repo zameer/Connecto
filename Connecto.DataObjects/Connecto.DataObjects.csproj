@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityFramework\EntityInvoice.cs" />
+    <Compile Include="EntityFramework\EntityProductDetailCart.cs" />
     <Compile Include="EntityFramework\Implementation\EntityProductTypeDao.cs" />
     <Compile Include="EntityFramework\Implementation\EntityPersonDao.cs" />
     <Compile Include="IProductTypeDao.cs" />

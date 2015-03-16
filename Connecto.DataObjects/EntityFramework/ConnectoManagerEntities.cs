@@ -29,6 +29,7 @@ namespace Connecto.DataObjects.EntityFramework
         public DbSet<EntityEmployee> Employees { get; set; }
         public DbSet<EntityCurrency> Currencys { get; set; }
         public DbSet<EntityProductDetail> ProductDetails { get; set; }
+        public DbSet<EntityProductDetailCart> ProductDetailCarts { get; set; }
         public DbSet<EntityProductSupplier> ProductSuppliers { get; set; }
         public DbSet<EntityMeasure> Measures { get; set; }
         public DbSet<EntityContact> Contacts { get; set; }

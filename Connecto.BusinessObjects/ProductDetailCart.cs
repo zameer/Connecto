@@ -2,7 +2,7 @@
 
 namespace Connecto.BusinessObjects
 {
-    public class ProductDetail : Connecto
+    public class ProductDetailCart : Connecto
     {
         public int ProductDetailId { get; set; }
         public Guid ProductDetailGuid { get; set; }

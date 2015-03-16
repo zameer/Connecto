@@ -11,3 +11,9 @@ var hrApp = angular.module('hrApp', [
   'ngRoute',
   'hrControllers'
 ]);
+
+var trControllers = angular.module('trControllers', []);
+var trApp = angular.module('trApp', [
+  'ngRoute',
+  'trControllers'
+]);

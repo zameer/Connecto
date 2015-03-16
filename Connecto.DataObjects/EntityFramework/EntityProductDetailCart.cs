@@ -4,8 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Connecto.DataObjects.EntityFramework
 {
-    [Table("ProductDetail", Schema = "Product")]
-    public class EntityProductDetail : EntityConnecto
+    [Table("ProductDetailCart", Schema = "Product")]
+    public class EntityProductDetailCart : EntityConnecto
     {
         [Key]
         public int ProductDetailId { get; set; }
