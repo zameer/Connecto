@@ -4,9 +4,9 @@
         <div class="page-header row">
             <div class="col-sm-2 no-padding-left"><h1>NEW CART </h1></div>
             <div class="col-sm-8">
-                <select ng-model="item.InvoiceId" id="invoice" class="select2" data-placeholder="New Invoice">
+                <select ng-model="item.InvoiceId" ng-change="filterInvoice(item.InvoiceId)" id="invoice" class="select2" data-placeholder="New Invoice">
                     <option></option>
-                    <option ng-repeat="e in products" value="{{e.ProductId}}">{{e.Name}}</option>
+                    <option ng-repeat="e in invoices" value="{{e}}">{{e}}</option>
                 </select>
             </div>
         </div>
@@ -96,18 +96,18 @@
                                 <tr>
                                     <th>Product</th>
                                     <th>Quantity</th>
-                                    <th>Price</th>
-                                    <th class="hidden-480">Supplier</th>
+                                    <th>Unit Price</th>
+                                    <th class="hidden-480">Selling Price</th>
                                     <th></th>
                                 </tr>
                             </thead>
 
                             <tbody>
                                 <tr ng-repeat="item in items">
-                                    <td>Sanstha</td>
-                                    <td>250</td>
-                                    <td>$45</td>
-                                    <td class="hidden-480">Mercy</td>
+                                    <td>{{item.Product.Name}} - {{item.ProductCode}}</td>
+                                    <td>{{item.Quantity}}</td>
+                                    <td>{{item.UnitPrice}}</td>
+                                    <td class="hidden-480">{{item.SellingPrice}}</td>
                                     <td>
                                         <div class="hidden-sm hidden-xs btn-group">
                                             <button class="btn btn-xs btn-info">

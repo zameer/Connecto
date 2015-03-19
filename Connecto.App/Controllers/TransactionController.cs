@@ -12,6 +12,11 @@ namespace Connecto.App.Controllers
     public class TransactionController : Controller
     {
         private readonly ProductDetailRepository _repo = ConnectoFactory.ProductDetailRepository;
+        public JsonResult GetInvoices()
+        {
+            var items = _repo.GetInvoices();
+            return Json(items, JsonRequestBehavior.AllowGet);
+        }
         public JsonResult Get(int invoiceId)
         {
             var items = _repo.GetAll(invoiceId);

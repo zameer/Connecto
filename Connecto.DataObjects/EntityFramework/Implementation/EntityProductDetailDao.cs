@@ -9,6 +9,14 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
 {
     public class EntityProductDetailDao : IProductDetailDao
     {
+        public List<int> GetInvoices()
+        {
+            using (var context = DataObjectFactory.CreateContext())
+            {
+                return context.ProductDetailCarts.Select(e => e.InvoiceId).Distinct().ToList();
+            }
+        }
+
         public List<ProductDetail> GetProductDetails(int invoiceId)
         {
             using (var context = DataObjectFactory.CreateContext())
@@ -31,7 +39,8 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
             using (var context = DataObjectFactory.CreateContext())
             {
                 var entity = Mapper.Map(productDetailCart);
-                entity.InvoiceId = AddInvoice(context, InvoiceType.Buying, productDetailCart);
+                if(productDetailCart.InvoiceId.Equals(0))
+                    entity.InvoiceId = AddInvoice(context, InvoiceType.Buying, productDetailCart);
                 
                 context.ProductDetailCarts.Add(entity);
                 context.SaveChanges();
