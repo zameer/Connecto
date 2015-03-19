@@ -59,5 +59,10 @@ namespace Connecto.DataObjects
         {
             get { return _factory.PersonDao; }
         }
+
+        public static IProductDetailDao ProductDetailDao
+        {
+            get { return _factory.ProductDetailDao; }
+        }
     }
 }

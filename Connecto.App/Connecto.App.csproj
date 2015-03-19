@@ -194,6 +194,7 @@
     <Compile Include="ModelValidator\PersonValidator.cs" />
     <Compile Include="ModelValidator\ProductTypeValidator.cs" />
     <Compile Include="ModelValidator\MeasureValidator.cs" />
+    <Compile Include="ModelValidator\ProductDetailValidator.cs" />
     <Compile Include="ModelValidator\VendorValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />

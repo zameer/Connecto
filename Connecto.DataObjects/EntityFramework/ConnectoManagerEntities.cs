@@ -35,5 +35,6 @@ namespace Connecto.DataObjects.EntityFramework
         public DbSet<EntityContact> Contacts { get; set; }
         public DbSet<EntityPerson> People { get; set; }
         public DbSet<EntityProductType> ProductTypes { get; set; }
+        public DbSet<EntityInvoice> Invoices { get; set; }
     }
 }

@@ -46,5 +46,9 @@
         {
             get { return new PersonRepository(); }
         }
+        public static ProductDetailRepository ProductDetailRepository
+        {
+            get { return new ProductDetailRepository(); }
+        }
     }
 }

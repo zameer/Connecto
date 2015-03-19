@@ -333,11 +333,20 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
             {
                 ProductDetailId = entity.ProductDetailId,
                 ProductDetailGuid = entity.ProductDetailGuid,
+                InvoiceId = entity.InvoiceId,
                 ProductId = entity.ProductId,
-                UnitPrice = entity.UnitPrice,
+                SupplierId = entity.SupplierId,
+                ProductCode = entity.ProductCode,
                 Quantity = entity.Quantity,
+                UnitPrice = entity.UnitPrice,
                 SellingPrice = entity.SellingPrice,
-                DateReceived = entity.DateReceived
+                DateReceived = entity.DateReceived,
+                LocationId = entity.LocationId,
+                Status = entity.Status,
+                CreatedBy = entity.CreatedBy,
+                CreatedOn = entity.CreatedOn,
+                EditedBy = entity.EditedBy,
+                EditedOn = entity.EditedOn,
             };
         }
         internal static EntityProductDetail Map(ProductDetail entity)
@@ -346,11 +355,64 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
             {
                 ProductDetailId = entity.ProductDetailId,
                 ProductDetailGuid = entity.ProductDetailGuid,
+                InvoiceId = entity.InvoiceId,
                 ProductId = entity.ProductId,
-                UnitPrice = entity.UnitPrice,
+                SupplierId = entity.SupplierId,
+                ProductCode = entity.ProductCode,
                 Quantity = entity.Quantity,
+                UnitPrice = entity.UnitPrice,
                 SellingPrice = entity.SellingPrice,
-                DateReceived = entity.DateReceived
+                DateReceived = entity.DateReceived,
+                LocationId = entity.LocationId,
+                Status = entity.Status,
+                CreatedBy = entity.CreatedBy,
+                CreatedOn = entity.CreatedOn,
+                EditedBy = entity.EditedBy,
+                EditedOn = entity.EditedOn,
+            };
+        }
+        internal static ProductDetailCart Map(EntityProductDetailCart entity)
+        {
+            return new ProductDetailCart
+            {
+                ProductDetailId = entity.ProductDetailId,
+                ProductDetailGuid = entity.ProductDetailGuid,
+                InvoiceId = entity.InvoiceId,
+                ProductId = entity.ProductId,
+                SupplierId = entity.SupplierId,
+                ProductCode = entity.ProductCode,
+                Quantity = entity.Quantity,
+                UnitPrice = entity.UnitPrice,
+                SellingPrice = entity.SellingPrice,
+                DateReceived = entity.DateReceived,
+                LocationId = entity.LocationId,
+                Status = entity.Status,
+                CreatedBy = entity.CreatedBy,
+                CreatedOn = entity.CreatedOn,
+                EditedBy = entity.EditedBy,
+                EditedOn = entity.EditedOn,
+            };
+        }
+        internal static EntityProductDetailCart Map(ProductDetailCart entity)
+        {
+            return new EntityProductDetailCart
+            {
+                ProductDetailId = entity.ProductDetailId,
+                ProductDetailGuid = entity.ProductDetailGuid,
+                InvoiceId = entity.InvoiceId,
+                ProductId = entity.ProductId,
+                SupplierId = entity.SupplierId,
+                ProductCode = entity.ProductCode,
+                Quantity = entity.Quantity,
+                UnitPrice = entity.UnitPrice,
+                SellingPrice = entity.SellingPrice,
+                DateReceived = entity.DateReceived,
+                LocationId = entity.LocationId,
+                Status = entity.Status,
+                CreatedBy = entity.CreatedBy,
+                CreatedOn = entity.CreatedOn,
+                EditedBy = entity.EditedBy,
+                EditedOn = entity.EditedOn,
             };
         }
         internal static ProductSupplier Map(EntityProductSupplier entity)

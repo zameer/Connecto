@@ -13,6 +13,5 @@ namespace Connecto.DataObjects.EntityFramework
         public int InvoiceId { get; set; }
         public Guid InvoiceGuid { get; set; }
         public InvoiceType InvoiceType { get; set; }
-        public int ProductDetailId { get; set; }
     }
 }

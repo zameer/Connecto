@@ -11,45 +11,45 @@ namespace Connecto.App.Controllers
 {
     public class TransactionController : Controller
     {
-        private readonly PersonRepository _repo = ConnectoFactory.PersonRepository;
-        public JsonResult Get()
+        private readonly ProductDetailRepository _repo = ConnectoFactory.ProductDetailRepository;
+        public JsonResult Get(int invoiceId)
         {
-            var items = _repo.GetAll();
+            var items = _repo.GetAll(invoiceId);
             return Json(items, JsonRequestBehavior.AllowGet);
         }
-        public JsonResult GetItem(int id)
+        public JsonResult GetCart(int id)
         {
-            var item = _repo.GetVendorById(id);
+            var item = _repo.GetCart(id);
             return Json(item, JsonRequestBehavior.AllowGet);
         }
 
         //
         // POST: /Transaction/Create
         [HttpPost]
-        public JsonResult Create(Person item)
+        public JsonResult Create(ProductDetailCart item)
         {
-            var errors = new List<ConnectoException>();
-            if (string.IsNullOrEmpty(item.FirstName)) errors.Add(new ConnectoException { Message = "Please provide Name" });
+            var errors = new ProductDetailValidator(item, _repo).Validate();
             if (errors.Count > 0) return Json(new ConnectoValidation { Status = "Failure", Exceptions = errors }, JsonRequestBehavior.AllowGet);
 
             item.LocationId = 1;
-            item.PersonGuid = Guid.NewGuid();
+            item.ProductDetailGuid = Guid.NewGuid();
             item.CreatedBy = User.UserId();
             item.CreatedOn = DateTime.Now;
+            item.DateReceived = DateTime.Now;
             item.Status = RecordStatus.Active;
-            _repo.Add(item);
-            return Json(new { Status = "Success", Message = "Person Successfully Saved." }, JsonRequestBehavior.AllowGet);
+            _repo.AddToCart(item);
+            return Json(new { Status = "Success", Message = "Cart Item Added." }, JsonRequestBehavior.AllowGet);
         }
 
         //
         // POST: /Transaction/Edit/5
         [HttpPost]
-        public ActionResult Edit(Person item)
+        public ActionResult Edit(ProductDetailCart item)
         {
             item.EditedBy = User.UserId();
             item.EditedOn = DateTime.Now;
-            _repo.Edit(item);
-            return Json(new { Status = "Success", Message = "Person Successfully Updated." }, JsonRequestBehavior.AllowGet);
+            _repo.EditCart(item);
+            return Json(new { Status = "Success", Message = "Cart Item Updated." }, JsonRequestBehavior.AllowGet);
         }
 
         //
@@ -57,9 +57,6 @@ namespace Connecto.App.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            var errors = new PersonValidator(_repo).Validate(id);
-            if (errors.Count > 0) return Json(new ConnectoValidation { Status = "Failure", Exceptions = errors }, JsonRequestBehavior.AllowGet);
-
             _repo.Delete(id, User.UserId());
             return Json(new { Status = "Success", Message = "Person Successfully Deleted." }, JsonRequestBehavior.AllowGet);
         }
