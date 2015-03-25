@@ -28,6 +28,10 @@ namespace Connecto.Repositories
         {
             ProductDetailDao.AddProductDetailCart(productDetailCart);
         }
+        public int Add(int invoiceId)
+        {
+            return ProductDetailDao.AddProductDetail(invoiceId);
+        }
 
         public void EditCart(ProductDetailCart productDetailCart)
         {

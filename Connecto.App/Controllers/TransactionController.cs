@@ -65,6 +65,12 @@ namespace Connecto.App.Controllers
             _repo.Delete(id, User.UserId());
             return Json(new { Status = "Success", Message = "Person Successfully Deleted." }, JsonRequestBehavior.AllowGet);
         }
+        [HttpPost]
+        public JsonResult Complete(int id)
+        {
+            _repo.Add(id);
+            return Json(new { Status = "Success", Message = "Invoice Successfully Added." }, JsonRequestBehavior.AllowGet);
+        }
         public ActionResult Index()
         {
             return View();

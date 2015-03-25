@@ -36,4 +36,14 @@ trControllers.controller(cName + 'CartInCtrl', ['$scope', '$http', '$routeParams
               if (data.Status != "Failure") $scope.loadItems($scope.item.InvoiceId);
           });
       };
+      $scope.complete = function () {
+          console.log($scope.item.InvoiceId);
+          $http.post('/' + cName + '/Complete/', { id: $scope.item.InvoiceId }).success(function (data) {
+              showMessage(data);
+              if (data.Status != "Failure") {
+                  $scope.loadInvoices();
+                  $scope.loadItems();
+              }
+          });
+      };
   }]);

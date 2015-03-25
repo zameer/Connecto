@@ -47,6 +47,28 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                 return entity.ProductDetailId;
             }
         }
+        public int AddProductDetail(int invoiceId)
+        {
+            using (var context = DataObjectFactory.CreateContext())
+            {
+                var productDetailsCart = context.ProductDetailCarts.Where(e => e.InvoiceId == invoiceId && e.Status == RecordStatus.Active).ToList();
+                var cartsToRemove = new List<EntityProductDetailCart>();
+                foreach (var item in productDetailsCart)
+                {
+                    var product = context.Products.FirstOrDefault(e => e.ProductId == item.ProductId);
+                    if (product == null) continue;
+                    product.Quantity += item.Quantity;
+                    product.StockInHand += item.Quantity;
+                    context.ProductDetails.Add(Mapper.MapDiff(item));
+                    cartsToRemove.Add(item);
+                    //context.SaveChanges();
+                }
+                if (cartsToRemove.Count <= 0) return cartsToRemove.Count;
+                context.ProductDetailCarts.RemoveRange(productDetailsCart);
+                context.SaveChanges();
+                return cartsToRemove.Count;
+            }
+        }
 
         internal int AddInvoice(ConnectoManagerEntities context, InvoiceType invoiceType, ProductDetailCart item)
         {

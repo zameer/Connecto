@@ -11,5 +11,6 @@ namespace Connecto.DataObjects
         int AddProductDetailCart(ProductDetailCart productDetailCart);
         bool EditProductDetailCart(ProductDetailCart product);
         int DeleteProductDetailCart(int id, int deletedBy);
+        int AddProductDetail(int invoiceId);
     }
 }

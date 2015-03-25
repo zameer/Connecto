@@ -98,7 +98,43 @@
                                     <th>Quantity</th>
                                     <th>Unit Price</th>
                                     <th class="hidden-480">Selling Price</th>
-                                    <th></th>
+                                    <th>
+                                        <div class="hidden-sm hidden-xs btn-group">
+                                            <button class="btn btn-xs btn-info">
+                                                <i class="ace-icon fa fa-print bigger-120"></i>
+                                            </button>
+
+                                            <button class="btn btn-xs btn-danger" ng-click="complete()">
+                                                <i class="ace-icon fa fa-check bigger-120"></i>
+                                            </button>
+                                        </div>
+
+                                        <div class="hidden-md hidden-lg">
+                                            <div class="inline pos-rel">
+                                                <button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown" data-position="auto">
+                                                    <i class="ace-icon fa fa-cog icon-only bigger-110"></i>
+                                                </button>
+
+                                                <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+                                                    <li>
+                                                        <a href="#" class="tooltip-info" data-rel="tooltip" title="" data-original-title="View">
+                                                            <span class="blue">
+                                                                <i class="ace-icon fa fa-print bigger-120"></i>
+                                                            </span>
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
+                                                            <span class="green">
+                                                                <i class="ace-icon fa fa-check bigger-120"></i>
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </th>
                                 </tr>
                             </thead>
 
