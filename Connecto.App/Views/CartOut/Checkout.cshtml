@@ -20,7 +20,7 @@
                             <div class="form-group">
                                 <label class="col-sm-4 control-label">Code</label>
                                 <div class="col-sm-9">
-                                    <input ng-model="item.ProductCode" class="input-sm" type="text" placeholder="Product Code">
+                                    <input ng-model="item.ProductCode" ng-blur="filterProduct()" class="input-sm" type="text" placeholder="Product Code">
                                 </div>
                             </div>
                         </div>
@@ -28,23 +28,17 @@
                         <div class="col-sm-8">
                             <div class="col-sm-6">
                                 <div class="row form-group">
-                                    <label class="col-sm-4 control-label">Product</label>
+                                    <label class="col-sm-4 control-label no-padding-left">Price</label>
                                     <div class="col-sm-9">
-                                        <select ng-model="item.ProductId" id="product" class="select2" data-placeholder="Choose Product...">
-                                            <option></option>
-                                            <option ng-repeat="e in products" value="{{e.ProductId}}">{{e.Name}}</option>
-                                        </select>
+                                        <input ng-model="item.SellingPrice" ng-blur="" class="input-sm" type="text" placeholder="Price">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="row form-group">
-                                    <label class="col-sm-4 control-label">Supplier</label>
+                                    <label class="col-sm-7 control-label no-padding-left">Stock In Hand</label>
                                     <div class="col-sm-9">
-                                        <select ng-model="item.SupplierId" id="product-supplier" class="select2" data-placeholder="Choose Supplier...">
-                                            <option></option>
-                                            <option ng-repeat="e in suppliers" value="{{e.SupplierId}}">{{e.Person.FirstName}}</option>
-                                        </select>
+                                        <input ng-model="item.StockInHand" ng-blur="" class="input-sm" type="text" placeholder="Stock In Hand">
                                     </div>
                                 </div>
                             </div>

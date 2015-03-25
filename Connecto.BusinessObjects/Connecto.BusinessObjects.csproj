@@ -46,6 +46,9 @@
     <Compile Include="Contact.cs" />
     <Compile Include="Currency.cs" />
     <Compile Include="Employee.cs" />
+    <Compile Include="Customer.cs" />
+    <Compile Include="SalesDetail.cs" />
+    <Compile Include="SalesDetailCart.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Measure.cs" />
     <Compile Include="Person.cs" />

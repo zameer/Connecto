@@ -19,5 +19,6 @@
         IContactDao ContactDao { get; }
         IPersonDao PersonDao { get; }
         IProductDetailDao ProductDetailDao { get; }
+        ISalesDetailDao SalesDetailDao { get; }
     }
 }

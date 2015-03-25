@@ -438,6 +438,72 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 EditedOn = entity.EditedOn,
             };
         }
+        internal static EntitySalesDetailCart Map(SalesDetailCart entity)
+        {
+            return new EntitySalesDetailCart
+            {
+                SalesDetailId = entity.SalesDetailId,
+                SalesDetailGuid = entity.SalesDetailGuid,
+                OrderId = entity.OrderId,
+                ProductDetailId = entity.ProductDetailId,
+                CustomerId = entity.CustomerId,
+                ProductCode = entity.ProductCode,
+                Quantity = entity.Quantity,
+                UnitPrice = entity.UnitPrice,
+                SellingPrice = entity.SellingPrice,
+                DateSold = entity.DateSold,
+                LocationId = entity.LocationId,
+                Status = entity.Status,
+                CreatedBy = entity.CreatedBy,
+                CreatedOn = entity.CreatedOn,
+                EditedBy = entity.EditedBy,
+                EditedOn = entity.EditedOn,
+            };
+        }
+        internal static SalesDetailCart Map(EntitySalesDetailCart entity)
+        {
+            return new SalesDetailCart
+            {
+                SalesDetailId = entity.SalesDetailId,
+                SalesDetailGuid = entity.SalesDetailGuid,
+                OrderId = entity.OrderId,
+                ProductDetailId = entity.ProductDetailId,
+                CustomerId = entity.CustomerId,
+                ProductCode = entity.ProductCode,
+                Quantity = entity.Quantity,
+                UnitPrice = entity.UnitPrice,
+                SellingPrice = entity.SellingPrice,
+                DateSold = entity.DateSold,
+                LocationId = entity.LocationId,
+                Status = entity.Status,
+                CreatedBy = entity.CreatedBy,
+                CreatedOn = entity.CreatedOn,
+                EditedBy = entity.EditedBy,
+                EditedOn = entity.EditedOn,
+            };
+        }
+        internal static SalesDetail Map(EntitySalesDetail entity)
+        {
+            return new SalesDetail
+            {
+                SalesDetailId = entity.SalesDetailId,
+                SalesDetailGuid = entity.SalesDetailGuid,
+                OrderId = entity.OrderId,
+                ProductDetailId = entity.ProductDetailId,
+                CustomerId = entity.CustomerId,
+                ProductCode = entity.ProductCode,
+                Quantity = entity.Quantity,
+                UnitPrice = entity.UnitPrice,
+                SellingPrice = entity.SellingPrice,
+                DateSold = entity.DateSold,
+                LocationId = entity.LocationId,
+                Status = entity.Status,
+                CreatedBy = entity.CreatedBy,
+                CreatedOn = entity.CreatedOn,
+                EditedBy = entity.EditedBy,
+                EditedOn = entity.EditedOn,
+            };
+        }
         internal static ProductSupplier Map(EntityProductSupplier entity)
         {
             return new ProductSupplier

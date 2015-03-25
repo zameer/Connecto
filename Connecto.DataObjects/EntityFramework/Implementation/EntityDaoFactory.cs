@@ -63,5 +63,10 @@
         {
             get { return new EntityProductDetailDao(); }
         }
+
+        public ISalesDetailDao SalesDetailDao
+        {
+            get { return new EntitySalesDetailDao(); }
+        }
     }
 }

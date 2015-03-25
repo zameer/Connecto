@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContactRepository.cs" />
+    <Compile Include="SalesDetailRepository.cs" />
     <Compile Include="ProductTypeRepository.cs" />
     <Compile Include="CurrencyRepository.cs" />
     <Compile Include="MeasureRepository.cs" />

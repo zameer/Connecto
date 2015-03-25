@@ -15,17 +15,15 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
               });
           } else $scope.items = [];
       };
-      $scope.loadSelections = function () {
-          $http.get('/Product/Get/').success(function (data) {
-              $scope.products = data;
-          });
-          $http.get('/Supplier/Get/').success(function (data) {
-              $scope.suppliers = data;
-          });
-      };
       $scope.loadOrders();
       $scope.loadItems();
-      $scope.loadSelections();
+      $scope.filterProduct = function () {
+          if ($scope.item.ProductCode != undefined) {
+              $http.get('/' + cName + '/GetSalesDetail/?productCode=' + $scope.item.ProductCode).success(function (data) {
+                  $scope.item = data;
+              });
+          }
+      };
       $scope.filterOrder = function (orderId) {
           if (orderId.length > 0) $scope.loadItems(orderId);
           else $scope.items = [];

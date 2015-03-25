@@ -11,7 +11,7 @@ namespace Connecto.App.Controllers
 {
     public class CartOutController : Controller
     {
-        private readonly ProductDetailRepository _repo = ConnectoFactory.ProductDetailRepository;
+        private readonly SalesDetailRepository _repo = ConnectoFactory.SalesDetailRepository;
         public JsonResult GetOrders()
         {
             var items = _repo.GetOrders();
@@ -22,6 +22,11 @@ namespace Connecto.App.Controllers
             var items = _repo.GetAll(orderId);
             return Json(items, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult GetSalesDetail(string productCode)
+        {
+            var item = _repo.GetSalesDetail(productCode);
+            return Json(item, JsonRequestBehavior.AllowGet);
+        }
         public JsonResult GetCart(int id)
         {
             var item = _repo.GetCart(id);
@@ -31,16 +36,16 @@ namespace Connecto.App.Controllers
         //
         // POST: /Transaction/Create
         [HttpPost]
-        public JsonResult Create(ProductDetailCart item)
+        public JsonResult Create(SalesDetailCart item)
         {
-            var errors = new ProductDetailValidator(item, _repo).Validate();
+            var errors = new SalesDetailValidator(item, _repo).Validate();
             if (errors.Count > 0) return Json(new ConnectoValidation { Status = "Failure", Exceptions = errors }, JsonRequestBehavior.AllowGet);
 
             item.LocationId = 1;
-            item.ProductDetailGuid = Guid.NewGuid();
+            item.SalesDetailGuid = Guid.NewGuid();
             item.CreatedBy = User.UserId();
             item.CreatedOn = DateTime.Now;
-            item.DateReceived = DateTime.Now;
+            item.DateSold = DateTime.Now;
             item.Status = RecordStatus.Active;
             _repo.AddToCart(item);
             return Json(new { Status = "Success", Message = "Cart Item Added." }, JsonRequestBehavior.AllowGet);
@@ -49,7 +54,7 @@ namespace Connecto.App.Controllers
         //
         // POST: /Transaction/Edit/5
         [HttpPost]
-        public ActionResult Edit(ProductDetailCart item)
+        public ActionResult Edit(SalesDetailCart item)
         {
             item.EditedBy = User.UserId();
             item.EditedOn = DateTime.Now;
@@ -68,7 +73,7 @@ namespace Connecto.App.Controllers
         [HttpPost]
         public JsonResult Complete(int id)
         {
-            _repo.Add(id);
+            //_repo.Add(id);
             return Json(new { Status = "Success", Message = "Invoice Successfully Added." }, JsonRequestBehavior.AllowGet);
         }
         public ActionResult Index()

@@ -50,5 +50,9 @@
         {
             get { return new ProductDetailRepository(); }
         }
+        public static SalesDetailRepository SalesDetailRepository
+        {
+            get { return new SalesDetailRepository(); }
+        }
     }
 }
