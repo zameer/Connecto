@@ -93,10 +93,6 @@
     <Compile Include="ISupplierDao.cs" />
     <Compile Include="IPersonDao.cs" />
     <Compile Include="IVendorDao.cs" />
-    <Compile Include="Migrations\201503250512547_invoice into order - remove Entity prefix.cs" />
-    <Compile Include="Migrations\201503250512547_invoice into order - remove Entity prefix.Designer.cs">
-      <DependentUpon>201503250512547_invoice into order - remove Entity prefix.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -115,11 +111,6 @@
       <Project>{8abb07ee-a696-4145-8e7e-cec3c785c153}</Project>
       <Name>Connecto.Common</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201503250512547_invoice into order - remove Entity prefix.resx">
-      <DependentUpon>201503250512547_invoice into order - remove Entity prefix.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

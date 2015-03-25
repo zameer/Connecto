@@ -12,14 +12,14 @@ namespace Connecto.App.Controllers
     public class CartOutController : Controller
     {
         private readonly ProductDetailRepository _repo = ConnectoFactory.ProductDetailRepository;
-        public JsonResult GetInvoices()
+        public JsonResult GetOrders()
         {
-            var items = _repo.GetInvoices();
+            var items = _repo.GetOrders();
             return Json(items, JsonRequestBehavior.AllowGet);
         }
-        public JsonResult Get(int invoiceId)
+        public JsonResult Get(int orderId)
         {
-            var items = _repo.GetAll(invoiceId);
+            var items = _repo.GetAll(orderId);
             return Json(items, JsonRequestBehavior.AllowGet);
         }
         public JsonResult GetCart(int id)

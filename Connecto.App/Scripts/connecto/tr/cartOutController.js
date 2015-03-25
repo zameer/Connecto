@@ -3,14 +3,14 @@
 var cName = 'CartOut';
 trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
   function ($scope, $http) {
-      $scope.loadInvoices = function () {
-          $http.get('/' + cName + '/GetInvoices/').success(function (data) {
-              $scope.invoices = data;
+      $scope.loadOrders = function () {
+          $http.get('/' + cName + '/GetOrders/').success(function (data) {
+              $scope.orders = data;
           });
       };
-      $scope.loadItems = function (invoiceId) {
-          if (invoiceId != undefined) {
-              $http.get('/' + cName + '/GetCart/' + invoiceId).success(function(data) {
+      $scope.loadItems = function (orderId) {
+          if (orderId != undefined) {
+              $http.get('/' + cName + '/GetCart/' + orderId).success(function (data) {
                   $scope.items = data;
               });
           } else $scope.items = [];
@@ -23,25 +23,24 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
               $scope.suppliers = data;
           });
       };
-      $scope.loadInvoices();
+      $scope.loadOrders();
       $scope.loadItems();
       $scope.loadSelections();
-      $scope.filterInvoice = function (invoiceId) {
-          if (invoiceId.length > 0) $scope.loadItems(invoiceId);
+      $scope.filterOrder = function (orderId) {
+          if (orderId.length > 0) $scope.loadItems(orderId);
           else $scope.items = [];
       };
       $scope.add = function () {
           $http.post('/' + cName + '/Create/', $scope.item).success(function (data) {
               showMessage(data);
-              if (data.Status != "Failure") $scope.loadItems($scope.item.InvoiceId);
+              if (data.Status != "Failure") $scope.loadItems($scope.item.OrderId);
           });
       };
       $scope.complete = function () {
-          console.log($scope.item.InvoiceId);
-          $http.post('/' + cName + '/Complete/', { id: $scope.item.InvoiceId }).success(function (data) {
+          $http.post('/' + cName + '/Complete/', { id: $scope.item.OrderId }).success(function (data) {
               showMessage(data);
               if (data.Status != "Failure") {
-                  $scope.loadInvoices();
+                  $scope.loadOrders();
                   $scope.loadItems();
               }
           });

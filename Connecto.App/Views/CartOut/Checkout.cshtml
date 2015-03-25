@@ -4,9 +4,9 @@
         <div class="page-header row">
             <div class="col-sm-2 no-padding-left"><h1>NEW CART </h1></div>
             <div class="col-sm-8">
-                <select ng-model="item.InvoiceId" ng-change="filterInvoice(item.InvoiceId)" id="invoice" class="select2" data-placeholder="New Invoice">
+                <select ng-model="item.OrderId" ng-change="filterOrder(item.OrderId)" id="order" class="select2" data-placeholder="New Invoice">
                     <option></option>
-                    <option ng-repeat="e in invoices" value="{{e}}">{{e}}</option>
+                    <option ng-repeat="e in orders" value="{{e}}">{{e}}</option>
                 </select>
             </div>
         </div>

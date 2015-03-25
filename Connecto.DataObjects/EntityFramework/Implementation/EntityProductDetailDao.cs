@@ -9,7 +9,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
 {
     public class EntityProductDetailDao : IProductDetailDao
     {
-        public List<int> GetInvoices()
+        public List<int> GetOrders()
         {
             using (var context = DataObjectFactory.CreateContext())
             {
