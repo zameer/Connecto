@@ -18,9 +18,11 @@
                     <div class="col-sm-7">
                         <div class="col-sm-4">
                             <div class="form-group">
-                                <label class="col-sm-4 control-label">Code</label>
-                                <div class="col-sm-9">
-                                    <input ng-model="item.ProductCode" ng-blur="filterProduct()" class="input-sm" type="text" placeholder="Product Code">
+                                <div class="infobox infobox-orange2">
+                                    <div class="infobox-data">
+                                        <input ng-model="item.ProductCode" ng-blur="filterProduct()" class="input-sm" type="text" placeholder="Product Code">
+                                        <div class="infobox-content">Product Code</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -28,17 +30,21 @@
                         <div class="col-sm-8">
                             <div class="col-sm-6">
                                 <div class="row form-group">
-                                    <label class="col-sm-4 control-label no-padding-left">Price</label>
-                                    <div class="col-sm-9">
-                                        <input ng-model="item.SellingPrice" ng-blur="" class="input-sm" type="text" placeholder="Price">
+                                    <div class="infobox infobox-green">
+                                        <div class="infobox-data">
+                                            <span class="infobox-data-number">{{item.SellingPrice}}</span>
+                                            <div class="infobox-content">Selling Price</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="row form-group">
-                                    <label class="col-sm-7 control-label no-padding-left">Stock In Hand</label>
-                                    <div class="col-sm-9">
-                                        <input ng-model="item.StockInHand" ng-blur="" class="input-sm" type="text" placeholder="Stock In Hand">
+                                    <div class="infobox infobox-orange2">
+                                        <div class="infobox-data">
+                                            <span class="infobox-data-number">{{item.StockInHand}}</span>
+                                            <div class="infobox-content">Stock In Hand</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -47,9 +53,11 @@
                         <div class="space-6"></div>
                         <div class="col-sm-4">
                             <div class="form-group">
-                                <label class="col-sm-4 control-label">Quantity</label>
+                                <label class="col-sm-4 control-label">Measure</label>
                                 <div class="col-sm-9">
-                                    <input ng-model="item.Quantity" class="input-sm" type="text" placeholder="Quantity">
+                                    <select ng-model="item.Measure">
+                                        <option ng-repeat="e in item.Measures" value="{{e}}">{{e}}</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -57,9 +65,9 @@
                         <div class="col-sm-8">
                             <div class="col-sm-6">
                                 <div class="row form-group">
-                                    <label class="col-sm-6 control-label no-padding-left">Unit Price</label>
+                                    <label class="col-sm-6 control-label no-padding-left">Sell By {{item.Measure}}</label>
                                     <div class="col-sm-9">
-                                        <input ng-model="item.UnitPrice" class="input-sm" type="text" placeholder="Unit Price">
+                                        <input ng-model="item.Quantity" class="input-sm" type="text" placeholder="Unit Price">
                                     </div>
                                 </div>
                             </div>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Connecto.BusinessObjects
 {
@@ -9,6 +10,8 @@ namespace Connecto.BusinessObjects
         public string ProductCode { get; set; }
         public int OrderId { get; set; }
         public int ProductDetailId { get; set; }
+        public string Measure { get; set; }
+        public List<string> Measures { get; set; }
         public int CustomerId { get; set; }
         public double UnitPrice { get; set; }
         public double SellingPrice { get; set; }

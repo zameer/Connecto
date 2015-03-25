@@ -23,12 +23,15 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
             {
                 var productDetail = context.ProductDetails.FirstOrDefault(e => e.ProductCode.Equals(productCode));
                 if (productDetail == null) return null;
+                var measure = productDetail.Product.ProductType.Measure;
                 return new SalesDetail
                 {
                     ProductDetailId = productDetail.ProductDetailId,
                     ProductCode = productCode,
                     StockInHand = productDetail.Product.StockInHand,
-                    SellingPrice = productDetail.SellingPrice
+                    SellingPrice = productDetail.SellingPrice,
+                    Measure = measure.Actual,
+                    Measures = new List<string> { measure.Actual, measure.Lower }.Distinct().ToList()
                 };
             }
         }
