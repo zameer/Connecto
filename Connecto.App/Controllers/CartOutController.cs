@@ -9,7 +9,7 @@ using Connecto.App.ModelValidator;
 
 namespace Connecto.App.Controllers
 {
-    public class TransactionController : Controller
+    public class CartOutController : Controller
     {
         private readonly ProductDetailRepository _repo = ConnectoFactory.ProductDetailRepository;
         public JsonResult GetInvoices()
@@ -76,8 +76,8 @@ namespace Connecto.App.Controllers
             return View();
         }
         //
-        // GET: /Transaction/
-        public ActionResult CartIn()
+        // GET: /CartIn/
+        public ActionResult Checkout()
         {
             return View();
         }

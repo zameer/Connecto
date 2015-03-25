@@ -13,23 +13,23 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                return context.ProductDetailCarts.Select(e => e.InvoiceId).Distinct().ToList();
+                return context.ProductDetailCarts.Select(e => e.OrderId).Distinct().ToList();
             }
         }
 
-        public List<ProductDetail> GetProductDetails(int invoiceId)
+        public List<ProductDetail> GetProductDetails(int orderId)
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var productDetails = context.ProductDetails.Where(e => e.InvoiceId == invoiceId && e.Status == RecordStatus.Active).ToList();
+                var productDetails = context.ProductDetails.Where(e => e.OrderId == orderId && e.Status == RecordStatus.Active).ToList();
                 return productDetails.Select(Mapper.Map).ToList();
             }
         }
-        public List<ProductDetailCart> GetProductDetailsCart(int invoiceId)
+        public List<ProductDetailCart> GetProductDetailsCart(int orderId)
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var productDetailsCart = context.ProductDetailCarts.Where(e => e.InvoiceId == invoiceId && e.Status == RecordStatus.Active).ToList();
+                var productDetailsCart = context.ProductDetailCarts.Where(e => e.OrderId == orderId && e.Status == RecordStatus.Active).ToList();
                 return productDetailsCart.Select(Mapper.Map).ToList();
             }
         }
@@ -39,8 +39,8 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
             using (var context = DataObjectFactory.CreateContext())
             {
                 var entity = Mapper.Map(productDetailCart);
-                if(productDetailCart.InvoiceId.Equals(0))
-                    entity.InvoiceId = AddInvoice(context, InvoiceType.Buying, productDetailCart);
+                if(productDetailCart.OrderId.Equals(0))
+                    entity.OrderId = AddInvoice(context, OrderType.Buying, productDetailCart);
                 
                 context.ProductDetailCarts.Add(entity);
                 context.SaveChanges();
@@ -51,7 +51,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var productDetailsCart = context.ProductDetailCarts.Where(e => e.InvoiceId == invoiceId && e.Status == RecordStatus.Active).ToList();
+                var productDetailsCart = context.ProductDetailCarts.Where(e => e.OrderId == invoiceId && e.Status == RecordStatus.Active).ToList();
                 var cartsToRemove = new List<EntityProductDetailCart>();
                 foreach (var item in productDetailsCart)
                 {
@@ -61,7 +61,6 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                     product.StockInHand += item.Quantity;
                     context.ProductDetails.Add(Mapper.MapDiff(item));
                     cartsToRemove.Add(item);
-                    //context.SaveChanges();
                 }
                 if (cartsToRemove.Count <= 0) return cartsToRemove.Count;
                 context.ProductDetailCarts.RemoveRange(productDetailsCart);
@@ -70,20 +69,20 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
             }
         }
 
-        internal int AddInvoice(ConnectoManagerEntities context, InvoiceType invoiceType, ProductDetailCart item)
+        internal int AddInvoice(ConnectoManagerEntities context, OrderType orderType, ProductDetailCart item)
         {
-            var entity = new EntityInvoice
+            var entity = new EntityOrder
             {
-                InvoiceGuid = Guid.NewGuid(),
-                InvoiceType = invoiceType,
+                OrderGuid = Guid.NewGuid(),
+                OrderType = orderType,
                 LocationId = item.LocationId,
                 Status = item.Status,
                 CreatedBy = item.CreatedBy,
                 CreatedOn = item.CreatedOn
             };
-            context.Invoices.Add(entity);
+            context.Orders.Add(entity);
             context.SaveChanges();
-            return entity.InvoiceId;
+            return entity.OrderId;
         }
         public bool EditProductDetailCart(ProductDetailCart cart)
         {

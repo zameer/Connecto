@@ -174,12 +174,13 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CartOutController.cs" />
     <Compile Include="Controllers\ConnectoController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MeasureController.cs" />
-    <Compile Include="Controllers\TransactionController.cs" />
+    <Compile Include="Controllers\CartInController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ProductTypeController.cs" />
     <Compile Include="Controllers\SupplierController.cs" />
@@ -276,6 +277,7 @@
     <Content Include="Scripts\connecto\plugins\elements.wysiwyg.js" />
     <Content Include="Scripts\connecto\plugins\select2.js" />
     <Content Include="Scripts\connecto\respond.js" />
+    <Content Include="Scripts\connecto\tr\cartOutController.js" />
     <Content Include="Scripts\connecto\tr\cartInController.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -346,8 +348,10 @@
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Employee\List.cshtml" />
     <Content Include="Views\Employee\People.cshtml" />
-    <Content Include="Views\Transaction\CartIn.cshtml" />
-    <Content Include="Views\Transaction\Index.cshtml" />
+    <Content Include="Views\CartIn\Checkout.cshtml" />
+    <Content Include="Views\CartIn\Index.cshtml" />
+    <Content Include="Views\CartOut\Checkout.cshtml" />
+    <Content Include="Views\CartOut\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\" />

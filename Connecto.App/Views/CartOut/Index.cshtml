@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Selling Cart";
+}
+<div ng-app="trApp">
+    <div ng-view></div>
+</div>
+<script src="~/Scripts/connecto/tr/cartOutController.js"></script>
+<script type="text/javascript">
+    $('#menu-tr').syncMenu([{ name: "cartOut", option: "a" }]);
+    trApp.config(['$routeProvider',
+    function ($routeProvider) {
+        $routeProvider.
+             when('/', { templateUrl: '/CartOut/Checkout', controller: 'CartOutCtrl' })
+            .otherwise({ redirectTo: '/' });
+    }]);
+</script>

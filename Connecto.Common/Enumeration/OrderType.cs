@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Connecto.Common.Enumeration
 {
-    public enum InvoiceType
+    public enum OrderType
     {
         Buying = 1,
         Selling = 2,

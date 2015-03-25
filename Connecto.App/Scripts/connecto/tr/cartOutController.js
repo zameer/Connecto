@@ -1,6 +1,6 @@
 'use strict';
 /* Controllers */
-var cName = 'CartIn';
+var cName = 'CartOut';
 trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
   function ($scope, $http) {
       $scope.loadInvoices = function () {

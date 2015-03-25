@@ -6,12 +6,12 @@ using Connecto.Common.Enumeration;
 
 namespace Connecto.DataObjects.EntityFramework
 {
-    [Table("Invoice", Schema = "Product")]
-    public class EntityInvoice : EntityConnecto
+    [Table("Order", Schema = "Product")]
+    public class EntityOrder : EntityConnecto
     {
         [Key]
-        public int InvoiceId { get; set; }
-        public Guid InvoiceGuid { get; set; }
-        public InvoiceType InvoiceType { get; set; }
+        public int OrderId { get; set; }
+        public Guid OrderGuid { get; set; }
+        public OrderType OrderType { get; set; }
     }
 }

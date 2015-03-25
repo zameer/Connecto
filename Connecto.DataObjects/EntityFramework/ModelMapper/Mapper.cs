@@ -333,7 +333,7 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
             {
                 ProductDetailId = entity.ProductDetailId,
                 ProductDetailGuid = entity.ProductDetailGuid,
-                InvoiceId = entity.InvoiceId,
+                OrderId = entity.OrderId,
                 ProductId = entity.ProductId,
                 SupplierId = entity.SupplierId,
                 ProductCode = entity.ProductCode,
@@ -355,7 +355,7 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
             {
                 ProductDetailId = entity.ProductDetailId,
                 ProductDetailGuid = entity.ProductDetailGuid,
-                InvoiceId = entity.InvoiceId,
+                OrderId = entity.OrderId,
                 ProductId = entity.ProductId,
                 SupplierId = entity.SupplierId,
                 ProductCode = entity.ProductCode,
@@ -377,7 +377,7 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
             {
                 ProductDetailId = entity.ProductDetailId,
                 ProductDetailGuid = entity.ProductDetailGuid,
-                InvoiceId = entity.InvoiceId,
+                OrderId = entity.OrderId,
                 ProductId = entity.ProductId,
                 SupplierId = entity.SupplierId,
                 ProductCode = entity.ProductCode,
@@ -399,7 +399,7 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
             {
                 ProductDetailId = entity.ProductDetailId,
                 ProductDetailGuid = entity.ProductDetailGuid,
-                InvoiceId = entity.InvoiceId,
+                OrderId = entity.OrderId,
                 ProductId = entity.ProductId,
                 SupplierId = entity.SupplierId,
                 ProductCode = entity.ProductCode,
@@ -422,7 +422,7 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
             {
                 ProductDetailId = entity.ProductDetailId,
                 ProductDetailGuid = entity.ProductDetailGuid,
-                InvoiceId = entity.InvoiceId,
+                OrderId = entity.OrderId,
                 ProductId = entity.ProductId,
                 SupplierId = entity.SupplierId,
                 ProductCode = entity.ProductCode,

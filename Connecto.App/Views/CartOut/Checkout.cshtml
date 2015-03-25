@@ -1,0 +1,200 @@
+﻿@{ Layout = null; }
+<div ng-controller="CartOutCtrl">
+    <form class="form-horizontal" role="form">
+        <div class="page-header row">
+            <div class="col-sm-2 no-padding-left"><h1>NEW CART </h1></div>
+            <div class="col-sm-8">
+                <select ng-model="item.InvoiceId" ng-change="filterInvoice(item.InvoiceId)" id="invoice" class="select2" data-placeholder="New Invoice">
+                    <option></option>
+                    <option ng-repeat="e in invoices" value="{{e}}">{{e}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <!-- PAGE CONTENT BEGINS -->
+                <div class="row">
+                    <div class="col-sm-7">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Code</label>
+                                <div class="col-sm-9">
+                                    <input ng-model="item.ProductCode" class="input-sm" type="text" placeholder="Product Code">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-8">
+                            <div class="col-sm-6">
+                                <div class="row form-group">
+                                    <label class="col-sm-4 control-label">Product</label>
+                                    <div class="col-sm-9">
+                                        <select ng-model="item.ProductId" id="product" class="select2" data-placeholder="Choose Product...">
+                                            <option></option>
+                                            <option ng-repeat="e in products" value="{{e.ProductId}}">{{e.Name}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="row form-group">
+                                    <label class="col-sm-4 control-label">Supplier</label>
+                                    <div class="col-sm-9">
+                                        <select ng-model="item.SupplierId" id="product-supplier" class="select2" data-placeholder="Choose Supplier...">
+                                            <option></option>
+                                            <option ng-repeat="e in suppliers" value="{{e.SupplierId}}">{{e.Person.FirstName}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-6"></div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Quantity</label>
+                                <div class="col-sm-9">
+                                    <input ng-model="item.Quantity" class="input-sm" type="text" placeholder="Quantity">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-8">
+                            <div class="col-sm-6">
+                                <div class="row form-group">
+                                    <label class="col-sm-6 control-label no-padding-left">Unit Price</label>
+                                    <div class="col-sm-9">
+                                        <input ng-model="item.UnitPrice" class="input-sm" type="text" placeholder="Unit Price">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="row form-group">
+                                    <label class="col-sm-7 control-label no-padding-left">Selling Price</label>
+                                    <div class="col-sm-9">
+                                        <input ng-model="item.SellingPrice" class="input-sm" type="text" placeholder="Selling Price">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-6"></div>
+                        <div class="col-sm-12 align-right">
+                            <div class="col-md-offset-3 col-sm-8">
+                                <button class="btn btn-app btn-yellow btn-xs" type="button" ng-click="add()">
+                                    <i class="ace-icon fa fa-shopping-cart bigger-160"></i>
+                                    Sell
+                                </button>
+                            </div>
+                        </div>
+                    </div><!-- /.col -->
+
+                    <div class="col-sm-5">
+                        <table id="simple-table" class="table table-striped table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Quantity</th>
+                                    <th>Unit Price</th>
+                                    <th class="hidden-480">Selling Price</th>
+                                    <th>
+                                        <div class="hidden-sm hidden-xs btn-group">
+                                            <button class="btn btn-xs btn-info">
+                                                <i class="ace-icon fa fa-print bigger-120"></i>
+                                            </button>
+
+                                            <button class="btn btn-xs btn-danger" ng-click="complete()">
+                                                <i class="ace-icon fa fa-check bigger-120"></i>
+                                            </button>
+                                        </div>
+
+                                        <div class="hidden-md hidden-lg">
+                                            <div class="inline pos-rel">
+                                                <button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown" data-position="auto">
+                                                    <i class="ace-icon fa fa-cog icon-only bigger-110"></i>
+                                                </button>
+
+                                                <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+                                                    <li>
+                                                        <a href="#" class="tooltip-info" data-rel="tooltip" title="" data-original-title="View">
+                                                            <span class="blue">
+                                                                <i class="ace-icon fa fa-print bigger-120"></i>
+                                                            </span>
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
+                                                            <span class="green">
+                                                                <i class="ace-icon fa fa-check bigger-120"></i>
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr ng-repeat="item in items">
+                                    <td>{{item.Product.Name}} - {{item.ProductCode}}</td>
+                                    <td>{{item.Quantity}}</td>
+                                    <td>{{item.UnitPrice}}</td>
+                                    <td class="hidden-480">{{item.SellingPrice}}</td>
+                                    <td>
+                                        <div class="hidden-sm hidden-xs btn-group">
+                                            <button class="btn btn-xs btn-info">
+                                                <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                            </button>
+
+                                            <button class="btn btn-xs btn-danger">
+                                                <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                            </button>
+                                        </div>
+
+                                        <div class="hidden-md hidden-lg">
+                                            <div class="inline pos-rel">
+                                                <button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown" data-position="auto">
+                                                    <i class="ace-icon fa fa-cog icon-only bigger-110"></i>
+                                                </button>
+
+                                                <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+                                                    <li>
+                                                        <a href="#" class="tooltip-info" data-rel="tooltip" title="" data-original-title="View">
+                                                            <span class="blue">
+                                                                <i class="ace-icon fa fa-search-plus bigger-120"></i>
+                                                            </span>
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
+                                                            <span class="green">
+                                                                <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div><!-- /.row -->
+                <div class="space"></div>
+                <div class="hr hr-double hr-dotted hr18"></div>
+            </div><!-- /.col -->
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('.select2').select2({ allowClear: true });
+        $('#menu-tr').syncMenu([{ name: "cartOut", option: "a" }]);
+    });
+</script>

@@ -14,23 +14,23 @@ namespace Connecto.Repositories
         {
             return ProductDetailDao.GetInvoices();
         }
-        public IList<ProductDetail> GetAll(int invoiceId)
+        public IList<ProductDetail> GetAll(int orderId)
         {
-            return ProductDetailDao.GetProductDetails(invoiceId);
+            return ProductDetailDao.GetProductDetails(orderId);
         }
 
-        public IList<ProductDetailCart> GetCart(int invoiceId)
+        public IList<ProductDetailCart> GetCart(int orderId)
         {
-            return ProductDetailDao.GetProductDetailsCart(invoiceId);
+            return ProductDetailDao.GetProductDetailsCart(orderId);
         }
 
         public void AddToCart(ProductDetailCart productDetailCart)
         {
             ProductDetailDao.AddProductDetailCart(productDetailCart);
         }
-        public int Add(int invoiceId)
+        public int Add(int orderId)
         {
-            return ProductDetailDao.AddProductDetail(invoiceId);
+            return ProductDetailDao.AddProductDetail(orderId);
         }
 
         public void EditCart(ProductDetailCart productDetailCart)
