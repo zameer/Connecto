@@ -11,6 +11,7 @@ namespace Connecto.BusinessObjects
         public int OrderId { get; set; }
         public int ProductDetailId { get; set; }
         public string Measure { get; set; }
+        public int Volume { get; set; }
         public List<string> Measures { get; set; }
         public int CustomerId { get; set; }
         public double UnitPrice { get; set; }

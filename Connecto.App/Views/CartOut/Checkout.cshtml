@@ -42,7 +42,7 @@
                                 <div class="row form-group">
                                     <div class="infobox infobox-orange2">
                                         <div class="infobox-data">
-                                            <span class="infobox-data-number">{{item.StockInHand}}</span>
+                                            <span class="infobox-data-number">{{item.StockInHand}} {{Measure}}</span>
                                             <div class="infobox-content">Stock In Hand</div>
                                         </div>
                                     </div>
@@ -53,11 +53,22 @@
                         <div class="space-6"></div>
                         <div class="col-sm-4">
                             <div class="form-group">
-                                <label class="col-sm-4 control-label">Measure</label>
-                                <div class="col-sm-9">
-                                    <select ng-model="item.Measure">
-                                        <option ng-repeat="e in item.Measures" value="{{e}}">{{e}}</option>
-                                    </select>
+                                <div class="col-sm-5 no-padding-left">
+                                    <div ng-if="item.Measure" class="infobox infobox-orange2 width-auto">
+                                        <div class="infobox-data width-auto">
+                                            <span class="infobox-data-number"><input ng-model="item.Quantity" ng-blur="calculatePrice()" class="input-mini" type="text" placeholder=""></span>
+                                            <div class="infobox-content">{{Measure}}s</div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div ng-if="item.Measures.length > 1" class="infobox infobox-orange2 width-auto">
+                                        <div class="infobox-data width-auto">
+                                            <span class="infobox-data-number"><input ng-model="item.Lower" ng-blur="calculatePrice()" class="input-mini" type="text" placeholder=""></span>
+                                            <div class="infobox-content">{{item.Measures[1]}}s</div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -65,9 +76,9 @@
                         <div class="col-sm-8">
                             <div class="col-sm-6">
                                 <div class="row form-group">
-                                    <label class="col-sm-6 control-label no-padding-left">Sell By {{item.Measure}}</label>
+                                    <label class="col-sm-6 control-label no-padding-left">Discount</label>
                                     <div class="col-sm-9">
-                                        <input ng-model="item.Quantity" class="input-sm" type="text" placeholder="Unit Price">
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -75,7 +86,7 @@
                                 <div class="row form-group">
                                     <label class="col-sm-7 control-label no-padding-left">Selling Price</label>
                                     <div class="col-sm-9">
-                                        <input ng-model="item.SellingPrice" class="input-sm" type="text" placeholder="Selling Price">
+                                        <input ng-model="item.Price" class="input-sm" type="text" placeholder="Selling Price">
                                     </div>
                                 </div>
                             </div>

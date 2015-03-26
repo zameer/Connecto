@@ -31,6 +31,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                     StockInHand = productDetail.Product.StockInHand,
                     SellingPrice = productDetail.SellingPrice,
                     Measure = measure.Actual,
+                    Volume = measure.Volume,
                     Measures = new List<string> { measure.Actual, measure.Lower }.Distinct().ToList()
                 };
             }
