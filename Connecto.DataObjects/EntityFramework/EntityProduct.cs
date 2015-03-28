@@ -14,7 +14,9 @@ namespace Connecto.DataObjects.EntityFramework
         public int VendorId { get; set; }
         public string Name { get; set; }
         public int StockInHand { get; set; }
+        public double ContainsQty { get; set; }
         public int Quantity { get; set; }
+        public int QuantityLower { get; set; }
         public int Reorderlevel { get; set; }
         public virtual EntityProductType ProductType { get; set; }
         public virtual EntityVendor Vendor { get; set; }

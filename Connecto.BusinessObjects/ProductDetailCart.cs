@@ -13,6 +13,7 @@ namespace Connecto.BusinessObjects
         public double UnitPrice { get; set; }
         public double SellingPrice { get; set; }
         public int Quantity { get; set; }
+        public int QuantityLower { get; set; }
         public DateTime DateReceived { get; set; }
         public virtual Product Product { get; set; }
         public virtual Supplier Supplier { get; set; }

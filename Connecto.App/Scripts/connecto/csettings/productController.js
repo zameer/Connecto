@@ -19,7 +19,7 @@ cSettingControllers.controller(cName + 'ListCtrl', ['$scope', '$http', '$routePa
           });
       };
   }]);
-cSettingControllers.controller(cName + 'NewCtrl', function ($scope, $location, $http) {
+cSettingControllers.controller(cName + 'NewCtrl', function ($scope, $filter, $location, $http) {
     $http.get('/Vendor/Get/').success(function (data) {
         $scope.vendors = data;
     });
@@ -32,9 +32,15 @@ cSettingControllers.controller(cName + 'NewCtrl', function ($scope, $location, $
             else $location.path('/');
         });
     };
+    $scope.filterProductType = function (productTypeId) {
+        var ptype = $filter('filter')($scope.productTypes, { ProductTypeId: productTypeId })[0];
+        if (ptype != undefined && (ptype.Measure.Actual != ptype.StockAs))
+            $scope.ContainsQtyDesc = ptype.Measure.Actual + '(s) in a ' + ptype.StockAs;
+        else $scope.ContainsQtyDesc = undefined;
+    };
 });
-cSettingControllers.controller(cName + 'EditCtrl', ['$scope', '$http', '$location', '$routeParams',
-  function ($scope, $http, $location, $routeParams) {
+cSettingControllers.controller(cName + 'EditCtrl', ['$scope', '$filter','$http', '$location', '$routeParams',
+  function ($scope, $filter, $http, $location, $routeParams) {
       $http.get('/' + cName + '/GetItem/' + $routeParams.itemId).success(function (data) {
           $scope.item = data;
           $http.get('/Vendor/Get/').success(function (data1) {
@@ -43,6 +49,7 @@ cSettingControllers.controller(cName + 'EditCtrl', ['$scope', '$http', '$locatio
                   $scope.productTypes = data2;
                   $('.select2').select2();
                   $('.select2').css('width', '200px').select2();
+                  $scope.filterProductTypes(data.ProductTypeId);
               });
           });
       });
@@ -51,5 +58,11 @@ cSettingControllers.controller(cName + 'EditCtrl', ['$scope', '$http', '$locatio
           $http.post('/' + cName + '/Edit/', $scope.item).success(function (data) {
               $location.path('/');
           });
+      };
+      $scope.filterProductTypes = function (productTypeId) {
+          var ptype = $filter('filter')($scope.productTypes, { ProductTypeId: productTypeId })[0];
+          if (ptype != undefined && (ptype.Measure.Actual != ptype.StockAs))
+              $scope.ContainsQtyDesc = ptype.Measure.Actual + '(s) in a ' + ptype.StockAs;
+          else $scope.ContainsQtyDesc = undefined;
       };
   }]);
