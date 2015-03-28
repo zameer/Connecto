@@ -72,7 +72,7 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 ContainsQty = entity.ContainsQty,
                 StockInHand = entity.StockInHand,
                 Quantity = entity.Quantity,
-                QuantityLower = entity.QuantityLower,
+                //QuantityLower = entity.QuantityLower,
                 Reorderlevel = entity.Reorderlevel,
                 ProductTypeId = entity.ProductTypeId,
                 VendorId = entity.VendorId,
