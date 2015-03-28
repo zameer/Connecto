@@ -18,14 +18,14 @@ namespace Connecto.App.Migrations
 
         protected override void Seed(ApplicationDbContext context)
         {
-            ////  This method will be called after migrating to the latest version.
-            //if (!context.Users.Any(u => u.UserName.Equals("connecto")))
-            //{
-            //    var store = new UserStore<ApplicationUser>(context);
-            //    var manager = new UserManager<ApplicationUser>(store);
-            //    var user = new ApplicationUser { UserName = "connecto", DisplayName = "Connecto"};
-            //    manager.Create(user, "developer");
-            //}
+            //  This method will be called after migrating to the latest version.
+            if (!context.Users.Any(u => u.UserName.Equals("connecto")))
+            {
+                var store = new UserStore<ApplicationUser>(context);
+                var manager = new UserManager<ApplicationUser>(store);
+                var user = new ApplicationUser { UserName = "connecto", DisplayName = "Connecto" };
+                manager.Create(user, "developer");
+            }
         }
     }
 }

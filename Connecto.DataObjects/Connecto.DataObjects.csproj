@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityFramework\EntityProductBase.cs" />
     <Compile Include="EntityFramework\EntityOrder.cs" />
     <Compile Include="EntityFramework\EntitySalesDetailCart.cs" />
     <Compile Include="EntityFramework\EntitySalesDetail.cs" />

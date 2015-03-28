@@ -2,7 +2,7 @@
 
 namespace Connecto.BusinessObjects
 {
-    public class ProductDetail : Connecto
+    public class ProductDetail : ProductBase
     {
         public int ProductDetailId { get; set; }
         public Guid ProductDetailGuid { get; set; }
@@ -10,10 +10,8 @@ namespace Connecto.BusinessObjects
         public int ProductId { get; set; }
         public int SupplierId { get; set; }
         public string ProductCode { get; set; }
-        public double UnitPrice { get; set; }
-        public double SellingPrice { get; set; }
-        public int Quantity { get; set; }
-        public double QuantityLower { get; set; }
+        public decimal UnitPrice { get; set; }
+        public decimal SellingPrice { get; set; }
         public DateTime DateReceived { get; set; }
         public virtual Product Product { get; set; }
         public virtual Supplier Supplier { get; set; }

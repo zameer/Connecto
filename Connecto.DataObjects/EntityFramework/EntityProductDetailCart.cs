@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Connecto.DataObjects.EntityFramework
 {
     [Table("ProductDetailCart", Schema = "Product")]
-    public class EntityProductDetailCart : EntityConnecto
+    public class EntityProductDetailCart : EntityProductBase
     {
         [Key]
         public int ProductDetailId { get; set; }
@@ -14,10 +14,8 @@ namespace Connecto.DataObjects.EntityFramework
         public int ProductId { get; set; }
         public int SupplierId { get; set; }
         public string ProductCode { get; set; }
-        public double UnitPrice { get; set; }
-        public double SellingPrice { get; set; }
-        public int Quantity { get; set; }
-        public double QuantityLower { get; set; }
+        public decimal UnitPrice { get; set; }
+        public decimal SellingPrice { get; set; }
         public DateTime DateReceived { get; set; }
         public virtual EntityOrder Order { get; set; }
         public virtual EntityProduct Product { get; set; }
