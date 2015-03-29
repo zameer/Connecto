@@ -32,9 +32,9 @@ cSettingControllers.controller(cName + 'NewCtrl', function ($scope, $filter, $lo
             else $location.path('/');
         });
     };
-    $scope.filterProductType = function (productTypeId) {
-        var ptype = $filter('filter')($scope.productTypes, { ProductTypeId: productTypeId })[0];
-        if (ptype != undefined && (ptype.Measure.Actual != ptype.StockAs))
+    $scope.filterProductType = function () {
+        var ptype = $filter('filter')($scope.productTypes, { ProductTypeId: $scope.item.ProductTypeId })[0];
+        if (ptype != undefined && $scope.item.SellingLower)
             $scope.ContainsQtyDesc = ptype.Measure.Actual + '(s) in a ' + ptype.StockAs;
         else $scope.ContainsQtyDesc = undefined;
     };
@@ -49,7 +49,7 @@ cSettingControllers.controller(cName + 'EditCtrl', ['$scope', '$filter','$http',
                   $scope.productTypes = data2;
                   $('.select2').select2();
                   $('.select2').css('width', '200px').select2();
-                  $scope.filterProductTypes(data.ProductTypeId);
+                  $scope.filterProductType();
               });
           });
       });
@@ -59,9 +59,9 @@ cSettingControllers.controller(cName + 'EditCtrl', ['$scope', '$filter','$http',
               $location.path('/');
           });
       };
-      $scope.filterProductTypes = function (productTypeId) {
-          var ptype = $filter('filter')($scope.productTypes, { ProductTypeId: productTypeId })[0];
-          if (ptype != undefined && (ptype.Measure.Actual != ptype.StockAs))
+      $scope.filterProductType = function () {
+          var ptype = $filter('filter')($scope.productTypes, { ProductTypeId: $scope.item.ProductTypeId })[0];
+          if (ptype != undefined && $scope.item.SellingLower)
               $scope.ContainsQtyDesc = ptype.Measure.Actual + '(s) in a ' + ptype.StockAs;
           else $scope.ContainsQtyDesc = undefined;
       };

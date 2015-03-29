@@ -12,6 +12,8 @@ namespace Connecto.BusinessObjects
         public int StockInHand { get; set; }
         public decimal ContainsQty { get; set; }
         public int Reorderlevel { get; set; }
+        public bool SellingDown { get; set; }
+        public bool SellingLower { get; set; }
         public virtual ProductType ProductType { get; set; }
         public virtual Vendor Vendor { get; set; }
     }
