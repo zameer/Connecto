@@ -10,6 +10,9 @@ namespace Connecto.BusinessObjects
         public string ProductCode { get; set; }
         public int OrderId { get; set; }
         public int ProductDetailId { get; set; }
+        public string StockAs { get; set; }
+        public bool SellingLower { get; set; }
+        public string StockSummary { get; set; }
         public string Measure { get; set; }
         public int Volume { get; set; }
         public List<string> Measures { get; set; }
