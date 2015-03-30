@@ -29,7 +29,7 @@
                             <div class="profile-info-row">
                                 <div class="profile-info-name"> Stock In Hand </div>
                                 <div class="profile-info-value">
-                                    <h4 class="widget-title blue smaller">
+                                    <h4 ng-if="item.StockInHand" class=" widget-title blue smaller">
                                         {{item.StockInHand.Quantity}} {{item.StockAs}}s
                                         <span>
                                             <span ng-if="item.StockInHand.QuantityActual > 0">{{item.StockInHand.QuantityActual}} {{item.Measure.Actual}}s</span>
