@@ -29,11 +29,9 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                     ProductDetailId = productDetail.ProductDetailId,
                     ProductCode = productCode,
                     SellingLower = productDetail.Product.SellingLower,
-                    StockInHand = productDetail.Product.StockInHand,
+                    StockInHand = new StockInHand { Quantity = productDetail.Product.StockInHand, QuantityActual = productDetail.Product.QuantityActual, QuantityLower = productDetail.Product.QuantityLower},
                     SellingPrice = productDetail.SellingPrice,
                     StockAs = productDetail.Product.ProductType.StockAs,
-                    StockSummary = BuildDetailStockInHand(productDetail.Product, measure),
-                    Actual = measure.Actual,
                     Volume = measure.Volume,
                     Measure = new Measure { Actual = measure.Actual, Lower = measure.Lower }
                 };
