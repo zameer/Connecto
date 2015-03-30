@@ -33,9 +33,9 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                     SellingPrice = productDetail.SellingPrice,
                     StockAs = productDetail.Product.ProductType.StockAs,
                     StockSummary = BuildDetailStockInHand(productDetail.Product, measure),
-                    Measure = measure.Actual,
+                    Actual = measure.Actual,
                     Volume = measure.Volume,
-                    Measures = new List<string> { measure.Actual, measure.Lower }.Distinct().ToList()
+                    Measure = new Measure { Actual = measure.Actual, Lower = measure.Lower }
                 };
             }
         }

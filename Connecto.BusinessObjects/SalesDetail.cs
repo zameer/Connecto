@@ -13,9 +13,9 @@ namespace Connecto.BusinessObjects
         public string StockAs { get; set; }
         public bool SellingLower { get; set; }
         public string StockSummary { get; set; }
-        public string Measure { get; set; }
+        public string Actual { get; set; }
         public int Volume { get; set; }
-        public List<string> Measures { get; set; }
+        public Measure Measure { get; set; }
         public int CustomerId { get; set; }
         public decimal UnitPrice { get; set; }
         public decimal SellingPrice { get; set; }
