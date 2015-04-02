@@ -26,12 +26,18 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
           }
       };
       $scope.calculatePrice = function () {
-          var lowerPrice = ($scope.item.Volume / $scope.item.SellingPrice) * ($scope.item.Lower != undefined ? $scope.item.Lower : 0);
-          $scope.item.Price = Math.round(($scope.item.Quantity * $scope.item.SellingPrice) + lowerPrice);
+          var lowerUnitPrice = $scope.item.SellingPrice / $scope.item.ContainsQty;
+          var unitPrice = $scope.item.SellingPrice * $scope.item.Quantity;
+          var actualPrice = lowerUnitPrice * $scope.item.QuantityActual;
+          var lowerPrice = (lowerUnitPrice / $scope.item.Volume) * $scope.item.QuantityLower;
+          $scope.item.Price = Math.round(unitPrice + actualPrice + lowerPrice);
       };
       $scope.filterOrder = function (orderId) {
           if (orderId.length > 0) $scope.loadItems(orderId);
           else $scope.items = [];
+      };
+      $scope.setDiscount = function (discountBy) {
+          $scope.discountBy = discountBy;
       };
       $scope.add = function () {
           $http.post('/' + cName + '/Create/', $scope.item).success(function (data) {

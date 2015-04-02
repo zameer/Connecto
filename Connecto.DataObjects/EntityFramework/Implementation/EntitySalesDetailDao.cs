@@ -33,6 +33,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                     SellingPrice = productDetail.SellingPrice,
                     StockAs = productDetail.Product.ProductType.StockAs,
                     Volume = measure.Volume,
+                    ContainsQty = productDetail.Product.ContainsQty,
                     Measure = new Measure { Actual = measure.Actual, Lower = measure.Lower }
                 };
             }
