@@ -109,7 +109,7 @@
                                             <li><a ng-click="setDiscount('')">None</a></li>
                                         </ul>
                                     </div>
-                                    <input ng-if="discountBy" ng-model="item.Discount" class="input-sm" type="text">
+                                    <input ng-if="discountBy" ng-blur="calculateDiscount()" ng-model="item.DiscountValue" class="input-sm" type="text">
                                 </div>
                             </div>
                             <div class="col-sm-8">
@@ -125,8 +125,8 @@
                                     <tbody>
                                         <tr>
                                             <td>{{item.Price}}</td>
-                                            <td><input ng-model="item.Price" class="input-small" type="text"></td>
-                                            <td></td>
+                                            <td><span ng-if="item.Discount">{{item.Discount}}</span> </td>
+                                            <td>{{item.NetPrice}}</td>
                                         </tr>
                                     </tbody>
                                 </table>

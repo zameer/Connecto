@@ -31,6 +31,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
           var actualPrice = lowerUnitPrice * $scope.item.QuantityActual;
           var lowerPrice = (lowerUnitPrice / $scope.item.Volume) * $scope.item.QuantityLower;
           $scope.item.Price = Math.round(unitPrice + actualPrice + lowerPrice);
+          $scope.calculateDiscount();
       };
       $scope.filterOrder = function (orderId) {
           if (orderId.length > 0) $scope.loadItems(orderId);
@@ -38,6 +39,18 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
       };
       $scope.setDiscount = function (discountBy) {
           $scope.discountBy = discountBy;
+          $scope.calculateDiscount();
+      };
+      $scope.calculateDiscount = function () {
+          if ($scope.item.DiscountValue == undefined) $scope.item.DiscountValue = 0;
+          if ($scope.discountBy == "Amount")
+              $scope.item.Discount = Math.round($scope.item.DiscountValue);
+          if ($scope.discountBy == "Rate")
+              $scope.item.Discount = Math.round(($scope.item.DiscountValue / 100) * $scope.item.Price);
+          $scope.calculateNetPrice();
+      };
+      $scope.calculateNetPrice = function () {
+          $scope.item.NetPrice = $scope.item.Price - ($scope.item.Discount != undefined ? $scope.item.Discount : 0);
       };
       $scope.add = function () {
           $http.post('/' + cName + '/Create/', $scope.item).success(function (data) {
