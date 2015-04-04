@@ -38,6 +38,11 @@ cSettingControllers.controller(cName + 'NewCtrl', function ($scope, $filter, $lo
             $scope.ContainsQtyDesc = ptype.Measure.Actual + '(s) in a ' + ptype.StockAs;
         else $scope.ContainsQtyDesc = undefined;
     };
+    $scope.filterSellingMargin = function () {
+        console.log($scope.item.SellingMargin);
+        if (!$scope.item.SellingMargin)
+            $scope.MarginAmount = undefined;
+    };
 });
 cSettingControllers.controller(cName + 'EditCtrl', ['$scope', '$filter','$http', '$location', '$routeParams',
   function ($scope, $filter, $http, $location, $routeParams) {

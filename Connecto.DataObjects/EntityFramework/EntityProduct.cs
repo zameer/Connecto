@@ -18,6 +18,8 @@ namespace Connecto.DataObjects.EntityFramework
         public int Reorderlevel { get; set; }
         public bool SellingDown { get; set; }
         public bool SellingLower { get; set; }
+        public bool SellingMargin { get; set; }
+        public decimal MarginAmount { get; set; }
         public virtual EntityProductType ProductType { get; set; }
         public virtual EntityVendor Vendor { get; set; }
     }

@@ -19,6 +19,9 @@ namespace Connecto.BusinessObjects
         public StockInHand StockInHand { get; set; }
         public decimal UnitPrice { get; set; }
         public decimal SellingPrice { get; set; }
+        public bool SellingMargin { get; set; }
+        public decimal MarginAmount { get; set; }
+        public decimal SellingPriceActual { get; set; }
         public DateTime DateSold { get; set; }
         public virtual Customer Customer { get; set; }
     }

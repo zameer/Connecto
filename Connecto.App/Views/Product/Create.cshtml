@@ -74,6 +74,17 @@
                                             Manage Selling for lower measures, Ex: Product will be stored as Kg but allow selling grams
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td class="center">
+                                            <label>
+                                                <input name="switch-field-1" ng-model="item.SellingMargin" class="ace ace-switch ace-switch-2" checked type="checkbox">
+                                                <span class="lbl"></span>
+                                            </label>
+                                        </td>
+                                        <td>
+                                            Manage Selling Price for lower measures, Enter unit price margin from selling price
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -82,6 +93,13 @@
                         <label class="col-sm-3 control-label no-padding-top"> {{ContainsQtyDesc}} </label>
                         <div class="col-sm-9">
                             <input ng-model="item.ContainsQty" type="text" id="form-field-6" placeholder="Quantity">
+                        </div>
+
+                    </div>
+                    <div class="form-group" ng-if="item.SellingMargin">
+                        <label class="col-sm-3 control-label no-padding-top"> Margin Amount </label>
+                        <div class="col-sm-9">
+                            <input ng-model="item.MarginAmount" type="text" id="form-field-6" placeholder="Amount">
                         </div>
 
                     </div>

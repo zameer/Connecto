@@ -55,6 +55,8 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                 entity.StockInHand = product.StockInHand;
                 entity.SellingDown = product.SellingDown;
                 entity.SellingLower = product.SellingLower;
+                entity.SellingMargin = product.SellingMargin;
+                entity.MarginAmount = product.MarginAmount;
                 entity.EditedBy = product.EditedBy;
                 entity.EditedOn = product.EditedOn;
                 return context.SaveChanges() > 0;
