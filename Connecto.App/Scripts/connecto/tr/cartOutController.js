@@ -49,10 +49,14 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
       };
       $scope.calculateDiscount = function () {
           if ($scope.item.DiscountValue == undefined) $scope.item.DiscountValue = 0;
+          if ($scope.discountBy == '')
+              $scope.item.Discount = 0;
           if ($scope.discountBy == "Amount")
               $scope.item.Discount = Math.round($scope.item.DiscountValue);
           if ($scope.discountBy == "Rate")
               $scope.item.Discount = Math.round(($scope.item.DiscountValue / 100) * $scope.item.Price);
+
+          console.log($scope.item.Discount);
           $scope.calculateNetPrice();
       };
       $scope.calculateNetPrice = function () {
