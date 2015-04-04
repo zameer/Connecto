@@ -274,6 +274,29 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 EditedOn = entity.CreatedOn
             };
         }
+        internal static EntityCustomer Map(Customer entity)
+        {
+            return new EntityCustomer
+            {
+                CustomerId = entity.CustomerId,
+                PersonId = entity.PersonId,
+                LocationId = entity.LocationId,
+                Status = entity.Status,
+                CreatedBy = entity.CreatedBy,
+                CreatedOn = entity.CreatedOn,
+                EditedBy = entity.CreatedBy,
+                EditedOn = entity.CreatedOn
+            };
+        }
+        internal static Customer Map(EntityCustomer entity)
+        {
+            return new Customer
+            {
+                CustomerId = entity.CustomerId,
+                PersonId = entity.Person.PersonId,
+                Person = Map(entity.Person)
+            };
+        }
         internal static EntityPerson Map(Person entity)
         {
             return new EntityPerson

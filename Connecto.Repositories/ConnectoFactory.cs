@@ -30,6 +30,10 @@
         {
             get { return new EmployeeRepository(); }
         }
+        public static CustomerRepository CustomerRepository
+        {
+            get { return new CustomerRepository(); }
+        }
         public static MeasureRepository MeasureRepository
         {
             get { return new MeasureRepository(); }

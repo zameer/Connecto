@@ -40,6 +40,11 @@
             get { return new EntityEmployeeDao(); }
         }
 
+        public ICustomerDao CustomerDao
+        {
+            get { return new EntityCustomerDao(); }
+        }
+
         public IMeasureDao MeasureDao
         {
             get { return new EntityMeasureDao(); }

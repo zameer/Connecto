@@ -177,6 +177,7 @@
     <Compile Include="Controllers\CartOutController.cs" />
     <Compile Include="Controllers\ConnectoController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MeasureController.cs" />
@@ -244,6 +245,7 @@
     <Content Include="Scripts\connecto\bootstrap.js" />
     <Content Include="Scripts\connecto\Connectojs.js" />
     <Content Include="Scripts\connecto\csettings\productController.js" />
+    <Content Include="Scripts\connecto\hr\customerController.js" />
     <Content Include="Scripts\connecto\hr\supplierController.js" />
     <Content Include="Scripts\connecto\hr\employeeController.js" />
     <Content Include="Scripts\connecto\hr\personController.js" />
@@ -353,6 +355,9 @@
     <Content Include="Views\CartIn\Index.cshtml" />
     <Content Include="Views\CartOut\Checkout.cshtml" />
     <Content Include="Views\CartOut\Index.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Customer\List.cshtml" />
+    <Content Include="Views\Customer\People.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\" />

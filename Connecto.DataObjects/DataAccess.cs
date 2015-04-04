@@ -40,6 +40,11 @@ namespace Connecto.DataObjects
             get { return _factory.EmployeeDao; }
         }
 
+        public static ICustomerDao CustomerDao
+        {
+            get { return _factory.CustomerDao; }
+        }
+
         public static IMeasureDao MeasureDao
         {
             get { return _factory.MeasureDao; }

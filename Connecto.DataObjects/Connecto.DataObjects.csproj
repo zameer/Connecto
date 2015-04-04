@@ -52,10 +52,12 @@
     <Compile Include="EntityFramework\EntitySalesDetail.cs" />
     <Compile Include="EntityFramework\EntityProductDetailCart.cs" />
     <Compile Include="EntityFramework\EntityCustomer.cs" />
+    <Compile Include="EntityFramework\Implementation\EntityCustomerDao.cs" />
     <Compile Include="EntityFramework\Implementation\EntitySalesDetailDao.cs" />
     <Compile Include="EntityFramework\Implementation\EntityProductDetailDao.cs" />
     <Compile Include="EntityFramework\Implementation\EntityProductTypeDao.cs" />
     <Compile Include="EntityFramework\Implementation\EntityPersonDao.cs" />
+    <Compile Include="ICustomerDao.cs" />
     <Compile Include="IProductDao.cs" />
     <Compile Include="ISalesDetailDao.cs" />
     <Compile Include="IProductTypeDao.cs" />
