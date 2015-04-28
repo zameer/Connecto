@@ -1,6 +1,6 @@
 ﻿namespace Connecto.Common.Enumeration
 {
-    public enum DiscountType
+    public enum DiscountBy
     {
         None = 0,
         Rate = 1,

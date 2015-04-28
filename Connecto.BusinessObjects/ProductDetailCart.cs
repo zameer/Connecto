@@ -1,4 +1,5 @@
 ﻿using System;
+using Connecto.Common.Enumeration;
 
 namespace Connecto.BusinessObjects
 {
@@ -13,6 +14,9 @@ namespace Connecto.BusinessObjects
         public decimal UnitPrice { get; set; }
         public decimal SellingPrice { get; set; }
         public DateTime DateReceived { get; set; }
+        public DiscountBy DiscountBy { get; set; }
+        public double DiscountAs { get; set; }
+        public decimal Discount { get; set; }
         public virtual Product Product { get; set; }
         public virtual Supplier Supplier { get; set; }
     }

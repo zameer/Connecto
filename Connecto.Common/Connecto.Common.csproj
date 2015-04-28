@@ -39,7 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Enumeration\DiscountType.cs" />
+    <Compile Include="Enumeration\DiscountBy.cs" />
     <Compile Include="Enumeration\OrderType.cs" />
     <Compile Include="Enumeration\RecordStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

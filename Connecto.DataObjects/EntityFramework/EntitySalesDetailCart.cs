@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Connecto.Common.Enumeration;
 
 namespace Connecto.DataObjects.EntityFramework
 {
@@ -17,6 +18,9 @@ namespace Connecto.DataObjects.EntityFramework
         public decimal UnitPrice { get; set; }
         public decimal SellingPrice { get; set; }
         public DateTime DateSold { get; set; }
+        public DiscountBy DiscountBy { get; set; }
+        public double DiscountAs { get; set; }
+        public decimal Discount { get; set; }
         public virtual EntityCustomer Customer { get; set; }
     }
 }

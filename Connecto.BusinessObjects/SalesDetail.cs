@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Connecto.Common.Enumeration;
 
 namespace Connecto.BusinessObjects
 {
@@ -23,6 +24,9 @@ namespace Connecto.BusinessObjects
         public decimal MarginAmount { get; set; }
         public decimal SellingPriceActual { get; set; }
         public DateTime DateSold { get; set; }
+        public DiscountBy DiscountBy { get; set; }
+        public double DiscountAs { get; set; }
+        public decimal Discount { get; set; }
         public virtual Customer Customer { get; set; }
     }
 }

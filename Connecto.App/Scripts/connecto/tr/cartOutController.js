@@ -44,19 +44,19 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
           else $scope.items = [];
       };
       $scope.setDiscount = function (discountBy) {
-          $scope.discountBy = discountBy;
+          $scope.DiscountBy = discountBy;
           $scope.calculateDiscount();
       };
       $scope.calculateDiscount = function () {
-          if ($scope.item.DiscountValue == undefined) $scope.item.DiscountValue = 0;
-          if ($scope.discountBy == '')
+          if ($scope.item.DiscountAs == undefined) $scope.item.DiscountAs = 0;
+          if ($scope.DiscountBy == '')
               $scope.item.Discount = 0;
-          if ($scope.discountBy == "Amount")
-              $scope.item.Discount = Math.round($scope.item.DiscountValue);
-          if ($scope.discountBy == "Rate")
-              $scope.item.Discount = Math.round(($scope.item.DiscountValue / 100) * $scope.item.Price);
-
-          console.log($scope.item.Discount);
+          if ($scope.DiscountBy == "Amount")
+              $scope.item.Discount = Math.round($scope.item.DiscountAs);
+          if ($scope.DiscountBy == "Rate") {
+              $scope.item.DiscountBy = $scope.DiscountBy;
+              $scope.item.Discount = Math.round(($scope.item.DiscountAs / 100) * $scope.item.Price);
+          }
           $scope.calculateNetPrice();
       };
       $scope.calculateNetPrice = function () {

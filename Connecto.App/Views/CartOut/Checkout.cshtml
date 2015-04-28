@@ -101,7 +101,7 @@
                                         <button data-toggle="dropdown" class="btn btn-sm btn-white dropdown-toggle">
                                             <i class="ace-icon fa fa-angle-down icon-only"></i>
                                         </button>
-                                        <span class="label label-success arrowed">{{discountBy}}</span>
+                                        <span class="label label-success arrowed">{{DiscountBy}}</span>
                                         <ul class="dropdown-menu dropdown-yellow">
                                             <li><a ng-click="setDiscount('Rate')">Rate</a></li>
                                             <li><a ng-click="setDiscount('Amount')">Amount</a></li>
@@ -109,7 +109,7 @@
                                             <li><a ng-click="setDiscount('')">None</a></li>
                                         </ul>
                                     </div>
-                                    <input ng-if="discountBy" ng-blur="calculateDiscount()" ng-model="item.DiscountValue" class="input-sm" type="text">
+                                    <input ng-if="DiscountBy" ng-blur="calculateDiscount()" ng-model="item.DiscountAs" class="input-sm" type="text">
                                 </div>
                             </div>
                             <div class="col-sm-8">
