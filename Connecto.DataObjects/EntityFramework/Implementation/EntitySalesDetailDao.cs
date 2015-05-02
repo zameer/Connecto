@@ -42,12 +42,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
             }
         }
 
-        internal string BuildDetailStockInHand(EntityProduct item, EntityMeasure measure)
-        {
-            var res = string.Format("{0}", item.StockInHand > 0 ? string.Format("{0} {1}", item.StockInHand, item.ProductType.StockAs) : string.Empty);
-            res = string.Format("{0} {1}", res, item.QuantityActual > 0 ? string.Format("{0} {1}", item.QuantityActual, measure.Actual) : string.Empty);
-            return string.Format("{0} {1}", res, item.QuantityLower > 0 ? string.Format("{0} {1}", item.QuantityLower, measure.Lower) : string.Empty).Trim();
-        }
+        
 
         public List<SalesDetail> GetSalesDetails(int orderId)
         {

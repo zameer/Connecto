@@ -17,10 +17,13 @@ namespace Connecto.DataObjects.EntityFramework
         public int? CustomerId { get; set; }
         public decimal UnitPrice { get; set; }
         public decimal SellingPrice { get; set; }
+        public decimal Price { get; set; }
+        public decimal NetPrice { get; set; }
         public DateTime DateSold { get; set; }
         public DiscountBy DiscountBy { get; set; }
         public double DiscountAs { get; set; }
         public decimal Discount { get; set; }
         public virtual EntityCustomer Customer { get; set; }
+        public virtual EntityProductDetail ProductDetail { get; set; }
     }
 }

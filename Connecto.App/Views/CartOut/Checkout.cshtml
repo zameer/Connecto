@@ -150,8 +150,9 @@
                                 <tr>
                                     <th>Product</th>
                                     <th>Quantity</th>
-                                    <th>Unit Price</th>
-                                    <th class="hidden-480">Selling Price</th>
+                                    <th>Price</th>
+                                    <th>Discount</th>
+                                    <th class="hidden-480">Net Price</th>
                                     <th>
                                         <div class="hidden-sm hidden-xs btn-group">
                                             <button class="btn btn-xs btn-info">
@@ -194,10 +195,11 @@
 
                             <tbody>
                                 <tr ng-repeat="item in items">
-                                    <td>{{item.Product.Name}} - {{item.ProductCode}}</td>
-                                    <td>{{item.Quantity}}</td>
-                                    <td>{{item.UnitPrice}}</td>
-                                    <td class="hidden-480">{{item.SellingPrice}}</td>
+                                    <td>{{item.ProductName}} - {{item.ProductCode}}</td>
+                                    <td>{{item.DisplayQuantity}}</td>
+                                    <td>{{item.Price}}</td>
+                                    <td>{{item.DisplayDiscount}}</td>
+                                    <td class="hidden-480">{{item.NetPrice}}</td>
                                     <td>
                                         <div class="hidden-sm hidden-xs btn-group">
                                             <button class="btn btn-xs btn-info">

@@ -488,6 +488,8 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 QuantityActual = entity.QuantityActual,
                 QuantityLower = entity.QuantityLower,
                 SellingPrice = entity.SellingPrice,
+                Price = entity.Price,
+                NetPrice = entity.NetPrice,
                 DateSold = entity.DateSold,
                 DiscountBy = entity.DiscountBy,
                 DiscountAs = entity.DiscountAs,
@@ -502,6 +504,7 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
         }
         internal static SalesDetailCart Map(EntitySalesDetailCart entity)
         {
+            var product = entity.ProductDetail.Product;
             return new SalesDetailCart
             {
                 SalesDetailId = entity.SalesDetailId,
@@ -513,6 +516,8 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 Quantity = entity.Quantity,
                 UnitPrice = entity.UnitPrice,
                 SellingPrice = entity.SellingPrice,
+                Price = entity.Price,
+                NetPrice = entity.NetPrice,
                 DateSold = entity.DateSold,
                 LocationId = entity.LocationId,
                 Status = entity.Status,
@@ -520,6 +525,9 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 CreatedOn = entity.CreatedOn,
                 EditedBy = entity.EditedBy,
                 EditedOn = entity.EditedOn,
+                ProductName = product.Name,
+                DisplayDiscount = string.Format("{0} {1}", (entity.DiscountAs > 0 ? string.Format("{0}%", entity.DiscountAs): string.Empty),entity.Discount),
+                DisplayQuantity = BuildQuantity(product, entity.Quantity, entity.QuantityActual, entity.QuantityLower)
             };
         }
         internal static SalesDetail Map(EntitySalesDetail entity)
@@ -599,6 +607,14 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 EditedBy = entity.EditedBy,
                 EditedOn = entity.EditedOn
             };
+        }
+        internal static string BuildQuantity(EntityProduct product, int qty, int qtyActual, int qtyLower)
+        {
+            var item = product.ProductType;
+            var res = qty > 0 ? string.Format("{0} {1}", qty, item.StockAs) : string.Empty;
+            res += qtyActual > 0 ? string.Format(" {0} {1}", qtyActual, item.Measure.Actual) : string.Empty;
+            res += qtyLower > 0 ? string.Format(" {0} {1}", qtyLower, item.Measure.Lower) : string.Empty;
+            return res.Trim();
         }
     }
 }

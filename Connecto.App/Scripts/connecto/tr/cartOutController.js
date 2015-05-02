@@ -18,9 +18,11 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
       $scope.loadOrders();
       $scope.loadItems();
       $scope.filterProduct = function () {
+          var orderId = $scope.item.OrderId;
           if ($scope.item.ProductCode != undefined) {
               $http.get('/' + cName + '/GetSalesDetail/?productCode=' + $scope.item.ProductCode).success(function (data) {
                   $scope.item = data;
+                  $scope.item.OrderId = orderId;
                   $scope.Measure = data.Measure;
               });
           }
@@ -63,6 +65,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
           $scope.item.NetPrice = $scope.item.Price - ($scope.item.Discount != undefined ? $scope.item.Discount : 0);
       };
       $scope.add = function () {
+          alert($scope.item.OrderId);
           $http.post('/' + cName + '/Create/', $scope.item).success(function (data) {
               showMessage(data);
               if (data.Status != "Failure") $scope.loadItems($scope.item.OrderId);
