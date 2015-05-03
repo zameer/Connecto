@@ -24,9 +24,9 @@ namespace Connecto.Test
         {
             try
             {
-                var stock = new ProductBase { Quantity = 200, QuantityActual = 45, QuantityLower = 500 };
-                var sold = new ProductBase { Quantity = 95, QuantityActual = 24, QuantityLower = 750 };
-                var syncedStock = new ProductBase { Quantity = 105, QuantityActual = 20, QuantityLower = 750};
+                var stock = new ProductBase { Quantity = 199, QuantityActual = 24, QuantityLower = 550 };
+                var sold = new ProductBase { Quantity = 2, QuantityActual = 30, QuantityLower = 600 };
+                var syncedStock = new ProductBase { Quantity = 105, QuantityActual = 21, QuantityLower = 50};
 
                 var sales = _sales.SyncSales(1000, 50, stock, sold);
 

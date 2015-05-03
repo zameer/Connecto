@@ -78,17 +78,20 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var productDetailsCart = context.SalesDetailCarts.Where(e => e.OrderId == invoiceId && e.Status == RecordStatus.Active).ToList();
+                var salesDetailsCart = context.SalesDetailCarts.Where(e => e.OrderId == invoiceId && e.Status == RecordStatus.Active).ToList();
                 var cartsToRemove = new List<EntitySalesDetailCart>();
-                foreach (var item in productDetailsCart)
+                foreach (var item in salesDetailsCart)
                 {
-                    var product = context.Products.FirstOrDefault(e => e.ProductId == item.ProductDetail.ProductId);
-                    if (product == null) continue;
+                    var productDetail = context.ProductDetails.FirstOrDefault(e => e.ProductDetailId == item.ProductDetailId);
+                    if (productDetail == null) continue;
+
+                    productDetail = SyncStock(productDetail, item.Quantity, item.QuantityActual, item.QuantityLower);
+
                     context.SalesDetails.Add(Mapper.MapDiff(item));
                     cartsToRemove.Add(item);
                 }
                 if (cartsToRemove.Count <= 0) return cartsToRemove.Count;
-                context.SalesDetailCarts.RemoveRange(productDetailsCart);
+                context.SalesDetailCarts.RemoveRange(salesDetailsCart);
                 context.SaveChanges();
                 return cartsToRemove.Count;
             }
@@ -135,12 +138,27 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
             }
         }
 
+        private EntityProductDetail SyncStock(EntityProductDetail item, int quantity, int quantityActual, int quantityLower)
+        {
+            var volume = item.Product.ProductType.Measure.Volume;
+            var containsQty = item.Product.ContainsQty;
+            var stock = new ProductBase{ Quantity  = item.Quantity, QuantityActual = item.QuantityActual, QuantityLower = item.QuantityLower};
+            var sold = new ProductBase{ Quantity  = quantity, QuantityActual = quantityActual, QuantityLower = quantityLower};
+            var synced = SyncStock(volume, (int)containsQty, stock, sold);
+
+            item.Quantity = synced.Quantity;
+            item.QuantityActual = synced.QuantityActual;
+            item.QuantityLower = synced.QuantityLower;
+            return item;
+        }
+
         public ProductBase SyncStock(int volume, int containsQty, ProductBase stock, ProductBase sold)
         {
-            var lowerTr = stock.QuantityLower + sold.QuantityLower;
+            var actByLwr = sold.QuantityLower / volume;
+            var soldLower = actByLwr > 0 ? (actByLwr * volume) - sold.QuantityLower : stock.QuantityLower - sold.QuantityLower;
 
-            var nxt = (lowerTr > volume) ? new ProductBase { QuantityLower = volume - (lowerTr - volume), QuantityActual = stock.QuantityActual - 1 }
-            : new ProductBase{ QuantityLower = stock.QuantityLower - sold.QuantityLower, QuantityActual = stock.QuantityActual};
+            var nxt = soldLower < 0 ? new ProductBase { QuantityLower = volume + soldLower, QuantityActual = stock.QuantityActual - (actByLwr + 1) }
+                : new ProductBase { QuantityLower = soldLower, QuantityActual = stock.QuantityActual };
             nxt.Quantity = stock.Quantity;
 
             var diffQty = sold.QuantityActual - nxt.QuantityActual;
