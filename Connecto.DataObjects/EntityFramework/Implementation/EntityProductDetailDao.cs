@@ -44,7 +44,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                 
                 context.ProductDetailCarts.Add(entity);
                 context.SaveChanges();
-                return entity.ProductDetailId;
+                return entity.OrderId;
             }
         }
         public int AddProductDetail(int invoiceId)

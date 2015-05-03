@@ -33,6 +33,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
       $scope.add = function () {
           $http.post('/' + cName + '/Create/', $scope.item).success(function (data) {
               showMessage(data);
+              $scope.item.OrderId = data.OrderId != undefined && data.OrderId > 0 ? data.OrderId : $scope.item.OrderId;
               if (data.Status != "Failure") $scope.loadItems($scope.item.OrderId);
           });
       };

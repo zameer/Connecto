@@ -24,9 +24,9 @@ namespace Connecto.Repositories
             return ProductDetailDao.GetProductDetailsCart(orderId);
         }
 
-        public void AddToCart(ProductDetailCart productDetailCart)
+        public int AddToCart(ProductDetailCart productDetailCart)
         {
-            ProductDetailDao.AddProductDetailCart(productDetailCart);
+            return ProductDetailDao.AddProductDetailCart(productDetailCart);
         }
         public int Add(int orderId)
         {
