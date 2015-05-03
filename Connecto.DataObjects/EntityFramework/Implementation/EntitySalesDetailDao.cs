@@ -85,7 +85,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                     var productDetail = context.ProductDetails.FirstOrDefault(e => e.ProductDetailId == item.ProductDetailId);
                     if (productDetail == null) continue;
 
-                    productDetail = SyncStock(productDetail, item.Quantity, item.QuantityActual, item.QuantityLower);
+                    SyncStock(productDetail, item.Quantity, item.QuantityActual, item.QuantityLower);
 
                     context.SalesDetails.Add(Mapper.MapDiff(item));
                     cartsToRemove.Add(item);
@@ -138,18 +138,22 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
             }
         }
 
-        private EntityProductDetail SyncStock(EntityProductDetail item, int quantity, int quantityActual, int quantityLower)
+        private void SyncStock(EntityProductDetail item, int quantity, int quantityActual, int quantityLower)
         {
             var volume = item.Product.ProductType.Measure.Volume;
             var containsQty = item.Product.ContainsQty;
             var stock = new ProductBase{ Quantity  = item.Quantity, QuantityActual = item.QuantityActual, QuantityLower = item.QuantityLower};
             var sold = new ProductBase{ Quantity  = quantity, QuantityActual = quantityActual, QuantityLower = quantityLower};
             var synced = SyncStock(volume, (int)containsQty, stock, sold);
-
             item.Quantity = synced.Quantity;
             item.QuantityActual = synced.QuantityActual;
             item.QuantityLower = synced.QuantityLower;
-            return item;
+
+            stock = new ProductBase { Quantity = item.Product.Quantity, QuantityActual = item.Product.QuantityActual, QuantityLower = item.Product.QuantityLower };
+            synced = SyncStock(volume, (int)containsQty, stock, sold);
+            item.Product.Quantity = synced.Quantity;
+            item.Product.QuantityActual = synced.QuantityActual;
+            item.Product.QuantityLower = synced.QuantityLower;
         }
 
         public ProductBase SyncStock(int volume, int containsQty, ProductBase stock, ProductBase sold)
