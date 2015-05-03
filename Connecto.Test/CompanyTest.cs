@@ -25,9 +25,14 @@ namespace Connecto.Test
             try
             {
                 var stock = new ProductBase { Quantity = 200, QuantityActual = 45, QuantityLower = 500 };
-                var sold = new ProductBase { Quantity = 1, QuantityActual = 40, QuantityLower = 800 };
+                var sold = new ProductBase { Quantity = 95, QuantityActual = 24, QuantityLower = 750 };
+                var syncedStock = new ProductBase { Quantity = 105, QuantityActual = 20, QuantityLower = 750};
+
                 var sales = _sales.SyncSales(1000, 50, stock, sold);
-                Assert.Equals(new ProductBase { Quantity = 199, QuantityActual = 4, QuantityLower = 700 }, sales);
+
+                Assert.AreEqual(syncedStock.Quantity, sales.Quantity);
+                Assert.AreEqual(syncedStock.QuantityActual, sales.QuantityActual);
+                Assert.AreEqual(syncedStock.QuantityLower, sales.QuantityLower);
             }
             catch (Exception)
             {
