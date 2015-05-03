@@ -12,5 +12,7 @@ namespace Connecto.DataObjects
         int AddSalesDetailCart(SalesDetailCart salesDetailCart);
         bool EditSalesDetailCart(SalesDetailCart salesDetailCart);
         int DeleteSalesDetailCart(int id, int deletedBy);
+        int AddSalesDetail(int orderId);
+        ProductBase SyncStock(int volume, int containsQty, ProductBase stock, ProductBase sold);
     }
 }

@@ -35,7 +35,10 @@ namespace Connecto.Repositories
         {
             Repo.AddSalesDetailCart(salesDetailCart);
         }
-
+        public int Add(int orderId)
+        {
+            return Repo.AddSalesDetail(orderId);
+        }
         public void EditCart(SalesDetailCart salesDetailCart)
         {
             Repo.EditSalesDetailCart(salesDetailCart);
@@ -44,6 +47,10 @@ namespace Connecto.Repositories
         public int Delete(int id, int deletedBy)
         {
             return Repo.DeleteSalesDetailCart(id, deletedBy);
+        }
+        public ProductBase SyncSales(int volume, int containsQty, ProductBase stock, ProductBase sold)
+        {
+            return Repo.SyncStock(volume, containsQty, stock, sold);
         }
     }
 }

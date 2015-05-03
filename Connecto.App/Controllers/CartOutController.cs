@@ -73,7 +73,7 @@ namespace Connecto.App.Controllers
         [HttpPost]
         public JsonResult Complete(int id)
         {
-            //_repo.Add(id);
+            _repo.Add(id);
             return Json(new { Status = "Success", Message = "Invoice Successfully Added." }, JsonRequestBehavior.AllowGet);
         }
         public ActionResult Index()

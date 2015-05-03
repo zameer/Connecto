@@ -74,6 +74,25 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                 return entity.SalesDetailId;
             }
         }
+        public int AddSalesDetail(int invoiceId)
+        {
+            using (var context = DataObjectFactory.CreateContext())
+            {
+                var productDetailsCart = context.SalesDetailCarts.Where(e => e.OrderId == invoiceId && e.Status == RecordStatus.Active).ToList();
+                var cartsToRemove = new List<EntitySalesDetailCart>();
+                foreach (var item in productDetailsCart)
+                {
+                    var product = context.Products.FirstOrDefault(e => e.ProductId == item.ProductDetail.ProductId);
+                    if (product == null) continue;
+                    context.SalesDetails.Add(Mapper.MapDiff(item));
+                    cartsToRemove.Add(item);
+                }
+                if (cartsToRemove.Count <= 0) return cartsToRemove.Count;
+                context.SalesDetailCarts.RemoveRange(productDetailsCart);
+                context.SaveChanges();
+                return cartsToRemove.Count;
+            }
+        }
 
         internal int AddOrder(ConnectoManagerEntities context, OrderType orderType, SalesDetailCart item)
         {
@@ -116,5 +135,24 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
             }
         }
 
+        public ProductBase SyncStock(int volume, int containsQty, ProductBase stock, ProductBase sold)
+        {
+            var lowerTr = stock.QuantityLower + sold.QuantityLower;
+
+            var nxt = (lowerTr > volume) ? new ProductBase { QuantityLower = volume - (lowerTr - volume), QuantityActual = stock.QuantityActual - 1 }
+            : new ProductBase{ QuantityLower = stock.QuantityLower - sold.QuantityLower, QuantityActual = stock.QuantityActual};
+            nxt.Quantity = stock.Quantity;
+
+            var diffQty = sold.QuantityActual - nxt.QuantityActual;
+            if (diffQty > 0)
+            {
+                nxt.QuantityActual = containsQty - diffQty;
+                nxt.Quantity = stock.Quantity - 1;
+            }
+            else nxt.QuantityActual -= sold.QuantityActual;
+
+            nxt.Quantity -= sold.Quantity;
+            return nxt;
+        }
     }
 }

@@ -428,6 +428,35 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 EditedOn = entity.EditedOn,
             };
         }
+        internal static EntitySalesDetail MapDiff(EntitySalesDetailCart entity)
+        {
+            return new EntitySalesDetail
+            {
+                SalesDetailId = entity.SalesDetailId,
+                SalesDetailGuid = entity.SalesDetailGuid,
+                ProductCode = entity.ProductCode,
+                OrderId = entity.OrderId,
+                ProductDetailId = entity.ProductDetailId,
+                CustomerId = entity.CustomerId,
+                Quantity = entity.Quantity,
+                QuantityActual = entity.QuantityActual,
+                QuantityLower = entity.QuantityLower,
+                UnitPrice = entity.UnitPrice,
+                SellingPrice = entity.SellingPrice,
+                Price = entity.Price,
+                NetPrice = entity.NetPrice,
+                DateSold = entity.DateSold,
+                DiscountBy = entity.DiscountBy,
+                DiscountAs = entity.DiscountAs,
+                Discount = entity.Discount,
+                LocationId = entity.LocationId,
+                Status = entity.Status,
+                CreatedBy = entity.CreatedBy,
+                CreatedOn = entity.CreatedOn,
+                EditedBy = entity.EditedBy,
+                EditedOn = entity.EditedOn,
+            };
+        }
         internal static ProductDetailCart Map(EntityProductDetailCart entity)
         {
             return new ProductDetailCart

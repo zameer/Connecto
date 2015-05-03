@@ -65,7 +65,6 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
           $scope.item.NetPrice = $scope.item.Price - ($scope.item.Discount != undefined ? $scope.item.Discount : 0);
       };
       $scope.add = function () {
-          alert($scope.item.OrderId);
           $http.post('/' + cName + '/Create/', $scope.item).success(function (data) {
               showMessage(data);
               if (data.Status != "Failure") $scope.loadItems($scope.item.OrderId);

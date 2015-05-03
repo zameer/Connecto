@@ -10,12 +10,30 @@ namespace Connecto.Test
     {
         private readonly CompanyRepository _company = ConnectoFactory.CompanyRepository;
         private readonly ProductRepository _product = ConnectoFactory.ProductRepository;
+        private readonly SalesDetailRepository _sales = ConnectoFactory.SalesDetailRepository;
         [TestMethod]
         public void CompanyAndLocation()
         {
             var company = _company.Get(2);
             var locations = _company.Locations(company.CompanyId);
             Assert.AreEqual(2, locations.Count);
+        }
+
+        [TestMethod]
+        public void Sales()
+        {
+            try
+            {
+                var stock = new ProductBase { Quantity = 200, QuantityActual = 45, QuantityLower = 500 };
+                var sold = new ProductBase { Quantity = 1, QuantityActual = 40, QuantityLower = 800 };
+                var sales = _sales.SyncSales(1000, 50, stock, sold);
+                Assert.Equals(new ProductBase { Quantity = 199, QuantityActual = 4, QuantityLower = 700 }, sales);
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
         }
 
         [TestMethod]
