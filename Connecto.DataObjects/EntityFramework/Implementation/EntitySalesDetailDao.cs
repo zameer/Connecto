@@ -151,9 +151,11 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
 
             stock = new ProductBase { Quantity = item.Product.Quantity, QuantityActual = item.Product.QuantityActual, QuantityLower = item.Product.QuantityLower };
             synced = SyncStock(volume, (int)containsQty, stock, sold);
+            var qty = item.Product.Quantity;
             item.Product.Quantity = synced.Quantity;
             item.Product.QuantityActual = synced.QuantityActual;
             item.Product.QuantityLower = synced.QuantityLower;
+            item.Product.StockInHand -= (qty - synced.Quantity);
         }
 
         public ProductBase SyncStock(int volume, int containsQty, ProductBase stock, ProductBase sold)
