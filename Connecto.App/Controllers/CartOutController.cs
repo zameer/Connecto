@@ -47,8 +47,8 @@ namespace Connecto.App.Controllers
             item.CreatedOn = DateTime.Now;
             item.DateSold = DateTime.Now;
             item.Status = RecordStatus.Active;
-            _repo.AddToCart(item);
-            return Json(new { Status = "Success", Message = "Cart Item Added." }, JsonRequestBehavior.AllowGet);
+            var orderId = _repo.AddToCart(item);
+            return Json(new { OrderId = orderId, Status = "Success", Message = "Cart Item Added." }, JsonRequestBehavior.AllowGet);
         }
 
         //

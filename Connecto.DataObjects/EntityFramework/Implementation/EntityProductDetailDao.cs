@@ -41,11 +41,20 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                 var entity = Mapper.Map(productDetailCart);
                 if(productDetailCart.OrderId.Equals(0))
                     entity.OrderId = AddInvoice(context, OrderType.Buying, productDetailCart);
-                
-                context.ProductDetailCarts.Add(entity);
+
+                if (!UpdateProductDetailCart(productDetailCart, context)) context.ProductDetailCarts.Add(entity);
                 context.SaveChanges();
                 return entity.OrderId;
             }
+        }
+        private bool UpdateProductDetailCart(ProductDetailCart productDetailCart, ConnectoManagerEntities context)
+        {
+            var cart = context.ProductDetailCarts.FirstOrDefault(e => e.OrderId == productDetailCart.OrderId && e.ProductCode == productDetailCart.ProductCode);
+            if (cart == null) return false;
+            cart.Quantity += productDetailCart.Quantity;
+            cart.UnitPrice = productDetailCart.UnitPrice;
+            cart.SellingPrice = productDetailCart.SellingPrice;
+            return true;
         }
         public int AddProductDetail(int invoiceId)
         {

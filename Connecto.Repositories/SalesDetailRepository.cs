@@ -31,9 +31,9 @@ namespace Connecto.Repositories
             return Repo.GetSalesDetailsCart(orderId);
         }
 
-        public void AddToCart(SalesDetailCart salesDetailCart)
+        public int AddToCart(SalesDetailCart salesDetailCart)
         {
-            Repo.AddSalesDetailCart(salesDetailCart);
+            return Repo.AddSalesDetailCart(salesDetailCart);
         }
         public int Add(int orderId)
         {
