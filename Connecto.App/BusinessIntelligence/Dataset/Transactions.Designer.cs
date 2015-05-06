@@ -291,6 +291,12 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
             
             private global::System.Data.DataColumn columnQuantityLower;
             
+            private global::System.Data.DataColumn columnStockAs;
+            
+            private global::System.Data.DataColumn columnActual;
+            
+            private global::System.Data.DataColumn columnLower;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ProductDetailsDataTable() {
@@ -374,6 +380,30 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn StockAsColumn {
+                get {
+                    return this.columnStockAs;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ActualColumn {
+                get {
+                    return this.columnActual;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn LowerColumn {
+                get {
+                    return this.columnLower;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -409,7 +439,7 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ProductDetailsRow AddProductDetailsRow(int OrderId, string Name, string ProductCode, int Quantity, int QuantityActual, int QuantityLower) {
+            public ProductDetailsRow AddProductDetailsRow(int OrderId, string Name, string ProductCode, int Quantity, int QuantityActual, int QuantityLower, string StockAs, string Actual, string Lower) {
                 ProductDetailsRow rowProductDetailsRow = ((ProductDetailsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         OrderId,
@@ -417,7 +447,10 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
                         ProductCode,
                         Quantity,
                         QuantityActual,
-                        QuantityLower};
+                        QuantityLower,
+                        StockAs,
+                        Actual,
+                        Lower};
                 rowProductDetailsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowProductDetailsRow);
                 return rowProductDetailsRow;
@@ -446,6 +479,9 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
                 this.columnQuantity = base.Columns["Quantity"];
                 this.columnQuantityActual = base.Columns["QuantityActual"];
                 this.columnQuantityLower = base.Columns["QuantityLower"];
+                this.columnStockAs = base.Columns["StockAs"];
+                this.columnActual = base.Columns["Actual"];
+                this.columnLower = base.Columns["Lower"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -463,12 +499,21 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
                 base.Columns.Add(this.columnQuantityActual);
                 this.columnQuantityLower = new global::System.Data.DataColumn("QuantityLower", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnQuantityLower);
+                this.columnStockAs = new global::System.Data.DataColumn("StockAs", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStockAs);
+                this.columnActual = new global::System.Data.DataColumn("Actual", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnActual);
+                this.columnLower = new global::System.Data.DataColumn("Lower", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLower);
                 this.columnOrderId.AllowDBNull = false;
                 this.columnName.MaxLength = 2147483647;
                 this.columnProductCode.MaxLength = 2147483647;
                 this.columnQuantity.AllowDBNull = false;
                 this.columnQuantityActual.AllowDBNull = false;
                 this.columnQuantityLower.AllowDBNull = false;
+                this.columnStockAs.MaxLength = 2147483647;
+                this.columnActual.MaxLength = 2147483647;
+                this.columnLower.MaxLength = 2147483647;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -687,6 +732,54 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string StockAs {
+                get {
+                    try {
+                        return ((string)(this[this.tableProductDetails.StockAsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'StockAs\' in table \'ProductDetails\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableProductDetails.StockAsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Actual {
+                get {
+                    try {
+                        return ((string)(this[this.tableProductDetails.ActualColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Actual\' in table \'ProductDetails\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableProductDetails.ActualColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Lower {
+                get {
+                    try {
+                        return ((string)(this[this.tableProductDetails.LowerColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Lower\' in table \'ProductDetails\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableProductDetails.LowerColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsNameNull() {
                 return this.IsNull(this.tableProductDetails.NameColumn);
             }
@@ -707,6 +800,42 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetProductCodeNull() {
                 this[this.tableProductDetails.ProductCodeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsStockAsNull() {
+                return this.IsNull(this.tableProductDetails.StockAsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetStockAsNull() {
+                this[this.tableProductDetails.StockAsColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsActualNull() {
+                return this.IsNull(this.tableProductDetails.ActualColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetActualNull() {
+                this[this.tableProductDetails.ActualColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsLowerNull() {
+                return this.IsNull(this.tableProductDetails.LowerColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetLowerNull() {
+                this[this.tableProductDetails.LowerColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -875,6 +1004,9 @@ namespace Connecto.App.BusinessIntelligence.Dataset.TransactionsTableAdapters {
             tableMapping.ColumnMappings.Add("Quantity", "Quantity");
             tableMapping.ColumnMappings.Add("QuantityActual", "QuantityActual");
             tableMapping.ColumnMappings.Add("QuantityLower", "QuantityLower");
+            tableMapping.ColumnMappings.Add("StockAs", "StockAs");
+            tableMapping.ColumnMappings.Add("Actual", "Actual");
+            tableMapping.ColumnMappings.Add("Lower", "Lower");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -892,9 +1024,11 @@ namespace Connecto.App.BusinessIntelligence.Dataset.TransactionsTableAdapters {
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT        Product.ProductDetail.OrderId, Product.Product.Name, Product.ProductDetail.ProductCode, Product.ProductDetail.Quantity, Product.ProductDetail.QuantityActual, 
-                         Product.ProductDetail.QuantityLower
+                         Product.ProductDetail.QuantityLower, Product.ProductType.StockAs, Product.Measure.Actual, Product.Measure.Lower
 FROM            Product.ProductDetail INNER JOIN
-                         Product.Product ON Product.ProductDetail.ProductId = Product.Product.ProductId";
+                         Product.Product ON Product.ProductDetail.ProductId = Product.Product.ProductId INNER JOIN
+                         Product.ProductType ON Product.Product.ProductTypeId = Product.ProductType.ProductTypeId INNER JOIN
+                         Product.Measure ON Product.ProductType.MeasureId = Product.Measure.MeasureId";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
