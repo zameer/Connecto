@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using Connecto.App.BusinessIntelligence.Dataset;
 using Connecto.App.BusinessIntelligence.Dataset.TransactionsTableAdapters;
+using Connecto.App.Utilities;
 using Microsoft.Reporting.WebForms;
 
 namespace Connecto.App.Controllers
@@ -26,10 +31,6 @@ namespace Connecto.App.Controllers
             var rd = new ReportDataSource("Dataset", data);
             var lr = new LocalReport { ReportPath = path };
             lr.DataSources.Add(rd);
-            var reportType = id;
-            string mimeType;
-            string encoding;
-            string fileNameExtension;
 
             var deviceInfo =
             "<DeviceInfo>" +
@@ -42,15 +43,15 @@ namespace Connecto.App.Controllers
             "  <MarginBottom>0.5in</MarginBottom>" +
             "</DeviceInfo>";
 
-            Warning[] warnings;
-            string[] streams;
+            if (id.Equals("EMF"))
+            {
+                Printo.Printer(lr, deviceInfo);
+                return View("Report");
+            }
 
-            var renderedBytes = lr.Render(reportType, deviceInfo, out mimeType, out encoding,
-                out fileNameExtension,
-                out streams,
-                out warnings);
-
-            return File(renderedBytes, mimeType);
+            var info = Printo.File(lr, deviceInfo, id);
+            return File(info.Item1, info.Item2);
         }
+       
     }
 }
