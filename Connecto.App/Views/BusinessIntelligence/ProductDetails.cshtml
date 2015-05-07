@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Connecto - Reports";
+}
+<p>
+    @{
+        const string actionName = "ProductDetails";
+    } 
+    <a class="btn" href="@Url.Action("Download", new { id = "PDF", page = actionName })">
+        <i class="ace-icon fa fa-download align-top bigger-125"></i>
+        PDF
+    </a>
+
+    <a class="btn btn-primary" href="@Url.Action("Download", new { id = "Excel", page = actionName })">
+        <i class="ace-icon fa fa-download align-top bigger-125"></i>
+        Excel
+    </a>
+
+    <a class="btn btn-info" href="@Url.Action("Download", new { id = "Word", page = actionName })">
+        Word
+        <i class="ace-icon fa fa-download  align-top bigger-125 icon-on-right"></i>
+    </a>
+
+    <a class="btn btn-danger" href="@Url.Action("Download", new { id = "Image", page = actionName })">
+        Image
+        <i class="ace-icon fa fa-download  align-top bigger-125 icon-on-right"></i>
+    </a>
+    
+    <a class="btn btn-app btn-light btn-xs" href="@Url.Action("Download", new { id = "EMF", page = actionName })">
+        <i class="ace-icon fa fa-print bigger-160"></i>
+        Print
+    </a>
+</p>
+<script type="text/javascript">
+    $('#menu-bi').syncMenu([{ name: "biProductDetails", option: "a" }]);
+</script>
