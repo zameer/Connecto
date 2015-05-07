@@ -405,6 +405,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="BusinessIntelligence\Transaction\SalesDetailsByOrderId.rdlc" />
     <EmbeddedResource Include="BusinessIntelligence\Transaction\ProductDetails.rdlc" />
   </ItemGroup>
   <PropertyGroup>

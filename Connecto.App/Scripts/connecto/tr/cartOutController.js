@@ -80,4 +80,9 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
               }
           });
       };
+      $scope.print = function () {
+          $http.post('/' + cName + '/Print/', { orderId: 64 }).success(function (data) {
+              showMessage(data);
+          });
+      };
   }]);

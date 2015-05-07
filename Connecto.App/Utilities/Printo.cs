@@ -4,10 +4,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Drawing.Printing;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Web;
-using System.Web.Mvc;
 using Microsoft.Reporting.WebForms;
 
 namespace Connecto.App.Utilities
@@ -78,6 +75,25 @@ namespace Connecto.App.Utilities
             printDoc.PrintPage += PrintPage;
             _mCurrentPageIndex = 0;
             printDoc.Print();
+        }
+    }
+
+    public class PrintoDeviceInfo
+    {
+        public string OutputFormat { get; set; }
+        public double PageWidth { get; set; }
+        public double PageHeight { get; set; }
+        public double MarginTop { get; set; }
+        public double MarginLeft { get; set; }
+        public double MarginRight { get; set; }
+        public double MarginBottom { get; set; }
+        public string SizeUnit { get; set; }
+        public string Xml
+        {
+           get { return string.Format(
+                    "<DeviceInfo><OutputFormat>{1}</OutputFormat><PageWidth>{2}{0}</PageWidth><PageHeight>{3}{0}</PageHeight><MarginTop>{4}{0}</MarginTop><MarginLeft>{5}{0}</MarginLeft><MarginRight>{6}{0}</MarginRight><MarginBottom>{7}{0}</MarginBottom></DeviceInfo>",
+                    SizeUnit, OutputFormat, PageWidth, "auto", MarginTop, MarginLeft, MarginRight, MarginBottom);
+           }
         }
     }
 }

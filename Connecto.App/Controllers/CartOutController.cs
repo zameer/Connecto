@@ -1,11 +1,16 @@
 ﻿using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using Connecto.App.BusinessIntelligence.Dataset.TransactionsTableAdapters;
 using Connecto.App.Models;
+using Connecto.App.Utilities;
 using Connecto.BusinessObjects;
 using Connecto.Common.Enumeration;
 using Connecto.Repositories;
 using System;
 using System.Web.Mvc;
 using Connecto.App.ModelValidator;
+using Microsoft.Reporting.WebForms;
 
 namespace Connecto.App.Controllers
 {
@@ -70,11 +75,28 @@ namespace Connecto.App.Controllers
             _repo.Delete(id, User.UserId());
             return Json(new { Status = "Success", Message = "Person Successfully Deleted." }, JsonRequestBehavior.AllowGet);
         }
+
         [HttpPost]
         public JsonResult Complete(int id)
         {
             _repo.Add(id);
-            return Json(new { Status = "Success", Message = "Invoice Successfully Added." }, JsonRequestBehavior.AllowGet);
+            return Json(new {Status = "Success", Message = "Invoice Successfully Added."}, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Print(int orderId)
+        {
+            var path = Path.Combine(Server.MapPath("~/BusinessIntelligence/Transaction"), "SalesDetailsByOrderId.rdlc");
+            if (!System.IO.File.Exists(path))
+                return Json(new { Status = "Failure", Message = "Report not found." }, JsonRequestBehavior.AllowGet);
+
+            var data = new SalesDetailsAdapter().GetData().ToList();
+            var rd = new ReportDataSource("Dataset", data);
+            var lr = new LocalReport { ReportPath = path };
+            lr.DataSources.Add(rd);
+
+            var info = new PrintoDeviceInfo { OutputFormat = "EMF", SizeUnit = "in", PageWidth = 5.3, PageHeight = 3, MarginTop = 0.5, MarginLeft = 0, MarginRight = 0, MarginBottom = 0.5 };
+            Printo.Printer(lr, info.Xml);
+            return Json(new { Status = "Success", Message = "Invoice Successfully Printed." }, JsonRequestBehavior.AllowGet);
         }
         public ActionResult Index()
         {
