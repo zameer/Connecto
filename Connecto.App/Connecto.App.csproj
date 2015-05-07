@@ -377,7 +377,8 @@
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Customer\List.cshtml" />
     <Content Include="Views\Customer\People.cshtml" />
-    <Content Include="Views\BusinessIntelligence\Report.cshtml" />
+    <Content Include="Views\BusinessIntelligence\ProductDetails.cshtml" />
+    <Content Include="Views\BusinessIntelligence\SalesDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\" />
