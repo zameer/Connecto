@@ -26,6 +26,13 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
       $scope.loadOrders();
       $scope.loadItems();
       $scope.loadSelections();
+      $scope.filterProduct = function () {
+          if ($scope.item.ProductId != '') {
+              $http.get('/Product/GetItem/' + $scope.item.ProductId).success(function (data) {
+                  $scope.info = data;
+              });
+          } else $scope.info = [];
+      };
       $scope.filterOrder = function (orderId) {
           if (orderId.length > 0) $scope.loadItems(orderId);
           else $scope.items = [];

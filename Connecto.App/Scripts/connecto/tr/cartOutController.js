@@ -22,14 +22,14 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
           if ($scope.item.ProductCode != undefined) {
               $http.get('/' + cName + '/GetSalesDetail/?productCode=' + $scope.item.ProductCode).success(function (data) {
                   $scope.item = data;
-                  $scope.item.OrderId = orderId;
+                  if ($scope.item != '') $scope.item.OrderId = orderId;
                   $scope.Measure = data.Measure;
               });
           }
       };
       $scope.calculatePrice = function () {
           $scope.decideSellingPrice();
-          var lowerUnitPrice = $scope.item.SellingPrice / $scope.item.ContainsQty;
+          var lowerUnitPrice = $scope.item.SellingPrice / ($scope.item.ContainsQty == 0 ? 1 : $scope.item.ContainsQty);
           var unitPrice = $scope.item.SellingPrice * $scope.item.Quantity;
           var actualPrice = lowerUnitPrice * $scope.item.QuantityActual;
           var lowerPrice = (lowerUnitPrice / $scope.item.Volume) * $scope.item.QuantityLower;

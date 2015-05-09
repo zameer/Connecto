@@ -30,7 +30,7 @@
                                 <div class="profile-info-name"> Stock In Hand </div>
                                 <div class="profile-info-value">
                                     <h4 ng-if="item.StockInHand" class=" widget-title blue smaller">
-                                        {{item.StockInHand.Quantity}} {{item.StockAs}}s
+                                        <span ng-if="item.StockInHand.Quantity > 0">{{item.StockInHand.Quantity}} {{item.StockAs}}s</span>
                                         <span>
                                             <span ng-if="item.StockInHand.QuantityActual > 0">{{item.StockInHand.QuantityActual}} {{item.Measure.Actual}}s</span>
                                             <span ng-if="item.StockInHand.QuantityLower > 0">{{item.StockInHand.QuantityLower}} {{item.Measure.Lower}}</span>
@@ -53,7 +53,7 @@
                         </div>
 
                         <div class="col-sm-8">
-                            <div class="col-sm-3">
+                            <div class="col-sm-3" ng-if="item.StockInHand.Quantity > 0">
                                 <div class="row form-group">
                                     <div class="infobox infobox-green width-auto">
                                         <div class="infobox-data no-padding-right">

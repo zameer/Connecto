@@ -30,7 +30,7 @@
                                 <div class="row form-group">
                                     <label class="col-sm-4 control-label">Product</label>
                                     <div class="col-sm-9">
-                                        <select ng-model="item.ProductId" id="product" class="select2" data-placeholder="Choose Product...">
+                                        <select ng-model="item.ProductId" ng-change="filterProduct()" id="product" class="select2" data-placeholder="Choose Product...">
                                             <option></option>
                                             <option ng-repeat="e in products" value="{{e.ProductId}}">{{e.Name}}</option>
                                         </select>
@@ -52,12 +52,6 @@
 
                         <div class="space-6"></div>
                         <div class="col-sm-4">
-                            <div class="form-group">
-                                <label class="col-sm-4 control-label">Quantity</label>
-                                <div class="col-sm-9">
-                                    <input ng-model="item.Quantity" class="input-sm" type="text" placeholder="Quantity">
-                                </div>
-                            </div>
                         </div>
 
                         <div class="col-sm-8">
@@ -80,6 +74,45 @@
                         </div>
 
                         <div class="space-6"></div>
+
+                        <div class="col-sm-8">
+                            <div class="col-sm-3" ng-if="info.ContainsQty > 0">
+                                <div class="row form-group">
+                                    <div class="infobox infobox-green width-auto">
+                                        <div class="infobox-data no-padding-right">
+                                            <input ng-model="item.Quantity" class="input-mini" type="text">
+                                            <div class="infobox-content">{{info.ProductType.StockAs}}s</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="row form-group">
+
+                                    <div class="col-sm-8" ng-if="info.SellingLower">
+                                        <div class=" form-group" ng-if="info.ProductType.Measure.Actual">
+                                            <div class="col-sm-5 no-padding-left">
+                                                <div class="infobox infobox-orange2 width-auto">
+                                                    <div class="infobox-data width-auto">
+                                                        <span class="infobox-data-number"><input ng-model="item.QuantityActual" ng-blur="calculatePrice()" class="input-mini" type="text" placeholder=""></span>
+                                                        <div class="infobox-content">{{info.ProductType.Measure.Actual}}s</div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3" ng-if="info.ProductType.Measure.Actual">
+                                                <div class="infobox infobox-orange2 width-auto">
+                                                    <div class="infobox-data width-auto">
+                                                        <span class="infobox-data-number"><input ng-model="item.QuantityLower" ng-blur="calculatePrice()" class="input-mini" type="text" placeholder=""></span>
+                                                        <div class="infobox-content">{{info.ProductType.Measure.Lower}}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-sm-12 align-right">
                             <div class="col-md-offset-3 col-sm-8">
                                 <button class="btn btn-app btn-yellow btn-xs" type="button" ng-click="add()">
