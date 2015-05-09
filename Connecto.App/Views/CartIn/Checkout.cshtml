@@ -107,7 +107,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-3" ng-if="info.ProductType.Measure.Actual">
+                                            <div class="col-sm-3" ng-if="info.ProductType.Measure.Lower != info.ProductType.Measure.Actual">
                                                 <div class="infobox infobox-orange2 width-auto">
                                                     <div class="infobox-data width-auto">
                                                         <span class="infobox-data-number"><input ng-model="item.QuantityLower" ng-blur="calculatePrice()" class="input-mini" type="text" placeholder=""></span>
