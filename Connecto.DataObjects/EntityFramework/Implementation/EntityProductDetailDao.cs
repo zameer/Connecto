@@ -67,6 +67,8 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                     var product = context.Products.FirstOrDefault(e => e.ProductId == item.ProductId);
                     if (product == null) continue;
                     product.Quantity += item.Quantity;
+                    product.QuantityActual += item.QuantityActual;
+                    product.QuantityLower += item.QuantityLower;
                     product.StockInHand += item.Quantity;
                     context.ProductDetails.Add(Mapper.MapDiff(item));
                     cartsToRemove.Add(item);

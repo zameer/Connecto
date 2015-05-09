@@ -52,6 +52,13 @@
 
                         <div class="space-6"></div>
                         <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">&nbsp; </label>
+                                <div class="col-sm-9">
+                                    <span class="label label-lg label-yellow arrowed-in arrowed-in-right" ng-show="info.ContainsQty > 0">Price applies to {{info.ProductType.StockAs}}</span>
+                                    <span class="label label-lg label-purple arrowed-in arrowed-in-right" ng-show="info.ContainsQty == 0">Price applies to {{info.ProductType.Measure.Actual}}</span>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="col-sm-8">
