@@ -198,6 +198,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ReportCriteriaViewModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="ModelValidator\PersonValidator.cs" />
@@ -379,6 +380,8 @@
     <Content Include="Views\Customer\People.cshtml" />
     <Content Include="Views\BusinessIntelligence\ProductDetails.cshtml" />
     <Content Include="Views\BusinessIntelligence\SalesDetails.cshtml" />
+    <Content Include="Views\BusinessIntelligence\ProductData.cshtml" />
+    <Content Include="Views\BusinessIntelligence\_Download.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\" />
@@ -406,6 +409,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="BusinessIntelligence\Transaction\ProductData.rdlc" />
     <EmbeddedResource Include="BusinessIntelligence\Transaction\SalesDetailsByOrderId.rdlc" />
     <EmbeddedResource Include="BusinessIntelligence\Transaction\ProductDetails.rdlc" />
   </ItemGroup>

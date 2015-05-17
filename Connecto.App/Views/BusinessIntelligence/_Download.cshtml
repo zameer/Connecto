@@ -1,0 +1,6 @@
+﻿@model Connecto.App.Models.ReportCriteriaViewModel
+@Html.DropDownListFor(m => m.ReportType, new SelectList(Model.ReportTypes))
+<button class="btn btn-primary" type="submit">
+    <i class="ace-icon fa fa-download align-top bigger-125"></i>
+    Download / View
+</button>
