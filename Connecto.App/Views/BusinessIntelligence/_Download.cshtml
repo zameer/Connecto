@@ -1,5 +1,9 @@
 ﻿@model Connecto.App.Models.ReportCriteriaViewModel
 <div class="input-group">
+    @Html.HiddenFor(model => model.Page)
+    @Html.HiddenFor(model => model.ReportName)
+    @Html.HiddenFor(model => model.CommandText)
+
     @Html.DropDownListFor(m => m.ReportType, new SelectList(Model.ReportTypes), new { @class = "form-control", @style = "width:auto;" })
     &nbsp;
     <button class="btn btn-primary" type="submit">

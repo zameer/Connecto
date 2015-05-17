@@ -425,14 +425,6 @@
                     <FontWeight>Bold</FontWeight>
                   </Style>
                 </TextRun>
-                <TextRun>
-                  <Value>=Parameters!OrderId.Value</Value>
-                  <Style>
-                    <FontFamily>Calibri</FontFamily>
-                    <FontSize>11pt</FontSize>
-                    <FontWeight>Bold</FontWeight>
-                  </Style>
-                </TextRun>
               </TextRuns>
               <Style>
                 <TextAlign>Center</TextAlign>
@@ -591,12 +583,6 @@
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
-  <ReportParameters>
-    <ReportParameter Name="OrderId">
-      <DataType>String</DataType>
-      <Prompt>ReportParameter1</Prompt>
-    </ReportParameter>
-  </ReportParameters>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>a205124d-7534-4a74-983c-89d798d7d232</rd:ReportID>
 </Report>
