@@ -1,6 +1,9 @@
 ﻿@model Connecto.App.Models.ReportCriteriaViewModel
-@Html.DropDownListFor(m => m.ReportType, new SelectList(Model.ReportTypes))
-<button class="btn btn-primary" type="submit">
-    <i class="ace-icon fa fa-download align-top bigger-125"></i>
-    Download / View
-</button>
+<div class="input-group">
+    @Html.DropDownListFor(m => m.ReportType, new SelectList(Model.ReportTypes), new { @class = "form-control", @style = "width:auto;" })
+    &nbsp;
+    <button class="btn btn-primary" type="submit">
+        <i class="ace-icon fa fa-download align-top bigger-125"></i>
+        Download / View
+    </button>
+</div>

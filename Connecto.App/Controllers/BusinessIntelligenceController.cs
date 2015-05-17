@@ -32,7 +32,7 @@ namespace Connecto.App.Controllers
         {
             var info = new PrintoDeviceInfo { OutputFormat = vm.ReportType, SizeUnit = "in", PageWidth = 8.5, PageHeight = 11, MarginTop = 0.5, MarginLeft = 1, MarginRight = 1, MarginBottom = 0.5 };
             var lr = vm.Page.Equals("ProductDetails") ? GetProductDetails() :
-                vm.Page.Equals("ProductData") ? GetProductData(ref info) : GetSalesDetails(ref info, 78);
+                vm.Page.Equals("ProductData") ? GetProductData(ref info) : GetSalesDetails(ref info, vm.Id);
             if (lr == null)
                 return View(vm.Page);
 
