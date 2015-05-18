@@ -1,14 +1,57 @@
 ﻿@{
     ViewBag.Title = "Connecto - Reports";
 }
-<p>
-    <a href="@Url.Action("Load", "BusinessIntelligence", new { id = "a88a2fcb-d4e3-491a-b220-74e6ae5cec9f" })" class="btn btn-primary">
-        Purchasing Details
-    </a>
-    <a href="@Url.Action("Load", "BusinessIntelligence", new { id = "8d64a1f1-7482-4376-b64d-2c8db0683c95" })" class="btn btn-primary">
-        Selling Details
-    </a>
-</p>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="widget-box transparent">
+            <div class="widget-header widget-header-flat">
+                <h4 class="widget-title lighter">
+                    <i class="ace-icon fa fa-bar-chart-o orange"></i>
+                   Frequent
+                </h4>
+
+                <div class="widget-toolbar">
+                    <a href="#" data-action="collapse">
+                        <i class="ace-icon fa fa-chevron-up"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="widget-body">
+                <div class="widget-main no-padding">
+                    <table class="table table-bordered table-striped">
+                        <thead class="thin-border-bottom">
+                            <tr>
+                                <th>Description</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>Detail information of purchased product, filtered by Order Id</td>
+                                <td class="width-auto">
+                                    <a class="btn btn-xs btn-info" href="@Url.Action("Load", "BusinessIntelligence", new { id = "a88a2fcb-d4e3-491a-b220-74e6ae5cec9f" })">
+                                        <i class="ace-icon fa fa-bar-chart-o bigger-110"></i> View
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Detail information of sold product, filtered by Order Id</td>
+                                <td class="width-auto">
+                                    <a class="btn btn-xs btn-info" href="@Url.Action("Load", "BusinessIntelligence", new { id = "8d64a1f1-7482-4376-b64d-2c8db0683c95" })">
+                                        <i class="ace-icon fa fa-bar-chart-o bigger-110"></i> View
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div><!-- /.widget-main -->
+            </div><!-- /.widget-body -->
+        </div>
+    </div>
+    <div class="col-sm-6"></div>
+</div>
 <script type="text/javascript">
     $('#menu-bi').syncMenu([{ name: "biTransactions", option: "a" }]);
 </script>
