@@ -213,6 +213,7 @@
     <Compile Include="Utilities\Printo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BusinessIntelligence\Scripts\ReportSetting.sql" />
     <Content Include="BusinessIntelligence\Scripts\sp-may17th.sql" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
