@@ -69,5 +69,23 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                 return entity.CompanyLocationId;
             }
         }
+
+        public ReportSetting GetReportSetting(Guid reportGuid)
+        {
+            using (var context = DataObjectFactory.CreateContext())
+            {
+                var item = context.ReportSettings.FirstOrDefault(e => e.ReportGuid == reportGuid);
+                if (item == null) return null;
+                return new ReportSetting
+                {
+                    ReportGuid = item.ReportGuid,
+                    ReportName = item.ReportName,
+                    ReportTitle = item.ReportTitle,
+                    ReportPath = item.ReportPath,
+                    CommandText = item.CommandText,
+                    Parameters = item.Parameters
+                };
+            }
+        }
     }
 }

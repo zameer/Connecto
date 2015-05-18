@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Connecto.BusinessObjects;
 
 namespace Connecto.DataObjects
@@ -13,5 +14,6 @@ namespace Connecto.DataObjects
         CompanyLocation GetLocation(int locationId);
         IList<CompanyLocation> GetLocations();
         int AddLocation(CompanyLocation companyLocation);
+        ReportSetting GetReportSetting(Guid reportGuid);
     }
 }

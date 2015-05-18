@@ -42,6 +42,12 @@ namespace Connecto.App.BusinessIntelligence
             if (vm.ProductId > 0) items.Add(new SqlParameter(string.Format("@ProductId"), vm.ProductId));
             return items;
         }
+
+        public static string[] GetRenderControls(string parameters)
+        {
+            if (string.IsNullOrEmpty(parameters)) return new string[] {};
+            return parameters.Split(',');
+        }
     }
 
 }

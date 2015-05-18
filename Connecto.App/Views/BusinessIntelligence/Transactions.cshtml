@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Connecto - Reports";
+}
+<p>
+    <a href="@Url.Action("Load", "BusinessIntelligence", new { id = "a88a2fcb-d4e3-491a-b220-74e6ae5cec9f" })" class="btn btn-primary">
+        Purchasing Details
+    </a>
+    <a href="@Url.Action("Load", "BusinessIntelligence", new { id = "8d64a1f1-7482-4376-b64d-2c8db0683c95" })" class="btn btn-primary">
+        Selling Details
+    </a>
+</p>
+<script type="text/javascript">
+    $('#menu-bi').syncMenu([{ name: "biTransactions", option: "a" }]);
+</script>

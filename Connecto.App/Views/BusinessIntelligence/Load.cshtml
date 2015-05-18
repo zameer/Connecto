@@ -6,12 +6,15 @@
     <p>
         <div class="widget-box">
             <div class="widget-header">
-                <h4 class="widget-title">Sales Details</h4>
+                <h4 class="widget-title">@Model.ReportTitle</h4>
             </div>
             <div class="widget-body">
                 <div class="widget-main">
                     <div class="form-inline">
-                        <input type="text" name="Id" class="input-small" placeholder="Order Id">
+                        @foreach (var actionName in Model.RenderControls)
+                        {
+                            @Html.Partial(string.Format("Criteria/_{0}", actionName), Model)
+                        }
                     </div>
                 </div>
             </div>
@@ -20,5 +23,5 @@
     </p>
 </form>
 <script type="text/javascript">
-    $('#menu-bi').syncMenu([{ name: "biSalesDetails", option: "a" }]);
+    $('#menu-bi').syncMenu([]);
 </script>

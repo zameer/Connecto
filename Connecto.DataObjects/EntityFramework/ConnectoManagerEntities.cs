@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 namespace Connecto.DataObjects.EntityFramework
 {
     /// <summary>
-    /// POCO: BizLiteManagerEntities
+    /// POCO: ConnectoManagerEntities
     /// </summary>
     /// <remarks>
     /// When running DataObjects library to generate or update database
-    /// this will use App.config connectionStrings 'BizLiteManagerEntities'
+    /// this will use App.config connectionStrings 'ConnectoManagerEntities'
     /// </remarks>
     public class ConnectoManagerEntities : DbContext
     {
@@ -39,5 +39,6 @@ namespace Connecto.DataObjects.EntityFramework
         public DbSet<EntityCustomer> Customers { get; set; }
         public DbSet<EntitySalesDetail> SalesDetails { get; set; }
         public DbSet<EntitySalesDetailCart> SalesDetailCarts { get; set; }
+        public DbSet<EntityReportSetting> ReportSettings { get; set; }
     }
 }

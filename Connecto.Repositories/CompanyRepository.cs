@@ -26,6 +26,10 @@ namespace Connecto.Repositories
         {
             return CompanyDao.GetLocations(id);
         }
+        public ReportSetting GetReportSetting(Guid reportGuid)
+        {
+            return CompanyDao.GetReportSetting(reportGuid);
+        }
     }
     public class LocationRepository
     {

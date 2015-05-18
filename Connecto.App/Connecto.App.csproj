@@ -380,10 +380,13 @@
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Customer\List.cshtml" />
     <Content Include="Views\Customer\People.cshtml" />
-    <Content Include="Views\BusinessIntelligence\ProductDetails.cshtml" />
-    <Content Include="Views\BusinessIntelligence\SalesDetails.cshtml" />
-    <Content Include="Views\BusinessIntelligence\ProductData.cshtml" />
     <Content Include="Views\BusinessIntelligence\_Download.cshtml" />
+    <Content Include="Views\BusinessIntelligence\Criteria\_ProductName.cshtml" />
+    <Content Include="Views\BusinessIntelligence\Criteria\_Id.cshtml" />
+    <Content Include="Views\BusinessIntelligence\Load.cshtml" />
+    <Content Include="Views\BusinessIntelligence\Transactions.cshtml" />
+    <Content Include="Views\BusinessIntelligence\HumanResource.cshtml" />
+    <Content Include="Views\BusinessIntelligence\CommonSettings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\" />

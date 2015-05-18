@@ -18,5 +18,8 @@ namespace Connecto.App.Models
         public List<string> ReportTypes {
             get { return new List<string> { "PDF", "Excel", "Word", "Image" }; }
         }
+
+        public string[] RenderControls { get; set; }
+        public string ReportTitle { get; set; }
     }
 }
