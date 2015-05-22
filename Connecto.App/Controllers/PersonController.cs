@@ -17,6 +17,12 @@ namespace Connecto.App.Controllers
             var items = _repo.GetAll();
             return Json(items, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult GetIt(int start, int length)
+        {
+            var items = _repo.GetAll();
+            return Json(new { recordsTotal = 57, recordsFiltered = 57, data = items }, JsonRequestBehavior.AllowGet);
+        }
+
         public JsonResult GetItem(int id)
         {
             var item = _repo.GetVendorById(id);

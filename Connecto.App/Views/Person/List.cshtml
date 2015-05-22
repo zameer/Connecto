@@ -1,9 +1,24 @@
 ﻿@{ Layout = null; }
+
 <div ng-controller="PersonListCtrl">
+
     <a href="#/Create/" class="btn btn-white btn-info btn-bold">
         <i class="ace-icon fa glyphicon-plus bigger-120 blue"></i>
         New Person
     </a>
+    <div>
+        <table id="example" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>Person Id</th>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th></th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
     <table class="table table-striped table-bordered table-hover">
         <tr>
             <th>Id</th>
@@ -23,3 +38,28 @@
         </tr>
     </table>
 </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#example').dataTable({
+            "serverSide": true,
+            "ordering": false,
+            "ajax": {
+                "url": "/Person/GetIt",
+                "type": "POST"
+            },
+            "columns": [
+                { "data": "PersonId" },
+                { "data": "FirstName" },
+                { "data": "LastName" },
+                {
+                    "targets": -1,
+                    "data": "FirstName",
+                    "render": function (data, type, full) {
+                        var edit = "<a class='btn btn-xs btn-info' href='#/Edit/" + full["PersonId"] + "'><i class='ace-icon fa fa-pencil bigger-120'></i></a>";
+                        return edit;
+                    }
+                }
+            ]
+        });
+    });
+</script>

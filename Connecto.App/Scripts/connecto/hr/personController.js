@@ -2,6 +2,7 @@
 /* Controllers */
 var cName = 'Person';
 var contact = 'Contact';
+var dataTable = null;
 hrControllers.controller(cName + 'ListCtrl', ['$scope', '$http', '$routeParams',
   function ($scope, $http) {
       $scope.loadItems = function () {
