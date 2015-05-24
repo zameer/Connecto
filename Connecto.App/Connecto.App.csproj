@@ -42,7 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -174,6 +174,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="BusinessIntelligence\Dataset\Transactions.cs">
+      <DependentUpon>Transactions.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="BusinessIntelligence\Reporto.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartOutController.cs" />
@@ -417,6 +421,18 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="BusinessIntelligence\Transaction\AllCustomerDetails.rdlc" />
+    <EmbeddedResource Include="BusinessIntelligence\Transaction\AllEmployeeDetails.rdlc" />
+    <EmbeddedResource Include="BusinessIntelligence\Transaction\AllSupplierDetails.rdlc" />
+    <EmbeddedResource Include="BusinessIntelligence\Transaction\LowerQuantityDetails.rdlc" />
+    <EmbeddedResource Include="BusinessIntelligence\Transaction\ProductSupplierDetails.rdlc" />
+    <EmbeddedResource Include="BusinessIntelligence\Transaction\StockDetails.rdlc" />
+    <EmbeddedResource Include="BusinessIntelligence\Transaction\ProductTypeDetails.rdlc" />
+    <EmbeddedResource Include="BusinessIntelligence\Transaction\MeasureDetails.rdlc" />
+    <EmbeddedResource Include="BusinessIntelligence\Transaction\VendorDetails.rdlc" />
+    <EmbeddedResource Include="BusinessIntelligence\Transaction\SupplierDetails.rdlc" />
+    <EmbeddedResource Include="BusinessIntelligence\Transaction\EmployeeDetails.rdlc" />
+    <EmbeddedResource Include="BusinessIntelligence\Transaction\CustomerDetails.rdlc" />
     <EmbeddedResource Include="BusinessIntelligence\Transaction\ProductData.rdlc" />
     <EmbeddedResource Include="BusinessIntelligence\Transaction\SalesDetailsByOrderId.rdlc" />
     <EmbeddedResource Include="BusinessIntelligence\Transaction\ProductDetails.rdlc" />

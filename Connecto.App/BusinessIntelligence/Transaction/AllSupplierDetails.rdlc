@@ -6,13 +6,13 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1.65278in</Width>
+              <Width>1.27778in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.84028in</Width>
+              <Width>1.50695in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.81944in</Width>
+              <Width>1.53125in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -28,7 +28,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Product Code</Value>
+                              <Value>Supplier Id</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
                                 <FontWeight>Bold</FontWeight>
@@ -64,7 +64,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Name</Value>
+                              <Value>First Name</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
                                 <FontWeight>Bold</FontWeight>
@@ -93,14 +93,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox5">
+                    <Textbox Name="Textbox8">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Quantity</Value>
+                              <Value>Last Name</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
                                 <FontWeight>Bold</FontWeight>
@@ -112,7 +112,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox5</rd:DefaultName>
+                      <rd:DefaultName>Textbox8</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -134,14 +134,14 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="ProductCode">
+                    <Textbox Name="SupplierId">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!ProductCode.Value</Value>
+                              <Value>=Fields!SupplierId.Value</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
                               </Style>
@@ -150,7 +150,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>ProductCode</rd:DefaultName>
+                      <rd:DefaultName>SupplierId</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -166,14 +166,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Name">
+                    <Textbox Name="FirstName">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Name.Value</Value>
+                              <Value>=Fields!FirstName.Value</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
                               </Style>
@@ -182,7 +182,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Name</rd:DefaultName>
+                      <rd:DefaultName>FirstName</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -198,25 +198,25 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Quantity">
+                    <Textbox Name="LastName">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=IIF(Fields!Quantity.Value &gt; 0, Fields!Quantity.Value &amp; " " &amp; Fields!StockAs.Value, "") 
-&amp; " " &amp; IIF(Fields!QuantityActual.Value &gt; 0, Fields!QuantityActual.Value &amp; " " &amp; Fields!Actual.Value, "")
-&amp; " " &amp; IIF(Fields!QuantityLower.Value &gt; 0, Fields!QuantityLower.Value &amp; " " &amp; Fields!Lower.Value, "")</Value>
+                              <Value>=Fields!LastName.Value</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Quantity</rd:DefaultName>
+                      <rd:DefaultName>LastName</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -252,10 +252,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>Dataset</DataSetName>
-        <Top>0.12375in</Top>
-        <Left>0.51958in</Left>
+        <Top>0.06944in</Top>
+        <Left>0.5925in</Left>
         <Height>0.5in</Height>
-        <Width>5.3125in</Width>
+        <Width>4.31598in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -263,13 +263,13 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>0.73958in</Height>
+    <Height>0.64583in</Height>
     <Style />
   </Body>
-  <Width>6.02083in</Width>
+  <Width>11.05431in</Width>
   <Page>
     <PageHeader>
-      <Height>1in</Height>
+      <Height>0.72917in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -280,7 +280,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>Product Details - Stock Summary</Value>
+                  <Value>All Supplier Details</Value>
                   <Style>
                     <FontFamily>Calibri</FontFamily>
                     <FontSize>16pt</FontSize>
@@ -294,8 +294,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
-          <Top>0.54042in</Top>
-          <Left>1.07167in</Left>
+          <Top>0.3425in</Top>
+          <Left>0.49875in</Left>
           <Height>0.29167in</Height>
           <Width>4.45833in</Width>
           <Style>
@@ -317,7 +317,7 @@
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>0.46875in</Height>
+      <Height>0.36458in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -340,8 +340,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>PageNumber</rd:DefaultName>
-          <Top>0.1132in</Top>
-          <Left>4.83208in</Left>
+          <Top>0.05556in</Top>
+          <Left>4.05431in</Left>
           <Height>0.23194in</Height>
           <Width>1in</Width>
           <Style>
@@ -384,50 +384,26 @@
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="OrderId">
-          <DataField>OrderId</DataField>
+        <Field Name="SupplierId">
+          <DataField>SupplierId</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="Name">
-          <DataField>Name</DataField>
+        <Field Name="FirstName">
+          <DataField>FirstName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="ProductCode">
-          <DataField>ProductCode</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Quantity">
-          <DataField>Quantity</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="QuantityActual">
-          <DataField>QuantityActual</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="QuantityLower">
-          <DataField>QuantityLower</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="StockAs">
-          <DataField>StockAs</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Actual">
-          <DataField>Actual</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Lower">
-          <DataField>Lower</DataField>
+        <Field Name="LastName">
+          <DataField>LastName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>Transactions</rd:DataSetName>
         <rd:SchemaPath>C:\Projects\Connecto\Connecto.App\BusinessIntelligence\Dataset\Transactions.xsd</rd:SchemaPath>
-        <rd:TableName>ProductDetails</rd:TableName>
+        <rd:TableName>GetAllSupplierDatails</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>ProductDetailsAdapter</rd:TableAdapterName>
+        <rd:TableAdapterName>GetAllSupplierDatailsAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>

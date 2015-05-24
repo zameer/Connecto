@@ -1,9 +1,89 @@
 ﻿@{
     ViewBag.Title = "Connecto - Reports";
 }
-<p>
-    No Reports
-</p>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="widget-box transparent">
+            <div class="widget-header widget-header-flat">
+                <h4 class="widget-title lighter">
+                    <i class="ace-icon fa fa-bar-chart-o orange"></i>
+                   Frequent
+                </h4>
+
+                <div class="widget-toolbar">
+                    <a href="#" data-action="collapse">
+                        <i class="ace-icon fa fa-chevron-up"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="widget-body">
+                <div class="widget-main no-padding">
+                    <table class="table table-bordered table-striped">
+                        <thead class="thin-border-bottom">
+                            <tr>
+                                <th>Description</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>Detail information of Customer, filtered by customer Id</td>
+                                <td class="width-auto">
+                                    <a class="btn btn-xs btn-info" href="@Url.Action("Load", "BusinessIntelligence", new { id = "a88a2fcb-d4e3-491a-b220-74e6ae6cec9f" })">
+                                        <i class="ace-icon fa fa-bar-chart-o bigger-110"></i> View   
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Detail information of All Customer, Ordered by Customer Id</td>
+                                    <td class="width-auto">
+                                        <a class="btn btn-xs btn-info" href="@Url.Action("Load", "BusinessIntelligence", new { id = "d88a2fcb-d4e3-402a-b229-74e6ae5cec9b" })">
+                                            <i class="ace-icon fa fa-bar-chart-o bigger-110"></i> View All
+                                        </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Detail information of Employee, filtered by Employee Id</td>
+                                <td class="width-auto">
+                                    <a class="btn btn-xs btn-info" href="@Url.Action("Load", "BusinessIntelligence", new { id = "8d64a1f1-7482-4376-b64d-2c8db0683c90" })">
+                                        <i class="ace-icon fa fa-bar-chart-o bigger-110"></i> View
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Detail information of All Employees, Ordered by Employee Id</td>
+                                    <td class="width-auto">
+                                        <a class="btn btn-xs btn-info" href="@Url.Action("Load", "BusinessIntelligence", new { id = "d88a2fcb-d4e3-492b-b220-74e6ae5cec9b" })">
+                                            <i class="ace-icon fa fa-bar-chart-o bigger-110"></i> View All
+                                        </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Detail information of Supplier, filtered by Supplier Id</td>
+                                <td class="width-auto">
+                                    <a class="btn btn-xs btn-info" href="@Url.Action("Load", "BusinessIntelligence", new { id = "8d64a1f1-7482-4376-b64d-2c8db0683c80" })">
+                                        <i class="ace-icon fa fa-bar-chart-o bigger-110"></i> View
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Detail information of All Suppliers, Ordered by Supplier Id</td>
+                                    <td class="width-auto">
+                                        <a class="btn btn-xs btn-info" href="@Url.Action("Load", "BusinessIntelligence", new { id = "d88a2fcb-d4e3-492b-b230-75e6ae5cec9b" })">
+                                            <i class="ace-icon fa fa-bar-chart-o bigger-110"></i> View All
+                                        </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div><!-- /.widget-main -->
+            </div><!-- /.widget-body -->
+        </div>
+    </div>
+    <div class="col-sm-6"></div>
+</div>
 <script type="text/javascript">
     $('#menu-bi').syncMenu([{ name: "biHr", option: "a" }]);
 </script>
