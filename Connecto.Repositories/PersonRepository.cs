@@ -10,7 +10,10 @@ namespace Connecto.Repositories
     public class PersonRepository
     {
         private static readonly IPersonDao PersonDao = DataAccess.PersonDao;
-
+        public Tuple<IList<Person>, int> GetAll(FilterCriteria filter)
+        {
+            return PersonDao.GetPeople(filter);
+        }
         public IList<Person> GetAll()
         {
             return PersonDao.GetPeople();

@@ -11,5 +11,6 @@ namespace Connecto.BusinessObjects
         public DateTime CreatedOn { get; set; }
         public int? EditedBy { get; set; }
         public DateTime? EditedOn { get; set; }
+        public int Total { get; set; }
     }
 }

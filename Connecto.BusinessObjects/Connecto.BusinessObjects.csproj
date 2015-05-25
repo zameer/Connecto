@@ -43,6 +43,7 @@
     <Compile Include="ConnectoValidation.cs" />
     <Compile Include="Connecto.cs" />
     <Compile Include="CompanyLocation.cs" />
+    <Compile Include="FilterCriteria.cs" />
     <Compile Include="Contact.cs" />
     <Compile Include="Currency.cs" />
     <Compile Include="Employee.cs" />

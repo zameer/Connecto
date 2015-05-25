@@ -15,6 +15,7 @@ namespace Connecto.DataObjects
     /// </remarks>
     public interface IPersonDao
     {
+        Tuple<IList<Person>, int> GetPeople(FilterCriteria filter);
         IList<Person> GetPeople();
         Person GetById(int id);
         int DeletePerson(int id, int deletedBy);

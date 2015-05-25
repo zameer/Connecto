@@ -34,6 +34,16 @@ function showMessage(data) {
     }
     return isSuccess;
 }
+
+function mapSearchKeyup(dataTable) {
+    $('.dataTables_filter input').attr("placeholder", "Search");
+    $('.dataTables_filter input').unbind();
+    $('.dataTables_filter input').bind('keyup', function (e) {
+        if (e.keyCode == 13) {
+            dataTable.fnFilter(this.value);
+        }
+    });
+}
 var AppCommonFunction = function () {
     return {
         ShowWaitBlock: function () {

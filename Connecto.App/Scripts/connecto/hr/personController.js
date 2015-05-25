@@ -6,11 +6,37 @@ var dataTable = null;
 hrControllers.controller(cName + 'ListCtrl', ['$scope', '$http', '$routeParams',
   function ($scope, $http) {
       $scope.loadItems = function () {
-          AppCommonFunction.ShowWaitBlock();
-          $http.get('/' + cName + '/Get/').success(function (data) {
-              $scope.items = data;
-              AppCommonFunction.HideWaitBlock();
-          });
+          if (!$.fn.dataTable.isDataTable('#example')) {
+              dataTable = $('#example').dataTable({
+                  "serverSide": true,
+                  "ordering": false,
+                  "sAjaxSource": "/Person/Get",
+                  "fnServerData": function (sSource, aoData, fnCallback) {
+                      console.log(aoData);
+                      AppCommonFunction.ShowWaitBlock();
+                      $.get(sSource, aoData, function (json) {
+                          fnCallback(json);
+                      }).always(function () { AppCommonFunction.HideWaitBlock(); });
+                  },
+                  "columns": [
+                      { "data": "PersonId" },
+                      { "data": "LastName", "render": function (data, type, full) {
+                              return full["FirstName"] + " " + full["LastName"];
+                          }
+                      },
+                      { "render": function (data, type, full) {
+                              return "<a class='btn btn-xs btn-info' href='#/Edit/" + full["PersonId"] + "'><i class='ace-icon fa fa-pencil bigger-120'></i></a>" +
+                                  "<a class='btn btn-xs btn-warning'' href='#/Contacts/" + full["PersonId"] + "'><i class='ace-icon fa fa-eye bigger-120'></i></a>" +
+                                  "<a class='btn btn-xs btn-danger delete-row' data-id='" + full["PersonId"] + "'><i class='ace-icon fa fa-trash-o bigger-120'></i></a>";
+                          }
+                      }
+                  ]
+              });
+              mapSearchKeyup(dataTable);
+              $('#example tbody').on('click', '.delete-row', function () {
+                  $scope.delete($(this).data('id'));
+              });
+          }
       };
       $scope.loadItems();
       $scope.delete = function (itemId) {
@@ -18,7 +44,7 @@ hrControllers.controller(cName + 'ListCtrl', ['$scope', '$http', '$routeParams',
               if (result) {
                   $http.post('/' + cName + '/Delete/', { id: itemId }).success(function (data) {
                       showMessage(data);
-                      if (data.Status != "Failure") $scope.loadItems();
+                      if (data.Status != "Failure") dataTable.fnDraw();
                   });
               }
           });

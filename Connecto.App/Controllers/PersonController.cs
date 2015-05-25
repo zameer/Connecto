@@ -12,15 +12,10 @@ namespace Connecto.App.Controllers
     public class PersonController : Controller
     {
         private readonly PersonRepository _repo = ConnectoFactory.PersonRepository;
-        public JsonResult Get()
+        public JsonResult Get(FilterCriteria criteria)
         {
-            var items = _repo.GetAll();
-            return Json(items, JsonRequestBehavior.AllowGet);
-        }
-        public JsonResult GetIt(int start, int length)
-        {
-            var items = _repo.GetAll();
-            return Json(new { recordsTotal = 57, recordsFiltered = 57, data = items }, JsonRequestBehavior.AllowGet);
+            var items = _repo.GetAll(criteria);
+            return Json(new { recordsTotal = items.Item2, recordsFiltered = items.Item2, data = items.Item1 }, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetItem(int id)
@@ -93,4 +88,6 @@ namespace Connecto.App.Controllers
             return View();
         }
     }
+
+
 }
