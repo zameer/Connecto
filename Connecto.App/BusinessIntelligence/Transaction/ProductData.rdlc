@@ -615,13 +615,13 @@
           <DataField>Lower</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="StockAs">
-          <DataField>StockAs</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="Volume">
           <DataField>Volume</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="StockAs">
+          <DataField>StockAs</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="MarginAmount">
           <DataField>MarginAmount</DataField>
@@ -630,7 +630,7 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>Transactions</rd:DataSetName>
-        <rd:SchemaPath>C:\Projects\Connecto\Connecto.App\BusinessIntelligence\Dataset\Transactions.xsd</rd:SchemaPath>
+        <rd:SchemaPath>D:\Projects\AdvPos\HelpBiz\Connecto\Connecto.App\BusinessIntelligence\Dataset\Transactions.xsd</rd:SchemaPath>
         <rd:TableName>ProductData</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>

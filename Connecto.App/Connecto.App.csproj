@@ -233,6 +233,8 @@
     <Content Include="Content\connecto\select2.css" />
     <Content Include="Content\connecto\select2.png" />
     <Content Include="Content\connecto\select2x2.png" />
+    <Content Include="Content\datepicker.css" />
+    <Content Include="Content\daterangepicker.css" />
     <Content Include="Content\jquery.alert.css" />
     <Content Include="favicon.ico" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
@@ -273,6 +275,9 @@
     <Content Include="Scripts\connecto\bootstrap.js" />
     <Content Include="Scripts\connecto\Connectojs.js" />
     <Content Include="Scripts\connecto\csettings\productController.js" />
+    <Content Include="Scripts\connecto\date-time\bootstrap-datepicker.js" />
+    <Content Include="Scripts\connecto\date-time\daterangepicker.js" />
+    <Content Include="Scripts\connecto\date-time\moment.js" />
     <Content Include="Scripts\connecto\hr\customerController.js" />
     <Content Include="Scripts\connecto\hr\supplierController.js" />
     <Content Include="Scripts\connecto\hr\employeeController.js" />
@@ -395,6 +400,8 @@
     <Content Include="Views\BusinessIntelligence\Transactions.cshtml" />
     <Content Include="Views\BusinessIntelligence\HumanResource.cshtml" />
     <Content Include="Views\BusinessIntelligence\CommonSettings.cshtml" />
+    <Content Include="Views\BusinessIntelligence\Criteria\_DateRange.cshtml" />
+    <Content Include="Views\BusinessIntelligence\Criteria\_Date.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\" />

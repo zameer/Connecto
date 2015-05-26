@@ -1,4 +1,20 @@
-﻿$(function () {});
+﻿$(function() {
+    //datepicker plugin
+    //link
+    $('.date-picker').datepicker({
+        autoclose: true,
+        todayHighlight: true
+    });
+    
+    $('input[name=DateRange]').daterangepicker({
+        'applyClass': 'btn-sm btn-success',
+        'cancelClass': 'btn-sm btn-default',
+        locale: {
+            applyLabel: 'Apply',
+            cancelLabel: 'Cancel',
+        }
+    });
+});
 $.fn.syncMenu = function (settings, breadcrump) {
     $(this).attr('class', bindCss('ao'));
     if (breadcrump != undefined) setBreadcrump(breadcrump);
@@ -79,4 +95,4 @@ var AppCommonFunction = function () {
 
         }
     };
-}();
+};

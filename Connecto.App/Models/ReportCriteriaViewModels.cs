@@ -8,6 +8,8 @@ namespace Connecto.App.Models
         public int Id { get; set; }
         public int ProductId { get; set; }
         public string ProductName { get; set; }
+        public string DateRange { get; set; }
+        public string Date { get; set; }
 
         public string ReportPath { get; set; }
         public string ReportName { get; set; }
