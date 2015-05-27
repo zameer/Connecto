@@ -12,7 +12,6 @@ hrControllers.controller(cName + 'ListCtrl', ['$scope', '$http', '$routeParams',
                   "ordering": false,
                   "sAjaxSource": "/Person/Get",
                   "fnServerData": function (sSource, aoData, fnCallback) {
-                      console.log(aoData);
                       AppCommonFunction.ShowWaitBlock();
                       $.get(sSource, aoData, function (json) {
                           fnCallback(json);

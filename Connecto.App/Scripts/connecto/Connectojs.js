@@ -95,4 +95,4 @@ var AppCommonFunction = function () {
 
         }
     };
-};
+}();
