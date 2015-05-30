@@ -7,7 +7,7 @@ using System;
 namespace Connecto.DataObjects.EntityFramework.Implementation
 {
     /// <summary>
-    /// Entity Framework implementation of the IVendorDao interface.
+    /// Entity Framework implementation of the IPersonDao interface.
     /// </summary>
     public class EntityPersonDao : IPersonDao
     {

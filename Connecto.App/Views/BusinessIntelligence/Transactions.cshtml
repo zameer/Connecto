@@ -22,16 +22,43 @@
                     <table class="table table-bordered table-striped">
                         <thead class="thin-border-bottom">
                             <tr>
-                                <th>Description</th>
+                                <th>Purchase</th>
                                 <th></th>
                             </tr>
                         </thead>
 
                         <tbody>
                             <tr>
+                                <td>Purchase Order, Filtered by Product Code and Reorder Level</td>
+                                <td class="width-auto">
+                                    <a class="btn btn-xs btn-info" href="@Url.Action("Load", "BusinessIntelligence", new { id = "088a2fcb-d4e3-492b-b211-74e6ae5cec9e" })">
+                                        <i class="ace-icon fa fa-bar-chart-o bigger-110"></i> View
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>Detail information of purchased product, Filtered by Date Range</td>
                                 <td class="width-auto">
                                     <a class="btn btn-xs btn-info" href="@Url.Action("Load", "BusinessIntelligence", new { id = "a88a2fcb-d4e3-491a-b220-74e6ae5cec9f" })">
+                                        <i class="ace-icon fa fa-bar-chart-o bigger-110"></i> View
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Product Supplier Details, Order by Product Id</td>
+                                <td class="width-auto">
+                                    <a class="btn btn-xs btn-info" href="@Url.Action("Load", "BusinessIntelligence", new { id = "d88a2fcb-d4e3-492a-b220-74e6ae5cec9b" })">
+                                        <i class="ace-icon fa fa-bar-chart-o bigger-110"></i> View
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Stocks</th>
+                            </tr>
+                            <tr>
+                                <td>Stock Details for products, Order by Product Id</td>
+                                <td class="width-auto">
+                                    <a class="btn btn-xs btn-info" href="@Url.Action("Load", "BusinessIntelligence", new { id = "6d64a1f1-7482-4376-b64d-2c8db0683c98" })">
                                         <i class="ace-icon fa fa-bar-chart-o bigger-110"></i> View
                                     </a>
                                 </td>
@@ -45,7 +72,10 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Detail information of sold product, Filtered by Date</td>
+                                <th>Sales</th>
+                            </tr>
+                            <tr>
+                                <td>Daily Sales Report for products, Filtered by Date</td>
                                 <td class="width-auto">
                                     <a class="btn btn-xs btn-info" href="@Url.Action("Load", "BusinessIntelligence", new { id = "8d64a1f1-7482-4376-b64d-2c8db0683c95" })">
                                         <i class="ace-icon fa fa-bar-chart-o bigger-110"></i> View
@@ -53,17 +83,25 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Product Stock Details, Order by Product Id</td>
+                                <td>Monthly Sales Report for products, Filtered by Date Range</td>
                                 <td class="width-auto">
-                                    <a class="btn btn-xs btn-info" href="@Url.Action("Load", "BusinessIntelligence", new { id = "6d64a1f1-7482-4376-b64d-2c8db0683c98" })">
+                                    <a class="btn btn-xs btn-info" href="@Url.Action("Load", "BusinessIntelligence", new { id = "a88a2fcb-d4e3-492b-b230-75e6ae5cec9c" })">
                                         <i class="ace-icon fa fa-bar-chart-o bigger-110"></i> View
                                     </a>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Product Supplier Details, Order by Product Id</td>
+                                <td>Daily Sales Discount Report for products, Filtered by Date</td>
                                 <td class="width-auto">
-                                    <a class="btn btn-xs btn-info" href="@Url.Action("Load", "BusinessIntelligence", new { id = "d88a2fcb-d4e3-492a-b220-74e6ae5cec9b" })">
+                                    <a class="btn btn-xs btn-info" href="@Url.Action("Load", "BusinessIntelligence", new { id = "d88a2fcb-d4e3-492b-b210-74e6ae5cec9b" })">
+                                        <i class="ace-icon fa fa-bar-chart-o bigger-110"></i> View
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Monthly Sales Discount Report for products, Filtered by Date Range</td>
+                                <td class="width-auto">
+                                    <a class="btn btn-xs btn-info" href="@Url.Action("Load", "BusinessIntelligence", new { id = "988a2fcb-d4e3-492b-b211-74e6ae5cec9f" })">
                                         <i class="ace-icon fa fa-bar-chart-o bigger-110"></i> View
                                     </a>
                                 </td>
