@@ -12,6 +12,25 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
     /// </summary>
     public class EntityEmployeeDao : IEmployeeDao
     {
+        public Tuple<IList<Employee>, int> GetEmployees(FilterCriteria filter)
+        {
+            using (var context = DataObjectFactory.CreateContext())
+            {
+                List<Employee> items;
+                var count = context.Employees.Count();
+                if (!string.IsNullOrEmpty(filter.sSearch))
+                {
+                    count = context.Employees.Count(e => e.Person.FirstName.ToLower().Contains(filter.sSearch) || e.Person.LastName.ToLower().Contains(filter.sSearch));
+                    items = context.Employees.Where(e => e.Person.FirstName.ToLower().Contains(filter.sSearch) || e.Person.LastName.ToLower().Contains(filter.sSearch))
+                        .OrderBy(e => e.EmployeeId).Skip(filter.iDisplayStart).Take(filter.iDisplayLength).Select(Mapper.Map).ToList();
+                }
+                else
+                {
+                    items = context.Employees.OrderBy(e => e.EmployeeId).Skip(filter.iDisplayStart).Take(filter.iDisplayLength).Select(Mapper.Map).ToList();
+                }
+                return new Tuple<IList<Employee>, int>(items, count);
+            }
+        }
         public IList<Employee> GetEmployees()
         {
             using (var context = DataObjectFactory.CreateContext())

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System;
 using Connecto.BusinessObjects;
 using Connecto.Common.Enumeration;
 using Connecto.DataObjects.EntityFramework.ModelMapper;
-using System;
 
 namespace Connecto.DataObjects.EntityFramework.Implementation
 {
@@ -12,6 +12,25 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
     /// </summary>
     public class EntityCustomerDao : ICustomerDao
     {
+        public Tuple<IList<Customer>, int> GetCustomers(FilterCriteria filter)
+        {
+            using (var context = DataObjectFactory.CreateContext())
+            {
+                List<Customer> items;
+                var count = context.Customers.Count();
+                if (!string.IsNullOrEmpty(filter.sSearch))
+                {
+                    count = context.Customers.Count(e => e.Person.FirstName.ToLower().Contains(filter.sSearch) || e.Person.LastName.ToLower().Contains(filter.sSearch));
+                    items = context.Customers.Where(e => e.Person.FirstName.ToLower().Contains(filter.sSearch) || e.Person.LastName.ToLower().Contains(filter.sSearch))
+                        .OrderBy(e => e.CustomerId).Skip(filter.iDisplayStart).Take(filter.iDisplayLength).Select(Mapper.Map).ToList();
+                }
+                else
+                {
+                    items = context.Customers.OrderBy(e => e.CustomerId).Skip(filter.iDisplayStart).Take(filter.iDisplayLength).Select(Mapper.Map).ToList();
+                }
+                return new Tuple<IList<Customer>, int>(items, count);
+            }
+        }
         public IList<Customer> GetCustomers()
         {
             using (var context = DataObjectFactory.CreateContext())

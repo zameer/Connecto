@@ -12,6 +12,25 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
     /// </summary>
     public class EntitySupplierDao : ISupplierDao
     {
+        public Tuple<IList<Supplier>, int> GetSuppliers(FilterCriteria filter)
+        {
+            using (var context = DataObjectFactory.CreateContext())
+            {
+                List<Supplier> items;
+                var count = context.Suppliers.Count();
+                if (!string.IsNullOrEmpty(filter.sSearch))
+                {
+                    count = context.Suppliers.Count(e => e.Person.FirstName.ToLower().Contains(filter.sSearch) || e.Person.LastName.ToLower().Contains(filter.sSearch));
+                    items = context.Suppliers.Where(e => e.Person.FirstName.ToLower().Contains(filter.sSearch) || e.Person.LastName.ToLower().Contains(filter.sSearch))
+                        .OrderBy(e => e.PersonId).Skip(filter.iDisplayStart).Take(filter.iDisplayLength).Select(Mapper.Map).ToList();
+                }
+                else
+                {
+                    items = context.Suppliers.OrderBy(e => e.PersonId).Skip(filter.iDisplayStart).Take(filter.iDisplayLength).Select(Mapper.Map).ToList();
+                }
+                return new Tuple<IList<Supplier>, int>(items, count);
+            }
+        }
         public IList<Supplier> GetSuppliers()
         {
             using (var context = DataObjectFactory.CreateContext())

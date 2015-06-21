@@ -1,14 +1,39 @@
 'use strict';
 /* Controllers */
 var cName = 'Vendor';
+var dataTable = null;
 cSettingControllers.controller(cName + 'ListCtrl', ['$scope', '$http', '$routeParams',
   function ($scope, $http) {
-      $scope.loadItems = function () {
-          AppCommonFunction.ShowWaitBlock();
-          $http.get('/' + cName + '/Get/').success(function (data) {
-              $scope.items = data;
-              AppCommonFunction.HideWaitBlock();
-          });
+       $scope.loadItems = function () {
+          if (!$.fn.dataTable.isDataTable('#example')) {
+              dataTable = $('#example').dataTable({
+                  "serverSide": true,
+                  "ordering": false,
+                  "sAjaxSource": "/Vendor/Get",
+                  "fnServerData": function (sSource, aoData, fnCallback) {
+                      AppCommonFunction.ShowWaitBlock();
+                      $.get(sSource, aoData, function (json) {
+                          fnCallback(json);
+                      }).always(function () { AppCommonFunction.HideWaitBlock(); });
+                  },
+                  "columns": [
+                      { "data": "VendorId" },
+                      { "data": "Name", "render": function (data, type, full) {
+                              return full["Name"];
+                          }
+                      },
+                      { "render": function (data, type, full) {
+                              return "<a class='btn btn-xs btn-info' href='#/Edit/" + full["VendorId"] + "'><i class='ace-icon fa fa-pencil bigger-120'></i></a>" +
+                                  "<a class='btn btn-xs btn-danger delete-row' data-id='" + full["VendorId"] + "'><i class='ace-icon fa fa-trash-o bigger-120'></i></a>";
+                          }
+                      }
+                  ]
+              });
+              mapSearchKeyup(dataTable);
+              $('#example tbody').on('click', '.delete-row', function () {
+                  $scope.delete($(this).data('id'));
+              });
+          }
       };
       $scope.loadItems();
       $scope.delete = function (itemId) {

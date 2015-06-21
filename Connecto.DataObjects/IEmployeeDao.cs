@@ -15,39 +15,13 @@ namespace Connecto.DataObjects
     /// </remarks>
     public interface IEmployeeDao
     {
-        /// <summary>
-        /// Gets List of Employee
-        /// </summary>
-        /// <returns>List of Employee</returns>
+
+        Tuple<IList<Employee>, int> GetEmployees(FilterCriteria filter);
         IList<Employee> GetEmployees();
-        IList<Person> GetPeople();
-
-        /// <summary>
-        /// Get specific Employee
-        /// </summary>
-        /// <param name="id">Unique employee identifier</param>
-        /// <returns>Specific employee Details</returns> 
+        IList<Person> GetPeople(); 
         Employee GetEmployeeById(int id);
-
-        /// <summary>
-        /// Remove specific employee
-        /// </summary>
-        /// <param name="id">Unique employee identifier</param>
-        /// <returns>No of employee Deleted</returns>
         int DeleteEmployee(int id, int deletedBy);
-
-        /// <summary>
-        /// Add specific employee
-        /// </summary>
-        /// <param name="id">Unique employee identifier</param>
-        /// <returns>Employee ID</returns>
         int AddEmployee(Employee employee);
-
-        /// <summary>
-        /// edit specific employee
-        /// </summary>
-        /// <param name="id">Unique employee identifier</param>
-        /// <returns>Employee ID</returns>
         bool EditEmployee(Employee employee);
     }
 }

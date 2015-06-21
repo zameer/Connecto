@@ -10,7 +10,10 @@ namespace Connecto.Repositories
     public class EmployeeRepository
     {
         private static readonly IEmployeeDao EmployeeDao = DataAccess.EmployeeDao;
-
+        public Tuple<IList<Employee>, int> GetAll(FilterCriteria filter)
+        {
+            return EmployeeDao.GetEmployees(filter);
+        }
         /// <summary>
         /// Get List of Employees
         /// </summary>

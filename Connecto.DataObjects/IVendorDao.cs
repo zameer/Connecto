@@ -15,42 +15,13 @@ namespace Connecto.DataObjects
     /// </remarks>
     public interface IVendorDao
     {
-        /// <summary>
-        /// Gets List of Vendors
-        /// </summary>
-        /// <returns>List of Vendors</returns>
+        Tuple<IList<Vendor>, int> GetVendors(FilterCriteria filter);
         IList<Vendor> GetVendors();
-
-        /// <summary>
-        /// Get specific vendor
-        /// </summary>
-        /// <param name="id">Unique vendor identifier</param>
-        /// <returns>Specific Vendor Details</returns>
         Vendor GetVendorById(int id);
-
-        /// <summary>
-        /// Remove specific vendor
-        /// </summary>
-        /// <param name="id">Unique vendor identifier</param>
-        /// <returns>No of vendors Deleted</returns>
         int DeleteVendor(int id, int deletedBy);
-
-        /// <summary>
-        /// Add specific vendor
-        /// </summary>
-        /// <param name="id">Unique vendor identifier</param>
-        /// <returns>Vendor ID</returns>
         int AddVendor(Vendor vendor);
-
-        /// <summary>
-        /// Edit specific vendor
-        /// </summary>
-        /// <param name="id">Unique vendor identifier</param>
-        /// <returns>Vendor ID</returns>
         bool EditVendor(Vendor vendor);
-
         bool IsExist(Vendor vendor);
-
         bool IsUsed(int id);
     }
 }

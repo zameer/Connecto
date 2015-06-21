@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using Connecto.BusinessObjects;
 using Connecto.DataObjects;
+using System;
+using System.Linq;
+using System.Web;
 
 namespace Connecto.Repositories
 {
@@ -8,6 +11,10 @@ namespace Connecto.Repositories
     {
         private static readonly ICustomerDao Repo = DataAccess.CustomerDao;
 
+        public Tuple<IList<Customer>, int> GetAll(FilterCriteria filter)
+        {
+            return Repo.GetCustomers(filter);
+        }
         public IList<Customer> GetAll()
         {
             return Repo.GetCustomers();
