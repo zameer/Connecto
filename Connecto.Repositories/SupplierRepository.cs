@@ -10,9 +10,9 @@ namespace Connecto.Repositories
     public class SupplierRepository
     {
         private static readonly ISupplierDao SupplierDao = DataAccess.SupplierDao;
-        public Tuple<IList<Supplier>, int> GetAll(FilterCriteria filter)
+        public Tuple<IList<Supplier>, int> GetAllSearch(FilterCriteria filter)
         {
-            return SupplierDao.GetSuppliers(filter);
+            return SupplierDao.GetSuppliersSearch(filter);
         }
         /// <summary>
         /// Get List of Suppliers

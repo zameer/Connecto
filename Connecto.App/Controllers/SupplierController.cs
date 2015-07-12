@@ -12,16 +12,16 @@ namespace Connecto.App.Controllers
     public class SupplierController : Controller
     {
         private readonly SupplierRepository _repo = ConnectoFactory.SupplierRepository;
-        public JsonResult Get(FilterCriteria criteria)
+        public JsonResult GetSearch(FilterCriteria criteria)
         {
-            var items = _repo.GetAll(criteria);
+            var items = _repo.GetAllSearch(criteria);
             return Json(new { recordsTotal = items.Item2, recordsFiltered = items.Item2, data = items.Item1 }, JsonRequestBehavior.AllowGet);
         }
-        /*public JsonResult Get()
+        public JsonResult Get()
         {
             var items = _repo.GetAll();
             return Json(items, JsonRequestBehavior.AllowGet);
-        }*/
+        }
         public JsonResult GetPeople()
         {
             var items = _repo.GetPeople();

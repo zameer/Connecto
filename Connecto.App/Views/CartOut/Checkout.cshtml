@@ -52,6 +52,20 @@
                             </div>
                         </div>
 
+                             <div class="col-sm-3">
+                                <div class="form-group">
+                                    <div class="infobox infobox-orange2">
+                                        <select ng-model="item.ProductId" ng-change="filterStock(item.ProductCode)" id="product" class="select2" data-placeholder="Choose Product...">
+                                            <option></option>
+                                            <option ng-repeat="e in products" value="{{e.ProductId}}">{{e.Name}}</option>
+                                        </select>
+                                        <div class="infobox-content">Stock Slots</div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            
+
                         <div class="col-sm-8">
                             <div class="col-sm-3" ng-if="item.StockInHand.Quantity > 0">
                                 <div class="row form-group">

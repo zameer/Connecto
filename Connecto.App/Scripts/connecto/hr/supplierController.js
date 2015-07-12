@@ -9,7 +9,7 @@ hrControllers.controller(cName + 'ListCtrl', ['$scope', '$http', '$routeParams',
               dataTable = $('#example').dataTable({
                   "serverSide": true,
                   "ordering": false,
-                  "sAjaxSource": "/Supplier/Get",
+                  "sAjaxSource": "/Supplier/GetSearch",
                   "fnServerData": function (sSource, aoData, fnCallback) {
                       AppCommonFunction.ShowWaitBlock();
                       $.get(sSource, aoData, function (json) {

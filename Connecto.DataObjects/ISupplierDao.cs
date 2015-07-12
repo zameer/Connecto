@@ -9,7 +9,7 @@ namespace Connecto.DataObjects
 {
     public interface ISupplierDao
     {
-        Tuple<IList<Supplier>, int> GetSuppliers(FilterCriteria filter);
+        Tuple<IList<Supplier>, int> GetSuppliersSearch(FilterCriteria filter);
         IList<Supplier> GetSuppliers();
         IList<Person> GetPeople();
         Supplier GetSupplierById(int id);

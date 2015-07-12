@@ -41,9 +41,6 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                 };
             }
         }
-
-        
-
         public List<SalesDetail> GetSalesDetails(int orderId)
         {
             using (var context = DataObjectFactory.CreateContext())

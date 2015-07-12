@@ -12,7 +12,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
     /// </summary>
     public class EntitySupplierDao : ISupplierDao
     {
-        public Tuple<IList<Supplier>, int> GetSuppliers(FilterCriteria filter)
+        public Tuple<IList<Supplier>, int> GetSuppliersSearch(FilterCriteria filter)
         {
             using (var context = DataObjectFactory.CreateContext())
             {

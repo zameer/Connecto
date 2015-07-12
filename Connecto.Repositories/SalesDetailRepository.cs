@@ -14,13 +14,10 @@ namespace Connecto.Repositories
         {
             return Repo.GetOrders();
         }
-
         public SalesDetail GetSalesDetail(string productCode)
         {
             return Repo.GetSalesDetail(productCode);
         }
-
-
         public IList<SalesDetail> GetAll(int orderId)
         {
             return Repo.GetSalesDetails(orderId);
