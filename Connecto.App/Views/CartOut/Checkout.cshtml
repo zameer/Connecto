@@ -24,8 +24,7 @@
                                     <h4 class="widget-title blue smaller">
                                         {{item.SellingPrice}}
                                     </h4>
-                                    <select ng-model="item.PrductDetailId" ng-change="filterProductSelection(item.PrductDetailId)" class="select2" id="productDetail" data-placeholder="Select Details">
-                                        
+                                    <select ng-show="itemz.length > 1" ng-model="item.PrductDetailId" ng-change="filterProductSelection(item.PrductDetailId)" class="select2" id="productDetail" data-placeholder="Select Details">
                                         <option ng-repeat="e in itemz" value="{{e.ProductDetailId}}">{{e.CreatedOnText}}</option>
                                     </select>
                                 </div>
