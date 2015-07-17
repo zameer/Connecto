@@ -14,7 +14,7 @@ namespace Connecto.Repositories
         {
             return Repo.GetOrders();
         }
-        public SalesDetail GetSalesDetail(string productCode)
+        public List<SalesDetail> GetSalesDetail(string productCode)
         {
             return Repo.GetSalesDetail(productCode);
         }

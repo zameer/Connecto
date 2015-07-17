@@ -17,16 +17,29 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
       };
       $scope.loadOrders();
       $scope.loadItems();
+      $scope.filterProductSelection = function (productDetailId) {
+          var arrItems = $scope.itemz;
+          angular.forEach(arrItems, function (item) {
+              if (item.ProductDetailId == productDetailId) {
+                  setProductDetail(item);
+              }
+          });
+      };
       $scope.filterProduct = function () {
-          var orderId = $scope.item.OrderId;
           if ($scope.item.ProductCode != undefined) {
               $http.get('/' + cName + '/GetSalesDetail/?productCode=' + $scope.item.ProductCode).success(function (data) {
-                  $scope.item = data;
-                  if ($scope.item != '') $scope.item.OrderId = orderId;
-                  $scope.Measure = data.Measure;
+                  $scope.itemz = data;
+                  setProductDetail(data[0]);
               });
           }
       };
+      function setProductDetail(data) {
+          var orderId = $scope.item.OrderId;
+          $scope.item = data;
+          if ($scope.item != '') $scope.item.OrderId = orderId;
+          $scope.Measure = data.Measure;
+      };
+
       $scope.calculatePrice = function () {
           $scope.decideSellingPrice();
           var lowerUnitPrice = $scope.item.SellingPrice / ($scope.item.ContainsQty == 0 ? 1 : $scope.item.ContainsQty);

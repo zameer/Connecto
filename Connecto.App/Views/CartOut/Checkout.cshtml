@@ -24,6 +24,10 @@
                                     <h4 class="widget-title blue smaller">
                                         {{item.SellingPrice}}
                                     </h4>
+                                    <select ng-model="item.PrductDetailId" ng-change="filterProductSelection(item.PrductDetailId)" class="select2" id="productDetail" data-placeholder="Select Details">
+                                        
+                                        <option ng-repeat="e in itemz" value="{{e.ProductDetailId}}">{{e.CreatedOnText}}</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="profile-info-row">
@@ -51,20 +55,6 @@
                                 </div>
                             </div>
                         </div>
-
-                             <div class="col-sm-3">
-                                <div class="form-group">
-                                    <div class="infobox infobox-orange2">
-                                        <select ng-model="item.ProductId" ng-change="filterStock(item.ProductCode)" id="product" class="select2" data-placeholder="Choose Product...">
-                                            <option></option>
-                                            <option ng-repeat="e in products" value="{{e.ProductId}}">{{e.Name}}</option>
-                                        </select>
-                                        <div class="infobox-content">Stock Slots</div>
-                                    </div>
-                                </div>
-                            </div>
-                        
-                            
 
                         <div class="col-sm-8">
                             <div class="col-sm-3" ng-if="item.StockInHand.Quantity > 0">

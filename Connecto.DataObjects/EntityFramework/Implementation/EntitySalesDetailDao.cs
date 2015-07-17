@@ -17,28 +17,33 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
             }
         }
 
-        public SalesDetail GetSalesDetail(string productCode)
+        public List<SalesDetail> GetSalesDetail(string productCode)
         {
+            var salesDetails = new List<SalesDetail>();
             using (var context = DataObjectFactory.CreateContext())
             {
-                var productDetail = context.ProductDetails.FirstOrDefault(e => e.ProductCode.Equals(productCode));
-                if (productDetail == null) return null;
-                var measure = productDetail.Product.ProductType.Measure;
-                return new SalesDetail
+                var productDetails = context.ProductDetails.Where(e => e.ProductCode.Equals(productCode));
+                foreach (var productDetail in productDetails)
                 {
-                    ProductDetailId = productDetail.ProductDetailId,
-                    ProductCode = productCode,
-                    SellingLower = productDetail.Product.SellingLower,
-                    StockInHand = new StockInHand { Quantity = productDetail.Product.StockInHand, QuantityActual = productDetail.Product.QuantityActual, QuantityLower = productDetail.Product.QuantityLower},
-                    SellingPrice = productDetail.SellingPrice,
-                    SellingPriceActual = productDetail.SellingPrice,
-                    StockAs = productDetail.Product.ProductType.StockAs,
-                    Volume = measure.Volume,
-                    ContainsQty = productDetail.Product.ContainsQty,
-                    SellingMargin = productDetail.Product.SellingMargin,
-                    MarginAmount = productDetail.Product.MarginAmount,
-                    Measure = new Measure { Actual = measure.Actual, Lower = measure.Lower }
-                };
+                    var measure = productDetail.Product.ProductType.Measure;
+                    salesDetails.Add( new SalesDetail
+                    {
+                        ProductDetailId = productDetail.ProductDetailId,
+                        ProductCode = productCode,
+                        SellingLower = productDetail.Product.SellingLower,
+                        StockInHand = new StockInHand { Quantity = productDetail.Product.StockInHand, QuantityActual = productDetail.Product.QuantityActual, QuantityLower = productDetail.Product.QuantityLower },
+                        SellingPrice = productDetail.SellingPrice,
+                        SellingPriceActual = productDetail.SellingPrice,
+                        StockAs = productDetail.Product.ProductType.StockAs,
+                        Volume = measure.Volume,
+                        ContainsQty = productDetail.Product.ContainsQty,
+                        SellingMargin = productDetail.Product.SellingMargin,
+                        MarginAmount = productDetail.Product.MarginAmount,
+                        Measure = new Measure { Actual = measure.Actual, Lower = measure.Lower },
+                        CreatedOnText = productDetail.CreatedOn.ToShortDateString()
+                    });
+                }
+                return salesDetails;
             }
         }
         public List<SalesDetail> GetSalesDetails(int orderId)
@@ -73,7 +78,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
         }
         private bool UpdateSalesDetailCart(SalesDetailCart salesDetailCart, ConnectoManagerEntities context)
         {
-            var cart = context.SalesDetailCarts.FirstOrDefault(e => e.OrderId == salesDetailCart.OrderId && e.ProductCode == salesDetailCart.ProductCode);
+            var cart = context.SalesDetailCarts.FirstOrDefault(e => e.OrderId == salesDetailCart.OrderId && e.SalesDetailId == salesDetailCart.SalesDetailId && e.ProductCode == salesDetailCart.ProductCode);
             if (cart == null) return false;
             cart.Quantity += salesDetailCart.Quantity;
             return true;
