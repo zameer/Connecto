@@ -15,7 +15,7 @@ namespace Connecto.DataObjects
     /// </remarks>
     public interface IVendorDao
     {
-        Tuple<IList<Vendor>, int> GetVendors(FilterCriteria filter);
+        Tuple<IList<Vendor>, int> GetVendorsSearch(FilterCriteria filter);
         IList<Vendor> GetVendors();
         Vendor GetVendorById(int id);
         int DeleteVendor(int id, int deletedBy);

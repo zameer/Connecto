@@ -23,10 +23,12 @@
                                 <div class="profile-info-value">
                                     <h4 class="widget-title blue smaller">
                                         {{item.SellingPrice}}
+                                        <select ng-show="itemz.length > 1" ng-model="item.PrductDetailId" ng-change="filterProductSelection(item.PrductDetailId)" class="select2" id="productDetail" data-placeholder="Select Details">
+                                            <option ng-repeat="e in itemz" value="{{e.ProductDetailId}}">{{e.CreatedOnText}} , {{e.SellingPrice}} Rs , {{e.Quantity}} {{e.StockAs}}s</option>
+                                        </select>
+                                        
                                     </h4>
-                                    <select ng-show="itemz.length > 1" ng-model="item.PrductDetailId" ng-change="filterProductSelection(item.PrductDetailId)" class="select2" id="productDetail" data-placeholder="Select Details">
-                                        <option ng-repeat="e in itemz" value="{{e.ProductDetailId}}">{{e.CreatedOnText}}</option>
-                                    </select>
+                                    
                                 </div>
                             </div>
                             <div class="profile-info-row">

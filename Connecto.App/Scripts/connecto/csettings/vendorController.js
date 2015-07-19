@@ -9,7 +9,7 @@ cSettingControllers.controller(cName + 'ListCtrl', ['$scope', '$http', '$routePa
               dataTable = $('#example').dataTable({
                   "serverSide": true,
                   "ordering": false,
-                  "sAjaxSource": "/Vendor/Get",
+                  "sAjaxSource": "/Vendor/GetSearch",
                   "fnServerData": function (sSource, aoData, fnCallback) {
                       AppCommonFunction.ShowWaitBlock();
                       $.get(sSource, aoData, function (json) {
@@ -18,8 +18,10 @@ cSettingControllers.controller(cName + 'ListCtrl', ['$scope', '$http', '$routePa
                   },
                   "columns": [
                       { "data": "VendorId" },
-                      { "data": "Name", "render": function (data, type, full) {
-                              return full["Name"];
+                      {
+                          "data": "Name", "render": function (data, type, full) {
+                              var vendor = full["Vendor"];
+                              return vendor["Name"];
                           }
                       },
                       { "render": function (data, type, full) {

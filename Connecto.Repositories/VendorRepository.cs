@@ -10,9 +10,9 @@ namespace Connecto.Repositories
     public class VendorRepository
     {
         private static readonly IVendorDao VendorDao = DataAccess.VendorDao;
-        public Tuple<IList<Vendor>, int> GetAll(FilterCriteria filter)
+        public Tuple<IList<Vendor>, int> GetAllSearch(FilterCriteria filter)
         {
-            return VendorDao.GetVendors(filter);
+            return VendorDao.GetVendorsSearch(filter);
         }
         /// <summary>
         /// Get List of Vendors
