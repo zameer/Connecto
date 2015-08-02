@@ -15,6 +15,7 @@ namespace Connecto.DataObjects
     /// </remarks>
     public interface IProductDao
     {
+        Tuple<IList<Product>, int> GetProductsSearch(FilterCriteria filter);
         List<Product> GetProducts();
         Product GetProduct(int id);
         int AddProduct(Product product);

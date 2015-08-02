@@ -40,7 +40,11 @@ namespace Connecto.App.Controllers
             var products = _repo.GetAll();
             return Json(products, JsonRequestBehavior.AllowGet);
         }
-
+        public JsonResult GetSearch(FilterCriteria criteria)
+        {
+            var items = _repo.GetAllSearch(criteria);
+            return Json(new { recordsTotal = items.Item2, recordsFiltered = items.Item2, data = items.Item1 }, JsonRequestBehavior.AllowGet);
+        }
         //
         // POST: /Product/Create
         [HttpPost]

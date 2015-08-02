@@ -10,7 +10,10 @@ namespace Connecto.Repositories
     public class ProductRepository
     {
         private static readonly IProductDao ProductDao = DataAccess.ProductDao;
-
+        public Tuple<IList<Product>, int> GetAllSearch(FilterCriteria filter)
+        {
+            return ProductDao.GetProductsSearch(filter);
+        }
         public IList<Product> GetAll()
         {
             return ProductDao.GetProducts();

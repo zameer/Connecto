@@ -4,7 +4,7 @@ var cName = 'Vendor';
 var dataTable = null;
 cSettingControllers.controller(cName + 'ListCtrl', ['$scope', '$http', '$routeParams',
   function ($scope, $http) {
-       $scope.loadItems = function () {
+      $scope.loadItems = function () {
           if (!$.fn.dataTable.isDataTable('#example')) {
               dataTable = $('#example').dataTable({
                   "serverSide": true,
@@ -20,11 +20,11 @@ cSettingControllers.controller(cName + 'ListCtrl', ['$scope', '$http', '$routePa
                       { "data": "VendorId" },
                       {
                           "data": "Name", "render": function (data, type, full) {
-                              var vendor = full["Vendor"];
-                              return vendor["Name"];
+                              return full["Name"];
                           }
                       },
-                      { "render": function (data, type, full) {
+                      {
+                          "render": function (data, type, full) {
                               return "<a class='btn btn-xs btn-info' href='#/Edit/" + full["VendorId"] + "'><i class='ace-icon fa fa-pencil bigger-120'></i></a>" +
                                   "<a class='btn btn-xs btn-danger delete-row' data-id='" + full["VendorId"] + "'><i class='ace-icon fa fa-trash-o bigger-120'></i></a>";
                           }

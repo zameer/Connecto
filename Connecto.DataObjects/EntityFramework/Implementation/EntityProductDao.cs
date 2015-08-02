@@ -12,6 +12,25 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
     /// </summary>
     public class EntityProductDao : IProductDao
     {
+        public Tuple<IList<Product>, int> GetProductsSearch(FilterCriteria filter)
+        {
+            using (var context = DataObjectFactory.CreateContext())
+            {
+                List<Product> items;
+                var count = context.Products.Count();
+                if (!string.IsNullOrEmpty(filter.sSearch))
+                {
+                    count = context.Products.Count(e => e.Name.ToLower().Contains(filter.sSearch));
+                    items = context.Products.Where(e => e.Name.ToLower().Contains(filter.sSearch))
+                        .OrderBy(e => e.ProductId).Skip(filter.iDisplayStart).Take(filter.iDisplayLength).Select(Mapper.Map).ToList();
+                }
+                else
+                {
+                    items = context.Products.OrderBy(e => e.ProductId).Skip(filter.iDisplayStart).Take(filter.iDisplayLength).Select(Mapper.Map).ToList();
+                }
+                return new Tuple<IList<Product>, int>(items, count);
+            }
+        }
         // get all products
         public List<Product> GetProducts()
         {
