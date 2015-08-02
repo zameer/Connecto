@@ -18,10 +18,13 @@ cSettingControllers.controller(cName + 'ListCtrl', ['$scope', '$http', '$routePa
                   },
                   "columns": [
                       { "data": "ProductId" },
+                      { "data": "Name" },
                       {
-                          "data": "Name", "render": function (data, type, full) {
-                              return full["Name"];
-                          }
+                          "data": "ProductTypeId", "render": function (data, type, full) {
+                              var ptype = full["ProductType"];
+                              console.log(ptype);
+                              return ptype.Type + " " + ptype.StockAs;
+                        }
                       },
                       {
                           "render": function (data, type, full) {
@@ -37,6 +40,7 @@ cSettingControllers.controller(cName + 'ListCtrl', ['$scope', '$http', '$routePa
               });
           }
       };
+      $scope.loadItems();
       $scope.delete = function (itemId) {
           bootbox.confirm("Are you sure want to delete?", function (result) {
               if (result) {
