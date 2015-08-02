@@ -58,6 +58,8 @@
     <Compile Include="CompanyRepository.cs" />
     <Compile Include="PersonRepository.cs" />
     <Compile Include="ProductDetailRepository.cs" />
+    <Compile Include="ProductReturnRepository.cs" />
+    <Compile Include="ReturnReasonRepository.cs" />
     <Compile Include="VendorRepository.cs" />
   </ItemGroup>
   <ItemGroup>

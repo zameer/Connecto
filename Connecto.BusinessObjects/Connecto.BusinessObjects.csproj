@@ -62,6 +62,8 @@
     <Compile Include="ProductType.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Supplier.cs" />
+    <Compile Include="ProductReturn.cs" />
+    <Compile Include="ReturnReason.cs" />
     <Compile Include="Vendor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

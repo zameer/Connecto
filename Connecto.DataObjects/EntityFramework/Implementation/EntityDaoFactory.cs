@@ -14,7 +14,14 @@
         public IVendorDao VendorDao {
             get { return new EntityVendorDao(); }
         }
-
+        public IProductReturnDao ProductReturnDao
+        {
+            get { return new EntityProductReturnDao(); }
+        }
+        public IReturnReasonDao ReturnReasonDao
+        {
+            get { return new EntityReturnReasonDao(); }
+        }
         public ISupplierDao SupplierDao
         {
             get { return new EntitySupplierDao(); }

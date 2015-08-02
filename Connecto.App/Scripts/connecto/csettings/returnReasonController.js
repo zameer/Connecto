@@ -1,15 +1,15 @@
 'use strict';
 /* Controllers */
-var cName = 'Supplier';
+var cName = 'ReturnReason';
 var dataTable = null;
-hrControllers.controller(cName + 'ListCtrl', ['$scope', '$http', '$routeParams',
+cSettingControllers.controller(cName + 'ListCtrl', ['$scope', '$http', '$routeParams',
   function ($scope, $http) {
       $scope.loadItems = function () {
           if (!$.fn.dataTable.isDataTable('#example')) {
               dataTable = $('#example').dataTable({
                   "serverSide": true,
                   "ordering": false,
-                  "sAjaxSource": "/Supplier/GetSearch",
+                  "sAjaxSource": "/ReturnReason/GetSearch",
                   "fnServerData": function (sSource, aoData, fnCallback) {
                       AppCommonFunction.ShowWaitBlock();
                       $.get(sSource, aoData, function (json) {
@@ -17,16 +17,13 @@ hrControllers.controller(cName + 'ListCtrl', ['$scope', '$http', '$routeParams',
                       }).always(function () { AppCommonFunction.HideWaitBlock(); });
                   },
                   "columns": [
-                      { "data": "SupplierId" },
-                      {
-                          "data": "LastName", "render": function (data, type, full) {
-                              var person = full["Person"];
-                              return person["FirstName"] + " " + person["LastName"];
-                          }
-                      },
+                      { "data": "ReturnReasonId" },
+                      { "data": "Name" },
+                      { "data": "Description" },
                       {
                           "render": function (data, type, full) {
-                              return "<a class='btn btn-xs btn-danger delete-row' data-id='" + full["SupplierId"] + "'><i class='ace-icon fa fa-trash-o bigger-120'></i></a>";
+                              return "<a class='btn btn-xs btn-info' href='#/Edit/" + full["ReturnReasonId"] + "'><i class='ace-icon fa fa-pencil bigger-120'></i></a>" +
+                                  "<a class='btn btn-xs btn-danger delete-row' data-id='" + full["ReturnReasonId"] + "'><i class='ace-icon fa fa-trash-o bigger-120'></i></a>";
                           }
                       }
                   ]
@@ -49,21 +46,23 @@ hrControllers.controller(cName + 'ListCtrl', ['$scope', '$http', '$routeParams',
           });
       };
   }]);
-hrControllers.controller(cName + 'PeopleCtrl', function ($scope, $location, $http) {
-    AppCommonFunction.ShowWaitBlock();
-    $scope.loadItems = function () {
-        AppCommonFunction.ShowWaitBlock();
-        $http.get('/' + cName + '/GetPeople/').success(function (data) {
-            $scope.items = data;
-            AppCommonFunction.HideWaitBlock();
-        });
-    };
-    $scope.loadItems();
-   
-    $scope.assign = function (id) {
-        $http.post('/' + cName + '/Create/' + id).success(function (data) {
-            if (data.Status == "Failure") showMessage(data);
-            $scope.loadItems();
+cSettingControllers.controller(cName + 'NewCtrl', function ($scope, $location, $http) {
+    $scope.add = function () {
+        $http.post('/' + cName + '/Create/', $scope.item).success(function (data) {
+            if(data.Status == "Failure")showMessage(data);
+            else $location.path('/');
         });
     };
 });
+cSettingControllers.controller(cName + 'EditCtrl', ['$scope', '$http', '$location', '$routeParams',
+  function ($scope, $http, $location, $routeParams) {
+      $http.get('/' + cName + '/GetItem/' + $routeParams.itemId).success(function (data) {
+          $scope.item = data;
+      });
+      $scope.edit = function () {
+          $http.post('/' + cName + '/Edit/', $scope.item).success(function (data) {
+              if (data.Status == "Failure") showMessage(data);
+              else $location.path('/');
+          });
+      };
+  }]);

@@ -6,6 +6,10 @@
         {
             get { return new VendorRepository(); }
         }
+        public static ReturnReasonRepository ReturnReasonRepository
+        {
+            get { return new ReturnReasonRepository(); }
+        }
         public static ProductRepository ProductRepository
         {
             get { return new ProductRepository(); }

@@ -1,0 +1,21 @@
+﻿@model Connecto.BusinessObjects.ReturnReason
+@{
+    ViewBag.Title = "ReturnReasons";
+}
+<div ng-app="cSettingApp">
+    <div ng-view></div>
+</div>
+<script src="~/Scripts/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/jquery.dataTables.bootstrap.js"></script>
+<script src="~/Scripts/connecto/csettings/returnReasonController.js"></script>
+<script type="text/javascript">
+    $('#menu-csettings-main').syncMenu([{ name: "returnreasons", option: "a" }]);
+    cSettingApp.config(['$routeProvider',
+    function ($routeProvider) {
+        $routeProvider.
+             when('/', { templateUrl: '/ReturnReason/List', controller: 'ReturnReasonListCtrl' })
+            .when('/Create/', { templateUrl: '/ReturnReason/Create', controller: 'ReturnReasonNewCtrl' })
+            .when('/Edit/:itemId', { templateUrl: '/ReturnReason/Edit', controller: 'ReturnReasonEditCtrl' })
+            .otherwise({ redirectTo: '/' });
+    }]);
+</script>

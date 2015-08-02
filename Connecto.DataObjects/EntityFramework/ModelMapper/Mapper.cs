@@ -39,6 +39,72 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 EditedOn = entity.EditedOn
             };
         }
+        internal static ReturnReason Map(EntityReturnReason entity)
+        {
+            return new ReturnReason
+            {
+                ReturnReasonId = entity.ReturnReasonId,
+                ReturnReasonGuid = entity.ReturnReasonGuid,
+                Name = entity.Name,
+                Description = entity.Description,
+                LocationId = entity.LocationId,
+                Status = entity.Status,
+                CreatedBy = entity.CreatedBy,
+                CreatedOn = entity.CreatedOn,
+                EditedBy = entity.EditedBy,
+                EditedOn = entity.EditedOn
+            };
+        }
+        internal static EntityReturnReason Map(ReturnReason entity)
+        {
+            return new EntityReturnReason
+            {
+                ReturnReasonId = entity.ReturnReasonId,
+                ReturnReasonGuid = entity.ReturnReasonGuid,
+                Name = entity.Name,
+                Description = entity.Description,
+                LocationId = entity.LocationId,
+                Status = entity.Status,
+                CreatedBy = entity.CreatedBy,
+                CreatedOn = entity.CreatedOn,
+                EditedBy = entity.EditedBy,
+                EditedOn = entity.EditedOn
+            };
+        }
+        internal static ProductReturn Map(EntityProductReturn entity)
+        {
+            return new ProductReturn
+            {
+                ProductReturnId = entity.ProductReturnId,
+                ProductReturnGuid = entity.ProductReturnGuid,
+                DateReturned = entity.DateReturned,
+                ProductDetailId = entity.ProductDetailId,
+                SalesDetailId = entity.SalesDetailId,
+                LocationId = entity.LocationId,
+                Status = entity.Status,
+                CreatedBy = entity.CreatedBy,
+                CreatedOn = entity.CreatedOn,
+                EditedBy = entity.EditedBy,
+                EditedOn = entity.EditedOn
+            };
+        }
+        internal static EntityProductReturn Map(ProductReturn entity)
+        {
+            return new EntityProductReturn
+            {
+                ProductReturnId = entity.ProductReturnId,
+                ProductReturnGuid = entity.ProductReturnGuid,
+                DateReturned = entity.DateReturned,
+                ProductDetailId = entity.ProductDetailId,
+                SalesDetailId = entity.SalesDetailId,
+                LocationId = entity.LocationId,
+                Status = entity.Status,
+                CreatedBy = entity.CreatedBy,
+                CreatedOn = entity.CreatedOn,
+                EditedBy = entity.EditedBy,
+                EditedOn = entity.EditedOn
+            };
+        }
         internal static Product Map(EntityProduct entity)
         {
             return new Product

@@ -15,6 +15,14 @@ namespace Connecto.DataObjects
             get { return _factory.VendorDao; }
         }
 
+        public static IProductReturnDao ProductReturnDao
+        {
+            get { return _factory.ProductReturnDao; }
+        }
+        public static IReturnReasonDao ReturnReasonDao
+        {
+            get { return _factory.ReturnReasonDao; }
+        }
         public static IProductDao ProductDao
         {
             get { return _factory.ProductDao; }

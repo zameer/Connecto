@@ -42,8 +42,8 @@ hrControllers.controller(cName + 'ListCtrl', ['$scope', '$http', '$routeParams',
           bootbox.confirm("Are you sure want to delete?", function (result) {
               if (result) {
                   $http.post('/' + cName + '/Delete/', { id: itemId }).success(function (data) {
-                      showMessage(data);
-                      if (data.Status != "Failure") dataTable.fnDraw();
+                      if (data.Status == "Failure") showMessage(data);
+                      else dataTable.fnDraw();
                   });
               }
           });

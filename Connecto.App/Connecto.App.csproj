@@ -22,6 +22,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <TypeScriptToolsVersion>1.0</TypeScriptToolsVersion>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -176,7 +177,6 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="BusinessIntelligence\Dataset\Transactions.cs">
       <DependentUpon>Transactions.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="BusinessIntelligence\Reporto.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -193,6 +193,7 @@
     <Compile Include="Controllers\ProductTypeController.cs" />
     <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="Controllers\ReturnReasonController.cs" />
     <Compile Include="Controllers\VendorController.cs" />
     <Compile Include="BusinessIntelligence\Dataset\Transactions.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -211,6 +212,7 @@
     <Compile Include="ModelValidator\ProductTypeValidator.cs" />
     <Compile Include="ModelValidator\MeasureValidator.cs" />
     <Compile Include="ModelValidator\ProductDetailValidator.cs" />
+    <Compile Include="ModelValidator\ReturnReasonValidator.cs" />
     <Compile Include="ModelValidator\VendorValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -276,6 +278,7 @@
     <Content Include="Scripts\connecto\bootstrap.js" />
     <Content Include="Scripts\connecto\Connectojs.js" />
     <Content Include="Scripts\connecto\csettings\productController.js" />
+    <Content Include="Scripts\connecto\csettings\returnReasonController.js" />
     <Content Include="Scripts\connecto\date-time\bootstrap-datepicker.js" />
     <Content Include="Scripts\connecto\date-time\daterangepicker.js" />
     <Content Include="Scripts\connecto\date-time\moment.js" />
@@ -403,6 +406,10 @@
     <Content Include="Views\BusinessIntelligence\CommonSettings.cshtml" />
     <Content Include="Views\BusinessIntelligence\Criteria\_DateRange.cshtml" />
     <Content Include="Views\BusinessIntelligence\Criteria\_Date.cshtml" />
+    <Content Include="Views\ReturnReason\Create.cshtml" />
+    <Content Include="Views\ReturnReason\Index.cshtml" />
+    <Content Include="Views\ReturnReason\List.cshtml" />
+    <Content Include="Views\ReturnReason\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\" />
