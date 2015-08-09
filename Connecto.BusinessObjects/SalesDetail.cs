@@ -30,5 +30,7 @@ namespace Connecto.BusinessObjects
         public double DiscountAs { get; set; }
         public decimal Discount { get; set; }
         public virtual Customer Customer { get; set; }
+        public string ProductName { get; set; }
+
     }
 }

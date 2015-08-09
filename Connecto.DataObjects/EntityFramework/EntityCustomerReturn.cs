@@ -5,15 +5,13 @@ using Connecto.Common.Enumeration;
 
 namespace Connecto.DataObjects.EntityFramework
 {
-    [Table("ProductReturn", Schema = "Product")]
-    public class EntityProductReturn : EntityProductBase
+    [Table("CustomerReturn", Schema = "Product")]
+    public class EntityCustomerReturn : EntityProductBase
     {
         [Key]
-        public int ProductReturnId { get; set; }
-        public Guid ProductReturnGuid { get; set; }
+        public int CustomerReturnId { get; set; }
+        public Guid CustomerReturnGuid { get; set; }
         public DateTime DateReturned { get; set; }
-        public int? ProductDetailId { get; set; }
-        public virtual EntityProductDetail ProductDetail { get; set; }
         public int? SalesDetailId { get; set; }
         public virtual EntitySalesDetail SalesDetail { get; set; }
         public int? ReturnReasonId { get; set; }

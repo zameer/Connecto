@@ -15,10 +15,10 @@ namespace Connecto.DataObjects
             get { return _factory.VendorDao; }
         }
 
-        public static IProductReturnDao ProductReturnDao
-        {
-            get { return _factory.ProductReturnDao; }
-        }
+        //public static ISupplierReturnDao ProductReturnDao
+        //{
+        //    get { return _factory.ProductReturnDao; }
+        //}
         public static IReturnReasonDao ReturnReasonDao
         {
             get { return _factory.ReturnReasonDao; }
@@ -81,6 +81,11 @@ namespace Connecto.DataObjects
         public static ISalesDetailDao SalesDetailDao
         {
             get { return _factory.SalesDetailDao; }
+        }
+
+        public static ICustomerReturnDao CustomerReturnDao
+        {
+            get { return _factory.CustomerReturnDao; }
         }
     }
 }

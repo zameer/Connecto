@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "SupplierReturn";
+}
+<div ng-app="trApp">
+    <div ng-view></div>
+</div>
+<script src="~/Scripts/connecto/tr/supplierReturnController.js"></script>
+<script type="text/javascript">
+    $('#menu-tr').syncMenu([{ name: "supplierReturn", option: "a" }]);
+    trApp.config(['$routeProvider',
+    function ($routeProvider) {
+        $routeProvider.
+             when('/', { templateUrl: '/SupplierReturn/Checkout', controller: 'SupplierReturnCtrl' })
+            .otherwise({ redirectTo: '/' });
+    }]);
+</script>

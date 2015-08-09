@@ -58,7 +58,8 @@
     <Compile Include="CompanyRepository.cs" />
     <Compile Include="PersonRepository.cs" />
     <Compile Include="ProductDetailRepository.cs" />
-    <Compile Include="ProductReturnRepository.cs" />
+    <Compile Include="CustomerReturnRepository.cs" />
+    <Compile Include="SupplierReturnRepository.cs" />
     <Compile Include="ReturnReasonRepository.cs" />
     <Compile Include="VendorRepository.cs" />
   </ItemGroup>

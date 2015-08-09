@@ -10,6 +10,10 @@
         {
             get { return new ReturnReasonRepository(); }
         }
+        public static SupplierReturnRepository ProductReturnRepository
+        {
+            get { return new SupplierReturnRepository(); }
+        }
         public static ProductRepository ProductRepository
         {
             get { return new ProductRepository(); }
@@ -61,6 +65,10 @@
         public static SalesDetailRepository SalesDetailRepository
         {
             get { return new SalesDetailRepository(); }
+        }
+        public static CustomerReturnRepository CustomerReturnRepository
+        {
+            get { return new CustomerReturnRepository(); }
         }
     }
 }

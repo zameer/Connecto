@@ -80,6 +80,7 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 DateReturned = entity.DateReturned,
                 ProductDetailId = entity.ProductDetailId,
                 SalesDetailId = entity.SalesDetailId,
+                ReturnReasonId = entity.ReturnReasonId,
                 LocationId = entity.LocationId,
                 Status = entity.Status,
                 CreatedBy = entity.CreatedBy,
@@ -97,6 +98,7 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 DateReturned = entity.DateReturned,
                 ProductDetailId = entity.ProductDetailId,
                 SalesDetailId = entity.SalesDetailId,
+                ReturnReasonId = entity.ReturnReasonId,
                 LocationId = entity.LocationId,
                 Status = entity.Status,
                 CreatedBy = entity.CreatedBy,
@@ -643,7 +645,10 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 ProductDetailId = entity.ProductDetailId,
                 CustomerId = entity.CustomerId,
                 ProductCode = entity.ProductCode,
+                ProductName = entity.ProductDetail.Product.Name,
                 Quantity = entity.Quantity,
+                QuantityLower = entity.QuantityLower,
+                QuantityActual = entity.QuantityActual,
                 UnitPrice = entity.UnitPrice,
                 SellingPrice = entity.SellingPrice,
                 DateSold = entity.DateSold,
@@ -653,6 +658,7 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 CreatedOn = entity.CreatedOn,
                 EditedBy = entity.EditedBy,
                 EditedOn = entity.EditedOn,
+                DisplayQuantity = BuildQuantity(entity.ProductDetail.Product, entity.Quantity, entity.QuantityActual, entity.QuantityLower)
             };
         }
         internal static ProductSupplier Map(EntityProductSupplier entity)
