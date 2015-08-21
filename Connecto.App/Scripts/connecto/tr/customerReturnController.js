@@ -44,19 +44,26 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
           $scope.Measure = data.Measure;
       };
 
-      $scope.calculatePrice = function () {
-          $scope.decideSellingPrice();
+      $scope.calculateReturnPrice = function () {
           var lowerUnitPrice = $scope.item.SellingPrice / ($scope.item.ContainsQty == 0 ? 1 : $scope.item.ContainsQty);
-          var unitPrice = $scope.item.SellingPrice * $scope.item.Quantity;
-          var actualPrice = lowerUnitPrice * $scope.item.QuantityActual;
-          var lowerPrice = (lowerUnitPrice / $scope.item.Volume) * $scope.item.QuantityLower;
-          $scope.item.Price = Math.round(unitPrice + actualPrice + lowerPrice);
-          $scope.calculateDiscount();
+          if ($scope.item.ReturnQuantity == null) $scope.item.ReturnQuantity = 0;
+          if ($scope.item.ReturnQuantityActual == null) $scope.item.ReturnQuantityActual = 0;
+          if($scope.item.ReturnQuantityLower == null) $scope.item.ReturnQuantityLower = 0;
+          var unitPrice = $scope.item.SellingPrice * $scope.item.ReturnQuantity;
+          var actualPrice = lowerUnitPrice * $scope.item.ReturnQuantityActual;
+          var lowerPrice = (lowerUnitPrice / $scope.item.Volume) * $scope.item.ReturnQuantityLower;
+          $scope.item.returnPrice = Math.round(unitPrice + actualPrice + lowerPrice);
+          $scope.calculateReturnNetPrice();
       };
-      $scope.decideSellingPrice = function () {
-          if ($scope.item.SellingMargin && $scope.item.Quantity == 0) {
-              if ($scope.item.SellingPrice == $scope.item.SellingPriceActual) $scope.item.SellingPrice += $scope.item.MarginAmount;
-          } else $scope.item.SellingPrice = $scope.item.SellingPriceActual;
+      $scope.calculateReturnNetPrice = function () {
+          if ($scope.item.Price == $scope.item.returnPrice) {
+              $scope.item.returnNetPrice = $scope.item.Price;
+          }
+          else $scope.item.returnNetPrice = $scope.item.Price - $scope.item.returnPrice;
+          $scope.calculateReturnChangeAmount();
+      };
+      $scope.calculateReturnChangeAmount = function () {
+          $scope.item.returnChangeAmount = $scope.item.returnAmountPaid - $scope.item.returnNetPrice;
       };
       $scope.filterOrder = function (orderId) {
           if (orderId.length > 0) $scope.loadItems(orderId);
@@ -65,25 +72,6 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
       $scope.setReturn = function (returnBy) {
           $scope.ReturnBy = returnBy;
       }
-      $scope.setDiscount = function (discountBy) {
-          $scope.DiscountBy = discountBy;
-          $scope.calculateDiscount();
-      };
-      $scope.calculateDiscount = function () {
-          if ($scope.item.DiscountAs == undefined) $scope.item.DiscountAs = 0;
-          if ($scope.DiscountBy == '')
-              $scope.item.Discount = 0;
-          if ($scope.DiscountBy == "Amount")
-              $scope.item.Discount = Math.round($scope.item.DiscountAs);
-          if ($scope.DiscountBy == "Rate") {
-              $scope.item.DiscountBy = $scope.DiscountBy;
-              $scope.item.Discount = Math.round(($scope.item.DiscountAs / 100) * $scope.item.Price);
-          }
-          $scope.calculateNetPrice();
-      };
-      $scope.calculateNetPrice = function () {
-          $scope.item.NetPrice = $scope.item.Price - ($scope.item.Discount != undefined ? $scope.item.Discount : 0);
-      };
       $scope.add = function () {
           $http.post('/' + cName + '/Create/', $scope.item).success(function (data) {
               showMessage(data);

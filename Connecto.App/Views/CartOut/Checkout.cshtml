@@ -24,7 +24,7 @@
                                     <h4 class="widget-title blue smaller">
                                         {{item.SellingPrice}}
                                         <select ng-show="itemz.length > 1" ng-model="item.PrductDetailId" ng-change="filterProductSelection(item.PrductDetailId)" class="select2" id="productDetail" data-placeholder="Select Details">
-                                            <option ng-repeat="e in itemz" value="{{e.ProductDetailId}}">{{e.CreatedOnText}} , {{e.SellingPrice}} Rs , {{e.Quantity}} {{e.StockAs}}s</option>
+                                            <option ng-repeat="e in itemz" value="{{e.ProductDetailId}}">{{e.CreatedOnText}}, {{e.StockInHand.Quantity}} {{e.StockAs}}s</option>
                                         </select>
                                         
                                     </h4>
@@ -32,7 +32,7 @@
                                 </div>
                             </div>
                             <div class="profile-info-row">
-                                <div class="profile-info-name"> Stock In Hand </div>
+                                <div class="profile-info-name"> Total Stock In Hand </div>
                                 <div class="profile-info-value">
                                     <h4 ng-if="item.StockInHand" class=" widget-title blue smaller">
                                         <span ng-if="item.StockInHand.Quantity > 0">{{item.StockInHand.Quantity}} {{item.StockAs}}s</span>
@@ -43,8 +43,8 @@
                                     </h4>
                                 </div>
                             </div>
-
                         </div>
+
                         <div class="space-6"></div>
                         <div class="col-sm-4">
                             <div class="form-group">
