@@ -17,16 +17,36 @@ namespace Connecto.App.Controllers
     public class CustomerReturnController : Controller
     {
         private readonly CustomerReturnRepository _repo = ConnectoFactory.CustomerReturnRepository;
-       
 
+        public JsonResult Get()
+        {
+            var items = _repo.Get();
+            return Json(items, JsonRequestBehavior.AllowGet);
+        }
         public JsonResult GetSalesDetailByOrderId(int orderId)
         {
             var item = _repo.GetSalesDetailByOrderId(orderId);
             return Json(item, JsonRequestBehavior.AllowGet);
         }
 
+        //
+        // POST: /Transaction/Create
+        [HttpPost]
+        public JsonResult Create(ReturnProduct item)
+        {
+            //var errors = new SalesDetailValidator(item, _repo).Validate();
+            //if (errors.Count > 0) return Json(new ConnectoValidation { Status = "Failure", Exceptions = errors }, JsonRequestBehavior.AllowGet);
 
-        
+            item.LocationId = 1;
+            item.CustomerReturnGuid = Guid.NewGuid();
+            item.CreatedBy = User.UserId();
+            item.CreatedOn = DateTime.Now;
+            item.DateReturned = DateTime.Now;
+            item.Status = RecordStatus.Active;
+            var orderId = _repo.ReturnProduct(item);
+            return Json(new { OrderId = 1, Status = "Success", Message = "Cart Item Added." }, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult Index()
         {
             return View();

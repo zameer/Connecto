@@ -50,6 +50,7 @@
     <Compile Include="Customer.cs" />
     <Compile Include="CustomerReturn.cs" />
     <Compile Include="ReportSetting.cs" />
+    <Compile Include="ReturnProduct.cs" />
     <Compile Include="StockInHand.cs" />
     <Compile Include="ProductBase.cs" />
     <Compile Include="SalesDetail.cs" />

@@ -12,7 +12,13 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
     /// </summary>
     public class EntityCustomerReturnDao : ICustomerReturnDao
     {
-        
+        public List<int> Get()
+        {
+            using (var context = DataObjectFactory.CreateContext())
+            {
+                return context.CustomerReturns.Select(e => e.CustomerReturnId).Distinct().ToList();
+            }
+        }
         public List<SalesDetail> GetSalesDetailByOrderId(int orderId)
         {
             var productReturns = new List<SalesDetail>();
@@ -26,19 +32,6 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                     {
                         ProductName = product.Name,
                         ProductCode= salesDetail.ProductDetail.ProductCode,
-                        /*ProductDetailId = productDetail.ProductDetailId,
-                        ProductCode = productCode,
-                        SellingLower = productDetail.Product.SellingLower,
-                        StockInHand = new StockInHand { Quantity = productDetail.Product.StockInHand, QuantityActual = productDetail.Product.QuantityActual, QuantityLower = productDetail.Product.QuantityLower },
-                        SellingPrice = productDetail.SellingPrice,
-                        SellingPriceActual = productDetail.SellingPrice,
-                        StockAs = productDetail.Product.ProductType.StockAs,
-                        Volume = measure.Volume,
-                        ContainsQty = productDetail.Product.ContainsQty,
-                        SellingMargin = productDetail.Product.SellingMargin,
-                        MarginAmount = productDetail.Product.MarginAmount,
-                        Measure = new Measure { Actual = measure.Actual, Lower = measure.Lower },
-                        CreatedOnText = productDetail.CreatedOn.ToShortDateString()*/
                     });
                 }   
                 return productReturns;
@@ -52,6 +45,58 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                 return returnReasons.Select(Mapper.Map).ToList();
             }
         }
-        
+        public int ReturnProduct(ReturnProduct returnProduct)
+        {
+            using (var context = DataObjectFactory.CreateContext())
+            {
+                var entity = Mapper.Map(returnProduct);
+               
+                //Update sales details
+                var salesDetail = new SalesDetail {
+                    SalesDetailId = (int)returnProduct.SalesDetailId,
+                    Quantity = returnProduct.ReturnQuantity,
+                    QuantityActual = returnProduct.ReturnQuantityActual,
+                    QuantityLower = returnProduct.ReturnQuantityLower
+                };
+                UpdateSalesDetail(salesDetail, returnProduct.SyncStock, context);
+
+                context.CustomerReturns.Add(entity);
+                context.SaveChanges();
+                return entity.CustomerReturnId;
+            }
+        }
+        private bool UpdateSalesDetail(SalesDetail salesDetail, bool syncStock, ConnectoManagerEntities context)
+        {
+            var entity = context.SalesDetails.FirstOrDefault(e => e.SalesDetailId == salesDetail.SalesDetailId);
+            if (entity == null) return false;
+            if (salesDetail.Quantity > 0) entity.Quantity -= salesDetail.Quantity;
+            if (salesDetail.QuantityActual > 0) entity.QuantityActual -= salesDetail.QuantityActual;
+            if (salesDetail.QuantityLower > 0) entity.QuantityLower -= salesDetail.QuantityLower;
+
+            if (syncStock)
+            {
+                var prodDetail = context.ProductDetails.FirstOrDefault(e => e.ProductDetailId == entity.ProductDetailId);
+                var product = context.Products.FirstOrDefault(e => e.ProductId == prodDetail.ProductId);
+
+                if (salesDetail.Quantity > 0) {
+                    product.Quantity += salesDetail.Quantity;
+                    product.StockInHand += salesDetail.Quantity;
+
+                    prodDetail.Quantity += salesDetail.Quantity;
+                }
+                if (salesDetail.QuantityActual > 0) { 
+                    product.QuantityActual += salesDetail.QuantityActual;
+                    prodDetail.QuantityActual += salesDetail.QuantityActual;
+                }
+                if (salesDetail.QuantityLower > 0)
+                {
+                    product.QuantityLower += salesDetail.QuantityLower;
+                    prodDetail.QuantityLower += salesDetail.QuantityLower;
+                }
+            }
+
+            return true;
+        }
+
     }
 }

@@ -725,6 +725,46 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 EditedOn = entity.EditedOn
             };
         }
+        internal static EntityCustomerReturn Map(ReturnProduct entity)
+        {
+            return new EntityCustomerReturn
+            {
+                 CustomerReturnGuid = entity.CustomerReturnGuid,
+                 DateReturned = entity.DateReturned,
+                 SalesDetailId = entity.SalesDetailId,
+                 ReturnReasonId = entity.ReturnReasonId,
+                 Quantity = entity.ReturnQuantity,
+                 QuantityActual = entity.ReturnQuantityActual,
+                 QuantityLower = entity.ReturnQuantityLower,
+                 LocationId = entity.LocationId,
+                Status = entity.Status,
+                CreatedBy = entity.CreatedBy,
+                CreatedOn = entity.CreatedOn,
+                EditedBy = entity.EditedBy,
+                EditedOn = entity.EditedOn
+
+            };
+        }
+        internal static ReturnProduct Map(EntityCustomerReturn entity)
+        {
+            return new ReturnProduct
+            {
+                CustomerReturnGuid = entity.CustomerReturnGuid,
+                DateReturned = entity.DateReturned,
+                SalesDetailId = entity.SalesDetailId,
+                ReturnReasonId = entity.ReturnReasonId,
+                Quantity = entity.Quantity,
+                QuantityActual = entity.QuantityActual,
+                QuantityLower = entity.QuantityLower,
+                LocationId = entity.LocationId,
+                Status = entity.Status,
+                CreatedBy = entity.CreatedBy,
+                CreatedOn = entity.CreatedOn,
+                EditedBy = entity.EditedBy,
+                EditedOn = entity.EditedOn
+
+            };
+        }
         internal static string BuildQuantity(EntityProduct product, int qty, int qtyActual, int qtyLower)
         {
             var item = product.ProductType;

@@ -24,7 +24,7 @@
                                     <h4 class="widget-title blue smaller">
                                         {{item.SellingPrice}}
                                         <select ng-show="itemz.length > 1" ng-model="item.PrductDetailId" ng-change="filterProductSelection(item.PrductDetailId)" class="select2" id="productDetail" data-placeholder="Select Details">
-                                            <option ng-repeat="e in itemz" value="{{e.ProductDetailId}}">{{e.CreatedOnText}}, {{e.StockInHand.Quantity}} {{e.StockAs}}s</option>
+                                            <option ng-repeat="e in itemz" value="{{e.ProductDetailId}}">{{e.CreatedOnText}}, {{e.RowStockInHand.Quantity}} {{e.StockAs}}s {{e.RowStockInHand.QuantityActual}} {{e.Measure.Actual}}s {{e.RowStockInHand.QuantityLower}} {{e.Measure.Lower}}s</option>
                                         </select>
                                         
                                     </h4>
@@ -38,7 +38,7 @@
                                         <span ng-if="item.StockInHand.Quantity > 0">{{item.StockInHand.Quantity}} {{item.StockAs}}s</span>
                                         <span>
                                             <span ng-if="item.StockInHand.QuantityActual > 0">{{item.StockInHand.QuantityActual}} {{item.Measure.Actual}}s</span>
-                                            <span ng-if="item.StockInHand.QuantityLower > 0">{{item.StockInHand.QuantityLower}} {{item.Measure.Lower}}</span>
+                                            <span ng-if="item.StockInHand.QuantityLower > 0">{{item.StockInHand.QuantityLower}} {{item.Measure.Lower}}s</span>
                                         </span>
                                     </h4>
                                 </div>

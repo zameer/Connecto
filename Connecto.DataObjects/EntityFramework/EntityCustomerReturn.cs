@@ -16,6 +16,5 @@ namespace Connecto.DataObjects.EntityFramework
         public virtual EntitySalesDetail SalesDetail { get; set; }
         public int? ReturnReasonId { get; set; }
         public virtual EntityReturnReason ReturnReason{ get; set; }
-
     }
 }

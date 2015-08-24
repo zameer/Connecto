@@ -32,6 +32,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                         ProductCode = productCode,
                         SellingLower = productDetail.Product.SellingLower,
                         StockInHand = new StockInHand { Quantity = productDetail.Product.StockInHand, QuantityActual = productDetail.Product.QuantityActual, QuantityLower = productDetail.Product.QuantityLower },
+                        RowStockInHand = new StockInHand { Quantity = productDetail.Quantity, QuantityActual = productDetail.QuantityActual, QuantityLower = productDetail.QuantityLower },
                         SellingPrice = productDetail.SellingPrice,
                         SellingPriceActual = productDetail.SellingPrice,
                         StockAs = productDetail.Product.ProductType.StockAs,

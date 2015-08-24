@@ -20,6 +20,7 @@ namespace Connecto.BusinessObjects
         public string Actual { get; set; }
         public string Lower { get; set; }
         public StockInHand StockInHand { get; set; }
+        public StockInHand RowStockInHand { get; set; }
         public decimal UnitPrice { get; set; }
         public decimal SellingPrice { get; set; }
         public decimal Price { get; set; }

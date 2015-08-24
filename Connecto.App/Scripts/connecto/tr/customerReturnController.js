@@ -10,7 +10,12 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
           });
       };
       $scope.getReasons();
-
+      $scope.loadReturns = function () {
+          $http.get('/' + cName + '/Get/').success(function (data) {
+              $scope.customerReturns = data;
+          });
+      };
+      $scope.loadReturns();
       $scope.filterProductSelection = function (productDetailId) {
           var arrItems = $scope.itemz;
           angular.forEach(arrItems, function (item) {
@@ -72,19 +77,18 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
       $scope.setReturn = function (returnBy) {
           $scope.ReturnBy = returnBy;
       }
-      $scope.add = function () {
+      $scope.complete = function () {
           $http.post('/' + cName + '/Create/', $scope.item).success(function (data) {
               showMessage(data);
               $scope.item.OrderId = data.OrderId != undefined && data.OrderId > 0 ? data.OrderId : $scope.item.OrderId;
               if (data.Status != "Failure") $scope.loadItems($scope.item.OrderId);
           });
       };
-      $scope.complete = function () {
+      $scope.completeA = function () {
           $http.post('/' + cName + '/Complete/', { id: $scope.item.OrderId }).success(function (data) {
               showMessage(data);
               if (data.Status != "Failure") {
-                  $scope.loadOrders();
-                  $scope.loadItems();
+                  $scope.loadReturns();
               }
           });
       };

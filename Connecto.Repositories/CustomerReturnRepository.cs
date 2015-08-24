@@ -11,13 +11,19 @@ namespace Connecto.Repositories
     {
         private static readonly ICustomerReturnDao CustomerReturnDao = DataAccess.CustomerReturnDao;
 
-        
-        
+
+        public IList<int> Get()
+        {
+            return CustomerReturnDao.Get();
+        }
         public List<SalesDetail> GetSalesDetailByOrderId(int orderId)
         {
             return CustomerReturnDao.GetSalesDetailByOrderId(orderId);
         }
-        
-        
+        public int ReturnProduct(ReturnProduct returnProduct)
+        {
+            return CustomerReturnDao.ReturnProduct(returnProduct);
+        }
+
     }
 }

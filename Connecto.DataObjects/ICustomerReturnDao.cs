@@ -15,9 +15,9 @@ namespace Connecto.DataObjects
     /// </remarks>
     public interface ICustomerReturnDao
     {
-        
-       
+
+        List<int> Get();
         List<SalesDetail> GetSalesDetailByOrderId(int orderId);
-        
+        int ReturnProduct(ReturnProduct returnProduct);
     }
 }
