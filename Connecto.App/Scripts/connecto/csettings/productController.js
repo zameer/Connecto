@@ -22,9 +22,13 @@ cSettingControllers.controller(cName + 'ListCtrl', ['$scope', '$http', '$routePa
                       {
                           "data": "ProductTypeId", "render": function (data, type, full) {
                               var ptype = full["ProductType"];
-                              console.log(ptype);
                               return ptype.Type + " " + ptype.StockAs;
                         }
+                      },
+                      {
+                          "data": "VendorId", "render": function (data, type, full) {
+                              return full["Vendor"].Name;
+                          }
                       },
                       {
                           "render": function (data, type, full) {
