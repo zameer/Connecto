@@ -57,6 +57,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
             using (var context = DataObjectFactory.CreateContext())
             {
                 var entity = Mapper.Map(product);
+                if (entity.ContainsQty == 0) entity.ContainsQty = 1;
                 context.Products.Add(entity);
                 context.SaveChanges();
                 return entity.ProductId;

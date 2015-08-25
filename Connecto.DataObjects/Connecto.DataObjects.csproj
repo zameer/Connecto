@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityFramework\EntityCustomerReturn.cs" />
+    <Compile Include="EntityFramework\EntityReturnReason.cs" />
+    <Compile Include="EntityFramework\EntityProductReturn.cs" />
     <Compile Include="EntityFramework\EntityReportSetting.cs" />
     <Compile Include="EntityFramework\EntityProductBase.cs" />
     <Compile Include="EntityFramework\EntityOrder.cs" />
@@ -58,6 +61,9 @@
     <Compile Include="EntityFramework\Implementation\EntityProductDetailDao.cs" />
     <Compile Include="EntityFramework\Implementation\EntityProductTypeDao.cs" />
     <Compile Include="EntityFramework\Implementation\EntityPersonDao.cs" />
+    <Compile Include="EntityFramework\Implementation\EntityCustomerReturnDao.cs" />
+    <Compile Include="EntityFramework\Implementation\EntitySuppierReturnDao.cs" />
+    <Compile Include="EntityFramework\Implementation\EntityReturnReasonDao.cs" />
     <Compile Include="ICustomerDao.cs" />
     <Compile Include="IProductDao.cs" />
     <Compile Include="ISalesDetailDao.cs" />
@@ -98,6 +104,9 @@
     <Compile Include="IProductDetailDao.cs" />
     <Compile Include="ISupplierDao.cs" />
     <Compile Include="IPersonDao.cs" />
+    <Compile Include="ICustomerReturnDao.cs" />
+    <Compile Include="ISupplierReturnDao.cs" />
+    <Compile Include="IReturnReasonDao.cs" />
     <Compile Include="IVendorDao.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

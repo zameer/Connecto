@@ -22,6 +22,8 @@ namespace Connecto.DataObjects.EntityFramework
         public ConnectoManagerEntities() : base("name=ConnectoDb") { }
 
         public DbSet<EntityVendor> Vendors { get; set; }
+        public DbSet<EntityProductReturn> ProductReturns { get; set; }
+        public DbSet<EntityReturnReason> ReturnReasons { get; set; }
         public DbSet<EntitySupplier> Suppliers { get; set; }
         public DbSet<EntityProduct> Products { get; set; }
         public DbSet<EntityCompany> Companies { get; set; }
@@ -40,5 +42,6 @@ namespace Connecto.DataObjects.EntityFramework
         public DbSet<EntitySalesDetail> SalesDetails { get; set; }
         public DbSet<EntitySalesDetailCart> SalesDetailCarts { get; set; }
         public DbSet<EntityReportSetting> ReportSettings { get; set; }
+        public DbSet<EntityCustomerReturn> CustomerReturns { get; set; }
     }
 }

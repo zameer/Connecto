@@ -43,7 +43,7 @@ cSettingControllers.controller(cName + 'ListCtrl', ['$scope', '$http', '$routePa
               if (result) {
                   $http.post('/' + cName + '/Delete/', { id: itemId }).success(function (data) {
                       if (data.Status == "Failure") showMessage(data);
-                      else $scope.loadItems();
+                      else dataTable.fnDraw();
                   });
               }
           });

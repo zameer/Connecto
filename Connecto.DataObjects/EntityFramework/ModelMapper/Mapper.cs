@@ -39,6 +39,74 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 EditedOn = entity.EditedOn
             };
         }
+        internal static ReturnReason Map(EntityReturnReason entity)
+        {
+            return new ReturnReason
+            {
+                ReturnReasonId = entity.ReturnReasonId,
+                ReturnReasonGuid = entity.ReturnReasonGuid,
+                Name = entity.Name,
+                Description = entity.Description,
+                LocationId = entity.LocationId,
+                Status = entity.Status,
+                CreatedBy = entity.CreatedBy,
+                CreatedOn = entity.CreatedOn,
+                EditedBy = entity.EditedBy,
+                EditedOn = entity.EditedOn
+            };
+        }
+        internal static EntityReturnReason Map(ReturnReason entity)
+        {
+            return new EntityReturnReason
+            {
+                ReturnReasonId = entity.ReturnReasonId,
+                ReturnReasonGuid = entity.ReturnReasonGuid,
+                Name = entity.Name,
+                Description = entity.Description,
+                LocationId = entity.LocationId,
+                Status = entity.Status,
+                CreatedBy = entity.CreatedBy,
+                CreatedOn = entity.CreatedOn,
+                EditedBy = entity.EditedBy,
+                EditedOn = entity.EditedOn
+            };
+        }
+        internal static ProductReturn Map(EntityProductReturn entity)
+        {
+            return new ProductReturn
+            {
+                ProductReturnId = entity.ProductReturnId,
+                ProductReturnGuid = entity.ProductReturnGuid,
+                DateReturned = entity.DateReturned,
+                ProductDetailId = entity.ProductDetailId,
+                SalesDetailId = entity.SalesDetailId,
+                ReturnReasonId = entity.ReturnReasonId,
+                LocationId = entity.LocationId,
+                Status = entity.Status,
+                CreatedBy = entity.CreatedBy,
+                CreatedOn = entity.CreatedOn,
+                EditedBy = entity.EditedBy,
+                EditedOn = entity.EditedOn
+            };
+        }
+        internal static EntityProductReturn Map(ProductReturn entity)
+        {
+            return new EntityProductReturn
+            {
+                ProductReturnId = entity.ProductReturnId,
+                ProductReturnGuid = entity.ProductReturnGuid,
+                DateReturned = entity.DateReturned,
+                ProductDetailId = entity.ProductDetailId,
+                SalesDetailId = entity.SalesDetailId,
+                ReturnReasonId = entity.ReturnReasonId,
+                LocationId = entity.LocationId,
+                Status = entity.Status,
+                CreatedBy = entity.CreatedBy,
+                CreatedOn = entity.CreatedOn,
+                EditedBy = entity.EditedBy,
+                EditedOn = entity.EditedOn
+            };
+        }
         internal static Product Map(EntityProduct entity)
         {
             return new Product
@@ -577,16 +645,28 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 ProductDetailId = entity.ProductDetailId,
                 CustomerId = entity.CustomerId,
                 ProductCode = entity.ProductCode,
+                ProductName = entity.ProductDetail.Product.Name,
                 Quantity = entity.Quantity,
+                QuantityLower = entity.QuantityLower,
+                QuantityActual = entity.QuantityActual,
+                ContainsQty = entity.ProductDetail.Product.ContainsQty,
+                SellingLower = entity.ProductDetail.Product.SellingLower,
                 UnitPrice = entity.UnitPrice,
                 SellingPrice = entity.SellingPrice,
+                Price = entity.Price,
+                NetPrice = entity.NetPrice,
                 DateSold = entity.DateSold,
+                StockAs = entity.ProductDetail.Product.ProductType.StockAs,
+                Actual = entity.ProductDetail.Product.ProductType.Measure.Actual,
+                Lower = entity.ProductDetail.Product.ProductType.Measure.Lower,
+                Volume = entity.ProductDetail.Product.ProductType.Measure.Volume,
                 LocationId = entity.LocationId,
                 Status = entity.Status,
                 CreatedBy = entity.CreatedBy,
                 CreatedOn = entity.CreatedOn,
                 EditedBy = entity.EditedBy,
                 EditedOn = entity.EditedOn,
+                DisplayQuantity = BuildQuantity(entity.ProductDetail.Product, entity.Quantity, entity.QuantityActual, entity.QuantityLower)
             };
         }
         internal static ProductSupplier Map(EntityProductSupplier entity)
@@ -643,6 +723,46 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 CreatedOn = entity.CreatedOn,
                 EditedBy = entity.EditedBy,
                 EditedOn = entity.EditedOn
+            };
+        }
+        internal static EntityCustomerReturn Map(ReturnProduct entity)
+        {
+            return new EntityCustomerReturn
+            {
+                 CustomerReturnGuid = entity.CustomerReturnGuid,
+                 DateReturned = entity.DateReturned,
+                 SalesDetailId = entity.SalesDetailId,
+                 ReturnReasonId = entity.ReturnReasonId,
+                 Quantity = entity.ReturnQuantity,
+                 QuantityActual = entity.ReturnQuantityActual,
+                 QuantityLower = entity.ReturnQuantityLower,
+                 LocationId = entity.LocationId,
+                Status = entity.Status,
+                CreatedBy = entity.CreatedBy,
+                CreatedOn = entity.CreatedOn,
+                EditedBy = entity.EditedBy,
+                EditedOn = entity.EditedOn
+
+            };
+        }
+        internal static ReturnProduct Map(EntityCustomerReturn entity)
+        {
+            return new ReturnProduct
+            {
+                CustomerReturnGuid = entity.CustomerReturnGuid,
+                DateReturned = entity.DateReturned,
+                SalesDetailId = entity.SalesDetailId,
+                ReturnReasonId = entity.ReturnReasonId,
+                Quantity = entity.Quantity,
+                QuantityActual = entity.QuantityActual,
+                QuantityLower = entity.QuantityLower,
+                LocationId = entity.LocationId,
+                Status = entity.Status,
+                CreatedBy = entity.CreatedBy,
+                CreatedOn = entity.CreatedOn,
+                EditedBy = entity.EditedBy,
+                EditedOn = entity.EditedOn
+
             };
         }
         internal static string BuildQuantity(EntityProduct product, int qty, int qtyActual, int qtyLower)

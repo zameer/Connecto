@@ -9,6 +9,8 @@
     public interface IDaoFactory
     {
         IVendorDao VendorDao { get; }
+        //ISupplierReturnDao SupplierReturnDao { get; }
+        IReturnReasonDao ReturnReasonDao { get; }
         IProductDao ProductDao { get; }
         IProductTypeDao ProductTypeDao { get; }
         ICompanyDao CompanyDao { get; }
@@ -21,5 +23,6 @@
         IPersonDao PersonDao { get; }
         IProductDetailDao ProductDetailDao { get; }
         ISalesDetailDao SalesDetailDao { get; }
+        ICustomerReturnDao CustomerReturnDao { get; }
     }
 }
