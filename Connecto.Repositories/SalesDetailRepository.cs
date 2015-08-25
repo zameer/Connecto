@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Connecto.BusinessObjects;
 using Connecto.DataObjects;
+using Connecto.DataObjects.EntityFramework.Utility;
 
 namespace Connecto.Repositories
 {
@@ -47,7 +48,7 @@ namespace Connecto.Repositories
         }
         public ProductBase SyncSales(int volume, int containsQty, ProductBase stock, ProductBase sold)
         {
-            return Repo.SyncStock(volume, containsQty, stock, sold);
+            return Stock.SyncStock(volume, containsQty, stock, sold);
         }
     }
 }

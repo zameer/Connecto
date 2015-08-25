@@ -64,6 +64,7 @@
     <Compile Include="EntityFramework\Implementation\EntityCustomerReturnDao.cs" />
     <Compile Include="EntityFramework\Implementation\EntitySuppierReturnDao.cs" />
     <Compile Include="EntityFramework\Implementation\EntityReturnReasonDao.cs" />
+    <Compile Include="EntityFramework\Utility\Stock.cs" />
     <Compile Include="ICustomerDao.cs" />
     <Compile Include="IProductDao.cs" />
     <Compile Include="ISalesDetailDao.cs" />
