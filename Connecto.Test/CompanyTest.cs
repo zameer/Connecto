@@ -18,6 +18,26 @@ namespace Connecto.Test
             var locations = _company.Locations(company.CompanyId);
             Assert.AreEqual(2, locations.Count);
         }
+        [TestMethod]
+        public void Return()
+        {
+            try
+            {
+                var stock = new ProductBase { Quantity = 199, QuantityActual = 24, QuantityLower = 700 };
+                var returning = new ProductBase { Quantity = 0, QuantityActual = 25, QuantityLower = 2000 };
+                var syncedStock = new ProductBase { Quantity = 200, QuantityActual = 01, QuantityLower = 700 };
+
+                var sales = _sales.SyncSales(1000, 50, stock, returning, true);
+
+                Assert.AreEqual(syncedStock.Quantity, sales.Quantity);
+                Assert.AreEqual(syncedStock.QuantityActual, sales.QuantityActual);
+                Assert.AreEqual(syncedStock.QuantityLower, sales.QuantityLower);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
 
         [TestMethod]
         public void Sales()
@@ -34,10 +54,9 @@ namespace Connecto.Test
                 Assert.AreEqual(syncedStock.QuantityActual, sales.QuantityActual);
                 Assert.AreEqual(syncedStock.QuantityLower, sales.QuantityLower);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
-                throw;
+                Console.WriteLine(ex.Message);
             }
         }
 

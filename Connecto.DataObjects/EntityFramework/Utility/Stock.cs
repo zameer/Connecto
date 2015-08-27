@@ -49,5 +49,23 @@ namespace Connecto.DataObjects.EntityFramework.Utility
             nxt.Quantity -= sold.Quantity;
             return nxt;
         }
+        public static ProductBase SyncStock(int volume, int containsQty, ProductBase stock, ProductBase sold, bool buildQuantity)
+        {
+            var nxt = stock;
+
+            var lwrsum = stock.QuantityLower + sold.QuantityLower;
+            var actByLwr = lwrsum/volume;
+            nxt.QuantityLower = actByLwr > 0 ? lwrsum - (actByLwr * volume) : stock.QuantityLower + sold.QuantityLower;
+            
+            nxt.QuantityActual += (sold.QuantityActual + actByLwr);
+
+            var qtyByAct = nxt.QuantityActual / containsQty;
+            if (buildQuantity && qtyByAct > 0)
+            {
+                nxt.QuantityActual = nxt.QuantityActual - (qtyByAct * containsQty);
+                nxt.Quantity += qtyByAct;
+            }
+            return nxt;
+        }
     }
 }

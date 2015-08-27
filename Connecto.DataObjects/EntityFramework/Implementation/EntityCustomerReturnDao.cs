@@ -4,6 +4,7 @@ using Connecto.BusinessObjects;
 using Connecto.DataObjects.EntityFramework.ModelMapper;
 using System;
 using Connecto.Common.Enumeration;
+using Connecto.DataObjects.EntityFramework.Utility;
 
 namespace Connecto.DataObjects.EntityFramework.Implementation
 {
@@ -69,30 +70,32 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
         {
             var entity = context.SalesDetails.FirstOrDefault(e => e.SalesDetailId == salesDetail.SalesDetailId);
             if (entity == null) return false;
-            if (salesDetail.Quantity > 0) entity.Quantity -= salesDetail.Quantity;
-            if (salesDetail.QuantityActual > 0) entity.QuantityActual -= salesDetail.QuantityActual;
-            if (salesDetail.QuantityLower > 0) entity.QuantityLower -= salesDetail.QuantityLower;
+            var prodDetail = context.ProductDetails.FirstOrDefault(e => e.ProductDetailId == entity.ProductDetailId);
+            var product = context.Products.FirstOrDefault(e => e.ProductId == prodDetail.ProductId);
+            var measure = product.ProductType.Measure;
+
+            var returned = new ProductBase{ Quantity = salesDetail.Quantity, QuantityActual = salesDetail.QuantityActual, QuantityLower = salesDetail.QuantityLower};
+
+            var syncedSales = Stock.SyncStock(measure.Volume, (int)product.ContainsQty, new ProductBase{ Quantity = entity.Quantity, 
+                QuantityActual = entity.QuantityActual, QuantityLower = entity.QuantityLower}, returned);
+            entity.Quantity = syncedSales.Quantity;
+            entity.QuantityActual = syncedSales.QuantityActual;
+            entity.QuantityLower = syncedSales.QuantityLower;
 
             if (syncStock)
             {
-                var prodDetail = context.ProductDetails.FirstOrDefault(e => e.ProductDetailId == entity.ProductDetailId);
-                var product = context.Products.FirstOrDefault(e => e.ProductId == prodDetail.ProductId);
+                var syncedProdDetail = Stock.SyncStock(measure.Volume, (int)product.ContainsQty, new ProductBase{ Quantity = prodDetail.Quantity, 
+                QuantityActual = prodDetail.QuantityActual, QuantityLower = prodDetail.QuantityLower}, returned, false);
 
-                if (salesDetail.Quantity > 0) {
-                    product.Quantity += salesDetail.Quantity;
-                    product.StockInHand += salesDetail.Quantity;
-
-                    prodDetail.Quantity += salesDetail.Quantity;
-                }
-                if (salesDetail.QuantityActual > 0) { 
-                    product.QuantityActual += salesDetail.QuantityActual;
-                    prodDetail.QuantityActual += salesDetail.QuantityActual;
-                }
-                if (salesDetail.QuantityLower > 0)
-                {
-                    product.QuantityLower += salesDetail.QuantityLower;
-                    prodDetail.QuantityLower += salesDetail.QuantityLower;
-                }
+                prodDetail.Quantity = syncedProdDetail.Quantity;
+                prodDetail.QuantityActual = syncedProdDetail.QuantityActual;
+                prodDetail.QuantityLower = syncedProdDetail.QuantityLower;
+                
+                var syncedProd = Stock.SyncStock(measure.Volume, (int)product.ContainsQty, new ProductBase{ Quantity = product.Quantity, 
+                QuantityActual = product.QuantityActual, QuantityLower = product.QuantityLower}, returned, false);
+                product.Quantity = syncedProd.Quantity;
+                product.QuantityActual = syncedProd.QuantityActual;
+                product.QuantityLower = syncedProd.QuantityLower;
             }
 
             return true;

@@ -50,5 +50,9 @@ namespace Connecto.Repositories
         {
             return Stock.SyncStock(volume, containsQty, stock, sold);
         }
+        public ProductBase SyncSales(int volume, int containsQty, ProductBase stock, ProductBase sold, bool buildQuantity)
+        {
+            return Stock.SyncStock(volume, containsQty, stock, sold, buildQuantity);
+        }
     }
 }
