@@ -660,6 +660,7 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 Actual = entity.ProductDetail.Product.ProductType.Measure.Actual,
                 Lower = entity.ProductDetail.Product.ProductType.Measure.Lower,
                 Volume = entity.ProductDetail.Product.ProductType.Measure.Volume,
+                Discount = entity.Discount,
                 LocationId = entity.LocationId,
                 Status = entity.Status,
                 CreatedBy = entity.CreatedBy,

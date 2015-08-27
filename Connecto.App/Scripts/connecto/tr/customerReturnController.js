@@ -61,10 +61,18 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
           $scope.calculateReturnNetPrice();
       };
       $scope.calculateReturnNetPrice = function () {
+          var lowerUnitDiscountPrice = $scope.item.Discount / ($scope.item.ContainsQty == 0 ? 1 : $scope.item.ContainsQty);
+          var unitDiscountPrice = $scope.item.Discount * $scope.item.ReturnQuantity;
+          var actualDiscountPrice = lowerUnitDiscountPrice * $scope.item.ReturnQuantityActual;
+          var lowerDiscountPrice = (lowerUnitDiscountPrice / $scope.item.Volume) * $scope.item.ReturnQuantityLower;
+          var returnDiscountPrice = unitDiscountPrice + actualDiscountPrice + lowerDiscountPrice;
+
           if ($scope.item.Price == $scope.item.returnPrice) {
-              $scope.item.returnNetPrice = $scope.item.Price;
+              $scope.item.returnNetPrice = $scope.item.NetPrice;
           }
-          else $scope.item.returnNetPrice = $scope.item.Price - $scope.item.returnPrice;
+          else {
+              $scope.item.returnNetPrice = $scope.item.returnPrice - returnDiscountPrice;
+          }
           $scope.calculateReturnChangeAmount();
       };
       $scope.calculateReturnChangeAmount = function () {
