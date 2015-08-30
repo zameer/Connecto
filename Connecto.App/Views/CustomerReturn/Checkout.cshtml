@@ -132,7 +132,7 @@
                                 <tr>
                                     <th>Return Quantity</th>
                                     <th>Sub Total</th>
-                                    <th class="hidden-480">Net Amount</th>
+                                    <th class="hidden-480">Discont Amount</th>
                                     <th>
                                         <div class="hidden-sm hidden-xs btn-group">
                                             <button class="btn btn-xs btn-info">
@@ -177,9 +177,9 @@
                                         <span ng-if="item.QuantityLower > 0">{{item.ReturnQuantityLower}} {{item.Lower}}s</span>
                                         </span>
                                     </td>
-                                    <td>{{item.returnPrice}}</td>
+                                    <td>Rs. {{item.returnPrice}}</td>
                                     <td class="hidden-480">
-                                            {{item.returnNetPrice}}
+                                            Rs. {{item.returnDiscountPrice}}
                                     </td>
                                     <td>
                                         <div class="hidden-sm hidden-xs btn-group">
@@ -227,7 +227,7 @@
                                 <div class="profile-info-name">Net Amount </div>
                                 <div class="profile-info-value">
                                     <h4 class="widget-title blue input-medium">
-                                        {{item.returnNetPrice}}
+                                       Rs. {{item.returnNetPrice}}
                                     </h4>
 
                                 </div>
@@ -235,16 +235,16 @@
                             <div class="profile-info-row">
                                 <div class="profile-info-name">Paid Amount </div>
                                 <div class="profile-info-value">
-                                    <h4 class="widget-title blue input-medium">
-                                        <input ng-model="item.returnAmountPaid"  ng-blur="calculateReturnPrice()" class="widget-title blue input-large" type="text" placeholder="Amount Paid">
-                                    </h4>
+                                    <h5 class="widget-title blue input-medium">
+                                       <input ng-model="item.returnAmountPaid"  ng-blur="calculateReturnPrice()" class="widget-title blue input-large" type="text" placeholder="Amount Paid">
+                                    </h5>
                                 </div>
                             </div>
                             <div class="profile-info-row">
                                 <div class="profile-info-name">Change </div>
                                 <div class="profile-info-value">
                                     <h4 class="widget-title blue input-medium">
-                                        {{item.returnChangeAmount}}
+                                        Rs. {{item.returnChangeAmount}}
                                     </h4>
 
                                 </div>

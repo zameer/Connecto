@@ -61,17 +61,27 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
           $scope.calculateReturnNetPrice();
       };
       $scope.calculateReturnNetPrice = function () {
-          var lowerUnitDiscountPrice = $scope.item.Discount / ($scope.item.ContainsQty == 0 ? 1 : $scope.item.ContainsQty);
-          var unitDiscountPrice = $scope.item.Discount * $scope.item.ReturnQuantity;
-          var actualDiscountPrice = lowerUnitDiscountPrice * $scope.item.ReturnQuantityActual;
-          var lowerDiscountPrice = (lowerUnitDiscountPrice / $scope.item.Volume) * $scope.item.ReturnQuantityLower;
-          var returnDiscountPrice = unitDiscountPrice + actualDiscountPrice + lowerDiscountPrice;
+          //var SoldQuantity = ($Scope.item.Quantity * ($scope.item.ContainsQty == 0 ? 1 : $scope.item.ContainsQty)) * ($scope.item.Volume == 0 ? 1 : $scope.item.Volume);
+          var SoldQuantityActual = $scope.item.QuantityActual * ($scope.item.Volume == 0 ? 1 : $scope.item.Volume);
+          var SoldQuantityLower = $scope.item.QuantityLower;
+          //var TotalSoldQuantity = SoldQuantity + SoldQuantityActual + SoldQuantityLower;
+          var TotalSoldQuantity = SoldQuantityActual + SoldQuantityLower;
+
+          //var ReturnBagQuantity = $Scope.item.ReturnQuantity * ($scope.item.ContainsQty == 0 ? 1 : $scope.item.ContainsQty) * ($scope.item.Volume == 0 ? 1 : $scope.item.Volume);
+          var ReturnKgQuantity = $scope.item.ReturnQuantityActual * $scope.item.Volume;
+          var ReturngQuantity = $scope.item.ReturnQuantityLower;
+         // var TotalReturnQuantity = ReturnBagQuantity + ReturnKgQuantity + ReturngQuantity;
+          var TotalReturnQuantity = ReturnKgQuantity + ReturngQuantity;
+          
+          var unitDiscount = $scope.item.Discount / TotalSoldQuantity;
+
+          $scope.item.returnDiscountPrice = unitDiscount * TotalReturnQuantity;
 
           if ($scope.item.Price == $scope.item.returnPrice) {
               $scope.item.returnNetPrice = $scope.item.NetPrice;
           }
           else {
-              $scope.item.returnNetPrice = $scope.item.returnPrice - returnDiscountPrice;
+              $scope.item.returnNetPrice = Math.round($scope.item.returnPrice - $scope.item.returnDiscountPrice);
           }
           $scope.calculateReturnChangeAmount();
       };
