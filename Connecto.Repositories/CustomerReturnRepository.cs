@@ -24,6 +24,15 @@ namespace Connecto.Repositories
         {
             return CustomerReturnDao.ReturnProduct(returnProduct);
         }
+        public bool IsExist(CustomerReturn customerReturn)
+        {
+            return CustomerReturnDao.IsExist(customerReturn);
+        }
+
+        public bool IsUsed(int id)
+        {
+            return CustomerReturnDao.IsUsed(id);
+        }
 
     }
 }

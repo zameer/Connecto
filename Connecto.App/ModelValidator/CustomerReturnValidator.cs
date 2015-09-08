@@ -19,11 +19,16 @@ namespace Connecto.App.ModelValidator{
             _item = record;
             _repo = repo;
         }
-
         public List<ConnectoException> Validate()
         {
             var errors = new List<ConnectoException>();
-            if (_item.OrderId == 0  ) errors.Add(new ConnectoException { Message = "Invoice No cannot be empty." });
+            if (_item.OrderId == 0) errors.Add(new ConnectoException { Message = "Please provide Invoice No" });
+            return errors;
+        }
+        public List<ConnectoException> Validate(int id)
+        {
+            var errors = new List<ConnectoException>();
+            if (_repo.IsUsed(id)) errors.Add(new ConnectoException { Message = "Invoice No Not Available." });
             return errors;
         }
     }

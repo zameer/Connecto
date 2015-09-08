@@ -49,6 +49,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
           var lowerPrice = (lowerUnitPrice / $scope.item.Volume) * $scope.item.QuantityLower;
           $scope.item.Price = Math.round(unitPrice + actualPrice + lowerPrice);
           $scope.calculateDiscount();
+          
       };
       $scope.decideSellingPrice = function () {
           if ($scope.item.SellingMargin && $scope.item.Quantity == 0) {
@@ -77,7 +78,9 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
       };
       $scope.calculateNetPrice = function () {
           $scope.item.NetPrice = $scope.item.Price - ($scope.item.Discount != undefined ? $scope.item.Discount : 0);
+          
       };
+<<<<<<< HEAD
 
       $scope.calculateGrossPrice = function () {
           $scope.GrossNetPrice = 0; $scope.GrossPrice = 0; $scope.GrossDiscount = 0;
@@ -87,12 +90,21 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
               $scope.GrossDiscount = $scope.GrossDiscount + item.Discount;
           });
       };
+=======
+      //$scope.calculateTotalNetPrice = function () {
+      //    $scope.item.TotalNetPrice = $scope.item.TotalNetPrice + $scope.item.NetPrice;
+
+      //};
+>>>>>>> 382d6209ca2de7d35d1a2a172c6e342c72e3829f
       $scope.add = function () {
           $http.post('/' + cName + '/Create/', $scope.item).success(function (data) {
+              //$scope.calculateTotalNetPrice();
               showMessage(data);
               $scope.item.OrderId = data.OrderId != undefined && data.OrderId > 0 ? data.OrderId : $scope.item.OrderId;
               if (data.Status != "Failure") $scope.loadItems($scope.item.OrderId);
+              
           });
+          
       };
       $scope.complete = function () {
           $http.post('/' + cName + '/Complete/', { id: $scope.item.OrderId }).success(function (data) {
