@@ -13,5 +13,6 @@ namespace Connecto.DataObjects.EntityFramework
         public int OrderId { get; set; }
         public Guid OrderGuid { get; set; }
         public OrderType OrderType { get; set; }
+        public decimal Fluctuation { get; set; }
     }
 }

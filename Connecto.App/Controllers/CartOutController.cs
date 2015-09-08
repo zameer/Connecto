@@ -77,9 +77,9 @@ namespace Connecto.App.Controllers
         }
 
         [HttpPost]
-        public JsonResult Complete(int id)
+        public JsonResult Complete(int id, decimal fluctuation)
         {
-            _repo.Add(id);
+            _repo.Add(id, fluctuation);
             return Json(new {Status = "Success", Message = "Invoice Successfully Added."}, JsonRequestBehavior.AllowGet);
         }
 

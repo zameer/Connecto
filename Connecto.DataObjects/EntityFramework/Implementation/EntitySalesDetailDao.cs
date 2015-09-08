@@ -85,7 +85,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
             cart.Quantity += salesDetailCart.Quantity;
             return true;
         }
-        public int AddSalesDetail(int invoiceId)
+        public int AddSalesDetail(int invoiceId, decimal fluctuation)
         {
             using (var context = DataObjectFactory.CreateContext())
             {
@@ -101,6 +101,9 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                     context.SalesDetails.Add(Mapper.MapDiff(item));
                     cartsToRemove.Add(item);
                 }
+                var order = context.Orders.FirstOrDefault(e => e.OrderId == invoiceId);
+                if (order != null) order.Fluctuation = fluctuation;
+
                 if (cartsToRemove.Count <= 0) return cartsToRemove.Count;
                 context.SalesDetailCarts.RemoveRange(salesDetailsCart);
                 context.SaveChanges();

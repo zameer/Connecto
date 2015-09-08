@@ -87,6 +87,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
       
       $scope.calculateGrossPrice = function () {
           $scope.GrossNetPrice = 0; $scope.GrossPrice = 0; $scope.GrossDiscount = 0;
+          $scope.Paid = 0; $scope.Balance = 0; $scope.Fluctuation = 0;
           angular.forEach($scope.items, function (item) {
               $scope.GrossNetPrice = $scope.GrossNetPrice + item.NetPrice;
               $scope.GrossPrice = $scope.GrossPrice + item.Price;
@@ -95,7 +96,6 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
       };
       $scope.add = function () {
           $http.post('/' + cName + '/Create/', $scope.item).success(function (data) {
-              //$scope.calculateTotalNetPrice();
               showMessage(data);
               $scope.item.OrderId = data.OrderId != undefined && data.OrderId > 0 ? data.OrderId : $scope.item.OrderId;
               if (data.Status != "Failure") $scope.loadItems($scope.item.OrderId);
@@ -104,7 +104,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
           
       };
       $scope.complete = function () {
-          $http.post('/' + cName + '/Complete/', { id: $scope.item.OrderId }).success(function (data) {
+          $http.post('/' + cName + '/Complete/', { id: $scope.item.OrderId, fluctuation: $scope.Fluctuation }).success(function (data) {
               showMessage(data);
               if (data.Status != "Failure") {
                   $scope.loadOrders();

@@ -13,6 +13,6 @@ namespace Connecto.DataObjects
         int AddSalesDetailCart(SalesDetailCart salesDetailCart);
         bool EditSalesDetailCart(SalesDetailCart salesDetailCart);
         int DeleteSalesDetailCart(int id, int deletedBy);
-        int AddSalesDetail(int orderId);
+        int AddSalesDetail(int orderId, decimal fluctuation);
     }
 }

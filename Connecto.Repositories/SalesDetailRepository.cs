@@ -33,9 +33,9 @@ namespace Connecto.Repositories
         {
             return Repo.AddSalesDetailCart(salesDetailCart);
         }
-        public int Add(int orderId)
+        public int Add(int orderId, decimal fluctuation)
         {
-            return Repo.AddSalesDetail(orderId);
+            return Repo.AddSalesDetail(orderId, fluctuation);
         }
         public void EditCart(SalesDetailCart salesDetailCart)
         {
