@@ -19,5 +19,7 @@ namespace Connecto.DataObjects
         List<int> Get();
         List<SalesDetail> GetSalesDetailByOrderId(int orderId);
         int ReturnProduct(ReturnProduct returnProduct);
+        bool IsExist(CustomerReturn customerReturn);
+        bool IsUsed(int id);
     }
 }

@@ -100,6 +100,23 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
 
             return true;
         }
+        public bool IsExist(CustomerReturn customerReturn)
+        {
+            using (var context = DataObjectFactory.CreateContext())
+            {
+                if (customerReturn.SalesDetailId > 0)
+                    return context.CustomerReturns.Any(e => e.SalesDetailId != customerReturn.SalesDetailId);
+                return context.SalesDetails.Any(e => e.SalesDetailId == customerReturn.SalesDetailId);
+            }
+        }
+
+        public bool IsUsed(int id)
+        {
+            using (var context = DataObjectFactory.CreateContext())
+            {
+                return context.SalesDetails.Any(s => s.OrderId == id && s.Status == RecordStatus.Active);
+            }
+        }
 
     }
 }
