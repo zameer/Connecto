@@ -10,11 +10,11 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
       };
       $scope.loadItems = function (orderId) {
           if (orderId != undefined) {
-              $http.get('/' + cName + '/GetCart/' + orderId).success(function (data) {
+              $http.get('/' + cName + '/GetCart/' + orderId).success(function(data) {
                   $scope.items = data;
                   $scope.calculateGrossPrice();
               });
-          } else $scope.items = [];
+          } else  $scope.items = [];
       };
       $scope.loadOrders();
       $scope.loadItems();
@@ -59,7 +59,10 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
       };
       $scope.filterOrder = function (orderId) {
           if (orderId.length > 0) $scope.loadItems(orderId);
-          else $scope.items = [];
+          else {
+              $scope.items = [];
+              $scope.calculateGrossPrice();
+          } 
       };
       $scope.setDiscount = function (discountBy) {
           $scope.DiscountBy = discountBy;
