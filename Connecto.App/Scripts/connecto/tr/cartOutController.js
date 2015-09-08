@@ -34,6 +34,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
               });
           }
       };
+      $scope.calculateBalance = function () { $scope.Balance = $scope.Paid - $scope.GrossNetPrice;};
       function setProductDetail(data) {
           var orderId = $scope.item.OrderId;
           $scope.item = data;
