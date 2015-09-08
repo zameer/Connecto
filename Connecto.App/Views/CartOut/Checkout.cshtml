@@ -174,9 +174,9 @@
                                         {{Balance}}
                                     </h4>
                                 </div>
-                                <div class="profile-info-name">Deduct By </div>
+                                <div class="profile-info-name">+/- </div>
                                 <div class="profile-info-value">
-                                    <input ng-model="Fluctuation" class="input-sm" type="text" placeholder="Fluctuation Amount">
+                                    <input ng-model="Fluctuation" ng-blur="calculateBalance()" class="input-sm" type="text" placeholder="Fluctuation Amount">
                                 </div>
                             </div>
                         </div>
