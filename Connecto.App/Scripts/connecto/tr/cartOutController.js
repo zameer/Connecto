@@ -80,8 +80,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
           $scope.item.NetPrice = $scope.item.Price - ($scope.item.Discount != undefined ? $scope.item.Discount : 0);
           
       };
-<<<<<<< HEAD
-
+      
       $scope.calculateGrossPrice = function () {
           $scope.GrossNetPrice = 0; $scope.GrossPrice = 0; $scope.GrossDiscount = 0;
           angular.forEach($scope.items, function (item) {
@@ -90,12 +89,6 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
               $scope.GrossDiscount = $scope.GrossDiscount + item.Discount;
           });
       };
-=======
-      //$scope.calculateTotalNetPrice = function () {
-      //    $scope.item.TotalNetPrice = $scope.item.TotalNetPrice + $scope.item.NetPrice;
-
-      //};
->>>>>>> 382d6209ca2de7d35d1a2a172c6e342c72e3829f
       $scope.add = function () {
           $http.post('/' + cName + '/Create/', $scope.item).success(function (data) {
               //$scope.calculateTotalNetPrice();
