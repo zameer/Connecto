@@ -132,6 +132,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
       };
       $scope.edit = function (item) {
           $scope.item = item;
+          console.log(item);
           $scope.filterProduct(item);
       };
       $scope.delete = function (salesDetailId) {

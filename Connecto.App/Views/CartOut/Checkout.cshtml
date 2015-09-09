@@ -60,7 +60,7 @@
                                 <div class="row form-group">
                                     <div class="infobox infobox-green width-auto">
                                         <div class="infobox-data no-padding-right">
-                                            <input ng-model="item.Quantity" ng-blur="calculatePrice()" class="input-mini" type="text">
+                                            <input ng-model="item.Quantity" type="number" min="0" max="100" ng-blur="calculatePrice()" class="input-mini">
                                             <div class="infobox-content">{{item.StockAs}}s</div>
                                         </div>
                                     </div>
@@ -74,7 +74,7 @@
                                             <div class="col-sm-5 no-padding-left">
                                                 <div ng-if="item.Measure" class="infobox infobox-orange2 width-auto">
                                                     <div class="infobox-data width-auto">
-                                                        <span class="infobox-data-number"><input ng-model="item.QuantityActual" ng-blur="calculatePrice()" class="input-mini" type="text" placeholder=""></span>
+                                                        <span class="infobox-data-number"><input ng-model="item.QuantityActual" ng-blur="calculatePrice()" class="input-mini" type="number" placeholder=""></span>
                                                         <div class="infobox-content">{{item.Measure.Actual}}s</div>
 
                                                     </div>
@@ -83,7 +83,7 @@
                                             <div class="col-sm-3" ng-if="item.Measure.Lower != item.Measure.Actual">
                                                 <div class="infobox infobox-orange2 width-auto">
                                                     <div class="infobox-data width-auto">
-                                                        <span class="infobox-data-number"><input ng-model="item.QuantityLower" ng-blur="calculatePrice()" class="input-mini" type="text" placeholder=""></span>
+                                                        <span class="infobox-data-number"><input ng-model="item.QuantityLower" ng-blur="calculatePrice()" class="input-mini" type="number" placeholder=""></span>
                                                         <div class="infobox-content">{{item.Measure.Lower}}</div>
                                                     </div>
                                                 </div>
