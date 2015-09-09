@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Connecto.BusinessObjects;
+using Connecto.Common.Enumeration;
 
 namespace Connecto.DataObjects.EntityFramework.ModelMapper
 {
@@ -634,7 +635,7 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 EditedBy = entity.EditedBy,
                 EditedOn = entity.EditedOn,
                 ProductName = product.Name,
-                DisplayDiscount = string.Format("{0} {1}", (entity.DiscountAs > 0 ? string.Format("{0}%", entity.DiscountAs): string.Empty),entity.Discount),
+                DisplayDiscount = string.Format("{0} {1}", (entity.DiscountAs > 0 && entity.DiscountBy == DiscountBy.Rate ? string.Format("{0}%", entity.DiscountAs): string.Empty),entity.Discount),
                 DisplayQuantity = BuildQuantity(product, entity.Quantity, entity.QuantityActual, entity.QuantityLower)
             };
         }
