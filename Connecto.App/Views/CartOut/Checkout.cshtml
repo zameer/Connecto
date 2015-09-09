@@ -23,12 +23,10 @@
                                 <div class="profile-info-value">
                                     <h4 class="widget-title blue smaller">
                                         {{item.SellingPrice}}
-                                        <select ng-show="itemz.length > 1" ng-model="item.PrductDetailId" ng-change="filterProductSelection(item.PrductDetailId)" class="select2" id="productDetail" data-placeholder="Select Details">
+                                        <select ng-show="itemz.length > 1" ng-model="item.PrductDetailId" ng-change="filterProductSelection(item.PrductDetailId)" class="select2" id="productDetail">
                                             <option ng-repeat="e in itemz" value="{{e.ProductDetailId}}">{{e.CreatedOnText}}, {{e.RowStockInHand.Quantity}} {{e.StockAs}}s {{e.RowStockInHand.QuantityActual}} {{e.Measure.Actual}}s {{e.RowStockInHand.QuantityLower}} {{e.Measure.Lower}}s</option>
                                         </select>
-                                        
                                     </h4>
-                                    
                                 </div>
                             </div>
                             <div class="profile-info-row">
@@ -111,10 +109,10 @@
                                             <li><a ng-click="setDiscount('Rate')">Rate</a></li>
                                             <li><a ng-click="setDiscount('Amount')">Amount</a></li>
                                             <li class="divider"></li>
-                                            <li><a ng-click="setDiscount('')">None</a></li>
+                                            <li><a ng-click="setDiscount('None')">None</a></li>
                                         </ul>
                                     </div>
-                                    <input ng-if="DiscountBy" ng-blur="calculateDiscount()" ng-model="item.DiscountAs" class="input-sm" type="text">
+                                    <input ng-hide="DiscountBy == 'None'" ng-blur="calculateDiscount()" ng-model="item.DiscountAs" class="input-sm" type="text">
                                 </div>
                             </div>
                             <div class="col-sm-8">
@@ -245,11 +243,11 @@
                                     <td>
                                         <div class="hidden-sm hidden-xs btn-group">
                                             <button class="btn btn-xs btn-info">
-                                                <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                                <i class="ace-icon fa fa-pencil bigger-120" ng-click="edit(item)"></i>
                                             </button>
 
                                             <button class="btn btn-xs btn-danger">
-                                                <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                                <i class="ace-icon fa fa-trash-o bigger-120" ng-click="delete(item.SalesDetailId)"></i>
                                             </button>
                                         </div>
 

@@ -23,17 +23,39 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
           angular.forEach(arrItems, function (item) {
               if (item.ProductDetailId == productDetailId) {
                   setProductDetail(item);
+                  $scope.item.PrductDetailId = productDetailId;
               }
           });
       };
-      $scope.filterProduct = function () {
+      $scope.filterProduct = function (item) {
           if ($scope.item.ProductCode != undefined) {
               $http.get('/' + cName + '/GetSalesDetail/?productCode=' + $scope.item.ProductCode).success(function (data) {
                   $scope.itemz = data;
-                  setProductDetail(data[0]);
+                  if (item) $scope.setEditDetails(item);
+                  else setProductDetail(data[0]);
               });
           }
       };
+      $scope.setEditDetails = function (item) {
+          $scope.filterProductSelection(item.ProductDetailId);
+          $scope.item.SalesDetailId = item.SalesDetailId;
+          $scope.item.Quantity = item.Quantity;
+          $scope.item.QuantityActual = item.QuantityActual;
+          $scope.item.QuantityLower = item.QuantityLower;
+          $scope.item.Discount = item.Discount;
+          $scope.item.Price = item.Price;
+          $scope.DiscountBy = discountBy(item.DiscountBy);
+          $scope.item.DiscountBy = $scope.DiscountBy;
+          $scope.item.Discount = item.Discount;
+          $scope.item.DiscountAs = item.DiscountAs;
+          $scope.item.NetPrice = item.NetPrice;
+      };
+
+      function discountBy(enumber) {
+          if (enumber == 1) return 'Rate';
+          else if (enumber == 2) return 'Amount';
+          else return '';
+      }
       $scope.calculateBalance = function () { $scope.Balance = ($scope.Paid - $scope.GrossNetPrice + ($scope.Fluctuation * 1)); };
       function setProductDetail(data) {
           var orderId = $scope.item.OrderId;
@@ -64,14 +86,19 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
               $scope.calculateGrossPrice();
           } 
       };
-      $scope.setDiscount = function (discountBy) {
+      $scope.DiscountBy = 'None';
+      $scope.setDiscount = function (discountBy)
+      {
+          $scope.item.DiscountBy = discountBy;
           $scope.DiscountBy = discountBy;
           $scope.calculateDiscount();
       };
       $scope.calculateDiscount = function () {
           if ($scope.item.DiscountAs == undefined) $scope.item.DiscountAs = 0;
-          if ($scope.DiscountBy == '')
+          if ($scope.DiscountBy == 'None') {
+              $scope.item.DiscountAs = 0;
               $scope.item.Discount = 0;
+          }
           if ($scope.DiscountBy == "Amount")
               $scope.item.Discount = Math.round($scope.item.DiscountAs);
           if ($scope.DiscountBy == "Rate") {
@@ -102,6 +129,18 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
               
           });
           
+      };
+      $scope.edit = function (item) {
+          $scope.item = item;
+          $scope.filterProduct(item);
+      };
+      $scope.delete = function (salesDetailId) {
+          $http.post('/' + cName + '/Delete/', { id: salesDetailId }).success(function (data) {
+              showMessage(data);
+              if (data.Status != "Failure") {
+                  $scope.loadItems($scope.item.OrderId);
+              }
+          });
       };
       $scope.complete = function () {
           $http.post('/' + cName + '/Complete/', { id: $scope.item.OrderId, fluctuation: $scope.Fluctuation }).success(function (data) {

@@ -82,7 +82,16 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
         {
             var cart = context.SalesDetailCarts.FirstOrDefault(e => e.OrderId == salesDetailCart.OrderId && e.SalesDetailId == salesDetailCart.SalesDetailId && e.ProductCode == salesDetailCart.ProductCode);
             if (cart == null) return false;
-            cart.Quantity += salesDetailCart.Quantity;
+            cart.Quantity = salesDetailCart.Quantity;
+            cart.QuantityActual = salesDetailCart.QuantityActual;
+            cart.QuantityLower = salesDetailCart.QuantityLower;
+            cart.DiscountBy = salesDetailCart.DiscountBy;
+            cart.DiscountAs = salesDetailCart.DiscountAs;
+            cart.Discount = salesDetailCart.Discount;
+            cart.Price = salesDetailCart.Price;
+            cart.NetPrice = salesDetailCart.NetPrice;
+            cart.EditedBy = salesDetailCart.CreatedBy;
+            cart.EditedOn = salesDetailCart.CreatedOn;
             return true;
         }
         public int AddSalesDetail(int invoiceId, decimal fluctuation)

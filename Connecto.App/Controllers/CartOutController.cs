@@ -57,17 +57,6 @@ namespace Connecto.App.Controllers
         }
 
         //
-        // POST: /Transaction/Edit/5
-        [HttpPost]
-        public ActionResult Edit(SalesDetailCart item)
-        {
-            item.EditedBy = User.UserId();
-            item.EditedOn = DateTime.Now;
-            _repo.EditCart(item);
-            return Json(new { Status = "Success", Message = "Cart Item Updated." }, JsonRequestBehavior.AllowGet);
-        }
-
-        //
         // POST: /Transaction/Delete/5
         [HttpPost]
         public ActionResult Delete(int id)
