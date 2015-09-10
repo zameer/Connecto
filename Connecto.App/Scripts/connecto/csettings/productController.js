@@ -5,8 +5,8 @@ var dataTable = null;
 cSettingControllers.controller(cName + 'ListCtrl', ['$scope', '$http', '$routeParams',
   function ($scope, $http) {
       $scope.loadItems = function () {
-          if (!$.fn.dataTable.isDataTable('#example')) {
-              dataTable = $('#example').dataTable({
+          if (!$.fn.dataTable.isDataTable('#product-list')) {
+              dataTable = $('#product-list').dataTable({
                   "serverSide": true,
                   "ordering": false,
                   "sAjaxSource": "/Product/GetSearch",
@@ -29,11 +29,6 @@ cSettingControllers.controller(cName + 'ListCtrl', ['$scope', '$http', '$routePa
                           "data": "VendorId", "render": function (data, type, full) {
                               return full["Vendor"].Name;
                               
-                          }
-                      },
-                      {
-                          "data": "VendorId", "render": function (data, type, full) {
-                              return full["Vendor"].Name;
                           }
                       },
                       {

@@ -21,12 +21,12 @@
                             <div class="profile-info-row">
                                 <div class="profile-info-name"> Selling Price </div>
                                 <div class="profile-info-value">
-                                    <h4 class="widget-title blue smaller">
+                                    <span class="widget-title blue smaller">
                                         {{item.SellingPrice}}
-                                        <select ng-show="itemz.length > 1" ng-model="item.PrductDetailId" ng-change="filterProductSelection(item.PrductDetailId)" class="select2" id="productDetail">
-                                            <option ng-repeat="e in itemz" value="{{e.ProductDetailId}}">{{e.CreatedOnText}}, {{e.RowStockInHand.Quantity}} {{e.StockAs}}s {{e.RowStockInHand.QuantityActual}} {{e.Measure.Actual}}s {{e.RowStockInHand.QuantityLower}} {{e.Measure.Lower}}s</option>
-                                        </select>
-                                    </h4>
+                                    </span>
+                                    <select ng-show="itemz.length > 1" ng-model="item.PrductDetailId" ng-change="filterProductSelection(item.PrductDetailId)" class="select2" id="productDetail">
+                                        <option ng-repeat="e in itemz" value="{{e.ProductDetailId}}">{{e.CreatedOnText}}, {{e.RowStockInHand.Quantity}} {{e.StockAs}}s {{e.RowStockInHand.QuantityActual}} {{e.Measure.Actual}}s {{e.RowStockInHand.QuantityLower}} {{e.Measure.Lower}}s</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="profile-info-row">
