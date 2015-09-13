@@ -42,7 +42,11 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                         SellingMargin = productDetail.Product.SellingMargin,
                         MarginAmount = productDetail.Product.MarginAmount,
                         Measure = new Measure { Actual = measure.Actual, Lower = measure.Lower },
-                        CreatedOnText = productDetail.CreatedOn.ToShortDateString()
+                        CreatedOnText = productDetail.CreatedOn.ToShortDateString(),
+                        ReceivedInfo = string.Format("{0} - {1}{2}{3}", productDetail.CreatedOn.ToShortDateString(),
+                        productDetail.Quantity > 0 ? string.Format("{0} {1}s ", productDetail.Quantity, productDetail.Product.ProductType.StockAs) : string.Empty,
+                        productDetail.QuantityActual > 0 ? string.Format("{0} {1}s ", productDetail.QuantityActual, measure.Actual) : string.Empty,
+                        productDetail.QuantityLower > 0 ? string.Format("{0} {1}s ", productDetail.QuantityLower, measure.Lower) : string.Empty) 
                     });
                 }
                 return salesDetails;

@@ -34,6 +34,7 @@ namespace Connecto.BusinessObjects
         public decimal Discount { get; set; }
         public virtual Customer Customer { get; set; }
         public string ProductName { get; set; }
+        public string ReceivedInfo { get; set; }
 
     }
 }

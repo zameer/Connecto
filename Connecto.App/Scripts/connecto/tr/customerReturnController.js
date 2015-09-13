@@ -28,17 +28,21 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
           if ($scope.item.OrderId != undefined) {
               $http.get('/CartOut/Get/?orderId=' + $scope.item.OrderId).success(function (data) {
                   $scope.SalesDetails = data;
+                  if ($scope.SalesDetails != '') $scope.SalesDetails.OrderId = orderId;
+                  $scope.Measure = data.Measure;
                   //setProductDetail(data[0]);
               });
           }
       };
-      $scope.filterSalesSelection = function () {
+      $scope.filterSalesSelection = function (productDetailId) {
           var arrItems = $scope.SalesDetails;
-          console.log($scope.item.ProductDetailId);
           angular.forEach(arrItems, function (item) {
               if (item.ProductDetailId == $scope.item.ProductDetailId) {
-                  setProductDetail(item);
+
+                  $scope.details = item;
                   console.log(item);
+                  //setProductDetail(item);
+                  //$scope.item.PrductDetailId = productDetailId;
               }
           });
       };
@@ -50,7 +54,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
       };
 
       $scope.calculateReturnPrice = function () {
-          var lowerUnitPrice = $scope.item.SellingPrice / ($scope.item.ContainsQty == 0 ? 1 : $scope.item.ContainsQty);
+          var lowerUnitPrice = $scope.item.SellingPrice / ($scope.details.ContainsQty == 0 ? 1 : $scope.item.ContainsQty);
           if ($scope.item.ReturnQuantity == null) $scope.item.ReturnQuantity = 0;
           if ($scope.item.ReturnQuantityActual == null) $scope.item.ReturnQuantityActual = 0;
           if($scope.item.ReturnQuantityLower == null) $scope.item.ReturnQuantityLower = 0;

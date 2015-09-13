@@ -34,7 +34,7 @@
                                 <div>
                                     <div class="col-sm-2 no-padding-left">Products </div>
                                     <div class="col-sm-2">
-                                        <select ng-model="item.ProductDetailId" id="product-returnReason" required ng-change="filterSalesSelection()" class="select2" data-placeholder="Choose Product...">
+                                        <select ng-model="item.ProductDetailId" id="product-detail" required ng-change="filterSalesSelection(item.ProductDetailId)" class="select2" data-placeholder="Choose Product...">
                                             <option></option>
                                             <option ng-repeat="e in SalesDetails" value="{{e.ProductDetailId}}">{{e.ProductName}}</option>
                                         </select>
@@ -61,7 +61,7 @@
                                 <div class="profile-info-name"> Item Quantity </div>
                                 <div class="profile-info-value">
                                     <h4 class="widget-title blue smaller">
-                                        <span >{{item.DisplayQuantity}}</span>
+                                        <span >{{details.DisplayQuantity}}</span>
                                     </h4>
 
                                 </div>
@@ -70,7 +70,7 @@
                                 <div class="profile-info-name"> Sub Total </div>
                                 <div class="profile-info-value">
                                     <h4 class="widget-title blue smaller">
-                                        <span>Rs. {{item.Price}}</span>
+                                        <span>Rs. {{details.Price}}</span>
                                     </h4>
                                 </div>
                             </div>
@@ -78,7 +78,7 @@
                                 <div class="profile-info-name"> Net Amount </div>
                                 <div class="profile-info-value">
                                     <h4 class="widget-title blue smaller">
-                                        <span>Rs. {{item.NetPrice}}</span>
+                                        <span>Rs. {{details.NetPrice}}</span>
                                     </h4>
                                 </div>
                             </div>
@@ -88,30 +88,30 @@
                         <div class="col-sm-8 no-padding-left">Enter Return Quantity </div>
                         <div class="col-sm-8">
                             <div class="row form-group">                                
-                                <div class="col-sm-3" ng-if="item.Quantity > 0">
+                                <div class="col-sm-3" ng-if="details.Quantity > 0">
                                         <div class="infobox infobox-orange2 width-auto">
                                             <div class="infobox-data no-padding-right">
-                                                <span class="infobox-data-number"><input ng-model="item.ReturnQuantity" ng-blur="calculateReturnPrice()" class="input-mini" type="text" placeholder="0"></span>
-                                                    <div class="infobox-content">{{item.StockAs}}s</div>
+                                                <span class="infobox-data-number"><input ng-model="details.ReturnQuantity" ng-blur="calculateReturnPrice()" class="input-mini" type="text" placeholder="0"></span>
+                                                    <div class="infobox-content">{{details.StockAs}}s</div>
                                             </div>
                                         </div>
                                 </div>
 
-                                <div class="col-sm-3" ng-if="item.QuantityActual > 0">
+                                <div class="col-sm-3" ng-if="details.QuantityActual > 0">
                                     <div class="infobox infobox-orange2 width-auto">
                                         <div class="infobox-data width-auto">
-                                            <span class="infobox-data-number"><input ng-model="item.ReturnQuantityActual" ng-blur="calculateReturnPrice()" class="input-mini" type="text" placeholder="0"></span>
-                                            <div class="infobox-content">{{item.Actual}}s</div>
+                                            <span class="infobox-data-number"><input ng-model="details.ReturnQuantityActual" ng-blur="calculateReturnPrice()" class="input-mini" type="text" placeholder="0"></span>
+                                            <div class="infobox-content">{{details.Actual}}s</div>
 
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="col-sm-3" ng-if="item.QuantityLower > 0">
+                                <div class="col-sm-3" ng-if="details.QuantityLower > 0">
                                     <div class="infobox infobox-orange2 width-auto">
                                         <div class="infobox-data width-auto">
-                                            <span class="infobox-data-number"><input ng-model="item.ReturnQuantityLower" ng-blur="calculateReturnPrice()" class="input-mini" type="text" placeholder="0"></span>
-                                            <div class="infobox-content">{{item.Lower}}s</div>
+                                            <span class="infobox-data-number"><input ng-model="details.ReturnQuantityLower" ng-blur="calculateReturnPrice()" class="input-mini" type="text" placeholder="0"></span>
+                                            <div class="infobox-content">{{details.Lower}}s</div>
                                         </div>
                                     </div>
                                 </div>
@@ -171,15 +171,15 @@
 
                             <tbody>
                                 <tr>
-                                    <td><span ng-if="item.Quantity > 0">{{item.ReturnQuantity}} {{item.StockAs}}s</span>
+                                    <td><span ng-if="details.Quantity > 0">{{details.ReturnQuantity}} {{details.StockAs}}s</span>
                                         <span>
-                                        <span ng-if="item.QuantityActual > 0">{{item.ReturnQuantityActual}} {{item.Actual}}s</span>
-                                        <span ng-if="item.QuantityLower > 0">{{item.ReturnQuantityLower}} {{item.Lower}}s</span>
+                                        <span ng-if="details.QuantityActual > 0">{{details.ReturnQuantityActual}} {{details.Actual}}s</span>
+                                        <span ng-if="details.QuantityLower > 0">{{details.ReturnQuantityLower}} {{details.Lower}}s</span>
                                         </span>
                                     </td>
-                                    <td>Rs. {{item.returnPrice}}</td>
+                                    <td>Rs. {{details.returnPrice}}</td>
                                     <td class="hidden-480">
-                                            Rs. {{item.returnDiscountPrice}}
+                                            Rs. {{details.returnDiscountPrice}}
                                     </td>
                                     <td>
                                         <div class="hidden-sm hidden-xs btn-group">
@@ -232,7 +232,7 @@
 
                                 </div>
                             </div>
-                            <div class="profile-info-row">
+                            @*<div class="profile-info-row">
                                 <div class="profile-info-name">Paid Amount </div>
                                 <div class="profile-info-value">
                                     <h5 class="widget-title blue input-medium">
@@ -248,7 +248,7 @@
                                     </h4>
 
                                 </div>
-                            </div>
+                            </div>*@
                         </div>
 
                     </div>

@@ -24,8 +24,8 @@
                                     <span class="widget-title blue smaller">
                                         {{item.SellingPrice}}
                                     </span>
-                                    <select ng-show="itemz.length > 1" ng-model="item.PrductDetailId" ng-change="filterProductSelection(item.PrductDetailId)" class="select2" id="productDetail">
-                                        <option ng-repeat="e in itemz" value="{{e.ProductDetailId}}">{{e.CreatedOnText}}, {{e.RowStockInHand.Quantity}} {{e.StockAs}}s {{e.RowStockInHand.QuantityActual}} {{e.Measure.Actual}}s {{e.RowStockInHand.QuantityLower}} {{e.Measure.Lower}}s</option>
+                                    <select style="min-width:50%;" ng-show="itemz.length > 1" ng-model="item.PrductDetailId" ng-change="filterProductSelection(item.PrductDetailId)" class="select2" id="productDetail">
+                                        <option ng-repeat="e in itemz" value="{{e.ProductDetailId}}">{{e.ReceivedInfo}}</option>
                                     </select>
                                 </div>
                             </div>
