@@ -10,11 +10,12 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
 {
     public class EntitySalesDetailDao : ISalesDetailDao
     {
-        public List<int> GetOrders()
+        public List<int> GetOrders(bool sold)
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                return context.SalesDetailCarts.Select(e => e.OrderId).Distinct().ToList();
+                return sold ? context.SalesDetails.Select(e => e.OrderId).Distinct().ToList() 
+                            : context.SalesDetailCarts.Select(e => e.OrderId).Distinct().ToList();
             }
         }
 
@@ -66,6 +67,14 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
             {
                 var salesDetailsCart = context.SalesDetailCarts.Where(e => e.OrderId == orderId && e.Status == RecordStatus.Active).ToList();
                 return salesDetailsCart.Select(Mapper.Map).ToList();
+            }
+        }
+        public List<SalesDetail> GetSoldSalesDetailsCart(int orderId)
+        {
+            using (var context = DataObjectFactory.CreateContext())
+            {
+                var salesDetails = context.SalesDetails.Where(e => e.OrderId == orderId && e.Status == RecordStatus.Active).ToList();
+                return salesDetails.Select(Mapper.Map).ToList();
             }
         }
 

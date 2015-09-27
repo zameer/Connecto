@@ -177,9 +177,11 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="BusinessIntelligence\Dataset\Transactions.cs">
       <DependentUpon>Transactions.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="BusinessIntelligence\Reporto.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CartReturnController.cs" />
     <Compile Include="Controllers\CartOutController.cs" />
     <Compile Include="Controllers\CustomerReturnController.cs" />
     <Compile Include="Controllers\SupplierReturnController.cs" />
@@ -277,6 +279,7 @@
     <Content Include="BusinessIntelligence\Dataset\Transactions.xss">
       <DependentUpon>Transactions.xsd</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\connectopublisher.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\connecto\ace-extra.js" />
     <Content Include="Scripts\connecto\bootstrap.js" />
@@ -321,6 +324,7 @@
     <Content Include="Scripts\connecto\plugins\elements.wysiwyg.js" />
     <Content Include="Scripts\connecto\plugins\select2.js" />
     <Content Include="Scripts\connecto\respond.js" />
+    <Content Include="Scripts\connecto\tr\cartReturnController.js" />
     <Content Include="Scripts\connecto\tr\customerReturnController.js" />
     <Content Include="Scripts\connecto\tr\supplierReturnController.js" />
     <Content Include="Scripts\connecto\tr\cartOutController.js" />
@@ -422,6 +426,8 @@
     <Content Include="Views\CustomerReturn\Index.cshtml" />
     <Content Include="Views\WriteOffs\Checkout.cshtml" />
     <Content Include="Views\WriteOffs\Index.cshtml" />
+    <Content Include="Views\CartReturn\Checkout.cshtml" />
+    <Content Include="Views\CartReturn\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\" />

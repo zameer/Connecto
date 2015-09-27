@@ -19,7 +19,7 @@ namespace Connecto.App.Controllers
         private readonly SalesDetailRepository _repo = ConnectoFactory.SalesDetailRepository;
         public JsonResult GetOrders()
         {
-            var items = _repo.GetOrders();
+            var items = _repo.GetOrders(false);
             return Json(items, JsonRequestBehavior.AllowGet);
         }
         public JsonResult Get(int orderId)

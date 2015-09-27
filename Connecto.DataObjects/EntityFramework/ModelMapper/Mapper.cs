@@ -617,6 +617,7 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 ProductDetailId = entity.ProductDetailId,
                 CustomerId = entity.CustomerId,
                 ProductCode = entity.ProductCode,
+                ProductName = product.Name,
                 Quantity = entity.Quantity,
                 QuantityActual = entity.QuantityActual,
                 QuantityLower = entity.QuantityLower,
@@ -634,7 +635,6 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 CreatedOn = entity.CreatedOn,
                 EditedBy = entity.EditedBy,
                 EditedOn = entity.EditedOn,
-                ProductName = product.Name,
                 DisplayDiscount = string.Format("{0} {1}", (entity.DiscountAs > 0 && entity.DiscountBy == DiscountBy.Rate ? string.Format("{0}%", entity.DiscountAs): string.Empty),entity.Discount),
                 DisplayQuantity = BuildQuantity(product, entity.Quantity, entity.QuantityActual, entity.QuantityLower)
             };
@@ -651,12 +651,15 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 ProductCode = entity.ProductCode,
                 ProductName = entity.ProductDetail.Product.Name,
                 Quantity = entity.Quantity,
-                QuantityLower = entity.QuantityLower,
                 QuantityActual = entity.QuantityActual,
+                QuantityLower = entity.QuantityLower,
                 ContainsQty = entity.ProductDetail.Product.ContainsQty,
                 SellingLower = entity.ProductDetail.Product.SellingLower,
                 UnitPrice = entity.UnitPrice,
                 SellingPrice = entity.SellingPrice,
+                DiscountBy = entity.DiscountBy,
+                DiscountAs = entity.DiscountAs,
+                Discount = entity.Discount,
                 Price = entity.Price,
                 NetPrice = entity.NetPrice,
                 DateSold = entity.DateSold,
@@ -664,13 +667,13 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 Actual = entity.ProductDetail.Product.ProductType.Measure.Actual,
                 Lower = entity.ProductDetail.Product.ProductType.Measure.Lower,
                 Volume = entity.ProductDetail.Product.ProductType.Measure.Volume,
-                Discount = entity.Discount,
                 LocationId = entity.LocationId,
                 Status = entity.Status,
                 CreatedBy = entity.CreatedBy,
                 CreatedOn = entity.CreatedOn,
                 EditedBy = entity.EditedBy,
                 EditedOn = entity.EditedOn,
+                DisplayDiscount = string.Format("{0} {1}", (entity.DiscountAs > 0 && entity.DiscountBy == DiscountBy.Rate ? string.Format("{0}%", entity.DiscountAs) : string.Empty), entity.Discount),
                 DisplayQuantity = BuildQuantity(entity.ProductDetail.Product, entity.Quantity, entity.QuantityActual, entity.QuantityLower)
             };
         }

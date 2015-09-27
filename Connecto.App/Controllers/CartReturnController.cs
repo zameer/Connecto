@@ -14,12 +14,12 @@ using Microsoft.Reporting.WebForms;
 
 namespace Connecto.App.Controllers
 {
-    public class WriteOffsController : Controller
+    public class CartReturnController : Controller
     {
         private readonly SalesDetailRepository _repo = ConnectoFactory.SalesDetailRepository;
         public JsonResult GetOrders()
         {
-            var items = _repo.GetOrders(false);
+            var items = _repo.GetOrders(true);
             return Json(items, JsonRequestBehavior.AllowGet);
         }
         public JsonResult Get(int orderId)
@@ -34,7 +34,7 @@ namespace Connecto.App.Controllers
         }
         public JsonResult GetCart(int id)
         {
-            var item = _repo.GetCart(id);
+            var item = _repo.GetSoldCart(id);
             return Json(item, JsonRequestBehavior.AllowGet);
         }
 
@@ -57,17 +57,6 @@ namespace Connecto.App.Controllers
         }
 
         //
-        // POST: /Transaction/Edit/5
-        [HttpPost]
-        public ActionResult Edit(SalesDetailCart item)
-        {
-            item.EditedBy = User.UserId();
-            item.EditedOn = DateTime.Now;
-            _repo.EditCart(item);
-            return Json(new { Status = "Success", Message = "Cart Item Updated." }, JsonRequestBehavior.AllowGet);
-        }
-
-        //
         // POST: /Transaction/Delete/5
         [HttpPost]
         public ActionResult Delete(int id)
@@ -77,9 +66,9 @@ namespace Connecto.App.Controllers
         }
 
         [HttpPost]
-        public JsonResult Complete(int id)
+        public JsonResult Complete(int id, decimal fluctuation)
         {
-            _repo.Add(id, 0);
+            _repo.Add(id, fluctuation);
             return Json(new {Status = "Success", Message = "Invoice Successfully Added."}, JsonRequestBehavior.AllowGet);
         }
 
