@@ -52,8 +52,8 @@ namespace Connecto.App.Controllers
             item.CreatedOn = DateTime.Now;
             item.DateSold = DateTime.Now;
             item.Status = RecordStatus.Active;
-            var orderId = _repo.AddToCart(item);
-            return Json(new { OrderId = orderId, Status = "Success", Message = "Cart Item Added." }, JsonRequestBehavior.AllowGet);
+            _repo.ReturnCart(item);
+            return Json(new { OrderId = item.OrderId, Status = "Success", Message = "Return Updated." }, JsonRequestBehavior.AllowGet);
         }
 
         //
@@ -68,7 +68,6 @@ namespace Connecto.App.Controllers
         [HttpPost]
         public JsonResult Complete(int id, decimal fluctuation)
         {
-            _repo.Add(id, fluctuation);
             return Json(new {Status = "Success", Message = "Invoice Successfully Added."}, JsonRequestBehavior.AllowGet);
         }
 

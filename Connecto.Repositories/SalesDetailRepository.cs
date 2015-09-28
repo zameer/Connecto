@@ -46,6 +46,10 @@ namespace Connecto.Repositories
         {
             Repo.EditSalesDetailCart(salesDetailCart);
         }
+        public bool ReturnCart(SalesDetailCart salesDetailCart)
+        {
+            return Repo.ReturnCart(salesDetailCart);
+        }
 
         public int Delete(int id, int deletedBy)
         {

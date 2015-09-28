@@ -14,5 +14,6 @@ namespace Connecto.DataObjects
         bool EditSalesDetailCart(SalesDetailCart salesDetailCart);
         int DeleteSalesDetailCart(int id, int deletedBy);
         int AddSalesDetail(int orderId, decimal fluctuation);
+        bool ReturnCart(SalesDetailCart salesDetailCart);
     }
 }

@@ -132,6 +132,33 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                 return cartsToRemove.Count;
             }
         }
+        public bool ReturnCart(SalesDetailCart salesDetailCart)
+        {
+            using (var context = DataObjectFactory.CreateContext())
+            {
+                var salesDetail = context.SalesDetails.FirstOrDefault(e => e.SalesDetailId == salesDetailCart.SalesDetailId && e.Status == RecordStatus.Active);
+                if (salesDetail != null)
+                {
+                    var productDetail = context.ProductDetails.FirstOrDefault(e => e.ProductDetailId == salesDetail.ProductDetailId);
+                    Stock.SyncStock(productDetail, salesDetailCart.Quantity, salesDetailCart.QuantityActual, salesDetailCart.QuantityLower);
+
+                    salesDetail.Quantity = salesDetailCart.Quantity;
+                    salesDetail.QuantityActual = salesDetailCart.QuantityActual;
+                    salesDetail.QuantityLower = salesDetailCart.QuantityLower;
+                    salesDetail.DiscountBy = salesDetailCart.DiscountBy;
+                    salesDetail.DiscountAs = salesDetailCart.DiscountAs;
+                    salesDetail.Discount = salesDetailCart.Discount;
+                    salesDetail.Price = salesDetailCart.Price;
+                    salesDetail.NetPrice = salesDetailCart.NetPrice;
+                    salesDetail.EditedBy = salesDetailCart.CreatedBy;
+                    salesDetail.EditedOn = salesDetailCart.CreatedOn;
+
+                    context.SaveChanges();
+                    return true;
+                }
+                return false;
+            }
+        }
 
         internal int AddOrder(ConnectoManagerEntities context, OrderType orderType, SalesDetailCart item)
         {

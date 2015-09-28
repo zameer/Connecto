@@ -24,9 +24,6 @@
                                     <span class="widget-title blue smaller">
                                         {{item.SellingPrice}}
                                     </span>
-                                    <select style="min-width:50%;" ng-show="itemz.length > 1" ng-model="item.PrductDetailId" ng-change="filterProductSelection(item.PrductDetailId)" class="select2" id="productDetail">
-                                        <option ng-repeat="e in itemz" value="{{e.ProductDetailId}}">{{e.ReceivedInfo}}</option>
-                                    </select>
                                 </div>
                             </div>
                             <div class="profile-info-row">
@@ -48,7 +45,7 @@
                             <div class="form-group">
                                 <div class="infobox infobox-orange2">
                                     <div class="infobox-data">
-                                        <input ng-model="item.ProductCode" ng-blur="filterProduct()" class="input-sm" type="text" placeholder="Product Code">
+                                        <input readonly ng-model="item.ProductCode" class="input-sm" type="text" placeholder="Product Code">
                                         <div class="infobox-content">Product Code</div>
                                     </div>
                                 </div>
@@ -141,7 +138,7 @@
                             <div class="col-md-offset-3 col-sm-8">
                                 <button class="btn btn-app btn-yellow btn-xs" type="button" ng-click="add()">
                                     <i class="ace-icon fa fa-shopping-cart bigger-160"></i>
-                                    Sell
+                                    Take
                                 </button>
                             </div>
                         </div>
