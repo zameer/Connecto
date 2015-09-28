@@ -9,24 +9,37 @@ namespace Connecto.DataObjects.EntityFramework.Utility
 {
     public static class Stock
     {
-        public static void SyncStock(EntityProductDetail item, int quantity, int quantityActual, int quantityLower)
+        public static void SyncStock(EntityProductDetail item, int quantity, int quantityActual, int quantityLower, bool deduct)
         {
-            var volume = item.Product.ProductType.Measure.Volume;
-            var containsQty = item.Product.ContainsQty;
-            var stock = new ProductBase { Quantity = item.Quantity, QuantityActual = item.QuantityActual, QuantityLower = item.QuantityLower };
-            var sold = new ProductBase { Quantity = quantity, QuantityActual = quantityActual, QuantityLower = quantityLower };
-            var synced = SyncStock(volume, (int)containsQty, stock, sold);
-            item.Quantity = synced.Quantity;
-            item.QuantityActual = synced.QuantityActual;
-            item.QuantityLower = synced.QuantityLower;
+            if (deduct) { 
+                var volume = item.Product.ProductType.Measure.Volume;
+                var containsQty = item.Product.ContainsQty;
+                var stock = new ProductBase { Quantity = item.Quantity, QuantityActual = item.QuantityActual, QuantityLower = item.QuantityLower };
+                var sold = new ProductBase { Quantity = quantity, QuantityActual = quantityActual, QuantityLower = quantityLower };
+                var synced = SyncStock(volume, (int)containsQty, stock, sold);
+                item.Quantity = synced.Quantity;
+                item.QuantityActual = synced.QuantityActual;
+                item.QuantityLower = synced.QuantityLower;
 
-            stock = new ProductBase { Quantity = item.Product.Quantity, QuantityActual = item.Product.QuantityActual, QuantityLower = item.Product.QuantityLower };
-            synced = SyncStock(volume, (int)containsQty, stock, sold);
-            var qty = item.Product.Quantity;
-            item.Product.Quantity = synced.Quantity;
-            item.Product.QuantityActual = synced.QuantityActual;
-            item.Product.QuantityLower = synced.QuantityLower;
-            item.Product.StockInHand -= (qty - synced.Quantity);
+                stock = new ProductBase { Quantity = item.Product.Quantity, QuantityActual = item.Product.QuantityActual, QuantityLower = item.Product.QuantityLower };
+                synced = SyncStock(volume, (int)containsQty, stock, sold);
+                var qty = item.Product.Quantity;
+                item.Product.Quantity = synced.Quantity;
+                item.Product.QuantityActual = synced.QuantityActual;
+                item.Product.QuantityLower = synced.QuantityLower;
+                item.Product.StockInHand -= (qty - synced.Quantity);
+            }
+            else
+            {
+                item.Quantity += quantity;
+                item.QuantityActual += quantityActual;
+                item.QuantityLower += quantityLower;
+
+                item.Product.Quantity += quantity;
+                item.Product.QuantityActual += quantityActual;
+                item.Product.QuantityLower += quantityLower;
+                item.Product.StockInHand += quantity;
+            }
         }
 
         public static ProductBase SyncStock(int volume, int containsQty, ProductBase stock, ProductBase sold)
@@ -67,5 +80,6 @@ namespace Connecto.DataObjects.EntityFramework.Utility
             }
             return nxt;
         }
+
     }
 }

@@ -118,7 +118,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                     var productDetail = context.ProductDetails.FirstOrDefault(e => e.ProductDetailId == item.ProductDetailId);
                     if (productDetail == null) continue;
 
-                    Stock.SyncStock(productDetail, item.Quantity, item.QuantityActual, item.QuantityLower);
+                    Stock.SyncStock(productDetail, item.Quantity, item.QuantityActual, item.QuantityLower, true);
 
                     context.SalesDetails.Add(Mapper.MapDiff(item));
                     cartsToRemove.Add(item);
@@ -140,7 +140,9 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                 if (salesDetail != null)
                 {
                     var productDetail = context.ProductDetails.FirstOrDefault(e => e.ProductDetailId == salesDetail.ProductDetailId);
-                    Stock.SyncStock(productDetail, salesDetailCart.Quantity, salesDetailCart.QuantityActual, salesDetailCart.QuantityLower);
+                    Stock.SyncStock(productDetail, (salesDetail.Quantity - salesDetailCart.Quantity),
+                        (salesDetail.QuantityActual - salesDetailCart.QuantityActual), 
+                        (salesDetail.QuantityLower - salesDetailCart.QuantityLower), false);
 
                     salesDetail.Quantity = salesDetailCart.Quantity;
                     salesDetail.QuantityActual = salesDetailCart.QuantityActual;
