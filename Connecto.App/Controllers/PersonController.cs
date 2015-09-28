@@ -9,7 +9,7 @@ using Connecto.App.ModelValidator;
 
 namespace Connecto.App.Controllers
 {
-    public class PersonController : Controller
+    public class PersonController : BaseController
     {
         private readonly PersonRepository _repo = ConnectoFactory.PersonRepository;
         public JsonResult Get(FilterCriteria criteria)

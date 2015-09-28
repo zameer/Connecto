@@ -9,7 +9,7 @@ using Connecto.App.ModelValidator;
 
 namespace Connecto.App.Controllers
 {
-    public class CartInController : Controller
+    public class CartInController : BaseController
     {
         private readonly ProductDetailRepository _repo = ConnectoFactory.ProductDetailRepository;
         public JsonResult GetOrders()

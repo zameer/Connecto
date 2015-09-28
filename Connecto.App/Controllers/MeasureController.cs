@@ -12,7 +12,7 @@ using Connecto.App.ModelValidator;
 
 namespace Connecto.App.Controllers
 {
-    public class MeasureController : Controller
+    public class MeasureController : BaseController
     {
         private readonly MeasureRepository _repo = ConnectoFactory.MeasureRepository;
         //

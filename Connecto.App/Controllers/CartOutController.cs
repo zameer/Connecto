@@ -14,7 +14,7 @@ using Microsoft.Reporting.WebForms;
 
 namespace Connecto.App.Controllers
 {
-    public class CartOutController : Controller
+    public class CartOutController : BaseController
     {
         private readonly SalesDetailRepository _repo = ConnectoFactory.SalesDetailRepository;
         public JsonResult GetOrders()

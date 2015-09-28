@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace Connecto.App.Controllers
 {
-    public class EmployeeController : Controller
+    public class EmployeeController : BaseController
     {
         private readonly EmployeeRepository _repo = ConnectoFactory.EmployeeRepository;
         public JsonResult Get(FilterCriteria criteria)

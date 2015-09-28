@@ -8,7 +8,7 @@ using Connecto.Repositories;
 
 namespace Connecto.App.Controllers
 {
-    public class BusinessIntelligenceController : Controller
+    public class BusinessIntelligenceController : BaseController
     {
         private readonly CompanyRepository _repo = ConnectoFactory.CompanyRepository;
         private const string ReportType = "PDF";

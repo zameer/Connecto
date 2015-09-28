@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace Connecto.App.Controllers
 {
-    public class ContactController : Controller
+    public class ContactController : BaseController
     {
         private readonly ContactRepository _repo = ConnectoFactory.ContactRepository;
 

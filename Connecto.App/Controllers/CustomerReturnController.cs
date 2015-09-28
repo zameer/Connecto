@@ -14,7 +14,7 @@ using Microsoft.Reporting.WebForms;
 
 namespace Connecto.App.Controllers
 {
-    public class CustomerReturnController : Controller
+    public class CustomerReturnController : BaseController
     {
         private readonly CustomerReturnRepository _repo = ConnectoFactory.CustomerReturnRepository;
 

@@ -14,7 +14,7 @@ using Microsoft.Reporting.WebForms;
 
 namespace Connecto.App.Controllers
 {
-    public class WriteOffsController : Controller
+    public class WriteOffsController : BaseController
     {
         private readonly SalesDetailRepository _repo = ConnectoFactory.SalesDetailRepository;
         public JsonResult GetOrders()

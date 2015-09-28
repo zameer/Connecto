@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace Connecto.App.Controllers
 {
-    public class ReturnReasonController : Controller
+    public class ReturnReasonController : BaseController
     {
         private readonly ReturnReasonRepository _repo = ConnectoFactory.ReturnReasonRepository;
         public JsonResult GetSearch(FilterCriteria criteria)

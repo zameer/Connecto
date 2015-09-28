@@ -14,7 +14,7 @@ using Microsoft.Reporting.WebForms;
 
 namespace Connecto.App.Controllers
 {
-    public class SupplierReturnController : Controller
+    public class SupplierReturnController : BaseController
     {
        // private readonly SupplierReturnRepository _repo = ConnectoFactory.ProductReturnRepository;
        // public JsonResult GetOrders()

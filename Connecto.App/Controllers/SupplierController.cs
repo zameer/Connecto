@@ -9,7 +9,7 @@ using System.Web.Mvc;
 namespace Connecto.App.Controllers
 {
     [Authorize]
-    public class SupplierController : Controller
+    public class SupplierController : BaseController
     {
         private readonly SupplierRepository _repo = ConnectoFactory.SupplierRepository;
         public JsonResult GetSearch(FilterCriteria criteria)
