@@ -155,6 +155,22 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                     salesDetail.EditedBy = salesDetailCart.CreatedBy;
                     salesDetail.EditedOn = salesDetailCart.CreatedOn;
 
+                    var productReturn = new EntityProductReturn
+                    {
+                        ProductReturnGuid = Guid.NewGuid(),
+                        DateReturned = salesDetailCart.CreatedOn,
+                        ProductDetailId = salesDetail.ProductDetailId,
+                        SalesDetailId = salesDetail.SalesDetailId,
+                        Quantity = salesDetailCart.Quantity,
+                        QuantityActual = salesDetailCart.QuantityActual,
+                        QuantityLower = salesDetailCart.QuantityLower,
+                        LocationId = salesDetailCart.LocationId,
+                        Status = salesDetailCart.Status,
+                        CreatedBy = salesDetailCart.CreatedBy,
+                        CreatedOn = salesDetailCart.CreatedOn
+                    };
+                    context.ProductReturns.Add(productReturn);
+
                     context.SaveChanges();
                     return true;
                 }
