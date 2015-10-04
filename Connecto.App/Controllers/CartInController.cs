@@ -63,7 +63,7 @@ namespace Connecto.App.Controllers
         public ActionResult Delete(int id)
         {
             _repo.Delete(id, User.UserId());
-            return Json(new { Status = "Success", Message = "Person Successfully Deleted." }, JsonRequestBehavior.AllowGet);
+            return Json(new { Status = "Success", Message = "Cart Item Successfully Deleted." }, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
         public JsonResult Complete(int id)

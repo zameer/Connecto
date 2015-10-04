@@ -44,6 +44,18 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
               if (data.Status != "Failure") $scope.loadItems($scope.item.OrderId);
           });
       };
+      $scope.edit = function (item) {
+          $scope.item = item;
+          $scope.filterProduct(item);
+      };
+      $scope.delete = function (productDetailId) {
+          $http.post('/' + cName + '/Delete/', { id: productDetailId }).success(function (data) {
+              showMessage(data);
+              if (data.Status != "Failure") {
+                  $scope.loadItems($scope.item.OrderId);
+              }
+          });
+      };
       $scope.complete = function () {
           $http.post('/' + cName + '/Complete/', { id: $scope.item.OrderId }).success(function (data) {
               showMessage(data);

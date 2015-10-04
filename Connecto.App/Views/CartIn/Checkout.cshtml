@@ -182,17 +182,17 @@
                             <tbody>
                                 <tr ng-repeat="item in items">
                                     <td>{{item.Product.Name}} - {{item.ProductCode}}</td>
-                                    <td>{{item.Quantity}}</td>
+                                    <td>{{item.DisplayQuantity}}</td>
                                     <td>{{item.UnitPrice}}</td>
                                     <td class="hidden-480">{{item.SellingPrice}}</td>
                                     <td>
                                         <div class="hidden-sm hidden-xs btn-group">
                                             <button class="btn btn-xs btn-info">
-                                                <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                                <i class="ace-icon fa fa-pencil bigger-120" ng-click="edit(item)"></i>
                                             </button>
 
                                             <button class="btn btn-xs btn-danger">
-                                                <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                                <i class="ace-icon fa fa-trash-o bigger-120" ng-click="delete(item.ProductDetailId)"></i>
                                             </button>
                                         </div>
 

@@ -550,7 +550,8 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 CreatedOn = entity.CreatedOn,
                 EditedBy = entity.EditedBy,
                 EditedOn = entity.EditedOn,
-                Product = Map(entity.Product)
+                Product = Map(entity.Product),
+                DisplayQuantity = BuildQuantity(entity.Product, entity.Quantity, entity.QuantityActual, entity.QuantityLower)
             };
         }
         internal static EntityProductDetailCart Map(ProductDetailCart entity)

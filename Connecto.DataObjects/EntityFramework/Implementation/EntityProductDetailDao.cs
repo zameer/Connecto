@@ -51,9 +51,13 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
         {
             var cart = context.ProductDetailCarts.FirstOrDefault(e => e.OrderId == productDetailCart.OrderId && e.ProductCode == productDetailCart.ProductCode);
             if (cart == null) return false;
-            cart.Quantity += productDetailCart.Quantity;
+            cart.Quantity = productDetailCart.Quantity;
+            cart.QuantityActual = productDetailCart.QuantityActual;
+            cart.QuantityLower = productDetailCart.QuantityLower;
             cart.UnitPrice = productDetailCart.UnitPrice;
             cart.SellingPrice = productDetailCart.SellingPrice;
+            cart.ProductId = productDetailCart.ProductId;
+            cart.SupplierId = productDetailCart.SupplierId;
             return true;
         }
         public int AddProductDetail(int invoiceId)
@@ -115,7 +119,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var entity = context.ProductDetailCarts.FirstOrDefault(s => s.ProductId == id);
+                var entity = context.ProductDetailCarts.FirstOrDefault(s => s.ProductDetailId == id);
                 entity.Status = RecordStatus.Deleted;
                 entity.EditedOn = DateTime.Now;
                 entity.EditedBy = deletedBy;
