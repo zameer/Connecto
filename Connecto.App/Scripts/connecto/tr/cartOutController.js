@@ -32,7 +32,10 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
               $http.get('/' + cName + '/GetSalesDetail/?productCode=' + $scope.item.ProductCode).success(function (data) {
                   $scope.itemz = data;
                   if (item) $scope.setEditDetails(item);
-                  else setProductDetail(data[0]);
+                  else {
+                      setProductDetail(data[0]);
+                      $scope.decideSellingPrice();
+                  }
               });
           }
       };
@@ -42,6 +45,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
           $scope.item.Quantity = item.Quantity;
           $scope.item.QuantityActual = item.QuantityActual;
           $scope.item.QuantityLower = item.QuantityLower;
+          $scope.item.SellingPrice = item.SellingPrice;
           $scope.item.Discount = item.Discount;
           $scope.item.Price = item.Price;
           $scope.DiscountBy = discountBy(item.DiscountBy);
@@ -77,7 +81,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
       $scope.decideSellingPrice = function () {
           if ($scope.item.SellingMargin && $scope.item.Quantity == 0) {
               if ($scope.item.SellingPrice == $scope.item.SellingPriceActual) $scope.item.SellingPrice += $scope.item.MarginAmount;
-          } else $scope.item.SellingPrice = $scope.item.SellingPriceActual;
+          } //else $scope.item.SellingPrice = $scope.item.SellingPriceActual;
       };
       $scope.filterOrder = function (orderId) {
           if (orderId.length > 0) $scope.loadItems(orderId);
