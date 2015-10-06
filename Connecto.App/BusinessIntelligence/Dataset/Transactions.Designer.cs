@@ -3713,8 +3713,6 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class GetStockDatailsDataTable : global::System.Data.TypedTableBase<GetStockDatailsRow> {
             
-            private global::System.Data.DataColumn columnProductId;
-            
             private global::System.Data.DataColumn columnProductCode;
             
             private global::System.Data.DataColumn columnName;
@@ -3724,8 +3722,6 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
             private global::System.Data.DataColumn columnReorderlevel;
             
             private global::System.Data.DataColumn columnUnitPrice;
-            
-            private global::System.Data.DataColumn columnSellingPrice;
             
             private global::System.Data.DataColumn columnDateReceived;
             
@@ -3766,14 +3762,6 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ProductIdColumn {
-                get {
-                    return this.columnProductId;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn ProductCodeColumn {
                 get {
                     return this.columnProductCode;
@@ -3809,14 +3797,6 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
             public global::System.Data.DataColumn UnitPriceColumn {
                 get {
                     return this.columnUnitPrice;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn SellingPriceColumn {
-                get {
-                    return this.columnSellingPrice;
                 }
             }
             
@@ -3873,28 +3853,19 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GetStockDatailsRow AddGetStockDatailsRow(string ProductCode, string Name, int StockInHand, int Reorderlevel, decimal UnitPrice, decimal SellingPrice, System.DateTime DateReceived, string Type) {
+            public GetStockDatailsRow AddGetStockDatailsRow(string ProductCode, string Name, int StockInHand, int Reorderlevel, decimal UnitPrice, System.DateTime DateReceived, string Type) {
                 GetStockDatailsRow rowGetStockDatailsRow = ((GetStockDatailsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
                         ProductCode,
                         Name,
                         StockInHand,
                         Reorderlevel,
                         UnitPrice,
-                        SellingPrice,
                         DateReceived,
                         Type};
                 rowGetStockDatailsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowGetStockDatailsRow);
                 return rowGetStockDatailsRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GetStockDatailsRow FindByProductId(int ProductId) {
-                return ((GetStockDatailsRow)(this.Rows.Find(new object[] {
-                            ProductId})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3914,13 +3885,11 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnProductId = base.Columns["ProductId"];
                 this.columnProductCode = base.Columns["ProductCode"];
                 this.columnName = base.Columns["Name"];
                 this.columnStockInHand = base.Columns["StockInHand"];
                 this.columnReorderlevel = base.Columns["Reorderlevel"];
                 this.columnUnitPrice = base.Columns["UnitPrice"];
-                this.columnSellingPrice = base.Columns["SellingPrice"];
                 this.columnDateReceived = base.Columns["DateReceived"];
                 this.columnType = base.Columns["Type"];
             }
@@ -3928,8 +3897,6 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnProductId = new global::System.Data.DataColumn("ProductId", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnProductId);
                 this.columnProductCode = new global::System.Data.DataColumn("ProductCode", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnProductCode);
                 this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
@@ -3940,26 +3907,15 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
                 base.Columns.Add(this.columnReorderlevel);
                 this.columnUnitPrice = new global::System.Data.DataColumn("UnitPrice", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUnitPrice);
-                this.columnSellingPrice = new global::System.Data.DataColumn("SellingPrice", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSellingPrice);
                 this.columnDateReceived = new global::System.Data.DataColumn("DateReceived", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDateReceived);
                 this.columnType = new global::System.Data.DataColumn("Type", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnType);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnProductId}, true));
-                this.columnProductId.AutoIncrement = true;
-                this.columnProductId.AutoIncrementSeed = -1;
-                this.columnProductId.AutoIncrementStep = -1;
-                this.columnProductId.AllowDBNull = false;
-                this.columnProductId.ReadOnly = true;
-                this.columnProductId.Unique = true;
                 this.columnProductCode.MaxLength = 2147483647;
                 this.columnName.MaxLength = 2147483647;
                 this.columnStockInHand.AllowDBNull = false;
                 this.columnReorderlevel.AllowDBNull = false;
                 this.columnUnitPrice.AllowDBNull = false;
-                this.columnSellingPrice.AllowDBNull = false;
                 this.columnDateReceived.AllowDBNull = false;
                 this.columnType.MaxLength = 2147483647;
             }
@@ -8999,17 +8955,6 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int ProductId {
-                get {
-                    return ((int)(this[this.tableGetStockDatails.ProductIdColumn]));
-                }
-                set {
-                    this[this.tableGetStockDatails.ProductIdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string ProductCode {
                 get {
                     try {
@@ -9070,17 +9015,6 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
                 }
                 set {
                     this[this.tableGetStockDatails.UnitPriceColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal SellingPrice {
-                get {
-                    return ((decimal)(this[this.tableGetStockDatails.SellingPriceColumn]));
-                }
-                set {
-                    this[this.tableGetStockDatails.SellingPriceColumn] = value;
                 }
             }
             
@@ -12889,13 +12823,11 @@ namespace Connecto.App.BusinessIntelligence.Dataset.TransactionsTableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "GetStockDatails";
-            tableMapping.ColumnMappings.Add("ProductId", "ProductId");
             tableMapping.ColumnMappings.Add("ProductCode", "ProductCode");
             tableMapping.ColumnMappings.Add("Name", "Name");
             tableMapping.ColumnMappings.Add("StockInHand", "StockInHand");
             tableMapping.ColumnMappings.Add("Reorderlevel", "Reorderlevel");
             tableMapping.ColumnMappings.Add("UnitPrice", "UnitPrice");
-            tableMapping.ColumnMappings.Add("SellingPrice", "SellingPrice");
             tableMapping.ColumnMappings.Add("DateReceived", "DateReceived");
             tableMapping.ColumnMappings.Add("Type", "Type");
             this._adapter.TableMappings.Add(tableMapping);

@@ -220,13 +220,11 @@
               </DbSource>
             </MainSource>
             <Mappings>
-              <Mapping SourceColumn="ProductId" DataSetColumn="ProductId" />
               <Mapping SourceColumn="ProductCode" DataSetColumn="ProductCode" />
               <Mapping SourceColumn="Name" DataSetColumn="Name" />
               <Mapping SourceColumn="StockInHand" DataSetColumn="StockInHand" />
               <Mapping SourceColumn="Reorderlevel" DataSetColumn="Reorderlevel" />
               <Mapping SourceColumn="UnitPrice" DataSetColumn="UnitPrice" />
-              <Mapping SourceColumn="SellingPrice" DataSetColumn="SellingPrice" />
               <Mapping SourceColumn="DateReceived" DataSetColumn="DateReceived" />
               <Mapping SourceColumn="Type" DataSetColumn="Type" />
             </Mappings>
@@ -487,7 +485,7 @@
   <xs:element name="Transactions" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Transactions" msprop:Generator_UserDSName="Transactions">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="ProductDetails" msprop:Generator_TableClassName="ProductDetailsDataTable" msprop:Generator_TableVarName="tableProductDetails" msprop:Generator_RowChangedName="ProductDetailsRowChanged" msprop:Generator_TablePropName="ProductDetails" msprop:Generator_RowDeletingName="ProductDetailsRowDeleting" msprop:Generator_RowChangingName="ProductDetailsRowChanging" msprop:Generator_RowEvHandlerName="ProductDetailsRowChangeEventHandler" msprop:Generator_RowDeletedName="ProductDetailsRowDeleted" msprop:Generator_RowClassName="ProductDetailsRow" msprop:Generator_UserTableName="ProductDetails" msprop:Generator_RowEvArgName="ProductDetailsRowChangeEvent">
+        <xs:element name="ProductDetails" msprop:Generator_TableClassName="ProductDetailsDataTable" msprop:Generator_TableVarName="tableProductDetails" msprop:Generator_TablePropName="ProductDetails" msprop:Generator_RowDeletingName="ProductDetailsRowDeleting" msprop:Generator_RowChangingName="ProductDetailsRowChanging" msprop:Generator_RowEvHandlerName="ProductDetailsRowChangeEventHandler" msprop:Generator_RowDeletedName="ProductDetailsRowDeleted" msprop:Generator_UserTableName="ProductDetails" msprop:Generator_RowChangedName="ProductDetailsRowChanged" msprop:Generator_RowEvArgName="ProductDetailsRowChangeEvent" msprop:Generator_RowClassName="ProductDetailsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="OrderId" msprop:Generator_ColumnVarNameInTable="columnOrderId" msprop:Generator_ColumnPropNameInRow="OrderId" msprop:Generator_ColumnPropNameInTable="OrderIdColumn" msprop:Generator_UserColumnName="OrderId" type="xs:int" />
@@ -533,7 +531,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SalesDetails" msprop:Generator_TableClassName="SalesDetailsDataTable" msprop:Generator_TableVarName="tableSalesDetails" msprop:Generator_RowChangedName="SalesDetailsRowChanged" msprop:Generator_TablePropName="SalesDetails" msprop:Generator_RowDeletingName="SalesDetailsRowDeleting" msprop:Generator_RowChangingName="SalesDetailsRowChanging" msprop:Generator_RowEvHandlerName="SalesDetailsRowChangeEventHandler" msprop:Generator_RowDeletedName="SalesDetailsRowDeleted" msprop:Generator_RowClassName="SalesDetailsRow" msprop:Generator_UserTableName="SalesDetails" msprop:Generator_RowEvArgName="SalesDetailsRowChangeEvent">
+        <xs:element name="SalesDetails" msprop:Generator_TableClassName="SalesDetailsDataTable" msprop:Generator_TableVarName="tableSalesDetails" msprop:Generator_TablePropName="SalesDetails" msprop:Generator_RowDeletingName="SalesDetailsRowDeleting" msprop:Generator_RowChangingName="SalesDetailsRowChanging" msprop:Generator_RowEvHandlerName="SalesDetailsRowChangeEventHandler" msprop:Generator_RowDeletedName="SalesDetailsRowDeleted" msprop:Generator_UserTableName="SalesDetails" msprop:Generator_RowChangedName="SalesDetailsRowChanged" msprop:Generator_RowEvArgName="SalesDetailsRowChangeEvent" msprop:Generator_RowClassName="SalesDetailsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" minOccurs="0">
@@ -583,7 +581,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ProductData" msprop:Generator_TableClassName="ProductDataDataTable" msprop:Generator_TableVarName="tableProductData" msprop:Generator_TablePropName="ProductData" msprop:Generator_RowDeletingName="ProductDataRowDeleting" msprop:Generator_RowChangingName="ProductDataRowChanging" msprop:Generator_RowEvHandlerName="ProductDataRowChangeEventHandler" msprop:Generator_RowDeletedName="ProductDataRowDeleted" msprop:Generator_UserTableName="ProductData" msprop:Generator_RowChangedName="ProductDataRowChanged" msprop:Generator_RowEvArgName="ProductDataRowChangeEvent" msprop:Generator_RowClassName="ProductDataRow">
+        <xs:element name="ProductData" msprop:Generator_TableClassName="ProductDataDataTable" msprop:Generator_TableVarName="tableProductData" msprop:Generator_RowChangedName="ProductDataRowChanged" msprop:Generator_TablePropName="ProductData" msprop:Generator_RowDeletingName="ProductDataRowDeleting" msprop:Generator_RowChangingName="ProductDataRowChanging" msprop:Generator_RowEvHandlerName="ProductDataRowChangeEventHandler" msprop:Generator_RowDeletedName="ProductDataRowDeleted" msprop:Generator_RowClassName="ProductDataRow" msprop:Generator_UserTableName="ProductData" msprop:Generator_RowEvArgName="ProductDataRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" minOccurs="0">
@@ -619,7 +617,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="GetEmployeeDatails" msprop:Generator_TableClassName="GetEmployeeDatailsDataTable" msprop:Generator_TableVarName="tableGetEmployeeDatails" msprop:Generator_RowChangedName="GetEmployeeDatailsRowChanged" msprop:Generator_TablePropName="GetEmployeeDatails" msprop:Generator_RowDeletingName="GetEmployeeDatailsRowDeleting" msprop:Generator_RowChangingName="GetEmployeeDatailsRowChanging" msprop:Generator_RowEvHandlerName="GetEmployeeDatailsRowChangeEventHandler" msprop:Generator_RowDeletedName="GetEmployeeDatailsRowDeleted" msprop:Generator_RowClassName="GetEmployeeDatailsRow" msprop:Generator_UserTableName="GetEmployeeDatails" msprop:Generator_RowEvArgName="GetEmployeeDatailsRowChangeEvent">
+        <xs:element name="GetEmployeeDatails" msprop:Generator_TableClassName="GetEmployeeDatailsDataTable" msprop:Generator_TableVarName="tableGetEmployeeDatails" msprop:Generator_TablePropName="GetEmployeeDatails" msprop:Generator_RowDeletingName="GetEmployeeDatailsRowDeleting" msprop:Generator_RowChangingName="GetEmployeeDatailsRowChanging" msprop:Generator_RowEvHandlerName="GetEmployeeDatailsRowChangeEventHandler" msprop:Generator_RowDeletedName="GetEmployeeDatailsRowDeleted" msprop:Generator_UserTableName="GetEmployeeDatails" msprop:Generator_RowChangedName="GetEmployeeDatailsRowChanged" msprop:Generator_RowEvArgName="GetEmployeeDatailsRowChangeEvent" msprop:Generator_RowClassName="GetEmployeeDatailsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="EmployeeId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnEmployeeId" msprop:Generator_ColumnPropNameInRow="EmployeeId" msprop:Generator_ColumnPropNameInTable="EmployeeIdColumn" msprop:Generator_UserColumnName="EmployeeId" type="xs:int" />
@@ -682,7 +680,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="GetSupplierDatails" msprop:Generator_TableClassName="GetSupplierDatailsDataTable" msprop:Generator_TableVarName="tableGetSupplierDatails" msprop:Generator_RowChangedName="GetSupplierDatailsRowChanged" msprop:Generator_TablePropName="GetSupplierDatails" msprop:Generator_RowDeletingName="GetSupplierDatailsRowDeleting" msprop:Generator_RowChangingName="GetSupplierDatailsRowChanging" msprop:Generator_RowEvHandlerName="GetSupplierDatailsRowChangeEventHandler" msprop:Generator_RowDeletedName="GetSupplierDatailsRowDeleted" msprop:Generator_RowClassName="GetSupplierDatailsRow" msprop:Generator_UserTableName="GetSupplierDatails" msprop:Generator_RowEvArgName="GetSupplierDatailsRowChangeEvent">
+        <xs:element name="GetSupplierDatails" msprop:Generator_TableClassName="GetSupplierDatailsDataTable" msprop:Generator_TableVarName="tableGetSupplierDatails" msprop:Generator_TablePropName="GetSupplierDatails" msprop:Generator_RowDeletingName="GetSupplierDatailsRowDeleting" msprop:Generator_RowChangingName="GetSupplierDatailsRowChanging" msprop:Generator_RowEvHandlerName="GetSupplierDatailsRowChangeEventHandler" msprop:Generator_RowDeletedName="GetSupplierDatailsRowDeleted" msprop:Generator_UserTableName="GetSupplierDatails" msprop:Generator_RowChangedName="GetSupplierDatailsRowChanged" msprop:Generator_RowEvArgName="GetSupplierDatailsRowChangeEvent" msprop:Generator_RowClassName="GetSupplierDatailsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="FirstName" msprop:Generator_ColumnVarNameInTable="columnFirstName" msprop:Generator_ColumnPropNameInRow="FirstName" msprop:Generator_ColumnPropNameInTable="FirstNameColumn" msprop:Generator_UserColumnName="FirstName" minOccurs="0">
@@ -745,7 +743,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="GetVendorDatails" msprop:Generator_TableClassName="GetVendorDatailsDataTable" msprop:Generator_TableVarName="tableGetVendorDatails" msprop:Generator_RowChangedName="GetVendorDatailsRowChanged" msprop:Generator_TablePropName="GetVendorDatails" msprop:Generator_RowDeletingName="GetVendorDatailsRowDeleting" msprop:Generator_RowChangingName="GetVendorDatailsRowChanging" msprop:Generator_RowEvHandlerName="GetVendorDatailsRowChangeEventHandler" msprop:Generator_RowDeletedName="GetVendorDatailsRowDeleted" msprop:Generator_RowClassName="GetVendorDatailsRow" msprop:Generator_UserTableName="GetVendorDatails" msprop:Generator_RowEvArgName="GetVendorDatailsRowChangeEvent">
+        <xs:element name="GetVendorDatails" msprop:Generator_TableClassName="GetVendorDatailsDataTable" msprop:Generator_TableVarName="tableGetVendorDatails" msprop:Generator_TablePropName="GetVendorDatails" msprop:Generator_RowDeletingName="GetVendorDatailsRowDeleting" msprop:Generator_RowChangingName="GetVendorDatailsRowChanging" msprop:Generator_RowEvHandlerName="GetVendorDatailsRowChangeEventHandler" msprop:Generator_RowDeletedName="GetVendorDatailsRowDeleted" msprop:Generator_UserTableName="GetVendorDatails" msprop:Generator_RowChangedName="GetVendorDatailsRowChanged" msprop:Generator_RowEvArgName="GetVendorDatailsRowChangeEvent" msprop:Generator_RowClassName="GetVendorDatailsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="VendorId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnVendorId" msprop:Generator_ColumnPropNameInRow="VendorId" msprop:Generator_ColumnPropNameInTable="VendorIdColumn" msprop:Generator_UserColumnName="VendorId" type="xs:int" />
@@ -759,7 +757,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="GetMeasureDatails" msprop:Generator_TableClassName="GetMeasureDatailsDataTable" msprop:Generator_TableVarName="tableGetMeasureDatails" msprop:Generator_RowChangedName="GetMeasureDatailsRowChanged" msprop:Generator_TablePropName="GetMeasureDatails" msprop:Generator_RowDeletingName="GetMeasureDatailsRowDeleting" msprop:Generator_RowChangingName="GetMeasureDatailsRowChanging" msprop:Generator_RowEvHandlerName="GetMeasureDatailsRowChangeEventHandler" msprop:Generator_RowDeletedName="GetMeasureDatailsRowDeleted" msprop:Generator_RowClassName="GetMeasureDatailsRow" msprop:Generator_UserTableName="GetMeasureDatails" msprop:Generator_RowEvArgName="GetMeasureDatailsRowChangeEvent">
+        <xs:element name="GetMeasureDatails" msprop:Generator_TableClassName="GetMeasureDatailsDataTable" msprop:Generator_TableVarName="tableGetMeasureDatails" msprop:Generator_TablePropName="GetMeasureDatails" msprop:Generator_RowDeletingName="GetMeasureDatailsRowDeleting" msprop:Generator_RowChangingName="GetMeasureDatailsRowChanging" msprop:Generator_RowEvHandlerName="GetMeasureDatailsRowChangeEventHandler" msprop:Generator_RowDeletedName="GetMeasureDatailsRowDeleted" msprop:Generator_UserTableName="GetMeasureDatails" msprop:Generator_RowChangedName="GetMeasureDatailsRowChanged" msprop:Generator_RowEvArgName="GetMeasureDatailsRowChangeEvent" msprop:Generator_RowClassName="GetMeasureDatailsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="MeasureId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnMeasureId" msprop:Generator_ColumnPropNameInRow="MeasureId" msprop:Generator_ColumnPropNameInTable="MeasureIdColumn" msprop:Generator_UserColumnName="MeasureId" type="xs:int" />
@@ -781,7 +779,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="GetProductTypeDatails" msprop:Generator_TableClassName="GetProductTypeDatailsDataTable" msprop:Generator_TableVarName="tableGetProductTypeDatails" msprop:Generator_RowChangedName="GetProductTypeDatailsRowChanged" msprop:Generator_TablePropName="GetProductTypeDatails" msprop:Generator_RowDeletingName="GetProductTypeDatailsRowDeleting" msprop:Generator_RowChangingName="GetProductTypeDatailsRowChanging" msprop:Generator_RowEvHandlerName="GetProductTypeDatailsRowChangeEventHandler" msprop:Generator_RowDeletedName="GetProductTypeDatailsRowDeleted" msprop:Generator_RowClassName="GetProductTypeDatailsRow" msprop:Generator_UserTableName="GetProductTypeDatails" msprop:Generator_RowEvArgName="GetProductTypeDatailsRowChangeEvent">
+        <xs:element name="GetProductTypeDatails" msprop:Generator_TableClassName="GetProductTypeDatailsDataTable" msprop:Generator_TableVarName="tableGetProductTypeDatails" msprop:Generator_TablePropName="GetProductTypeDatails" msprop:Generator_RowDeletingName="GetProductTypeDatailsRowDeleting" msprop:Generator_RowChangingName="GetProductTypeDatailsRowChanging" msprop:Generator_RowEvHandlerName="GetProductTypeDatailsRowChangeEventHandler" msprop:Generator_RowDeletedName="GetProductTypeDatailsRowDeleted" msprop:Generator_UserTableName="GetProductTypeDatails" msprop:Generator_RowChangedName="GetProductTypeDatailsRowChanged" msprop:Generator_RowEvArgName="GetProductTypeDatailsRowChangeEvent" msprop:Generator_RowClassName="GetProductTypeDatailsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ProductTypeId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnProductTypeId" msprop:Generator_ColumnPropNameInRow="ProductTypeId" msprop:Generator_ColumnPropNameInTable="ProductTypeIdColumn" msprop:Generator_UserColumnName="ProductTypeId" type="xs:int" />
@@ -809,10 +807,9 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="GetStockDatails" msprop:Generator_TableClassName="GetStockDatailsDataTable" msprop:Generator_TableVarName="tableGetStockDatails" msprop:Generator_RowChangedName="GetStockDatailsRowChanged" msprop:Generator_TablePropName="GetStockDatails" msprop:Generator_RowDeletingName="GetStockDatailsRowDeleting" msprop:Generator_RowChangingName="GetStockDatailsRowChanging" msprop:Generator_RowEvHandlerName="GetStockDatailsRowChangeEventHandler" msprop:Generator_RowDeletedName="GetStockDatailsRowDeleted" msprop:Generator_RowClassName="GetStockDatailsRow" msprop:Generator_UserTableName="GetStockDatails" msprop:Generator_RowEvArgName="GetStockDatailsRowChangeEvent">
+        <xs:element name="GetStockDatails" msprop:Generator_TableClassName="GetStockDatailsDataTable" msprop:Generator_TableVarName="tableGetStockDatails" msprop:Generator_TablePropName="GetStockDatails" msprop:Generator_RowDeletingName="GetStockDatailsRowDeleting" msprop:Generator_RowChangingName="GetStockDatailsRowChanging" msprop:Generator_RowEvHandlerName="GetStockDatailsRowChangeEventHandler" msprop:Generator_RowDeletedName="GetStockDatailsRowDeleted" msprop:Generator_UserTableName="GetStockDatails" msprop:Generator_RowChangedName="GetStockDatailsRowChanged" msprop:Generator_RowEvArgName="GetStockDatailsRowChangeEvent" msprop:Generator_RowClassName="GetStockDatailsRow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="ProductId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnProductId" msprop:Generator_ColumnPropNameInRow="ProductId" msprop:Generator_ColumnPropNameInTable="ProductIdColumn" msprop:Generator_UserColumnName="ProductId" type="xs:int" />
               <xs:element name="ProductCode" msprop:Generator_ColumnVarNameInTable="columnProductCode" msprop:Generator_ColumnPropNameInRow="ProductCode" msprop:Generator_ColumnPropNameInTable="ProductCodeColumn" msprop:Generator_UserColumnName="ProductCode" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -830,7 +827,6 @@
               <xs:element name="StockInHand" msprop:Generator_ColumnVarNameInTable="columnStockInHand" msprop:Generator_ColumnPropNameInRow="StockInHand" msprop:Generator_ColumnPropNameInTable="StockInHandColumn" msprop:Generator_UserColumnName="StockInHand" type="xs:int" />
               <xs:element name="Reorderlevel" msprop:Generator_ColumnVarNameInTable="columnReorderlevel" msprop:Generator_ColumnPropNameInRow="Reorderlevel" msprop:Generator_ColumnPropNameInTable="ReorderlevelColumn" msprop:Generator_UserColumnName="Reorderlevel" type="xs:int" />
               <xs:element name="UnitPrice" msprop:Generator_ColumnVarNameInTable="columnUnitPrice" msprop:Generator_ColumnPropNameInRow="UnitPrice" msprop:Generator_ColumnPropNameInTable="UnitPriceColumn" msprop:Generator_UserColumnName="UnitPrice" type="xs:decimal" />
-              <xs:element name="SellingPrice" msprop:Generator_ColumnVarNameInTable="columnSellingPrice" msprop:Generator_ColumnPropNameInRow="SellingPrice" msprop:Generator_ColumnPropNameInTable="SellingPriceColumn" msprop:Generator_UserColumnName="SellingPrice" type="xs:decimal" />
               <xs:element name="DateReceived" msprop:Generator_ColumnVarNameInTable="columnDateReceived" msprop:Generator_ColumnPropNameInRow="DateReceived" msprop:Generator_ColumnPropNameInTable="DateReceivedColumn" msprop:Generator_UserColumnName="DateReceived" type="xs:dateTime" />
               <xs:element name="Type" msprop:Generator_ColumnVarNameInTable="columnType" msprop:Generator_ColumnPropNameInRow="Type" msprop:Generator_ColumnPropNameInTable="TypeColumn" msprop:Generator_UserColumnName="Type" minOccurs="0">
                 <xs:simpleType>
@@ -842,7 +838,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="GetProductSupplierDatails" msprop:Generator_TableClassName="GetProductSupplierDatailsDataTable" msprop:Generator_TableVarName="tableGetProductSupplierDatails" msprop:Generator_RowChangedName="GetProductSupplierDatailsRowChanged" msprop:Generator_TablePropName="GetProductSupplierDatails" msprop:Generator_RowDeletingName="GetProductSupplierDatailsRowDeleting" msprop:Generator_RowChangingName="GetProductSupplierDatailsRowChanging" msprop:Generator_RowEvHandlerName="GetProductSupplierDatailsRowChangeEventHandler" msprop:Generator_RowDeletedName="GetProductSupplierDatailsRowDeleted" msprop:Generator_RowClassName="GetProductSupplierDatailsRow" msprop:Generator_UserTableName="GetProductSupplierDatails" msprop:Generator_RowEvArgName="GetProductSupplierDatailsRowChangeEvent">
+        <xs:element name="GetProductSupplierDatails" msprop:Generator_TableClassName="GetProductSupplierDatailsDataTable" msprop:Generator_TableVarName="tableGetProductSupplierDatails" msprop:Generator_TablePropName="GetProductSupplierDatails" msprop:Generator_RowDeletingName="GetProductSupplierDatailsRowDeleting" msprop:Generator_RowChangingName="GetProductSupplierDatailsRowChanging" msprop:Generator_RowEvHandlerName="GetProductSupplierDatailsRowChangeEventHandler" msprop:Generator_RowDeletedName="GetProductSupplierDatailsRowDeleted" msprop:Generator_UserTableName="GetProductSupplierDatails" msprop:Generator_RowChangedName="GetProductSupplierDatailsRowChanged" msprop:Generator_RowEvArgName="GetProductSupplierDatailsRowChangeEvent" msprop:Generator_RowClassName="GetProductSupplierDatailsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ProductId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnProductId" msprop:Generator_ColumnPropNameInRow="ProductId" msprop:Generator_ColumnPropNameInTable="ProductIdColumn" msprop:Generator_UserColumnName="ProductId" type="xs:int" />
@@ -870,7 +866,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="GetLowerQuantityDatails" msprop:Generator_TableClassName="GetLowerQuantityDatailsDataTable" msprop:Generator_TableVarName="tableGetLowerQuantityDatails" msprop:Generator_RowChangedName="GetLowerQuantityDatailsRowChanged" msprop:Generator_TablePropName="GetLowerQuantityDatails" msprop:Generator_RowDeletingName="GetLowerQuantityDatailsRowDeleting" msprop:Generator_RowChangingName="GetLowerQuantityDatailsRowChanging" msprop:Generator_RowEvHandlerName="GetLowerQuantityDatailsRowChangeEventHandler" msprop:Generator_RowDeletedName="GetLowerQuantityDatailsRowDeleted" msprop:Generator_RowClassName="GetLowerQuantityDatailsRow" msprop:Generator_UserTableName="GetLowerQuantityDatails" msprop:Generator_RowEvArgName="GetLowerQuantityDatailsRowChangeEvent">
+        <xs:element name="GetLowerQuantityDatails" msprop:Generator_TableClassName="GetLowerQuantityDatailsDataTable" msprop:Generator_TableVarName="tableGetLowerQuantityDatails" msprop:Generator_TablePropName="GetLowerQuantityDatails" msprop:Generator_RowDeletingName="GetLowerQuantityDatailsRowDeleting" msprop:Generator_RowChangingName="GetLowerQuantityDatailsRowChanging" msprop:Generator_RowEvHandlerName="GetLowerQuantityDatailsRowChangeEventHandler" msprop:Generator_RowDeletedName="GetLowerQuantityDatailsRowDeleted" msprop:Generator_UserTableName="GetLowerQuantityDatails" msprop:Generator_RowChangedName="GetLowerQuantityDatailsRowChanged" msprop:Generator_RowEvArgName="GetLowerQuantityDatailsRowChangeEvent" msprop:Generator_RowClassName="GetLowerQuantityDatailsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ProductId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnProductId" msprop:Generator_ColumnPropNameInRow="ProductId" msprop:Generator_ColumnPropNameInTable="ProductIdColumn" msprop:Generator_UserColumnName="ProductId" type="xs:int" />
@@ -894,7 +890,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="GetAllEmployeeDatails" msprop:Generator_TableClassName="GetAllEmployeeDatailsDataTable" msprop:Generator_TableVarName="tableGetAllEmployeeDatails" msprop:Generator_RowChangedName="GetAllEmployeeDatailsRowChanged" msprop:Generator_TablePropName="GetAllEmployeeDatails" msprop:Generator_RowDeletingName="GetAllEmployeeDatailsRowDeleting" msprop:Generator_RowChangingName="GetAllEmployeeDatailsRowChanging" msprop:Generator_RowEvHandlerName="GetAllEmployeeDatailsRowChangeEventHandler" msprop:Generator_RowDeletedName="GetAllEmployeeDatailsRowDeleted" msprop:Generator_RowClassName="GetAllEmployeeDatailsRow" msprop:Generator_UserTableName="GetAllEmployeeDatails" msprop:Generator_RowEvArgName="GetAllEmployeeDatailsRowChangeEvent">
+        <xs:element name="GetAllEmployeeDatails" msprop:Generator_TableClassName="GetAllEmployeeDatailsDataTable" msprop:Generator_TableVarName="tableGetAllEmployeeDatails" msprop:Generator_TablePropName="GetAllEmployeeDatails" msprop:Generator_RowDeletingName="GetAllEmployeeDatailsRowDeleting" msprop:Generator_RowChangingName="GetAllEmployeeDatailsRowChanging" msprop:Generator_RowEvHandlerName="GetAllEmployeeDatailsRowChangeEventHandler" msprop:Generator_RowDeletedName="GetAllEmployeeDatailsRowDeleted" msprop:Generator_UserTableName="GetAllEmployeeDatails" msprop:Generator_RowChangedName="GetAllEmployeeDatailsRowChanged" msprop:Generator_RowEvArgName="GetAllEmployeeDatailsRowChangeEvent" msprop:Generator_RowClassName="GetAllEmployeeDatailsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="EmployeeId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnEmployeeId" msprop:Generator_ColumnPropNameInRow="EmployeeId" msprop:Generator_ColumnPropNameInTable="EmployeeIdColumn" msprop:Generator_UserColumnName="EmployeeId" type="xs:int" />
@@ -915,7 +911,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="GetAllSupplierDatails" msprop:Generator_TableClassName="GetAllSupplierDatailsDataTable" msprop:Generator_TableVarName="tableGetAllSupplierDatails" msprop:Generator_RowChangedName="GetAllSupplierDatailsRowChanged" msprop:Generator_TablePropName="GetAllSupplierDatails" msprop:Generator_RowDeletingName="GetAllSupplierDatailsRowDeleting" msprop:Generator_RowChangingName="GetAllSupplierDatailsRowChanging" msprop:Generator_RowEvHandlerName="GetAllSupplierDatailsRowChangeEventHandler" msprop:Generator_RowDeletedName="GetAllSupplierDatailsRowDeleted" msprop:Generator_RowClassName="GetAllSupplierDatailsRow" msprop:Generator_UserTableName="GetAllSupplierDatails" msprop:Generator_RowEvArgName="GetAllSupplierDatailsRowChangeEvent">
+        <xs:element name="GetAllSupplierDatails" msprop:Generator_TableClassName="GetAllSupplierDatailsDataTable" msprop:Generator_TableVarName="tableGetAllSupplierDatails" msprop:Generator_TablePropName="GetAllSupplierDatails" msprop:Generator_RowDeletingName="GetAllSupplierDatailsRowDeleting" msprop:Generator_RowChangingName="GetAllSupplierDatailsRowChanging" msprop:Generator_RowEvHandlerName="GetAllSupplierDatailsRowChangeEventHandler" msprop:Generator_RowDeletedName="GetAllSupplierDatailsRowDeleted" msprop:Generator_UserTableName="GetAllSupplierDatails" msprop:Generator_RowChangedName="GetAllSupplierDatailsRowChanged" msprop:Generator_RowEvArgName="GetAllSupplierDatailsRowChangeEvent" msprop:Generator_RowClassName="GetAllSupplierDatailsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="SupplierId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnSupplierId" msprop:Generator_ColumnPropNameInRow="SupplierId" msprop:Generator_ColumnPropNameInTable="SupplierIdColumn" msprop:Generator_UserColumnName="SupplierId" type="xs:int" />
@@ -936,7 +932,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="GetAllCustomerDatails" msprop:Generator_TableClassName="GetAllCustomerDatailsDataTable" msprop:Generator_TableVarName="tableGetAllCustomerDatails" msprop:Generator_RowChangedName="GetAllCustomerDatailsRowChanged" msprop:Generator_TablePropName="GetAllCustomerDatails" msprop:Generator_RowDeletingName="GetAllCustomerDatailsRowDeleting" msprop:Generator_RowChangingName="GetAllCustomerDatailsRowChanging" msprop:Generator_RowEvHandlerName="GetAllCustomerDatailsRowChangeEventHandler" msprop:Generator_RowDeletedName="GetAllCustomerDatailsRowDeleted" msprop:Generator_RowClassName="GetAllCustomerDatailsRow" msprop:Generator_UserTableName="GetAllCustomerDatails" msprop:Generator_RowEvArgName="GetAllCustomerDatailsRowChangeEvent">
+        <xs:element name="GetAllCustomerDatails" msprop:Generator_TableClassName="GetAllCustomerDatailsDataTable" msprop:Generator_TableVarName="tableGetAllCustomerDatails" msprop:Generator_TablePropName="GetAllCustomerDatails" msprop:Generator_RowDeletingName="GetAllCustomerDatailsRowDeleting" msprop:Generator_RowChangingName="GetAllCustomerDatailsRowChanging" msprop:Generator_RowEvHandlerName="GetAllCustomerDatailsRowChangeEventHandler" msprop:Generator_RowDeletedName="GetAllCustomerDatailsRowDeleted" msprop:Generator_UserTableName="GetAllCustomerDatails" msprop:Generator_RowChangedName="GetAllCustomerDatailsRowChanged" msprop:Generator_RowEvArgName="GetAllCustomerDatailsRowChangeEvent" msprop:Generator_RowClassName="GetAllCustomerDatailsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="CustomerId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnCustomerId" msprop:Generator_ColumnPropNameInRow="CustomerId" msprop:Generator_ColumnPropNameInTable="CustomerIdColumn" msprop:Generator_UserColumnName="CustomerId" type="xs:int" />
@@ -957,7 +953,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="GetCustomerDatails" msprop:Generator_TableClassName="GetCustomerDatailsDataTable" msprop:Generator_TableVarName="tableGetCustomerDatails" msprop:Generator_RowChangedName="GetCustomerDatailsRowChanged" msprop:Generator_TablePropName="GetCustomerDatails" msprop:Generator_RowDeletingName="GetCustomerDatailsRowDeleting" msprop:Generator_RowChangingName="GetCustomerDatailsRowChanging" msprop:Generator_RowEvHandlerName="GetCustomerDatailsRowChangeEventHandler" msprop:Generator_RowDeletedName="GetCustomerDatailsRowDeleted" msprop:Generator_RowClassName="GetCustomerDatailsRow" msprop:Generator_UserTableName="GetCustomerDatails" msprop:Generator_RowEvArgName="GetCustomerDatailsRowChangeEvent">
+        <xs:element name="GetCustomerDatails" msprop:Generator_TableClassName="GetCustomerDatailsDataTable" msprop:Generator_TableVarName="tableGetCustomerDatails" msprop:Generator_TablePropName="GetCustomerDatails" msprop:Generator_RowDeletingName="GetCustomerDatailsRowDeleting" msprop:Generator_RowChangingName="GetCustomerDatailsRowChanging" msprop:Generator_RowEvHandlerName="GetCustomerDatailsRowChangeEventHandler" msprop:Generator_RowDeletedName="GetCustomerDatailsRowDeleted" msprop:Generator_UserTableName="GetCustomerDatails" msprop:Generator_RowChangedName="GetCustomerDatailsRowChanged" msprop:Generator_RowEvArgName="GetCustomerDatailsRowChangeEvent" msprop:Generator_RowClassName="GetCustomerDatailsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="CustomerId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnCustomerId" msprop:Generator_ColumnPropNameInRow="CustomerId" msprop:Generator_ColumnPropNameInTable="CustomerIdColumn" msprop:Generator_UserColumnName="CustomerId" type="xs:int" />
@@ -1020,7 +1016,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="GetSalesDetailForMonth" msprop:Generator_TableClassName="GetSalesDetailForMonthDataTable" msprop:Generator_TableVarName="tableGetSalesDetailForMonth" msprop:Generator_RowChangedName="GetSalesDetailForMonthRowChanged" msprop:Generator_TablePropName="GetSalesDetailForMonth" msprop:Generator_RowDeletingName="GetSalesDetailForMonthRowDeleting" msprop:Generator_RowChangingName="GetSalesDetailForMonthRowChanging" msprop:Generator_RowEvHandlerName="GetSalesDetailForMonthRowChangeEventHandler" msprop:Generator_RowDeletedName="GetSalesDetailForMonthRowDeleted" msprop:Generator_RowClassName="GetSalesDetailForMonthRow" msprop:Generator_UserTableName="GetSalesDetailForMonth" msprop:Generator_RowEvArgName="GetSalesDetailForMonthRowChangeEvent">
+        <xs:element name="GetSalesDetailForMonth" msprop:Generator_TableClassName="GetSalesDetailForMonthDataTable" msprop:Generator_TableVarName="tableGetSalesDetailForMonth" msprop:Generator_TablePropName="GetSalesDetailForMonth" msprop:Generator_RowDeletingName="GetSalesDetailForMonthRowDeleting" msprop:Generator_RowChangingName="GetSalesDetailForMonthRowChanging" msprop:Generator_RowEvHandlerName="GetSalesDetailForMonthRowChangeEventHandler" msprop:Generator_RowDeletedName="GetSalesDetailForMonthRowDeleted" msprop:Generator_UserTableName="GetSalesDetailForMonth" msprop:Generator_RowChangedName="GetSalesDetailForMonthRowChanged" msprop:Generator_RowEvArgName="GetSalesDetailForMonthRowChangeEvent" msprop:Generator_RowClassName="GetSalesDetailForMonthRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ProductCode" msprop:Generator_ColumnVarNameInTable="columnProductCode" msprop:Generator_ColumnPropNameInRow="ProductCode" msprop:Generator_ColumnPropNameInTable="ProductCodeColumn" msprop:Generator_UserColumnName="ProductCode" minOccurs="0">
@@ -1078,7 +1074,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="GetDiscountDetailsForTheDay" msprop:Generator_TableClassName="GetDiscountDetailsForTheDayDataTable" msprop:Generator_TableVarName="tableGetDiscountDetailsForTheDay" msprop:Generator_RowChangedName="GetDiscountDetailsForTheDayRowChanged" msprop:Generator_TablePropName="GetDiscountDetailsForTheDay" msprop:Generator_RowDeletingName="GetDiscountDetailsForTheDayRowDeleting" msprop:Generator_RowChangingName="GetDiscountDetailsForTheDayRowChanging" msprop:Generator_RowEvHandlerName="GetDiscountDetailsForTheDayRowChangeEventHandler" msprop:Generator_RowDeletedName="GetDiscountDetailsForTheDayRowDeleted" msprop:Generator_RowClassName="GetDiscountDetailsForTheDayRow" msprop:Generator_UserTableName="GetDiscountDetailsForTheDay" msprop:Generator_RowEvArgName="GetDiscountDetailsForTheDayRowChangeEvent">
+        <xs:element name="GetDiscountDetailsForTheDay" msprop:Generator_TableClassName="GetDiscountDetailsForTheDayDataTable" msprop:Generator_TableVarName="tableGetDiscountDetailsForTheDay" msprop:Generator_TablePropName="GetDiscountDetailsForTheDay" msprop:Generator_RowDeletingName="GetDiscountDetailsForTheDayRowDeleting" msprop:Generator_RowChangingName="GetDiscountDetailsForTheDayRowChanging" msprop:Generator_RowEvHandlerName="GetDiscountDetailsForTheDayRowChangeEventHandler" msprop:Generator_RowDeletedName="GetDiscountDetailsForTheDayRowDeleted" msprop:Generator_UserTableName="GetDiscountDetailsForTheDay" msprop:Generator_RowChangedName="GetDiscountDetailsForTheDayRowChanged" msprop:Generator_RowEvArgName="GetDiscountDetailsForTheDayRowChangeEvent" msprop:Generator_RowClassName="GetDiscountDetailsForTheDayRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ProductCode" msprop:Generator_ColumnVarNameInTable="columnProductCode" msprop:Generator_ColumnPropNameInRow="ProductCode" msprop:Generator_ColumnPropNameInTable="ProductCodeColumn" msprop:Generator_UserColumnName="ProductCode" minOccurs="0">
@@ -1130,7 +1126,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="GetDiscountDetailForMonth" msprop:Generator_TableClassName="GetDiscountDetailForMonthDataTable" msprop:Generator_TableVarName="tableGetDiscountDetailForMonth" msprop:Generator_RowChangedName="GetDiscountDetailForMonthRowChanged" msprop:Generator_TablePropName="GetDiscountDetailForMonth" msprop:Generator_RowDeletingName="GetDiscountDetailForMonthRowDeleting" msprop:Generator_RowChangingName="GetDiscountDetailForMonthRowChanging" msprop:Generator_RowEvHandlerName="GetDiscountDetailForMonthRowChangeEventHandler" msprop:Generator_RowDeletedName="GetDiscountDetailForMonthRowDeleted" msprop:Generator_RowClassName="GetDiscountDetailForMonthRow" msprop:Generator_UserTableName="GetDiscountDetailForMonth" msprop:Generator_RowEvArgName="GetDiscountDetailForMonthRowChangeEvent">
+        <xs:element name="GetDiscountDetailForMonth" msprop:Generator_TableClassName="GetDiscountDetailForMonthDataTable" msprop:Generator_TableVarName="tableGetDiscountDetailForMonth" msprop:Generator_TablePropName="GetDiscountDetailForMonth" msprop:Generator_RowDeletingName="GetDiscountDetailForMonthRowDeleting" msprop:Generator_RowChangingName="GetDiscountDetailForMonthRowChanging" msprop:Generator_RowEvHandlerName="GetDiscountDetailForMonthRowChangeEventHandler" msprop:Generator_RowDeletedName="GetDiscountDetailForMonthRowDeleted" msprop:Generator_UserTableName="GetDiscountDetailForMonth" msprop:Generator_RowChangedName="GetDiscountDetailForMonthRowChanged" msprop:Generator_RowEvArgName="GetDiscountDetailForMonthRowChangeEvent" msprop:Generator_RowClassName="GetDiscountDetailForMonthRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ProductCode" msprop:Generator_ColumnVarNameInTable="columnProductCode" msprop:Generator_ColumnPropNameInRow="ProductCode" msprop:Generator_ColumnPropNameInTable="ProductCodeColumn" msprop:Generator_UserColumnName="ProductCode" minOccurs="0">
@@ -1147,7 +1143,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="GetPerchaseOrderDatails" msprop:Generator_TableClassName="GetPerchaseOrderDatailsDataTable" msprop:Generator_TableVarName="tableGetPerchaseOrderDatails" msprop:Generator_TablePropName="GetPerchaseOrderDatails" msprop:Generator_RowDeletingName="GetPerchaseOrderDatailsRowDeleting" msprop:Generator_RowChangingName="GetPerchaseOrderDatailsRowChanging" msprop:Generator_RowEvHandlerName="GetPerchaseOrderDatailsRowChangeEventHandler" msprop:Generator_RowDeletedName="GetPerchaseOrderDatailsRowDeleted" msprop:Generator_UserTableName="GetPerchaseOrderDatails" msprop:Generator_RowChangedName="GetPerchaseOrderDatailsRowChanged" msprop:Generator_RowEvArgName="GetPerchaseOrderDatailsRowChangeEvent" msprop:Generator_RowClassName="GetPerchaseOrderDatailsRow">
+        <xs:element name="GetPerchaseOrderDatails" msprop:Generator_TableClassName="GetPerchaseOrderDatailsDataTable" msprop:Generator_TableVarName="tableGetPerchaseOrderDatails" msprop:Generator_RowChangedName="GetPerchaseOrderDatailsRowChanged" msprop:Generator_TablePropName="GetPerchaseOrderDatails" msprop:Generator_RowDeletingName="GetPerchaseOrderDatailsRowDeleting" msprop:Generator_RowChangingName="GetPerchaseOrderDatailsRowChanging" msprop:Generator_RowEvHandlerName="GetPerchaseOrderDatailsRowChangeEventHandler" msprop:Generator_RowDeletedName="GetPerchaseOrderDatailsRowDeleted" msprop:Generator_RowClassName="GetPerchaseOrderDatailsRow" msprop:Generator_UserTableName="GetPerchaseOrderDatails" msprop:Generator_RowEvArgName="GetPerchaseOrderDatailsRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ProductId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnProductId" msprop:Generator_ColumnPropNameInRow="ProductId" msprop:Generator_ColumnPropNameInTable="ProductIdColumn" msprop:Generator_UserColumnName="ProductId" type="xs:int" />
@@ -1198,10 +1194,6 @@
     <xs:unique name="GetProductTypeDatails_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:GetProductTypeDatails" />
       <xs:field xpath="mstns:ProductTypeId" />
-    </xs:unique>
-    <xs:unique name="GetStockDatails_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:GetStockDatails" />
-      <xs:field xpath="mstns:ProductId" />
     </xs:unique>
     <xs:unique name="GetProductSupplierDatails_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:GetProductSupplierDatails" />
