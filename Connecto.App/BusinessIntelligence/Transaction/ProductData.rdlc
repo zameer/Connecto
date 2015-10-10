@@ -31,7 +31,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Product Code</Value>
+                              <Value>Product Name</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
                                 <FontWeight>Bold</FontWeight>
@@ -107,7 +107,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Margin Amount</Value>
+                              <Value>Margin Amount (Rs.)</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
                                 <FontWeight>Bold</FontWeight>
@@ -211,7 +211,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -258,6 +257,7 @@
                               <Value>=IIF(Fields!MarginAmount.Value &gt; 0, Fields!MarginAmount.Value, "No")</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
+                                <Format>#,0.00;(#,0.00)</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -292,6 +292,7 @@
                               <Value>=Fields!MarginAmount.Value</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
+                                <Format>#,0.00;(#,0.00)</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -398,6 +399,7 @@
                               <Value>=Sum(Fields!MarginAmount.Value)</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
+                                <Format>#,0.00;(#,0.00)</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>

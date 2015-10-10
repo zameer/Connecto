@@ -17,11 +17,11 @@ namespace Connecto.App.Controllers
             var items = _repo.GetAll(criteria);
             return Json(new { recordsTotal = items.Item2, recordsFiltered = items.Item2, data = items.Item1 }, JsonRequestBehavior.AllowGet);
         }
-        /*public JsonResult Get()
+        public JsonResult GetAll()
         {
             var items = _repo.GetAll();
             return Json(items, JsonRequestBehavior.AllowGet);
-        }*/
+        }
         public JsonResult GetPeople()
         {
             var items = _repo.GetPeople();

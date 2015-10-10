@@ -178,7 +178,6 @@
     <Compile Include="BaseController.cs" />
     <Compile Include="BusinessIntelligence\Dataset\Transactions.cs">
       <DependentUpon>Transactions.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="BusinessIntelligence\Reporto.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -459,13 +458,13 @@
     <EmbeddedResource Include="BusinessIntelligence\Transaction\AllCustomerDetails.rdlc" />
     <EmbeddedResource Include="BusinessIntelligence\Transaction\AllEmployeeDetails.rdlc" />
     <EmbeddedResource Include="BusinessIntelligence\Transaction\AllSupplierDetails.rdlc" />
-    <EmbeddedResource Include="BusinessIntelligence\Transaction\PurchaseOrderDetails.rdlc" />
     <EmbeddedResource Include="BusinessIntelligence\Transaction\DiscountDetailsForTheMonth.rdlc" />
     <EmbeddedResource Include="BusinessIntelligence\Transaction\DiscountDetailsForTheDay.rdlc" />
     <EmbeddedResource Include="BusinessIntelligence\Transaction\LowerQuantityDetails.rdlc" />
+    <EmbeddedResource Include="BusinessIntelligence\Transaction\StockDetails.rdlc" />
+    <EmbeddedResource Include="BusinessIntelligence\Transaction\PurchaseOrderDetails.rdlc" />
     <EmbeddedResource Include="BusinessIntelligence\Transaction\ProductSupplierDetails.rdlc" />
     <EmbeddedResource Include="BusinessIntelligence\Transaction\SalesDetailsForMonth.rdlc" />
-    <EmbeddedResource Include="BusinessIntelligence\Transaction\StockDetails.rdlc" />
     <EmbeddedResource Include="BusinessIntelligence\Transaction\ProductTypeDetails.rdlc" />
     <EmbeddedResource Include="BusinessIntelligence\Transaction\MeasureDetails.rdlc" />
     <EmbeddedResource Include="BusinessIntelligence\Transaction\VendorDetails.rdlc" />

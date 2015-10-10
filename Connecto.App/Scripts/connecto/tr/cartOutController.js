@@ -8,22 +8,30 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
               $scope.orders = data;
           });
       };
+      $scope.loadCustomers = function () {
+          $http.get('/Customer/GetAll/').success(function (data) {
+              $scope.customers = data;
+          });
+      };
+
       $scope.loadItems = function (orderId) {
           if (orderId != undefined) {
-              $http.get('/' + cName + '/GetCart/' + orderId).success(function(data) {
+              $http.get('/' + cName + '/GetCart/' + orderId).success(function (data) {
+                  $scope.item.CustomerId = data[0] != undefined ? data[0].CustomerId : 0;
                   $scope.items = data;
                   $scope.calculateGrossPrice();
               });
           } else  $scope.items = [];
       };
       $scope.loadOrders();
+      $scope.loadCustomers();
       $scope.loadItems();
       $scope.filterProductSelection = function (productDetailId) {
           var arrItems = $scope.itemz;
           angular.forEach(arrItems, function (item) {
               if (item.ProductDetailId == productDetailId) {
                   setProductDetail(item);
-                  $scope.item.PrductDetailId = productDetailId;
+                  $scope.item.PrductDetailId = productDetailId
               }
           });
       };
