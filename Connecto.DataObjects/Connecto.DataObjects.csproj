@@ -109,6 +109,10 @@
     <Compile Include="ISupplierReturnDao.cs" />
     <Compile Include="IReturnReasonDao.cs" />
     <Compile Include="IVendorDao.cs" />
+    <Compile Include="Migrations\201510110608047_ReferenceinCartout.cs" />
+    <Compile Include="Migrations\201510110608047_ReferenceinCartout.Designer.cs">
+      <DependentUpon>201510110608047_ReferenceinCartout.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -127,6 +131,11 @@
       <Project>{8abb07ee-a696-4145-8e7e-cec3c785c153}</Project>
       <Name>Connecto.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201510110608047_ReferenceinCartout.resx">
+      <DependentUpon>201510110608047_ReferenceinCartout.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

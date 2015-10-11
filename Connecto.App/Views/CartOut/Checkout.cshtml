@@ -4,7 +4,7 @@
         <div class="page-header row">
             <div class="col-sm-2 no-padding-left"><h1>NEW CART </h1></div>
             <div class="col-sm-2">
-                <select ng-model="item.OrderId" ng-change="filterOrder(item.OrderId)" id="order" class="select2" data-placeholder="New Invoice">
+                <select ng-model="item.OrderId" ng-change="filterOrder(item.OrderId)" id="order" class="select2" data-placeholder="Choose Invoice">
                     <option></option>
                     <option ng-repeat="e in orders" value="{{e}}">{{e}}</option>
                 </select>
@@ -16,8 +16,11 @@
                     <option ng-repeat="e in customers" value="{{e.CustomerId}}">{{e.Person.DisplayName}}</option>
                 </select>
             </div>
+            @*<div class="col-sm-2 no-padding-left"><h1>Reference </h1></div>
+            <div class="col-sm-1">
+                <input ng-model="item.ReferenceCode" class="input-sm" type="text" placeholder="Reference Code">
+            </div>*@
         </div>
-
         <div class="row">
             <div class="col-xs-12">
                 <!-- PAGE CONTENT BEGINS -->

@@ -14,5 +14,6 @@ namespace Connecto.DataObjects.EntityFramework
         public Guid OrderGuid { get; set; }
         public OrderType OrderType { get; set; }
         public decimal Fluctuation { get; set; }
+        public string ReferenceCode { get; set; }
     }
 }

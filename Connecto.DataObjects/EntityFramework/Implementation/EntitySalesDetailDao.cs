@@ -187,7 +187,8 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                 LocationId = item.LocationId,
                 Status = item.Status,
                 CreatedBy = item.CreatedBy,
-                CreatedOn = item.CreatedOn
+                CreatedOn = item.CreatedOn,
+                ReferenceCode = item.ReferenceCode,
             };
             context.Orders.Add(entity);
             context.SaveChanges();

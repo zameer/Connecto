@@ -20,6 +20,7 @@ namespace Connecto.BusinessObjects
         public DiscountBy DiscountBy { get; set; }
         public double DiscountAs { get; set; }
         public decimal Discount { get; set; }
+        public string ReferenceCode { get; set; }
         public virtual Customer Customer { get; set; }
     }
 }

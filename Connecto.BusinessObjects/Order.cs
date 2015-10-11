@@ -9,5 +9,6 @@ namespace Connecto.BusinessObjects
         public int OrderId { get; set; }
         public Guid OrderGuid { get; set; }
         public OrderType OrderType { get; set; }
+        public string ReferenceCode { get; set; }
     }
 }
