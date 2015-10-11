@@ -225,6 +225,8 @@
     <Compile Include="Utilities\Printo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BusinessIntelligence\Scripts\fn-Oct10th.sql" />
+    <Content Include="BusinessIntelligence\Scripts\sp-Oct10th.sql" />
     <Content Include="BusinessIntelligence\Scripts\sp-may30th.sql" />
     <Content Include="BusinessIntelligence\Scripts\sp-may25th.sql" />
     <Content Include="BusinessIntelligence\Scripts\ReportSetting.sql" />
