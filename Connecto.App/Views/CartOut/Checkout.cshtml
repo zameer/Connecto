@@ -29,15 +29,23 @@
                         
                         <div class="profile-user-info profile-user-info-striped">
                             <div class="profile-info-row">
+                                <div class="profile-info-name"> Cost Price </div>
+                                <div class="profile-info-value">
+                                    <span class="widget-title blue smaller">
+                                        <span ng-hide="item.SellingMargin">{{item.UnitPrice}}</span>
+                                    </span>
+                                    <select style="min-width:50%;" ng-show="itemz.length > 1" ng-model="item.PrductDetailId" ng-change="filterProductSelection(item.PrductDetailId)" class="select2" id="productDetail">
+                                        <option ng-repeat="e in itemz" value="{{e.ProductDetailId}}">{{e.ReceivedInfo}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="profile-info-row">
                                 <div class="profile-info-name"> Selling Price </div>
                                 <div class="profile-info-value">
                                     <span class="widget-title blue smaller">
                                         <input ng-show="item.SellingMargin" ng-model="item.SellingPrice" class="input-sm" type="text" placeholder="Selling price">
                                         <span ng-hide="item.SellingMargin">{{item.SellingPrice}}</span>
                                     </span>
-                                    <select style="min-width:50%;" ng-show="itemz.length > 1" ng-model="item.PrductDetailId" ng-change="filterProductSelection(item.PrductDetailId)" class="select2" id="productDetail">
-                                        <option ng-repeat="e in itemz" value="{{e.ProductDetailId}}">{{e.ReceivedInfo}}</option>
-                                    </select>
                                 </div>
                             </div>
                             <div class="profile-info-row">

@@ -36,6 +36,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                         StockInHand = new StockInHand { Quantity = productDetail.Product.StockInHand, QuantityActual = productDetail.Product.QuantityActual, QuantityLower = productDetail.Product.QuantityLower },
                         RowStockInHand = new StockInHand { Quantity = productDetail.Quantity, QuantityActual = productDetail.QuantityActual, QuantityLower = productDetail.QuantityLower },
                         SellingPrice = productDetail.SellingPrice,
+                        UnitPrice = productDetail.UnitPrice,
                         SellingPriceActual = productDetail.SellingPrice,
                         StockAs = productDetail.Product.ProductType.StockAs,
                         Volume = measure.Volume,
