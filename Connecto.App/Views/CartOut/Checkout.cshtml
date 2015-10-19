@@ -10,16 +10,16 @@
                 </select>
             </div>
             <div class="col-sm-2 no-padding-left"><h1>Customer </h1></div>
-            <div class="col-sm-1">
+            <div class="col-sm-3">
                 <select ng-model="item.CustomerId" id="product-customer" class="select2" data-placeholder="Choose Customer...">
                     <option></option>
                     <option ng-repeat="e in customers" value="{{e.CustomerId}}">{{e.Person.DisplayName}}</option>
                 </select>
             </div>
-            @*<div class="col-sm-2 no-padding-left"><h1>Reference </h1></div>
-            <div class="col-sm-1">
+            @*<div class="col-sm-2 no-padding-left"><h1>Reference </h1></div>*@
+            <div class="col-sm-2">
                 <input ng-model="item.ReferenceCode" class="input-sm" type="text" placeholder="Reference Code">
-            </div>*@
+            </div>
         </div>
         <div class="row">
             <div class="col-xs-12">
