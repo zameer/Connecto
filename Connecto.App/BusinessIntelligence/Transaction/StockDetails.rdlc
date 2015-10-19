@@ -474,6 +474,7 @@
                               <Value>Total Revenue</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
+                                <FontSize>12pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -511,6 +512,7 @@
                               <Value>=Sum(Fields!NetPrice.Value)</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
+                                <FontSize>12pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <Format>#,0.00;(#,0.00)</Format>
                               </Style>
