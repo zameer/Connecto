@@ -433,7 +433,6 @@
     <Content Include="Views\CartReturn\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\" />
     <Folder Include="Properties\App_Data\" />
   </ItemGroup>
   <ItemGroup>
