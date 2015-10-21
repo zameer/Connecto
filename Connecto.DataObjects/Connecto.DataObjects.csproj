@@ -52,6 +52,8 @@
     <Compile Include="EntityFramework\EntityReportSetting.cs" />
     <Compile Include="EntityFramework\EntityProductBase.cs" />
     <Compile Include="EntityFramework\EntityOrder.cs" />
+    <Compile Include="EntityFramework\EntityWriteoffDetailCart.cs" />
+    <Compile Include="EntityFramework\EntityWriteoffDetail.cs" />
     <Compile Include="EntityFramework\EntitySalesDetailCart.cs" />
     <Compile Include="EntityFramework\EntitySalesDetail.cs" />
     <Compile Include="EntityFramework\EntityProductDetailCart.cs" />

@@ -326,6 +326,7 @@
     <Content Include="Scripts\connecto\plugins\elements.wysiwyg.js" />
     <Content Include="Scripts\connecto\plugins\select2.js" />
     <Content Include="Scripts\connecto\respond.js" />
+    <Content Include="Scripts\connecto\tr\writeOffController.js" />
     <Content Include="Scripts\connecto\tr\cartReturnController.js" />
     <Content Include="Scripts\connecto\tr\customerReturnController.js" />
     <Content Include="Scripts\connecto\tr\supplierReturnController.js" />

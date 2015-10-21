@@ -474,6 +474,7 @@
                               <Value>Total Revenue</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
+                                <FontSize>12pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -511,6 +512,7 @@
                               <Value>=Sum(Fields!NetPrice.Value)</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
+                                <FontSize>12pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <Format>#,0.00;(#,0.00)</Format>
                               </Style>
@@ -695,9 +697,9 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>TotalPages</rd:DefaultName>
-          <Left>6.13222in</Left>
+          <Left>6.08778in</Left>
           <Height>0.21805in</Height>
-          <Width>0.33252in</Width>
+          <Width>0.37696in</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
