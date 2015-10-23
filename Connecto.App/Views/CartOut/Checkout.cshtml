@@ -43,8 +43,8 @@
                                 <div class="profile-info-name"> Selling Price </div>
                                 <div class="profile-info-value">
                                     <span class="widget-title blue smaller">
-                                        <input ng-show="item.SellingMargin" ng-model="item.SellingPrice" class="input-sm" type="text" placeholder="Selling price">
-                                        <span ng-hide="item.SellingMargin">{{item.SellingPrice}}</span>
+                                        <input ng-show="item.StockInHand.QuantityActual > 0" ng-model="item.SellingPrice" class="input-sm" type="text" placeholder="Selling price">
+                                        @*<span ng-hide="item.SellingMargin">{{item.SellingPrice}}</span>*@
                                     </span>
                                 </div>
                             </div>
