@@ -5,7 +5,6 @@
         autoclose: true,
         todayHighlight: true
     });
-    
     $('input[name=DateRange]').daterangepicker({
         'applyClass': 'btn-sm btn-success',
         'cancelClass': 'btn-sm btn-default',

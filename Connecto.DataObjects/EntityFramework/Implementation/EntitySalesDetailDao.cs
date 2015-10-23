@@ -96,6 +96,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
         {
             var cart = context.SalesDetailCarts.FirstOrDefault(e => e.OrderId == salesDetailCart.OrderId && e.SalesDetailId == salesDetailCart.SalesDetailId && e.ProductCode == salesDetailCart.ProductCode);
             if (cart == null) return false;
+            cart.CustomerId = salesDetailCart.CustomerId;
             cart.Quantity = salesDetailCart.Quantity;
             cart.QuantityActual = salesDetailCart.QuantityActual;
             cart.QuantityLower = salesDetailCart.QuantityLower;

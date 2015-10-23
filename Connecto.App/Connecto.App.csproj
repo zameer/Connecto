@@ -178,6 +178,7 @@
     <Compile Include="BaseController.cs" />
     <Compile Include="BusinessIntelligence\Dataset\Transactions.cs">
       <DependentUpon>Transactions.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="BusinessIntelligence\Reporto.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -281,6 +282,8 @@
     <Content Include="BusinessIntelligence\Dataset\Transactions.xss">
       <DependentUpon>Transactions.xsd</DependentUpon>
     </Content>
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <None Include="Properties\PublishProfiles\connectopublisher.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\connecto\ace-extra.js" />
@@ -289,6 +292,8 @@
     <Content Include="Scripts\connecto\csettings\productController.js" />
     <Content Include="Scripts\connecto\csettings\returnReasonController.js" />
     <Content Include="Scripts\connecto\date-time\bootstrap-datepicker.js" />
+    <Content Include="Scripts\connecto\date-time\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\connecto\date-time\bootstrap-timepicker.js" />
     <Content Include="Scripts\connecto\date-time\daterangepicker.js" />
     <Content Include="Scripts\connecto\date-time\moment.js" />
     <Content Include="Scripts\connecto\hr\customerController.js" />

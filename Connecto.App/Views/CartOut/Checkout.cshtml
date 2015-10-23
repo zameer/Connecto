@@ -21,14 +21,13 @@
             </div>
             <div class="col-sm-2 no-padding-left">
                 <div class="input-group">
-                    <input class="form-control date-picker" name="Date" id="id-date-picker-1" type="text">
-                    <span class="input-group-addon">
-                        <i class="fa fa-calendar bigger-110"></i>
-                    </span>
+                    <div class="input-group">
+                        <input ng-model="item.DateSold" id="date-timepicker1" type="text" class="form-control">
+                        <span class="input-group-addon">
+                            <i class="fa fa-clock-o bigger-110"></i>
+                        </span>
+                    </div>
                 </div>
-            </div>
-            <div class="col-sm-2 no-padding-left">
-                <input ng-model="item.ReferenceCode" class="input-sm" type="text" placeholder="Reference Code">
             </div>
         </div>
         <div class="row">
@@ -54,7 +53,6 @@
                                 <div class="profile-info-value">
                                     <span class="widget-title blue smaller">
                                         <input ng-show="item.StockInHand.QuantityActual > 0" ng-model="item.SellingPrice" class="input-sm" type="text" placeholder="Selling price">
-                                        @*<span ng-hide="item.SellingMargin">{{item.SellingPrice}}</span>*@
                                     </span>
                                 </div>
                             </div>
@@ -178,7 +176,7 @@
 
                     <div class="col-sm-5" ng-show="GrossNetPrice > 0">
                         <span>Invoice # {{item.OrderId}}</span>
-
+                        <input ng-model="item.ReferenceCode" class="input-sm" type="text" placeholder="Reference Code">
                         <div class="profile-user-info profile-user-info-striped no-margin">
                             <div class="profile-info-row">
                                 <div class="profile-info-name">Amount </div>
