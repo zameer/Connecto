@@ -2,22 +2,32 @@
 <div ng-controller="CartOutCtrl">
     <form class="form-horizontal" role="form">
         <div class="page-header row">
-            <div class="col-sm-2 no-padding-left"><h1>NEW CART </h1></div>
-            <div class="col-sm-2">
-                <select ng-model="item.OrderId" ng-change="filterOrder(item.OrderId)" id="order" class="select2" data-placeholder="Choose Invoice">
-                    <option></option>
-                    <option ng-repeat="e in orders" value="{{e}}">{{e}}</option>
-                </select>
+            <div class="col-sm-2 no-padding-left">
+                <h1>NEW CART </h1>
             </div>
-            <div class="col-sm-2 no-padding-left"><h1>Customer </h1></div>
-            <div class="col-sm-3">
+            <div class="col-sm-2 no-padding-left">
+                <div>
+                    <select ng-model="item.OrderId" ng-change="filterOrder(item.OrderId)" id="order" class="select2" data-placeholder="Choose Invoice">
+                        <option></option>
+                        <option ng-repeat="e in orders" value="{{e}}">{{e}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-2 no-padding-left">
                 <select ng-model="item.CustomerId" id="product-customer" class="select2" data-placeholder="Choose Customer...">
                     <option></option>
                     <option ng-repeat="e in customers" value="{{e.CustomerId}}">{{e.Person.DisplayName}}</option>
                 </select>
             </div>
-            @*<div class="col-sm-2 no-padding-left"><h1>Reference </h1></div>*@
-            <div class="col-sm-2">
+            <div class="col-sm-2 no-padding-left">
+                <div class="input-group">
+                    <input class="form-control date-picker" name="Date" id="id-date-picker-1" type="text">
+                    <span class="input-group-addon">
+                        <i class="fa fa-calendar bigger-110"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-2 no-padding-left">
                 <input ng-model="item.ReferenceCode" class="input-sm" type="text" placeholder="Reference Code">
             </div>
         </div>
