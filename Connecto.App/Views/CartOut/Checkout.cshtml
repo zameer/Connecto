@@ -41,7 +41,7 @@
                                 <div class="profile-info-name"> Cost Price </div>
                                 <div class="profile-info-value">
                                     <span class="widget-title blue smaller">
-                                        <span ng-hide="item.SellingMargin">{{item.UnitPrice}}</span>
+                                        <span >{{item.UnitPrice}}</span>
                                     </span>
                                     <select style="min-width:50%;" ng-show="itemz.length > 1" ng-model="item.PrductDetailId" ng-change="filterProductSelection(item.PrductDetailId)" class="select2" id="productDetail">
                                         <option ng-repeat="e in itemz" value="{{e.ProductDetailId}}">{{e.ReceivedInfo}}</option>
@@ -52,7 +52,7 @@
                                 <div class="profile-info-name"> Selling Price </div>
                                 <div class="profile-info-value">
                                     <span class="widget-title blue smaller">
-                                        <input ng-show="item.StockInHand.QuantityActual > 0" ng-model="item.SellingPrice" class="input-sm" type="text" placeholder="Selling price">
+                                        <input ng-show="item.StockInHand.QuantityActual >= 0" ng-model="item.SellingPrice" class="input-sm" type="text" placeholder="Selling price">
                                     </span>
                                 </div>
                             </div>
