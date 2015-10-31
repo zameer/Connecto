@@ -7,22 +7,33 @@
             </div>
             <div class="col-sm-2 no-padding-left">
                 <div>
-                    <select ng-model="item.OrderId" ng-change="filterOrder(item.OrderId)" id="order" class="select2" data-placeholder="Choose Invoice">
-                        <option></option>
-                        <option ng-repeat="e in orders" value="{{e}}">{{e}}</option>
-                    </select>
+                    <ui-select ng-model="order.selected" on-select="filterOrder($select.selected.OrderId)" theme="select2" ng-disabled="disabled" style="width: 180px;" title="Choose an order">
+                        <ui-select-match allow-clear="true" placeholder="Select an order">{{$select.selected.OrderId}}</ui-select-match>
+                        <ui-select-choices repeat="e in orders">
+                            <div ng-bind="e.OrderId | highlight: $select.search"></div>
+                            <small>
+                                <span ng-bind-html="''+e.Customer.Person.DisplayName"></span>
+                            </small>
+                        </ui-select-choices>
+                    </ui-select>
                 </div>
             </div>
             <div class="col-sm-2 no-padding-left">
-                <select ng-model="item.CustomerId" id="product-customer" class="select2" data-placeholder="Choose Customer...">
-                    <option></option>
-                    <option ng-repeat="e in customers" value="{{e.CustomerId}}">{{e.Person.DisplayName}}</option>
-                </select>
+                <ui-select ng-model="customer.selected" theme="select2" ng-disabled="disabled" style="width: 180px;" title="Choose a customer">
+                    <ui-select-match allow-clear="true" placeholder="Select a cutomer">{{$select.selected.Person.DisplayName}}</ui-select-match>
+                    <ui-select-choices repeat="e in customers">
+                        <div ng-bind-html="e.Person.DisplayName | highlight: $select.search"></div>
+                        <small>
+                            email: {{e.Person.DisplayName}}
+                            @*age: <span ng-bind-html="''+person.age | highlight: $select.search"></span>*@
+                        </small>
+                    </ui-select-choices>
+                </ui-select>
             </div>
             <div class="col-sm-2 no-padding-left">
                 <div class="input-group">
                     <div class="input-group">
-                        <input ng-model="item.DateSold" id="date-timepicker1" type="text" class="form-control">
+                        <input ng-model="order.selected.OrderDateDisplay" id="date-timepicker1" type="text" class="form-control">
                         <span class="input-group-addon">
                             <i class="fa fa-clock-o bigger-110"></i>
                         </span>
@@ -35,17 +46,21 @@
                 <!-- PAGE CONTENT BEGINS -->
                 <div class="row">
                     <div class="col-sm-7">
-                        
                         <div class="profile-user-info profile-user-info-striped">
                             <div class="profile-info-row">
-                                <div class="profile-info-name"> Cost Price </div>
+                                <div class="profile-info-name"> Stocks </div>
                                 <div class="profile-info-value">
-                                    <span class="widget-title blue smaller">
-                                        <span ng-hide="item.SellingMargin">{{item.UnitPrice}}</span>
-                                    </span>
-                                    <select style="min-width:50%;" ng-show="itemz.length > 1" ng-model="item.PrductDetailId" ng-change="filterProductSelection(item.PrductDetailId)" class="select2" id="productDetail">
-                                        <option ng-repeat="e in itemz" value="{{e.ProductDetailId}}">{{e.ReceivedInfo}}</option>
-                                    </select>
+                                    <ui-select ng-model="productDetail.selected" on-select="filterProductSelection($select.selected.ProductDetailId)" theme="select2" ng-disabled="disabled" style="width: 300px;" title="Choose a version">
+                                        <ui-select-match allow-clear="true" placeholder="Select a version">{{$select.selected.ReceivedInfo}}
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="e in itemz">
+                                            <div ng-bind-html="e.ReceivedInfo | highlight: $select.search"></div>
+                                            <small>
+                                                price: {{e.UnitPrice}}
+                                                selling: <span ng-bind-html="''+e.SellingPrice"></span>
+                                            </small>
+                                        </ui-select-choices>
+                                    </ui-select>
                                 </div>
                             </div>
                             <div class="profile-info-row">
@@ -322,7 +337,6 @@
 </div>
 <script type="text/javascript">
     $(function () {
-        $('.select2').select2({ allowClear: true });
         $('#menu-tr').syncMenu([{ name: "cartOut", option: "a" }]);
     });
 </script>

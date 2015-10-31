@@ -15,5 +15,20 @@ var hrApp = angular.module('hrApp', [
 var trControllers = angular.module('trControllers', []);
 var trApp = angular.module('trApp', [
   'ngRoute',
-  'trControllers'
+  'trControllers',
+  'ui.select',
+  'ngSanitize'
 ]);
+trApp.filter('getById', function () {
+    return function(input, id, propName) {
+        var i = 0, len = input.length;
+        for (; i < len; i++) {
+            if (propName == 'CustomerId') {
+                if (+input[i].CustomerId == +id) {
+                    return input[i];
+                }
+            }
+        }
+        return null;
+    };
+});

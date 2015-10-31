@@ -14,7 +14,6 @@ namespace Connecto.DataObjects.EntityFramework
         public string ProductCode { get; set; }
         public int OrderId { get; set; }
         public int ProductDetailId { get; set; }
-        public int? CustomerId { get; set; }
         public decimal UnitPrice { get; set; }
         public decimal SellingPrice { get; set; }
         public decimal Price { get; set; }
@@ -23,7 +22,6 @@ namespace Connecto.DataObjects.EntityFramework
         public DiscountBy DiscountBy { get; set; }
         public double DiscountAs { get; set; }
         public decimal Discount { get; set; }
-        public virtual EntityCustomer Customer { get; set; }
         public virtual EntityProductDetail ProductDetail { get; set; }
     }
 }

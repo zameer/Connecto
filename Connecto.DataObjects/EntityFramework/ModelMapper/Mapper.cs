@@ -431,6 +431,20 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 Name = entity.Name
             };
         }
+        internal static Order Map(EntityOrder entity)
+        {
+            return new Order
+            {
+                OrderId = entity.OrderId,
+                OrderGuid = entity.OrderGuid,
+                OrderType = entity.OrderType,
+                CustomerId = entity.CustomerId,
+                OrderDate = entity.OrderDate,
+                Fluctuation = entity.Fluctuation,
+                ReferenceCode = entity.ReferenceCode,
+                Customer = entity.Customer != null ? Map(entity.Customer) : null
+            };
+        }
         internal static ProductDetail Map(EntityProductDetail entity)
         {
             return new ProductDetail
@@ -508,7 +522,6 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 ProductCode = entity.ProductCode,
                 OrderId = entity.OrderId,
                 ProductDetailId = entity.ProductDetailId,
-                CustomerId = entity.CustomerId,
                 Quantity = entity.Quantity,
                 QuantityActual = entity.QuantityActual,
                 QuantityLower = entity.QuantityLower,
@@ -586,7 +599,6 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 SalesDetailGuid = entity.SalesDetailGuid,
                 OrderId = entity.OrderId,
                 ProductDetailId = entity.ProductDetailId,
-                CustomerId = entity.CustomerId == 0 ? null : entity.CustomerId,
                 ProductCode = entity.ProductCode,
                 Quantity = entity.Quantity,
                 UnitPrice = entity.UnitPrice,
@@ -616,7 +628,6 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 SalesDetailGuid = entity.SalesDetailGuid,
                 OrderId = entity.OrderId,
                 ProductDetailId = entity.ProductDetailId,
-                CustomerId = entity.CustomerId,
                 ProductCode = entity.ProductCode,
                 ProductName = product.Name,
                 Quantity = entity.Quantity,
@@ -648,7 +659,6 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 SalesDetailGuid = entity.SalesDetailGuid,
                 OrderId = entity.OrderId,
                 ProductDetailId = entity.ProductDetailId,
-                CustomerId = entity.CustomerId??0,
                 ProductCode = entity.ProductCode,
                 ProductName = entity.ProductDetail.Product.Name,
                 Quantity = entity.Quantity,

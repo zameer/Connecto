@@ -10,12 +10,13 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
 {
     public class EntitySalesDetailDao : ISalesDetailDao
     {
-        public List<int> GetOrders(bool sold)
+        public List<Order> GetOrders(bool sold)
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                return sold ? context.SalesDetails.Select(e => e.OrderId).Distinct().ToList() 
+                var orderIds =  sold ? context.SalesDetails.Select(e => e.OrderId).Distinct().ToList() 
                             : context.SalesDetailCarts.Select(e => e.OrderId).Distinct().ToList();
+                return context.Orders.Where(e => orderIds.Contains(e.OrderId)).Select(Mapper.Map).ToList();
             }
         }
 
@@ -96,7 +97,6 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
         {
             var cart = context.SalesDetailCarts.FirstOrDefault(e => e.OrderId == salesDetailCart.OrderId && e.SalesDetailId == salesDetailCart.SalesDetailId && e.ProductCode == salesDetailCart.ProductCode);
             if (cart == null) return false;
-            cart.CustomerId = salesDetailCart.CustomerId;
             cart.Quantity = salesDetailCart.Quantity;
             cart.QuantityActual = salesDetailCart.QuantityActual;
             cart.QuantityLower = salesDetailCart.QuantityLower;
@@ -186,6 +186,8 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
             {
                 OrderGuid = Guid.NewGuid(),
                 OrderType = orderType,
+                OrderDate = item.DateSold,
+                CustomerId = item.CustomerId,
                 LocationId = item.LocationId,
                 Status = item.Status,
                 CreatedBy = item.CreatedBy,

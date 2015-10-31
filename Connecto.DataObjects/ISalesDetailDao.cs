@@ -5,7 +5,7 @@ namespace Connecto.DataObjects
 {
     public interface ISalesDetailDao
     {
-        List<int> GetOrders(bool sold);
+        List<Order> GetOrders(bool sold);
         List<SalesDetail> GetSalesDetail(string productCode);
         List<SalesDetail> GetSalesDetails(int orderId);
         List<SalesDetailCart> GetSalesDetailsCart(int orderId);

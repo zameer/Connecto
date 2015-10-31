@@ -50,7 +50,7 @@ namespace Connecto.App.Controllers
             item.SalesDetailGuid = Guid.NewGuid();
             item.CreatedBy = User.UserId();
             item.CreatedOn = DateTime.Now;
-            item.DateSold = item.DateSold;
+            item.DateSold = DateTime.Now;
             item.Status = RecordStatus.Active;
             var orderId = _repo.AddToCart(item);
             return Json(new { OrderId = orderId, Status = "Success", Message = "Cart Item Added." }, JsonRequestBehavior.AllowGet);

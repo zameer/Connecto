@@ -10,8 +10,8 @@ namespace Connecto.BusinessObjects
         public string ProductCode { get; set; }
         public string ProductName { get; set; }
         public int OrderId { get; set; }
+        public int CustomerId { get; set; }
         public int ProductDetailId { get; set; }
-        public int? CustomerId { get; set; }
         public decimal UnitPrice { get; set; }
         public decimal Price { get; set; }
         public decimal NetPrice { get; set; }
@@ -21,6 +21,5 @@ namespace Connecto.BusinessObjects
         public double DiscountAs { get; set; }
         public decimal Discount { get; set; }
         public string ReferenceCode { get; set; }
-        public virtual Customer Customer { get; set; }
     }
 }

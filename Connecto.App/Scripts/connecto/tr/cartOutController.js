@@ -1,16 +1,19 @@
 'use strict';
 /* Controllers */
 var cName = 'CartOut';
-trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
-  function ($scope, $http) {
+trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeParams',
+  function ($scope, $filter, $http) {
       $('#date-timepicker1').datetimepicker().next().on(ace.click_event, function () {
           $(this).prev().focus();
       });
+      
+      $scope.order = {};
       $scope.loadOrders = function () {
           $http.get('/' + cName + '/GetOrders/').success(function (data) {
               $scope.orders = data;
           });
       };
+      $scope.customer = {};
       $scope.loadCustomers = function () {
           $http.get('/Customer/GetAll/').success(function (data) {
               $scope.customers = data;
@@ -18,9 +21,9 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
       };
 
       $scope.loadItems = function (orderId) {
+          $scope.customer.selected = $scope.order.selected != undefined ? $scope.order.selected.Customer : null;
           if (orderId != undefined) {
               $http.get('/' + cName + '/GetCart/' + orderId).success(function (data) {
-                  $scope.item.CustomerId = data[0] != undefined ? data[0].CustomerId : 0;
                   $scope.items = data;
                   $scope.calculateGrossPrice();
               });
@@ -34,10 +37,11 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
           angular.forEach(arrItems, function (item) {
               if (item.ProductDetailId == productDetailId) {
                   setProductDetail(item);
-                  $scope.item.PrductDetailId = productDetailId;
+                  $scope.productDetail.selected = item;
               }
           });
       };
+      $scope.productDetail = {};
       $scope.filterProduct = function (item) {
           if ($scope.item.ProductCode != undefined) {
               $http.get('/' + cName + '/GetSalesDetail/?productCode=' + $scope.item.ProductCode).success(function (data) {
@@ -52,7 +56,6 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
       };
       $scope.setEditDetails = function (item) {
           $scope.filterProductSelection(item.ProductDetailId);
-          $scope.item.CustomerId = item.CustomerId;
           $scope.item.SalesDetailId = item.SalesDetailId;
           $scope.item.Quantity = item.Quantity;
           $scope.item.QuantityActual = item.QuantityActual;
@@ -65,8 +68,6 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
           $scope.item.Discount = item.Discount;
           $scope.item.DiscountAs = item.DiscountAs;
           $scope.item.NetPrice = item.NetPrice;
-          //$('#product-customer').trigger("change");
-          //$('#productDetail').trigger("change");
       };
 
       function discountBy(enumber) {
@@ -77,6 +78,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
       $scope.calculateBalance = function () { $scope.Balance = ($scope.Paid - $scope.GrossNetPrice + ($scope.Fluctuation * 1)); };
       function setProductDetail(data) {
           var orderId = $scope.item.OrderId;
+          $scope.productDetail.selected = data;
           data.DateSold = '';
           $scope.item = data;
           if ($scope.item != '') $scope.item.OrderId = orderId;
@@ -91,15 +93,15 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
           var lowerPrice = (lowerUnitPrice / $scope.item.Volume) * $scope.item.QuantityLower;
           $scope.item.Price = Math.round(unitPrice + actualPrice + lowerPrice);
           $scope.calculateDiscount();
-          
       };
+
       $scope.decideSellingPrice = function () {
           if ($scope.item.SellingMargin && $scope.item.Quantity == 0) {
               if ($scope.item.SellingPrice == $scope.item.SellingPriceActual) $scope.item.SellingPrice += $scope.item.MarginAmount;
           }
       };
       $scope.filterOrder = function (orderId) {
-          if (orderId.length > 0) $scope.loadItems(orderId);
+          if (orderId > 0) $scope.loadItems(orderId);
           else {
               $scope.items = [];
               $scope.calculateGrossPrice();
@@ -141,11 +143,13 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
           });
       };
       $scope.add = function () {
+          console.log($scope.order);
+          $scope.item.CustomerId = $scope.customer.selected == null ? null : $scope.customer.selected.CustomerId;
+          $scope.item.OrderId = $scope.order.selected == null ? null : $scope.order.selected.OrderId;
           $http.post('/' + cName + '/Create/', $scope.item).success(function (data) {
               showMessage(data);
               $scope.item.OrderId = data.OrderId != undefined && data.OrderId > 0 ? data.OrderId : $scope.item.OrderId;
               if (data.Status != "Failure") $scope.loadItems($scope.item.OrderId);
-              
           });
           
       };

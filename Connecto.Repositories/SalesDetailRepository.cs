@@ -11,7 +11,7 @@ namespace Connecto.Repositories
     public class SalesDetailRepository
     {
         private static readonly ISalesDetailDao Repo = DataAccess.SalesDetailDao;
-        public IList<int> GetOrders(bool sold)
+        public IList<Order> GetOrders(bool sold)
         {
             return Repo.GetOrders(sold);
         }

@@ -320,6 +320,10 @@
     <Content Include="Scripts\connecto\plugins\ace.touch-drag.js" />
     <Content Include="Scripts\connecto\plugins\ace.widget-box.js" />
     <Content Include="Scripts\connecto\plugins\ace.widget-on-reload.js" />
+    <Content Include="Scripts\connecto\plugins\angular-sanitize\angular-sanitize.js" />
+    <Content Include="Scripts\connecto\plugins\angular-ui-select\dist\select2.css" />
+    <Content Include="Scripts\connecto\plugins\angular-ui-select\dist\select.css" />
+    <Content Include="Scripts\connecto\plugins\angular-ui-select\dist\select.js" />
     <Content Include="Scripts\connecto\plugins\elements.aside.js" />
     <Content Include="Scripts\connecto\plugins\elements.colorpicker.js" />
     <Content Include="Scripts\connecto\plugins\elements.fileinput.js" />
