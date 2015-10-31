@@ -50,7 +50,6 @@
                             <div class="profile-info-row">
                                 <div class="profile-info-name"> Stocks </div>
                                 <div class="profile-info-value">
-<<<<<<< HEAD
                                     <ui-select ng-model="productDetail.selected" on-select="filterProductSelection($select.selected.ProductDetailId)" theme="select2" ng-disabled="disabled" style="width: 300px;" title="Choose a version">
                                         <ui-select-match allow-clear="true" placeholder="Select a version">{{$select.selected.ReceivedInfo}}
                                         </ui-select-match>
@@ -62,14 +61,6 @@
                                             </small>
                                         </ui-select-choices>
                                     </ui-select>
-=======
-                                    <span class="widget-title blue smaller">
-                                        <span >{{item.UnitPrice}}</span>
-                                    </span>
-                                    <select style="min-width:50%;" ng-show="itemz.length > 1" ng-model="item.PrductDetailId" ng-change="filterProductSelection(item.PrductDetailId)" class="select2" id="productDetail">
-                                        <option ng-repeat="e in itemz" value="{{e.ProductDetailId}}">{{e.ReceivedInfo}}</option>
-                                    </select>
->>>>>>> 7c7a7381fff98fd531298de60820b3d4af11bca7
                                 </div>
                             </div>
                             <div class="profile-info-row">
