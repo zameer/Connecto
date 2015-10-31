@@ -69,6 +69,7 @@
     <Compile Include="EntityFramework\Utility\Stock.cs" />
     <Compile Include="ICustomerDao.cs" />
     <Compile Include="IProductDao.cs" />
+    <Compile Include="IWriteoffDetailDao.cs" />
     <Compile Include="ISalesDetailDao.cs" />
     <Compile Include="IProductTypeDao.cs" />
     <Compile Include="DaoFactory.cs" />

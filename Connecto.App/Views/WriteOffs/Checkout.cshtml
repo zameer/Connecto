@@ -1,5 +1,5 @@
 ﻿@{ Layout = null; }
-<div ng-controller="WriteOffsCtrl">
+<div ng-controller="WriteOffCtrl">
     <form class="form-horizontal" role="form">
         <div class="page-header row">
             <div class="col-sm-2 no-padding-left"><h1>Write Offs </h1></div>
@@ -67,7 +67,7 @@
                                 <div class="profile-info-name"> Product Name </div>
                                 <div class="profile-info-value">
                                     <h4 class="widget-title blue smaller">
-                                        <span ng-hide="item.SellingMargin">{{item.ProductName}}</span>
+                                        <span ng-hide="item.RowStockInHand">{{item.ProductName}}</span>
                                     </h4>
 
                                 </div>
@@ -76,7 +76,7 @@
                                 <div class="profile-info-name"> Cost Price </div>
                                 <div class="profile-info-value">
                                     <h4 class="widget-title blue smaller">
-                                        <span ng-hide="item.SellingMargin">{{item.UnitPrice}}</span>
+                                        <span ng-hide="item.RowStockInHand">{{item.UnitPrice}}</span>
                                     </h4>
                                 </div>
                             </div>
