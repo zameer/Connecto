@@ -5,7 +5,7 @@ namespace Connecto.DataObjects
 {
     public interface IProductDetailDao
     {
-        List<int> GetOrders();
+        List<Order> GetOrders();
         List<ProductDetail> GetProductDetails(int orderId);
         List<ProductDetailCart> GetProductDetailsCart(int orderId);
         int AddProductDetailCart(ProductDetailCart productDetailCart);

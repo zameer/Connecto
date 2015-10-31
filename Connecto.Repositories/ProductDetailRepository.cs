@@ -10,7 +10,7 @@ namespace Connecto.Repositories
     public class ProductDetailRepository
     {
         private static readonly IProductDetailDao ProductDetailDao = DataAccess.ProductDetailDao;
-        public IList<int> GetOrders()
+        public IList<Order> GetOrders()
         {
             return ProductDetailDao.GetOrders();
         }

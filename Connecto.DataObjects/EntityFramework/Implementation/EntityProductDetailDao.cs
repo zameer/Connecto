@@ -9,11 +9,12 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
 {
     public class EntityProductDetailDao : IProductDetailDao
     {
-        public List<int> GetOrders()
+        public List<Order> GetOrders()
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                return context.ProductDetailCarts.Select(e => e.OrderId).Distinct().ToList();
+                var orderIds = context.ProductDetailCarts.Select(e => e.OrderId).Distinct().ToList();
+                return context.Orders.Where(e => orderIds.Contains(e.OrderId)).Select(Mapper.Map).ToList();
             }
         }
 

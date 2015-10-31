@@ -4,10 +4,12 @@
         <div class="page-header row">
             <div class="col-sm-2 no-padding-left"><h1>NEW CART </h1></div>
             <div class="col-sm-8">
-                <select ng-model="item.OrderId" ng-change="filterOrder(item.OrderId)" id="order" class="select2" data-placeholder="New Invoice">
-                    <option></option>
-                    <option ng-repeat="e in orders" value="{{e}}">{{e}}</option>
-                </select>
+                <ui-select ng-model="order.selected" on-select="filterOrder($select.selected.OrderId)" theme="select2" ng-disabled="disabled" style="width: 180px;" title="Choose an order">
+                    <ui-select-match allow-clear="true" placeholder="Select an order">{{$select.selected.OrderId}}</ui-select-match>
+                    <ui-select-choices repeat="e in orders">
+                        <div ng-bind="e.OrderId"></div>
+                    </ui-select-choices>
+                </ui-select>
             </div>
         </div>
 
@@ -30,10 +32,12 @@
                                 <div class="row form-group">
                                     <label class="col-sm-4 control-label">Product</label>
                                     <div class="col-sm-9">
-                                        <select ng-model="item.ProductId" ng-change="filterProduct()" id="product" class="select2" data-placeholder="Choose Product...">
-                                            <option></option>
-                                            <option ng-repeat="e in products" value="{{e.ProductId}}">{{e.Name}}</option>
-                                        </select>
+                                        <ui-select ng-model="product.selected" on-select="filterProduct()" theme="select2" ng-disabled="disabled" style="width: 180px;" title="Choose an order">
+                                            <ui-select-match allow-clear="true" placeholder="Select a product">{{$select.selected.Name}}</ui-select-match>
+                                            <ui-select-choices repeat="e in products">
+                                                <div ng-bind-html="e.Name"></div>
+                                            </ui-select-choices>
+                                        </ui-select>
                                     </div>
                                 </div>
                             </div>
@@ -41,10 +45,12 @@
                                 <div class="row form-group">
                                     <label class="col-sm-4 control-label">Supplier</label>
                                     <div class="col-sm-9">
-                                        <select ng-model="item.SupplierId" id="product-supplier" class="select2" data-placeholder="Choose Supplier...">
-                                            <option></option>
-                                            <option ng-repeat="e in suppliers" value="{{e.SupplierId}}">{{e.Person.FirstName}}</option>
-                                        </select>
+                                        <ui-select ng-model="supplier.selected" theme="select2" ng-disabled="disabled" style="width: 180px;" title="Choose an order">
+                                            <ui-select-match allow-clear="true" placeholder="Select a product">{{$select.selected.Person.FirstName}}</ui-select-match>
+                                            <ui-select-choices repeat="e in suppliers">
+                                                <div ng-bind-html="e.Person.FirstName"></div>
+                                            </ui-select-choices>
+                                        </ui-select>
                                     </div>
                                 </div>
                             </div>
@@ -235,7 +241,6 @@
 </div>
 <script type="text/javascript">
     $(function () {
-        $('.select2').select2({ allowClear: true });
         $('#menu-tr').syncMenu([{ name: "cartIn", option: "a" }]);
     });
 </script>

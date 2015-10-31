@@ -3,6 +3,7 @@
 var cName = 'CartIn';
 trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
   function ($scope, $http) {
+      $scope.order = {};
       $scope.loadOrders = function () {
           $http.get('/' + cName + '/GetOrders/').success(function (data) {
               $scope.orders = data;
@@ -15,6 +16,9 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
               });
           } else $scope.items = [];
       };
+      
+      $scope.product = {};
+      $scope.supplier = {};
       $scope.loadSelections = function () {
           $http.get('/Product/Get/').success(function (data) {
               $scope.products = data;
@@ -27,17 +31,19 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
       $scope.loadItems();
       $scope.loadSelections();
       $scope.filterProduct = function () {
-          if ($scope.item.ProductId != '') {
-              $http.get('/Product/GetItem/' + $scope.item.ProductId).success(function (data) {
+          var productId = $scope.product.selected == undefined ? undefined : $scope.product.selected.ProductId;
+          if (productId != undefined) {
+              $http.get('/Product/GetItem/' + productId).success(function (data) {
                   $scope.info = data;
               });
           } else $scope.info = [];
       };
       $scope.filterOrder = function (orderId) {
-          if (orderId.length > 0) $scope.loadItems(orderId);
+          if (orderId > 0) $scope.loadItems(orderId);
           else $scope.items = [];
       };
       $scope.add = function () {
+          $scope.item.OrderId = $scope.order.selected == null ? null : $scope.order.selected.OrderId;
           $http.post('/' + cName + '/Create/', $scope.item).success(function (data) {
               showMessage(data);
               $scope.item.OrderId = data.OrderId != undefined && data.OrderId > 0 ? data.OrderId : $scope.item.OrderId;

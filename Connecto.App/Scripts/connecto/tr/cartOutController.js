@@ -143,7 +143,6 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
           });
       };
       $scope.add = function () {
-          console.log($scope.order);
           $scope.item.CustomerId = $scope.customer.selected == null ? null : $scope.customer.selected.CustomerId;
           $scope.item.OrderId = $scope.order.selected == null ? null : $scope.order.selected.OrderId;
           $http.post('/' + cName + '/Create/', $scope.item).success(function (data) {
