@@ -1,8 +1,8 @@
 'use strict';
 /* Controllers */
 var cName = 'CartIn';
-trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
-  function ($scope, $http) {
+trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeParams',
+  function ($scope, $filter, $http) {
       $scope.order = {};
       $scope.loadOrders = function () {
           $http.get('/' + cName + '/GetOrders/').success(function (data) {
@@ -44,6 +44,8 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
       };
       $scope.add = function () {
           $scope.item.OrderId = $scope.order.selected == null ? null : $scope.order.selected.OrderId;
+          $scope.item.ProductId = $scope.product.selected == null ? null : $scope.product.selected.ProductId;
+          $scope.item.SupplierId = $scope.supplier.selected == null ? null : $scope.supplier.selected.SupplierId;
           $http.post('/' + cName + '/Create/', $scope.item).success(function (data) {
               showMessage(data);
               $scope.item.OrderId = data.OrderId != undefined && data.OrderId > 0 ? data.OrderId : $scope.item.OrderId;
@@ -51,6 +53,8 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
           });
       };
       $scope.edit = function (item) {
+          $scope.product.selected = $filter('getById')($scope.products, item.ProductId, "ProductId");
+          $scope.supplier.selected = $filter('getById')($scope.suppliers, item.SupplierId, "SupplierId");
           $scope.item = item;
           $scope.filterProduct(item);
       };

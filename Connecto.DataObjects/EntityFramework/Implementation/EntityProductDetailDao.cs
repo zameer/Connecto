@@ -59,6 +59,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
             cart.SellingPrice = productDetailCart.SellingPrice;
             cart.ProductId = productDetailCart.ProductId;
             cart.SupplierId = productDetailCart.SupplierId;
+            cart.Status = productDetailCart.Status;
             return true;
         }
         public int AddProductDetail(int invoiceId)

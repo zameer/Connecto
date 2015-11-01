@@ -23,11 +23,15 @@ trApp.filter('getById', function () {
     return function(input, id, propName) {
         var i = 0, len = input.length;
         for (; i < len; i++) {
-            if (propName == 'CustomerId') {
-                if (+input[i].CustomerId == +id) {
-                    return input[i];
-                }
-            }
+            if (propName == 'ProductId') 
+                if (+input[i].ProductId == +id) return input[i];
+            
+            if (propName == 'SupplierId') 
+                if (+input[i].SupplierId == +id) return input[i];
+            
+            if (propName == 'OrderId')
+                if (+input[i].OrderId == +id) return input[i];
+            
         }
         return null;
     };

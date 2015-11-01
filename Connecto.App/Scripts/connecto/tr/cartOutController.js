@@ -11,6 +11,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
       $scope.loadOrders = function () {
           $http.get('/' + cName + '/GetOrders/').success(function (data) {
               $scope.orders = data;
+              $scope.order.selected = $scope.item != undefined ? $filter('getById')($scope.orders, $scope.item.OrderId, "OrderId") : null;
           });
       };
       $scope.customer = {};
@@ -79,9 +80,8 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
       function setProductDetail(data) {
           var orderId = $scope.item.OrderId;
           $scope.productDetail.selected = data;
-          data.DateSold = '';
           $scope.item = data;
-          if ($scope.item != '') $scope.item.OrderId = orderId;
+          if ($scope.item != undefined) $scope.item.OrderId = orderId;
           $scope.Measure = data.Measure;
       };
 
@@ -147,6 +147,8 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
           $scope.item.OrderId = $scope.order.selected == null ? null : $scope.order.selected.OrderId;
           $http.post('/' + cName + '/Create/', $scope.item).success(function (data) {
               showMessage(data);
+              if ($scope.item.OrderId == undefined) $scope.loadOrders();
+              
               $scope.item.OrderId = data.OrderId != undefined && data.OrderId > 0 ? data.OrderId : $scope.item.OrderId;
               if (data.Status != "Failure") $scope.loadItems($scope.item.OrderId);
           });
