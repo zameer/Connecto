@@ -3,7 +3,9 @@
 var cSettingControllers = angular.module('cSettingControllers', []);
 var cSettingApp = angular.module('cSettingApp', [
   'ngRoute',
-  'cSettingControllers'
+  'cSettingControllers',
+  'ui.select',
+  'ngSanitize'
 ]);
 
 var hrControllers = angular.module('hrControllers', []);
@@ -20,7 +22,7 @@ var trApp = angular.module('trApp', [
   'ngSanitize'
 ]);
 trApp.filter('getById', function () {
-    return function(input, id, propName) {
+    return function (input, id, propName) {
         var i = 0, len = input.length;
         for (; i < len; i++) {
             if (propName == 'ProductId') 
@@ -35,3 +37,14 @@ trApp.filter('getById', function () {
         return null;
     };
 });
+cSettingApp.filter('getById', function () {
+    return function (input, id, propName) {
+        var i = 0, len = input.length;
+        for (; i < len; i++) {
+            if (propName == 'MeasureId')
+                if (+input[i].MeasureId == +id) return input[i];
+        }
+        return null;
+    };
+});
+

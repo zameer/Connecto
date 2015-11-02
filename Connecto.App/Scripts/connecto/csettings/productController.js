@@ -90,8 +90,6 @@ cSettingControllers.controller(cName + 'EditCtrl', ['$scope', '$filter','$http',
               $scope.vendors = data1;
               $http.get('/ProductType/Get/').success(function (data2) {
                   $scope.productTypes = data2;
-                  $('.select2').select2();
-                  $('.select2').css('width', '200px').select2();
                   $scope.filterProductType();
               });
           });

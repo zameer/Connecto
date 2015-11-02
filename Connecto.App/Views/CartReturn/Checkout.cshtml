@@ -4,10 +4,15 @@
         <div class="page-header row">
             <div class="col-sm-2 no-padding-left"><h1>RETURN CART </h1></div>
             <div class="col-sm-8">
-                <select ng-model="item.OrderId" ng-change="filterOrder(item.OrderId)" id="order" class="select2" data-placeholder="New Invoice">
-                    <option></option>
-                    <option ng-repeat="e in orders" value="{{e}}">{{e}}</option>
-                </select>
+                <ui-select ng-model="order.selected" on-select="filterOrder($select.selected.OrderId)" theme="select2" ng-disabled="disabled" style="width: 180px;" title="Choose an order">
+                    <ui-select-match allow-clear="true" placeholder="Select an order">{{$select.selected.OrderId}}</ui-select-match>
+                    <ui-select-choices repeat="e in orders | filter: {OrderId: $select.search}">
+                        <div ng-bind-html="''+e.OrderId | highlight: $select.search"></div>
+                        <small>
+                            <span ng-bind-html="''+e.Customer.Person.DisplayName"></span>
+                        </small>
+                    </ui-select-choices>
+                </ui-select>
             </div>
         </div>
 
@@ -292,7 +297,6 @@
 </div>
 <script type="text/javascript">
     $(function () {
-        $('.select2').select2({ allowClear: true });
         $('#menu-tr').syncMenu([{ name: "cartOut", option: "a" }]);
     });
 </script>

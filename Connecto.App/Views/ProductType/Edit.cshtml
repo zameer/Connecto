@@ -10,7 +10,13 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-top"> Measure </label>
                     <div class="col-sm-9">
-                        <select ng-model="item.MeasureId" id="product-vendor" ng-options="item.MeasureId as item.Actual for item in measures" class="select2" data-placeholder="Click to Choose..."></select>
+                        <ui-select ng-model="measure.selected" on-select="filterOrder($select.selected.OrderId)" theme="select2" ng-disabled="disabled" style="width: 180px;" title="Choose an order">
+                            <ui-select-match allow-clear="true" placeholder="Select an order">{{$select.selected.Actual}}</ui-select-match>
+                            <ui-select-choices repeat="e in measures | filter: {Actual: $select.search}">
+                                <div ng-bind-html="e.Actual | highlight: $select.search"></div>
+                                <small> {{e.Lower}} </small>
+                            </ui-select-choices>
+                        </ui-select>
                     </div>
                 </div>
                 <div class="space-6"></div>

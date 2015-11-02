@@ -1,11 +1,13 @@
 'use strict';
 /* Controllers */
 var cName = 'CartReturn';
-trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
-  function ($scope, $http) {
+trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeParams',
+  function ($scope, $filter, $http) {
+      $scope.order = {};
       $scope.loadOrders = function () {
           $http.get('/' + cName + '/GetOrders/').success(function (data) {
               $scope.orders = data;
+              $scope.order.selected = $scope.item != undefined ? $filter('getById')($scope.orders, $scope.item.OrderId, "OrderId") : null;
           });
       };
       $scope.loadItems = function (orderId) {
@@ -80,7 +82,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
           } else $scope.item.SellingPrice = $scope.item.SellingPriceActual;
       };
       $scope.filterOrder = function (orderId) {
-          if (orderId.length > 0) $scope.loadItems(orderId);
+          if (orderId > 0) $scope.loadItems(orderId);
           else {
               $scope.items = [];
               $scope.calculateGrossPrice();
@@ -122,6 +124,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
           });
       };
       $scope.add = function () {
+          $scope.item.OrderId = $scope.order.selected == null ? null : $scope.order.selected.OrderId;
           $http.post('/' + cName + '/Create/', $scope.item).success(function (data) {
               showMessage(data);
               $scope.item.OrderId = data.OrderId != undefined && data.OrderId > 0 ? data.OrderId : $scope.item.OrderId;

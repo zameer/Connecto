@@ -23,33 +23,35 @@ cSettingControllers.controller(cName + 'ListCtrl', ['$scope', '$http', '$routePa
       };
   }]);
 cSettingControllers.controller(cName + 'NewCtrl', function ($scope, $location, $http) {
+    $scope.measure = {};
     $http.get('/Measure/Get/').success(function (measures) {
         $scope.measures = measures;
     });
     $scope.add = function () {
+        $scope.item.MeasureId = $scope.measure.selected == null ? null : $scope.measure.selected.MeasureId;
         $http.post('/' + cName + '/Create/', $scope.item).success(function (data) {
             if(data.Status == "Failure")showMessage(data);
             else $location.path('/');
         });
     };
 });
-cSettingControllers.controller(cName + 'EditCtrl', ['$scope', '$http', '$location', '$routeParams',
-  function ($scope, $http, $location, $routeParams) {
+cSettingControllers.controller(cName + 'EditCtrl', ['$scope', '$filter', '$http', '$location', '$routeParams',
+  function ($scope, $filter, $http, $location, $routeParams) {
+      $scope.measure = {};
+      $http.get('/Measure/Get/').success(function (measures) {
+          $scope.measures = measures;
+      });
+      
       $http.get('/' + cName + '/GetItem/' + $routeParams.itemId).success(function (data) {
           $scope.item = data;
-          
-          $http.get('/Measure/Get/').success(function (measures) {
-              $scope.measures = measures;
-              $('.select2').select2();
-              $('.select2').css('width', '200px').select2();
-          });
+          $scope.measure.selected = $scope.item != undefined ? $filter('getById')($scope.measures, data.MeasureId, "MeasureId") : null;
       });
 
       $scope.edit = function () {
+          $scope.item.MeasureId = $scope.measure.selected == null ? null : $scope.measure.selected.MeasureId;
           $http.post('/' + cName + '/Edit/', $scope.item).success(function (data) {
               if (data.Status == "Failure") showMessage(data);
               else $location.path('/');
-              
           });
       };
   }]);
