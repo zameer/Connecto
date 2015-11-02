@@ -8,14 +8,25 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-top"> Vendor </label>
                     <div class="col-sm-9">
-                        <select ng-model="item.VendorId" id="product-vendor" ng-options="e.VendorId as e.Name for e in vendors" class="select2" data-placeholder="Click to Choose..."></select>
+                        <ui-select ng-model="vendor.selected" theme="select2" ng-disabled="disabled" style="width: 180px;">
+                            <ui-select-match allow-clear="true" placeholder="Select a vendor">{{$select.selected.Name}}</ui-select-match>
+                            <ui-select-choices repeat="e in vendors | filter: {Name: $select.search}">
+                                <div ng-bind-html="e.Name | highlight: $select.search"></div>
+                                <small> {{e.Lower}} </small>
+                            </ui-select-choices>
+                        </ui-select>
                     </div>
                 </div>
                 <div class="space-6"></div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-top"> Product Type </label>
                     <div class="col-sm-9">
-                        <select ng-model="item.ProductTypeId" id="product-type" ng-change="filterProductType()" ng-options="e.ProductTypeId as e.Type for e in productTypes" class="select2" data-placeholder="Click to Choose..."></select>
+                        <ui-select ng-model="producttype.selected" theme="select2" on-select="filterProductType()" ng-disabled="disabled" style="width: 180px;">
+                            <ui-select-match allow-clear="true" placeholder="Select a vendor">{{$select.selected.Type}}</ui-select-match>
+                            <ui-select-choices repeat="e in productTypes | filter: {Type: $select.search}">
+                                <div ng-bind-html="e.Type | highlight: $select.search"></div>
+                            </ui-select-choices>
+                        </ui-select>
                     </div>
                 </div>
                 <div class="hr hr-16 hr-dotted"></div>

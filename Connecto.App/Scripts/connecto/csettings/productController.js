@@ -58,6 +58,9 @@ cSettingControllers.controller(cName + 'ListCtrl', ['$scope', '$http', '$routePa
       };
   }]);
 cSettingControllers.controller(cName + 'NewCtrl', function ($scope, $filter, $location, $http) {
+    $scope.vendor = {};
+    $scope.producttype = {};
+
     $http.get('/Vendor/Get/').success(function (data) {
         $scope.vendors = data;
     });
@@ -65,43 +68,57 @@ cSettingControllers.controller(cName + 'NewCtrl', function ($scope, $filter, $lo
         $scope.productTypes = data;
     });
     $scope.add = function () {
+        $scope.item.VendorId = $scope.vendor.selected == null ? null : $scope.vendor.selected.VendorId;
+        $scope.item.ProductTypeId = $scope.producttype.selected == null ? null : $scope.producttype.selected.ProductTypeId;
         $http.post('/' + cName + '/Create/', $scope.item).success(function (data) {
             if(data.Status == "Failure")showMessage(data);
             else $location.path('/');
         });
     };
     $scope.filterProductType = function () {
-        var ptype = $filter('filter')($scope.productTypes, { ProductTypeId: $scope.item.ProductTypeId })[0];
+        var ptype = $filter('filter')($scope.productTypes, { ProductTypeId: $scope.producttype.selected.ProductTypeId })[0];
         if (ptype != undefined && $scope.item.SellingLower)
             $scope.ContainsQtyDesc = ptype.Measure.Actual + '(s) in a ' + ptype.StockAs;
         else $scope.ContainsQtyDesc = undefined;
     };
     $scope.filterSellingMargin = function () {
-        console.log($scope.item.SellingMargin);
         if (!$scope.item.SellingMargin)
             $scope.MarginAmount = undefined;
     };
 });
 cSettingControllers.controller(cName + 'EditCtrl', ['$scope', '$filter','$http', '$location', '$routeParams',
   function ($scope, $filter, $http, $location, $routeParams) {
-      $http.get('/' + cName + '/GetItem/' + $routeParams.itemId).success(function (data) {
-          $scope.item = data;
-          $http.get('/Vendor/Get/').success(function (data1) {
-              $scope.vendors = data1;
-              $http.get('/ProductType/Get/').success(function (data2) {
-                  $scope.productTypes = data2;
-                  $scope.filterProductType();
-              });
+      $scope.vendor = {};
+      $scope.producttype = {};
+
+      $scope.loadVendors = function (id) {
+          $http.get('/Vendor/Get/').success(function (vendors) {
+              $scope.vendors = vendors;
+              $scope.vendor.selected = $filter('filter')($scope.vendors, { VendorId: id })[0];
           });
+      };
+      $scope.loadProductTypes = function (id) {
+          $http.get('/ProductType/Get/').success(function (producttypes) {
+              $scope.productTypes = producttypes;
+              $scope.producttype.selected = $filter('filter')($scope.productTypes, { ProductTypeId: id })[0];
+              $scope.filterProductType();
+          });
+      };
+      $http.get('/' + cName + '/GetItem/' + $routeParams.itemId).success(function (product) {
+          $scope.item = product;
+          $scope.loadVendors(product.VendorId);
+          $scope.loadProductTypes(product.ProductTypeId);
       });
 
       $scope.edit = function () {
+          $scope.item.VendorId = $scope.vendor.selected == null ? null : $scope.vendor.selected.VendorId;
+          $scope.item.ProductTypeId = $scope.producttype.selected == null ? null : $scope.producttype.selected.ProductTypeId;
           $http.post('/' + cName + '/Edit/', $scope.item).success(function (data) {
               $location.path('/');
           });
       };
       $scope.filterProductType = function () {
-          var ptype = $filter('filter')($scope.productTypes, { ProductTypeId: $scope.item.ProductTypeId })[0];
+          var ptype = $filter('filter')($scope.productTypes, { ProductTypeId: $scope.producttype.selected.ProductTypeId })[0];
           if (ptype != undefined && $scope.item.SellingLower)
               $scope.ContainsQtyDesc = ptype.Measure.Actual + '(s) in a ' + ptype.StockAs;
           else $scope.ContainsQtyDesc = undefined;
