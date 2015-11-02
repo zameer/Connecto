@@ -31,7 +31,6 @@ trApp.filter('getById', function () {
             
             if (propName == 'OrderId')
                 if (+input[i].OrderId == +id) return input[i];
-            
         }
         return null;
     };

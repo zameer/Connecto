@@ -22,7 +22,6 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
       };
 
       $scope.loadItems = function (orderId) {
-          $scope.customer.selected = $scope.order.selected != undefined ? $scope.order.selected.Customer : null;
           if (orderId != undefined) {
               $http.get('/' + cName + '/GetCart/' + orderId).success(function (data) {
                   $scope.items = data;
@@ -101,6 +100,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
           }
       };
       $scope.filterOrder = function (orderId) {
+          $scope.customer.selected = $scope.order.selected != undefined ? $scope.order.selected.Customer : null;
           if (orderId > 0) $scope.loadItems(orderId);
           else {
               $scope.items = [];
@@ -145,6 +145,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
       $scope.add = function () {
           $scope.item.CustomerId = $scope.customer.selected == null ? null : $scope.customer.selected.CustomerId;
           $scope.item.OrderId = $scope.order.selected == null ? null : $scope.order.selected.OrderId;
+          $scope.item.ReferenceCode = $scope.order.selected == null ? null : $scope.order.selected.ReferenceCode;
           $http.post('/' + cName + '/Create/', $scope.item).success(function (data) {
               showMessage(data);
               if ($scope.item.OrderId == undefined) $scope.loadOrders();
@@ -167,7 +168,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
           });
       };
       $scope.complete = function () {
-          $http.post('/' + cName + '/Complete/', { id: $scope.item.OrderId, fluctuation: $scope.Fluctuation }).success(function (data) {
+          $http.post('/' + cName + '/Complete/', { id: $scope.order.selected.OrderId, fluctuation: $scope.Fluctuation }).success(function (data) {
               showMessage(data);
               if (data.Status != "Failure") {
                   $scope.loadOrders();
@@ -176,7 +177,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
           });
       };
       $scope.print = function () {
-          $http.post('/' + cName + '/Print/', { orderId: 64 }).success(function (data) {
+          $http.post('/' + cName + '/Print/', { orderId: $scope.order.selected.OrderId }).success(function (data) {
               showMessage(data);
           });
       };
