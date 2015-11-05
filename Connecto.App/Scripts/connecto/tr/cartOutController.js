@@ -148,8 +148,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
           if ($scope.order.selected != null) {
               $scope.item.OrderId = $scope.order.selected.OrderId;
               $scope.item.ReferenceCode = $scope.order.selected.ReferenceCode;
-              console.log($scope.order.selected.OrderDateDisplay);
-              $scope.item.OrderDate = $scope.order.selected.OrderDateDisplay;
+              $scope.item.DateSold = $scope.order.selected.OrderDateDisplay;
           }
       };
       $scope.add = function () {
@@ -179,6 +178,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
           $scope.setHeader();
           $http.post('/' + cName + '/EditHeader/', $scope.item).success(function (data) {
               showMessage(data);
+              $scope.loadOrders();
           });
 
       };

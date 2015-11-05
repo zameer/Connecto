@@ -221,7 +221,8 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                 order.OrderDate = salesDetailCart.DateSold;
                 order.CustomerId = salesDetailCart.CustomerId;
                 order.ReferenceCode = salesDetailCart.ReferenceCode;
-                return true;
+                order.OrderDate = salesDetailCart.DateSold;
+                return context.SaveChanges() > 0;
             }
         }
         public int DeleteSalesDetailCart(int id, int deletedBy)
