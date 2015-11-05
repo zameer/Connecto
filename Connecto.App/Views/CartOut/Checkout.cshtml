@@ -65,7 +65,7 @@
                                             <div ng-bind-html="e.ReceivedInfo | highlight: $select.search"></div>
                                             <small>
                                                 price: {{e.UnitPrice}}
-                                                selling: <span ng-bind-html="''+e.SellingPrice"></span>
+                                                selling: <span ng-bind-html="''+e.SellingPriceActual"></span>
                                             </small>
                                         </ui-select-choices>
                                     </ui-select>
@@ -76,6 +76,8 @@
                                 <div class="profile-info-value">
                                     <span class="widget-title blue smaller">
                                         <input ng-show="item.StockInHand.QuantityActual >= 0" ng-model="item.SellingPrice" class="input-sm" type="text" placeholder="Selling price">
+                                        Rs {{AveragePrice}}
+                                        <small>/Average</small>
                                     </span>
                                 </div>
                             </div>

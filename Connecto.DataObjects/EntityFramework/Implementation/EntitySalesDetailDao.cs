@@ -187,7 +187,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                 OrderGuid = Guid.NewGuid(),
                 OrderType = orderType,
                 OrderDate = item.DateSold,
-                CustomerId = item.CustomerId,
+                CustomerId = item.CustomerId == 0 ? (int?) null : item.CustomerId,
                 LocationId = item.LocationId,
                 Status = item.Status,
                 CreatedBy = item.CreatedBy,
@@ -219,7 +219,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                 var order = context.Orders.FirstOrDefault(e => e.OrderId == salesDetailCart.OrderId);
                 if (order == null) return false;
                 order.OrderDate = salesDetailCart.DateSold;
-                order.CustomerId = salesDetailCart.CustomerId;
+                order.CustomerId = salesDetailCart.CustomerId == 0 ? (int?)null : salesDetailCart.CustomerId;
                 order.ReferenceCode = salesDetailCart.ReferenceCode;
                 order.OrderDate = salesDetailCart.DateSold;
                 return context.SaveChanges() > 0;

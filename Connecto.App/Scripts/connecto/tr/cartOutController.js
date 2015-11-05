@@ -79,6 +79,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
       function setProductDetail(data) {
           var orderId = $scope.item.OrderId;
           $scope.productDetail.selected = data;
+          $scope.calculateAveragePrice();
           $scope.item = data;
           if ($scope.item != undefined) $scope.item.OrderId = orderId;
           $scope.Measure = data.Measure;
@@ -130,7 +131,6 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
       };
       $scope.calculateNetPrice = function () {
           $scope.item.NetPrice = $scope.item.Price - ($scope.item.Discount != undefined ? $scope.item.Discount : 0);
-          
       };
       
       $scope.calculateGrossPrice = function () {
@@ -141,6 +141,11 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
               $scope.GrossPrice = $scope.GrossPrice + item.Price;
               $scope.GrossDiscount = $scope.GrossDiscount + item.Discount;
           });
+      };
+      $scope.calculateAveragePrice = function () {
+          var priceSum = 0;
+          angular.forEach($scope.itemz, function (item) { priceSum = priceSum + item.SellingPriceActual;});
+          $scope.AveragePrice = (priceSum / $scope.itemz.length).toFixed(2);
       };
       $scope.setHeader = function() {
           if ($scope.item == null) $scope.item = {};
