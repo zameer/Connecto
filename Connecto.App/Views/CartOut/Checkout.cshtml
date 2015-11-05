@@ -57,7 +57,7 @@
                             <div class="profile-info-row">
                                 <div class="profile-info-name"> Stocks </div>
                                 <div class="profile-info-value">
-                                    <ui-select ng-model="productDetail.selected" on-select="filterProductSelection($select.selected.ProductDetailId)" theme="select2" ng-disabled="disabled" style="width: 300px;" title="Choose a version">
+                                    <ui-select ng-show="itemz.length > 0" ng-model="productDetail.selected" on-select="filterProductSelection($select.selected.ProductDetailId)" theme="select2" ng-disabled="disabled" style="width: 300px;" title="Choose a version">
                                         <ui-select-match allow-clear="true" placeholder="Select a version">
                                             {{$select.selected.ReceivedInfo}}
                                         </ui-select-match>
@@ -75,9 +75,11 @@
                                 <div class="profile-info-name"> Selling Price </div>
                                 <div class="profile-info-value">
                                     <span class="widget-title blue smaller">
-                                        <input ng-show="item.StockInHand.QuantityActual >= 0" ng-model="item.SellingPrice" class="input-sm" type="text" placeholder="Selling price">
-                                        Rs {{AveragePrice}}
-                                        <small>/Average</small>
+                                        <span ng-show ="item.StockInHand.QuantityActual >= 0">
+                                            <input ng-model="item.SellingPrice" class="input-sm" type="text" placeholder="Selling price">
+                                            Rs {{AveragePrice}}
+                                            <small>/Average</small>
+                                        </span>
                                     </span>
                                 </div>
                             </div>
