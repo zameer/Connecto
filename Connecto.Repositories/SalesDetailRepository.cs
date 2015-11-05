@@ -46,6 +46,10 @@ namespace Connecto.Repositories
         {
             Repo.EditSalesDetailCart(salesDetailCart);
         }
+        public bool UpdateOrder(SalesDetailCart salesDetailCart)
+        {
+            return Repo.UpdateOrder(salesDetailCart);
+        }
         public bool ReturnCart(SalesDetailCart salesDetailCart)
         {
             return Repo.ReturnCart(salesDetailCart);

@@ -212,6 +212,18 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                 return context.SaveChanges() > 0;
             }
         }
+        public bool UpdateOrder(SalesDetailCart salesDetailCart)
+        {
+            using (var context = DataObjectFactory.CreateContext())
+            {
+                var order = context.Orders.FirstOrDefault(e => e.OrderId == salesDetailCart.OrderId);
+                if (order == null) return false;
+                order.OrderDate = salesDetailCart.DateSold;
+                order.CustomerId = salesDetailCart.CustomerId;
+                order.ReferenceCode = salesDetailCart.ReferenceCode;
+                return true;
+            }
+        }
         public int DeleteSalesDetailCart(int id, int deletedBy)
         {
             using (var context = DataObjectFactory.CreateContext())
@@ -223,5 +235,6 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                 return context.SaveChanges();
             }
         }
+
     }
 }

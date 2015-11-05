@@ -55,6 +55,13 @@ namespace Connecto.App.Controllers
             var orderId = _repo.AddToCart(item);
             return Json(new { OrderId = orderId, Status = "Success", Message = "Cart Item Added." }, JsonRequestBehavior.AllowGet);
         }
+        // POST: /Transaction/Create
+        [HttpPost]
+        public JsonResult EditHeader(SalesDetailCart item)
+        {
+            _repo.UpdateOrder(item);
+            return Json(new { Status = "Success", Message = "Order successfully updated." }, JsonRequestBehavior.AllowGet);
+        }
 
         //
         // POST: /Transaction/Delete/5

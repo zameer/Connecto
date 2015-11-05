@@ -12,6 +12,7 @@ namespace Connecto.DataObjects
         List<SalesDetail> GetSoldSalesDetailsCart(int orderId);
         int AddSalesDetailCart(SalesDetailCart salesDetailCart);
         bool EditSalesDetailCart(SalesDetailCart salesDetailCart);
+        bool UpdateOrder(SalesDetailCart salesDetailCart);
         int DeleteSalesDetailCart(int id, int deletedBy);
         int AddSalesDetail(int orderId, decimal fluctuation);
         bool ReturnCart(SalesDetailCart salesDetailCart);

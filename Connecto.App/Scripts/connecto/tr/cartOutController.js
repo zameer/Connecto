@@ -142,10 +142,18 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
               $scope.GrossDiscount = $scope.GrossDiscount + item.Discount;
           });
       };
-      $scope.add = function () {
+      $scope.setHeader = function() {
+          if ($scope.item == null) $scope.item = {};
           $scope.item.CustomerId = $scope.customer.selected == null ? null : $scope.customer.selected.CustomerId;
-          $scope.item.OrderId = $scope.order.selected == null ? null : $scope.order.selected.OrderId;
-          $scope.item.ReferenceCode = $scope.order.selected == null ? null : $scope.order.selected.ReferenceCode;
+          if ($scope.order.selected != null) {
+              $scope.item.OrderId = $scope.order.selected.OrderId;
+              $scope.item.ReferenceCode = $scope.order.selected.ReferenceCode;
+              console.log($scope.order.selected.OrderDateDisplay);
+              $scope.item.OrderDate = $scope.order.selected.OrderDateDisplay;
+          }
+      };
+      $scope.add = function () {
+          $scope.setHeader();
           $http.post('/' + cName + '/Create/', $scope.item).success(function (data) {
               showMessage(data);
               if ($scope.item.OrderId == undefined) $scope.loadOrders();
@@ -166,6 +174,13 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
                   $scope.loadItems($scope.item.OrderId);
               }
           });
+      };
+      $scope.saveHeader = function () {
+          $scope.setHeader();
+          $http.post('/' + cName + '/EditHeader/', $scope.item).success(function (data) {
+              showMessage(data);
+          });
+
       };
       $scope.complete = function () {
           $http.post('/' + cName + '/Complete/', { id: $scope.order.selected.OrderId, fluctuation: $scope.Fluctuation }).success(function (data) {
