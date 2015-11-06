@@ -7,6 +7,12 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
           $(this).prev().focus();
       });
       
+      $scope.employee = {};
+      $scope.loadEmployees = function () {
+          $http.get('/Employee/GetAll/').success(function (data) {
+              $scope.employees = data;
+          });
+      };
       $scope.order = {};
       $scope.loadOrders = function () {
           $http.get('/' + cName + '/GetOrders/').success(function (data) {
@@ -29,6 +35,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
               });
           } else  $scope.items = [];
       };
+      $scope.loadEmployees();
       $scope.loadOrders();
       $scope.loadCustomers();
       $scope.loadItems();
