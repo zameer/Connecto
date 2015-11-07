@@ -94,6 +94,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                 OrderType = orderType,
                 LocationId = item.LocationId,
                 Status = item.Status,
+                OrderDate = item.DateReceived,
                 CreatedBy = item.CreatedBy,
                 CreatedOn = item.CreatedOn
             };

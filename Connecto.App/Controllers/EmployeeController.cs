@@ -22,6 +22,10 @@ namespace Connecto.App.Controllers
             var items = _repo.GetAll();
             return Json(items, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult GetLoggedEmployeeId()
+        {
+            return Json(User.UserId(), JsonRequestBehavior.AllowGet);
+        }
 
         public JsonResult GetPeople()
         {

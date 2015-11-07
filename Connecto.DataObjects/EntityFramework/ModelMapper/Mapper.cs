@@ -454,6 +454,7 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
             {
                 InvoiceId = entity.InvoiceId,
                 InvoiceGuid = entity.InvoiceGuid,
+                EmployeeId = entity.EmployeeId,
                 CustomerId = entity.CustomerId,
                 InvoiceDate = entity.InvoiceDate,
                 Fluctuation = entity.Fluctuation,
@@ -537,6 +538,7 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 SalesDetailGuid = entity.SalesDetailGuid,
                 ProductCode = entity.ProductCode,
                 InvoiceId = entity.InvoiceId,
+                EmployeeId = entity.EmployeeId,
                 ProductDetailId = entity.ProductDetailId,
                 Quantity = entity.Quantity,
                 QuantityActual = entity.QuantityActual,

@@ -33,6 +33,12 @@ trApp.filter('getById', function () {
             
             if (propName == 'OrderId')
                 if (+input[i].OrderId == +id) return input[i];
+            
+            if (propName == 'InvoiceId')
+                if (+input[i].InvoiceId == +id) return input[i];
+            
+            if (propName == 'EmployeeId')
+                if (+input[i].EmployeeId == +id) return input[i];
         }
         return null;
     };

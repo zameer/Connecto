@@ -13,6 +13,7 @@ namespace Connecto.DataObjects.EntityFramework
         public Guid SalesDetailGuid { get; set; }
         public string ProductCode { get; set; }
         public int InvoiceId { get; set; }
+        public int EmployeeId { get; set; }
         public int ProductDetailId { get; set; }
         public decimal UnitPrice { get; set; }
         public decimal SellingPrice { get; set; }

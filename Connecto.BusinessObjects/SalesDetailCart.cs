@@ -11,6 +11,7 @@ namespace Connecto.BusinessObjects
         public string ProductName { get; set; }
         public int InvoiceId { get; set; }
         public int CustomerId { get; set; }
+        public int EmployeeId { get; set; }
         public int ProductDetailId { get; set; }
         public decimal UnitPrice { get; set; }
         public decimal Price { get; set; }

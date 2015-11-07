@@ -13,11 +13,13 @@ namespace Connecto.DataObjects.EntityFramework
         public Guid ProductReturnGuid { get; set; }
         public DateTime DateReturned { get; set; }
         public int? ProductDetailId { get; set; }
+        public int EmployeeId { get; set; }
         public virtual EntityProductDetail ProductDetail { get; set; }
         public int? SalesDetailId { get; set; }
         public virtual EntitySalesDetail SalesDetail { get; set; }
         public int? ReturnReasonId { get; set; }
-        public virtual EntityReturnReason ReturnReason{ get; set; }
+        public virtual EntityReturnReason ReturnReason { get; set; }
+        public virtual EntityEmployee Employee { get; set; }
 
     }
 }

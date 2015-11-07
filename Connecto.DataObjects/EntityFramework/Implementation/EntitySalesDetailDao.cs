@@ -97,6 +97,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
         {
             var cart = context.SalesDetailCarts.FirstOrDefault(e => e.InvoiceId == salesDetailCart.InvoiceId && e.SalesDetailId == salesDetailCart.SalesDetailId && e.ProductCode == salesDetailCart.ProductCode);
             if (cart == null) return false;
+            cart.EmployeeId = salesDetailCart.EmployeeId;
             cart.Quantity = salesDetailCart.Quantity;
             cart.QuantityActual = salesDetailCart.QuantityActual;
             cart.QuantityLower = salesDetailCart.QuantityLower;
@@ -186,6 +187,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
             {
                 InvoiceGuid = Guid.NewGuid(),
                 InvoiceDate = item.DateSold,
+                EmployeeId = item.EmployeeId,
                 CustomerId = item.CustomerId == 0 ? (int?) null : item.CustomerId,
                 LocationId = item.LocationId,
                 Status = item.Status,
@@ -218,6 +220,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                 var invoice = context.Invoices.FirstOrDefault(e => e.InvoiceId == salesDetailCart.InvoiceId);
                 if (invoice == null) return false;
                 invoice.InvoiceDate = salesDetailCart.DateSold;
+                invoice.EmployeeId = salesDetailCart.EmployeeId;
                 invoice.CustomerId = salesDetailCart.CustomerId == 0 ? (int?)null : salesDetailCart.CustomerId;
                 invoice.ReferenceCode = salesDetailCart.ReferenceCode;
                 invoice.InvoiceDate = salesDetailCart.DateSold;

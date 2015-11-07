@@ -8,9 +8,16 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
       });
       
       $scope.employee = {};
+      var empId = null;
       $scope.loadEmployees = function () {
           $http.get('/Employee/GetAll/').success(function (data) {
               $scope.employees = data;
+              if ($scope.employee.selected == null) {
+                  $http.get('/Employee/GetLoggedEmployeeId/').success(function (employeeId) {
+                      empId = employeeId;
+                      $scope.employee.selected = $filter('getById')(data, employeeId, "EmployeeId");
+                  });
+              }
           });
       };
       $scope.invoice = {};
@@ -109,7 +116,6 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
       };
       $scope.filterInvoice = function (invoiceId) {
           $scope.reset();
-          $scope.customer.selected = $scope.invoice.selected != undefined ? $scope.invoice.selected.Customer : null;
           if (invoiceId > 0) $scope.loadItems(invoiceId);
           else {
               $scope.items = [];
@@ -119,6 +125,9 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
       $scope.reset = function () {
           $scope.item = {};
           $scope.itemz = [];
+          $scope.customer.selected = $scope.invoice.selected != undefined ? $scope.invoice.selected.Customer : null;
+          $scope.employee.selected = $scope.invoice.selected != undefined ? $filter('getById')($scope.employees, $scope.invoice.selected.EmployeeId, "EmployeeId")
+              : $filter('getById')($scope.employees, empId, "EmployeeId");
       };
 
       $scope.DiscountBy = 'None';
@@ -163,6 +172,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
       $scope.setHeader = function() {
           if ($scope.item == null) $scope.item = {};
           $scope.item.CustomerId = $scope.customer.selected == null ? null : $scope.customer.selected.CustomerId;
+          $scope.item.EmployeeId = $scope.employee.selected == null ? null : $scope.employee.selected.EmployeeId;
           if ($scope.invoice.selected != null) {
               $scope.item.InvoiceId = $scope.invoice.selected.InvoiceId;
               $scope.item.ReferenceCode = $scope.invoice.selected.ReferenceCode;

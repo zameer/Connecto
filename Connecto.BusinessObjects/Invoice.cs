@@ -7,6 +7,7 @@ namespace Connecto.BusinessObjects
         public int InvoiceId { get; set; }
         public Guid InvoiceGuid { get; set; }
         public int? CustomerId { get; set; }
+        public int EmployeeId { get; set; }
         public DateTime InvoiceDate { get; set; }
         public string InvoiceDateDisplay
         {
@@ -15,5 +16,6 @@ namespace Connecto.BusinessObjects
         public decimal Fluctuation { get; set; }
         public string ReferenceCode { get; set; }
         public Customer Customer { get; set; }
+        public Employee Employee { get; set; }
     }
 }

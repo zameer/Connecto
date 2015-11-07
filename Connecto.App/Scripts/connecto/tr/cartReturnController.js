@@ -7,7 +7,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
       $scope.loadInvoices = function () {
           $http.get('/' + cName + '/GetInvoices/').success(function (data) {
               $scope.invoices = data;
-              $scope.invoice.selected = $scope.item != undefined ? $filter('getById')($scope.invoices, $scope.item.InvoiceId, "InvoiceId") : null;
+              $scope.invoice.selected = $scope.item != undefined ? $filter('getById')(data, data.InvoiceId, "InvoiceId") : null;
           });
       };
       $scope.loadItems = function (invoiceId) {
