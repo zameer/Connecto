@@ -22,7 +22,7 @@ namespace Connecto.App.ModelValidator{
         public List<ConnectoException> Validate()
         {
             var errors = new List<ConnectoException>();
-            if (_item.OrderId == 0) errors.Add(new ConnectoException { Message = "Please provide Invoice No" });
+            if (_item.InvoiceId == 0) errors.Add(new ConnectoException { Message = "Please provide Invoice No" });
             return errors;
         }
         public List<ConnectoException> Validate(int id)

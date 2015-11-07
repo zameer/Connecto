@@ -49,6 +49,7 @@
     <Compile Include="Employee.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="CustomerReturn.cs" />
+    <Compile Include="Invoice.cs" />
     <Compile Include="ReportSetting.cs" />
     <Compile Include="ReturnProduct.cs" />
     <Compile Include="WriteoffDetailCart.cs" />

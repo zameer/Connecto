@@ -5,16 +5,16 @@ namespace Connecto.DataObjects
 {
     public interface ISalesDetailDao
     {
-        List<Order> GetOrders(bool sold);
+        List<Invoice> GetInvoices(bool sold);
         List<SalesDetail> GetSalesDetail(string productCode);
-        List<SalesDetail> GetSalesDetails(int orderId);
-        List<SalesDetailCart> GetSalesDetailsCart(int orderId);
-        List<SalesDetail> GetSoldSalesDetailsCart(int orderId);
+        List<SalesDetail> GetSalesDetails(int invoiceId);
+        List<SalesDetailCart> GetSalesDetailsCart(int invoiceId);
+        List<SalesDetail> GetSoldSalesDetailsCart(int invoiceId);
         int AddSalesDetailCart(SalesDetailCart salesDetailCart);
         bool EditSalesDetailCart(SalesDetailCart salesDetailCart);
-        bool UpdateOrder(SalesDetailCart salesDetailCart);
+        bool UpdateInvoice(SalesDetailCart salesDetailCart);
         int DeleteSalesDetailCart(int id, int deletedBy);
-        int AddSalesDetail(int orderId, decimal fluctuation);
+        int AddSalesDetail(int invoiceId, decimal fluctuation);
         bool ReturnCart(SalesDetailCart salesDetailCart);
     }
 }

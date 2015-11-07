@@ -39,6 +39,7 @@ namespace Connecto.DataObjects.EntityFramework
         public DbSet<EntityProductType> ProductTypes { get; set; }
         public DbSet<EntityOrder> Orders { get; set; }
         public DbSet<EntityCustomer> Customers { get; set; }
+        public DbSet<EntityInvoice> Invoices { get; set; }
         public DbSet<EntitySalesDetail> SalesDetails { get; set; }
         public DbSet<EntitySalesDetailCart> SalesDetailCarts { get; set; }
         public DbSet<EntityReportSetting> ReportSettings { get; set; }

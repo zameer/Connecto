@@ -16,7 +16,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                return context.SalesDetailCarts.Select(e => e.OrderId).Distinct().ToList();
+                return context.SalesDetailCarts.Select(e => e.InvoiceId).Distinct().ToList();
             }
         }
         public List<ProductReturn> GetProductReturnByCode(string productCode)

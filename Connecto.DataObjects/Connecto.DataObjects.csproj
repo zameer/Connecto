@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntityFramework\EntityCustomerReturn.cs" />
+    <Compile Include="EntityFramework\EntityInvoice.cs" />
     <Compile Include="EntityFramework\EntityReturnReason.cs" />
     <Compile Include="EntityFramework\EntityProductReturn.cs" />
     <Compile Include="EntityFramework\EntityReportSetting.cs" />

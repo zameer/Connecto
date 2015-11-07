@@ -23,9 +23,9 @@ namespace Connecto.App.Controllers
             var items = _repo.Get();
             return Json(items, JsonRequestBehavior.AllowGet);
         }
-        public JsonResult GetSalesDetailByOrderId(int orderId)
+        public JsonResult GetSalesDetailByInvoiceId(int invoiceId)
         {
-            var item = _repo.GetSalesDetailByOrderId(orderId);
+            var item = _repo.GetSalesDetailByInvoiceId(invoiceId);
             return Json(item, JsonRequestBehavior.AllowGet);
         }
 

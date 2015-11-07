@@ -17,14 +17,14 @@ namespace Connecto.App.Controllers
     public class CartReturnController : BaseController
     {
         private readonly SalesDetailRepository _repo = ConnectoFactory.SalesDetailRepository;
-        public JsonResult GetOrders()
+        public JsonResult GetInvoices()
         {
-            var items = _repo.GetOrders(true);
+            var items = _repo.GetInvoices(true);
             return Json(items, JsonRequestBehavior.AllowGet);
         }
-        public JsonResult Get(int orderId)
+        public JsonResult Get(int invoiceId)
         {
-            var items = _repo.GetAll(orderId);
+            var items = _repo.GetAll(invoiceId);
             return Json(items, JsonRequestBehavior.AllowGet);
         }
         public JsonResult GetSalesDetail(string productCode)
@@ -53,7 +53,7 @@ namespace Connecto.App.Controllers
             item.DateSold = DateTime.Now;
             item.Status = RecordStatus.Active;
             _repo.ReturnCart(item);
-            return Json(new { OrderId = item.OrderId, Status = "Success", Message = "Return Updated." }, JsonRequestBehavior.AllowGet);
+            return Json(new { item.InvoiceId, Status = "Success", Message = "Return Updated." }, JsonRequestBehavior.AllowGet);
         }
 
         //
@@ -71,7 +71,7 @@ namespace Connecto.App.Controllers
             return Json(new {Status = "Success", Message = "Invoice Successfully Added."}, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Print(int orderId)
+        public ActionResult Print(int invoiceId)
         {
             var path = Path.Combine(Server.MapPath("~/BusinessIntelligence/Transaction"), "SalesDetailsByOrderId.rdlc");
             if (!System.IO.File.Exists(path))

@@ -17,14 +17,14 @@ namespace Connecto.App.Controllers
     public class CartOutController : BaseController
     {
         private readonly SalesDetailRepository _repo = ConnectoFactory.SalesDetailRepository;
-        public JsonResult GetOrders()
+        public JsonResult GetInvoices()
         {
-            var items = _repo.GetOrders(false);
+            var items = _repo.GetInvoices(false);
             return Json(items, JsonRequestBehavior.AllowGet);
         }
-        public JsonResult Get(int orderId)
+        public JsonResult Get(int invoiceId)
         {
-            var items = _repo.GetAll(orderId);
+            var items = _repo.GetAll(invoiceId);
             return Json(items, JsonRequestBehavior.AllowGet);
         }
         public JsonResult GetSalesDetail(string productCode)
@@ -52,14 +52,14 @@ namespace Connecto.App.Controllers
             item.CreatedOn = DateTime.Now;
             item.DateSold = DateTime.Now;
             item.Status = RecordStatus.Active;
-            var orderId = _repo.AddToCart(item);
-            return Json(new { OrderId = orderId, Status = "Success", Message = "Cart Item Added." }, JsonRequestBehavior.AllowGet);
+            var invoiceId = _repo.AddToCart(item);
+            return Json(new { InvoiceId = invoiceId, Status = "Success", Message = "Cart Item Added." }, JsonRequestBehavior.AllowGet);
         }
         // POST: /Transaction/Create
         [HttpPost]
         public JsonResult EditHeader(SalesDetailCart item)
         {
-            _repo.UpdateOrder(item);
+            _repo.UpdateInvoice(item);
             return Json(new { Status = "Success", Message = "Order successfully updated." }, JsonRequestBehavior.AllowGet);
         }
 

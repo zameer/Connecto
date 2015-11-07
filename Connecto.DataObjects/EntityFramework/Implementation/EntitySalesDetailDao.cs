@@ -10,13 +10,13 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
 {
     public class EntitySalesDetailDao : ISalesDetailDao
     {
-        public List<Order> GetOrders(bool sold)
+        public List<Invoice> GetInvoices(bool sold)
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var orderIds =  sold ? context.SalesDetails.Select(e => e.OrderId).Distinct().ToList() 
-                            : context.SalesDetailCarts.Select(e => e.OrderId).Distinct().ToList();
-                return context.Orders.Where(e => orderIds.Contains(e.OrderId)).Select(Mapper.Map).ToList();
+                var invoiceIds = sold ? context.SalesDetails.Select(e => e.InvoiceId).Distinct().ToList()
+                            : context.SalesDetailCarts.Select(e => e.InvoiceId).Distinct().ToList();
+                return context.Invoices.Where(e => invoiceIds.Contains(e.InvoiceId)).Select(Mapper.Map).ToList();
             }
         }
 
@@ -55,27 +55,27 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                 return salesDetails;
             }
         }
-        public List<SalesDetail> GetSalesDetails(int orderId)
+        public List<SalesDetail> GetSalesDetails(int invoiceId)
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var salesDetails = context.SalesDetails.Where(e => e.OrderId == orderId && e.Status == RecordStatus.Active).ToList();
+                var salesDetails = context.SalesDetails.Where(e => e.InvoiceId == invoiceId && e.Status == RecordStatus.Active).ToList();
                 return salesDetails.Select(Mapper.Map).ToList();
             }
         }
-        public List<SalesDetailCart> GetSalesDetailsCart(int orderId)
+        public List<SalesDetailCart> GetSalesDetailsCart(int invoiceId)
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var salesDetailsCart = context.SalesDetailCarts.Where(e => e.OrderId == orderId && e.Status == RecordStatus.Active).ToList();
+                var salesDetailsCart = context.SalesDetailCarts.Where(e => e.InvoiceId == invoiceId && e.Status == RecordStatus.Active).ToList();
                 return salesDetailsCart.Select(Mapper.Map).ToList();
             }
         }
-        public List<SalesDetail> GetSoldSalesDetailsCart(int orderId)
+        public List<SalesDetail> GetSoldSalesDetailsCart(int invoiceId)
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var salesDetails = context.SalesDetails.Where(e => e.OrderId == orderId && e.Status == RecordStatus.Active).ToList();
+                var salesDetails = context.SalesDetails.Where(e => e.InvoiceId == invoiceId && e.Status == RecordStatus.Active).ToList();
                 return salesDetails.Select(Mapper.Map).ToList();
             }
         }
@@ -85,17 +85,17 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
             using (var context = DataObjectFactory.CreateContext())
             {
                 var entity = Mapper.Map(salesDetailCart);
-                if (salesDetailCart.OrderId.Equals(0))
-                    entity.OrderId = AddOrder(context, OrderType.Buying, salesDetailCart);
+                if (salesDetailCart.InvoiceId.Equals(0))
+                    entity.InvoiceId = AddInvoice(context, salesDetailCart);
 
                 if (!UpdateSalesDetailCart(salesDetailCart, context)) context.SalesDetailCarts.Add(entity);
                 context.SaveChanges();
-                return entity.OrderId;
+                return entity.InvoiceId;
             }
         }
         private bool UpdateSalesDetailCart(SalesDetailCart salesDetailCart, ConnectoManagerEntities context)
         {
-            var cart = context.SalesDetailCarts.FirstOrDefault(e => e.OrderId == salesDetailCart.OrderId && e.SalesDetailId == salesDetailCart.SalesDetailId && e.ProductCode == salesDetailCart.ProductCode);
+            var cart = context.SalesDetailCarts.FirstOrDefault(e => e.InvoiceId == salesDetailCart.InvoiceId && e.SalesDetailId == salesDetailCart.SalesDetailId && e.ProductCode == salesDetailCart.ProductCode);
             if (cart == null) return false;
             cart.Quantity = salesDetailCart.Quantity;
             cart.QuantityActual = salesDetailCart.QuantityActual;
@@ -113,7 +113,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var salesDetailsCart = context.SalesDetailCarts.Where(e => e.OrderId == invoiceId && e.Status == RecordStatus.Active).ToList();
+                var salesDetailsCart = context.SalesDetailCarts.Where(e => e.InvoiceId == invoiceId && e.Status == RecordStatus.Active).ToList();
                 var cartsToRemove = new List<EntitySalesDetailCart>();
                 foreach (var item in salesDetailsCart)
                 {
@@ -180,13 +180,12 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
             }
         }
 
-        internal int AddOrder(ConnectoManagerEntities context, OrderType orderType, SalesDetailCart item)
+        internal int AddInvoice(ConnectoManagerEntities context, SalesDetailCart item)
         {
-            var entity = new EntityOrder
+            var entity = new EntityInvoice
             {
-                OrderGuid = Guid.NewGuid(),
-                OrderType = orderType,
-                OrderDate = item.DateSold,
+                InvoiceGuid = Guid.NewGuid(),
+                InvoiceDate = item.DateSold,
                 CustomerId = item.CustomerId == 0 ? (int?) null : item.CustomerId,
                 LocationId = item.LocationId,
                 Status = item.Status,
@@ -194,9 +193,9 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                 CreatedOn = item.CreatedOn,
                 ReferenceCode = item.ReferenceCode,
             };
-            context.Orders.Add(entity);
+            context.Invoices.Add(entity);
             context.SaveChanges();
-            return entity.OrderId;
+            return entity.InvoiceId;
         }
         public bool EditSalesDetailCart(SalesDetailCart cart)
         {
@@ -212,16 +211,16 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                 return context.SaveChanges() > 0;
             }
         }
-        public bool UpdateOrder(SalesDetailCart salesDetailCart)
+        public bool UpdateInvoice(SalesDetailCart salesDetailCart)
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var order = context.Orders.FirstOrDefault(e => e.OrderId == salesDetailCart.OrderId);
-                if (order == null) return false;
-                order.OrderDate = salesDetailCart.DateSold;
-                order.CustomerId = salesDetailCart.CustomerId == 0 ? (int?)null : salesDetailCart.CustomerId;
-                order.ReferenceCode = salesDetailCart.ReferenceCode;
-                order.OrderDate = salesDetailCart.DateSold;
+                var invoice = context.Invoices.FirstOrDefault(e => e.InvoiceId == salesDetailCart.InvoiceId);
+                if (invoice == null) return false;
+                invoice.InvoiceDate = salesDetailCart.DateSold;
+                invoice.CustomerId = salesDetailCart.CustomerId == 0 ? (int?)null : salesDetailCart.CustomerId;
+                invoice.ReferenceCode = salesDetailCart.ReferenceCode;
+                invoice.InvoiceDate = salesDetailCart.DateSold;
                 return context.SaveChanges() > 0;
             }
         }

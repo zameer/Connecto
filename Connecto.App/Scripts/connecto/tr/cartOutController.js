@@ -13,11 +13,11 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
               $scope.employees = data;
           });
       };
-      $scope.order = {};
-      $scope.loadOrders = function () {
-          $http.get('/' + cName + '/GetOrders/').success(function (data) {
-              $scope.orders = data;
-              $scope.order.selected = $scope.item != undefined ? $filter('getById')($scope.orders, $scope.item.OrderId, "OrderId") : null;
+      $scope.invoice = {};
+      $scope.loadInvoices = function () {
+          $http.get('/' + cName + '/GetInvoices/').success(function (data) {
+              $scope.invoices = data;
+              $scope.invoice.selected = $scope.item != undefined ? $filter('getById')($scope.invoices, $scope.item.InvoiceId, "InvoiceId") : null;
           });
       };
       $scope.customer = {};
@@ -27,16 +27,16 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
           });
       };
 
-      $scope.loadItems = function (orderId) {
-          if (orderId != undefined) {
-              $http.get('/' + cName + '/GetCart/' + orderId).success(function (data) {
+      $scope.loadItems = function (invoiceId) {
+          if (invoiceId != undefined) {
+              $http.get('/' + cName + '/GetCart/' + invoiceId).success(function (data) {
                   $scope.items = data;
                   $scope.calculateGrossPrice();
               });
           } else  $scope.items = [];
       };
       $scope.loadEmployees();
-      $scope.loadOrders();
+      $scope.loadInvoices();
       $scope.loadCustomers();
       $scope.loadItems();
       $scope.filterProductSelection = function (productDetailId) {
@@ -84,11 +84,11 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
       }
       $scope.calculateBalance = function () { $scope.Balance = ($scope.Paid - $scope.GrossNetPrice + ($scope.Fluctuation * 1)); };
       function setProductDetail(data) {
-          var orderId = $scope.item.OrderId;
+          var invoiceId = $scope.item.InvoiceId;
           $scope.productDetail.selected = data;
           $scope.calculateAveragePrice();
           $scope.item = data;
-          if ($scope.item != undefined) $scope.item.OrderId = orderId;
+          if ($scope.item != undefined) $scope.item.InvoiceId = invoiceId;
           $scope.Measure = data.Measure;
       };
 
@@ -107,10 +107,10 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
               if ($scope.item.SellingPrice == $scope.item.SellingPriceActual) $scope.item.SellingPrice += $scope.item.MarginAmount;
           }
       };
-      $scope.filterOrder = function (orderId) {
+      $scope.filterInvoice = function (invoiceId) {
           $scope.reset();
-          $scope.customer.selected = $scope.order.selected != undefined ? $scope.order.selected.Customer : null;
-          if (orderId > 0) $scope.loadItems(orderId);
+          $scope.customer.selected = $scope.invoice.selected != undefined ? $scope.invoice.selected.Customer : null;
+          if (invoiceId > 0) $scope.loadItems(invoiceId);
           else {
               $scope.items = [];
               $scope.calculateGrossPrice();
@@ -163,21 +163,21 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
       $scope.setHeader = function() {
           if ($scope.item == null) $scope.item = {};
           $scope.item.CustomerId = $scope.customer.selected == null ? null : $scope.customer.selected.CustomerId;
-          if ($scope.order.selected != null) {
-              $scope.item.OrderId = $scope.order.selected.OrderId;
-              $scope.item.ReferenceCode = $scope.order.selected.ReferenceCode;
-              $scope.item.DateSold = $scope.order.selected.OrderDateDisplay;
+          if ($scope.invoice.selected != null) {
+              $scope.item.InvoiceId = $scope.invoice.selected.InvoiceId;
+              $scope.item.ReferenceCode = $scope.invoice.selected.ReferenceCode;
+              $scope.item.DateSold = $scope.invoice.selected.InvoiceDateDisplay;
           }
       };
       $scope.add = function () {
           $scope.setHeader();
           $http.post('/' + cName + '/Create/', $scope.item).success(function (data) {
               showMessage(data);
-              if ($scope.item.OrderId == undefined) $scope.loadOrders();
+              if ($scope.item.InvoiceId == undefined) $scope.loadInvoices();
 
               $scope.reset();
-              $scope.item.OrderId = data.OrderId != undefined && data.OrderId > 0 ? data.OrderId : $scope.item.OrderId;
-              if (data.Status != "Failure") $scope.loadItems($scope.item.OrderId);
+              $scope.item.InvoiceId = data.InvoiceId != undefined && data.InvoiceId > 0 ? data.InvoiceId : $scope.item.InvoiceId;
+              if (data.Status != "Failure") $scope.loadItems($scope.item.InvoiceId);
           });
           
       };
@@ -189,7 +189,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
           $http.post('/' + cName + '/Delete/', { id: salesDetailId }).success(function (data) {
               showMessage(data);
               if (data.Status != "Failure") {
-                  $scope.loadItems($scope.item.OrderId);
+                  $scope.loadItems($scope.item.InvoiceId);
               }
           });
       };
@@ -197,21 +197,20 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
           $scope.setHeader();
           $http.post('/' + cName + '/EditHeader/', $scope.item).success(function (data) {
               showMessage(data);
-              $scope.loadOrders();
           });
 
       };
       $scope.complete = function () {
-          $http.post('/' + cName + '/Complete/', { id: $scope.order.selected.OrderId, fluctuation: $scope.Fluctuation }).success(function (data) {
+          $http.post('/' + cName + '/Complete/', { id: $scope.invoice.selected.InvoiceId, fluctuation: $scope.Fluctuation }).success(function (data) {
               showMessage(data);
               if (data.Status != "Failure") {
-                  $scope.loadOrders();
+                  $scope.loadInvoices();
                   $scope.loadItems();
               }
           });
       };
       $scope.print = function () {
-          $http.post('/' + cName + '/Print/', { orderId: $scope.order.selected.OrderId }).success(function (data) {
+          $http.post('/' + cName + '/Print/', { invoiceId: $scope.invoice.selected.InvoiceId }).success(function (data) {
               showMessage(data);
           });
       };

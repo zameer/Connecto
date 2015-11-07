@@ -445,6 +445,19 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 Customer = entity.Customer != null ? Map(entity.Customer) : null
             };
         }
+        internal static Invoice Map(EntityInvoice entity)
+        {
+            return new Invoice
+            {
+                InvoiceId = entity.InvoiceId,
+                InvoiceGuid = entity.InvoiceGuid,
+                CustomerId = entity.CustomerId,
+                InvoiceDate = entity.InvoiceDate,
+                Fluctuation = entity.Fluctuation,
+                ReferenceCode = entity.ReferenceCode,
+                Customer = entity.Customer != null ? Map(entity.Customer) : null
+            };
+        }
         internal static ProductDetail Map(EntityProductDetail entity)
         {
             return new ProductDetail
@@ -520,7 +533,7 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 SalesDetailId = entity.SalesDetailId,
                 SalesDetailGuid = entity.SalesDetailGuid,
                 ProductCode = entity.ProductCode,
-                OrderId = entity.OrderId,
+                InvoiceId = entity.InvoiceId,
                 ProductDetailId = entity.ProductDetailId,
                 Quantity = entity.Quantity,
                 QuantityActual = entity.QuantityActual,
@@ -597,7 +610,7 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
             {
                 SalesDetailId = entity.SalesDetailId,
                 SalesDetailGuid = entity.SalesDetailGuid,
-                OrderId = entity.OrderId,
+                InvoiceId = entity.InvoiceId,
                 ProductDetailId = entity.ProductDetailId,
                 ProductCode = entity.ProductCode,
                 Quantity = entity.Quantity,
@@ -626,7 +639,7 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
             {
                 SalesDetailId = entity.SalesDetailId,
                 SalesDetailGuid = entity.SalesDetailGuid,
-                OrderId = entity.OrderId,
+                InvoiceId = entity.InvoiceId,
                 ProductDetailId = entity.ProductDetailId,
                 ProductCode = entity.ProductCode,
                 ProductName = product.Name,
@@ -657,7 +670,7 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
             {
                 SalesDetailId = entity.SalesDetailId,
                 SalesDetailGuid = entity.SalesDetailGuid,
-                OrderId = entity.OrderId,
+                InvoiceId = entity.InvoiceId,
                 ProductDetailId = entity.ProductDetailId,
                 ProductCode = entity.ProductCode,
                 ProductName = entity.ProductDetail.Product.Name,

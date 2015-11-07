@@ -4,10 +4,10 @@
         <div class="page-header row">
             <div class="col-sm-2 no-padding-left"><h1>RETURN CART </h1></div>
             <div class="col-sm-8">
-                <ui-select ng-model="order.selected" on-select="filterOrder($select.selected.OrderId)" theme="select2" ng-disabled="disabled" style="width: 180px;" title="Choose an order">
-                    <ui-select-match allow-clear="true" placeholder="Select an order">{{$select.selected.OrderId}}</ui-select-match>
-                    <ui-select-choices repeat="e in orders | filter: {OrderId: $select.search}">
-                        <div ng-bind-html="''+e.OrderId | highlight: $select.search"></div>
+                <ui-select ng-model="invoice.selected" on-select="filterInvoice($select.selected.InvoiceId)" theme="select2" ng-disabled="disabled" style="width: 180px;" title="Choose an invoice">
+                    <ui-select-match allow-clear="true" placeholder="Select an invoice">{{$select.selected.InvoiceId}}</ui-select-match>
+                    <ui-select-choices repeat="e in invoices | filter: {InvoiceId: $select.search}">
+                        <div ng-bind-html="''+e.InvoiceId | highlight: $select.search"></div>
                         <small>
                             <span ng-bind-html="''+e.Customer.Person.DisplayName"></span>
                         </small>
@@ -150,7 +150,7 @@
                     </div><!-- /.col -->
 
                     <div class="col-sm-5" ng-show="GrossNetPrice > 0">
-                        <span>Invoice # {{item.OrderId}}</span>
+                        <span>Invoice # {{item.InvoiceId}}</span>
 
                         <div class="profile-user-info profile-user-info-striped no-margin">
                             <div class="profile-info-row">

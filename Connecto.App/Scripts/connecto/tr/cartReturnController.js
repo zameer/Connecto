@@ -3,22 +3,22 @@
 var cName = 'CartReturn';
 trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeParams',
   function ($scope, $filter, $http) {
-      $scope.order = {};
-      $scope.loadOrders = function () {
-          $http.get('/' + cName + '/GetOrders/').success(function (data) {
-              $scope.orders = data;
-              $scope.order.selected = $scope.item != undefined ? $filter('getById')($scope.orders, $scope.item.OrderId, "OrderId") : null;
+      $scope.invoice = {};
+      $scope.loadInvoices = function () {
+          $http.get('/' + cName + '/GetInvoices/').success(function (data) {
+              $scope.invoices = data;
+              $scope.invoice.selected = $scope.item != undefined ? $filter('getById')($scope.invoices, $scope.item.InvoiceId, "InvoiceId") : null;
           });
       };
-      $scope.loadItems = function (orderId) {
-          if (orderId != undefined) {
-              $http.get('/' + cName + '/GetCart/' + orderId).success(function(data) {
+      $scope.loadItems = function (invoiceId) {
+          if (invoiceId != undefined) {
+              $http.get('/' + cName + '/GetCart/' + invoiceId).success(function (data) {
                   $scope.items = data;
                   $scope.calculateGrossPrice();
               });
           } else  $scope.items = [];
       };
-      $scope.loadOrders();
+      $scope.loadInvoices();
       $scope.loadItems();
       $scope.filterProductSelection = function (productDetailId) {
           var arrItems = $scope.itemz;
@@ -60,9 +60,9 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
       }
       $scope.calculateBalance = function () { $scope.Balance = ($scope.Paid - $scope.GrossNetPrice + ($scope.Fluctuation * 1)); };
       function setProductDetail(data) {
-          var orderId = $scope.item.OrderId;
+          var invoiceId = $scope.item.InvoiceId;
           $scope.item = data;
-          if ($scope.item != '') $scope.item.OrderId = orderId;
+          if ($scope.item != '') $scope.item.InvoiceId = invoiceId;
           $scope.Measure = data.Measure;
       };
 
@@ -81,8 +81,8 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
               if ($scope.item.SellingPrice == $scope.item.SellingPriceActual) $scope.item.SellingPrice += $scope.item.MarginAmount;
           } else $scope.item.SellingPrice = $scope.item.SellingPriceActual;
       };
-      $scope.filterOrder = function (orderId) {
-          if (orderId > 0) $scope.loadItems(orderId);
+      $scope.filterInvoice = function (invoiceId) {
+          if (invoiceId > 0) $scope.loadItems(invoiceId);
           else {
               $scope.items = [];
               $scope.calculateGrossPrice();
@@ -124,11 +124,11 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
           });
       };
       $scope.add = function () {
-          $scope.item.OrderId = $scope.order.selected == null ? null : $scope.order.selected.OrderId;
+          $scope.item.InvoiceId = $scope.invoice.selected == null ? null : $scope.invoice.selected.InvoiceId;
           $http.post('/' + cName + '/Create/', $scope.item).success(function (data) {
               showMessage(data);
-              $scope.item.OrderId = data.OrderId != undefined && data.OrderId > 0 ? data.OrderId : $scope.item.OrderId;
-              if (data.Status != "Failure") $scope.loadItems($scope.item.OrderId);
+              $scope.item.InvoiceId = data.InvoiceId != undefined && data.InvoiceId > 0 ? data.InvoiceId : $scope.item.InvoiceId;
+              if (data.Status != "Failure") $scope.loadItems($scope.item.InvoiceId);
               
           });
           
@@ -141,21 +141,21 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
           $http.post('/' + cName + '/Delete/', { id: salesDetailId }).success(function (data) {
               showMessage(data);
               if (data.Status != "Failure") {
-                  $scope.loadItems($scope.item.OrderId);
+                  $scope.loadItems($scope.item.InvoiceId);
               }
           });
       };
       $scope.complete = function () {
-          $http.post('/' + cName + '/Complete/', { id: $scope.item.OrderId, fluctuation: $scope.Fluctuation }).success(function (data) {
+          $http.post('/' + cName + '/Complete/', { id: $scope.item.InvoiceId, fluctuation: $scope.Fluctuation }).success(function (data) {
               showMessage(data);
               if (data.Status != "Failure") {
-                  $scope.loadOrders();
+                  $scope.loadInvoices();
                   $scope.loadItems();
               }
           });
       };
       $scope.print = function () {
-          $http.post('/' + cName + '/Print/', { orderId: 64 }).success(function (data) {
+          $http.post('/' + cName + '/Print/', { invoiceId: 64 }).success(function (data) {
               showMessage(data);
           });
       };

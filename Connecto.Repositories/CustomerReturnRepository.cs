@@ -16,9 +16,9 @@ namespace Connecto.Repositories
         {
             return CustomerReturnDao.Get();
         }
-        public List<SalesDetail> GetSalesDetailByOrderId(int orderId)
+        public List<SalesDetail> GetSalesDetailByInvoiceId(int invoiceId)
         {
-            return CustomerReturnDao.GetSalesDetailByOrderId(orderId);
+            return CustomerReturnDao.GetSalesDetailByInvoiceId(invoiceId);
         }
         public int ReturnProduct(ReturnProduct returnProduct)
         {

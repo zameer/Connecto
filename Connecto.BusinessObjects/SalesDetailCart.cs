@@ -9,7 +9,7 @@ namespace Connecto.BusinessObjects
         public Guid SalesDetailGuid { get; set; }
         public string ProductCode { get; set; }
         public string ProductName { get; set; }
-        public int OrderId { get; set; }
+        public int InvoiceId { get; set; }
         public int CustomerId { get; set; }
         public int ProductDetailId { get; set; }
         public decimal UnitPrice { get; set; }

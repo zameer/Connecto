@@ -17,9 +17,9 @@ namespace Connecto.App.Controllers
     public class WriteOffsController : BaseController
     {
         private readonly SalesDetailRepository _repo = ConnectoFactory.SalesDetailRepository;
-        public JsonResult GetOrders()
+        public JsonResult GetInvoices()
         {
-            var items = _repo.GetOrders(false);
+            var items = _repo.GetInvoices(false);
             return Json(items, JsonRequestBehavior.AllowGet);
         }
         public JsonResult Get(int orderId)

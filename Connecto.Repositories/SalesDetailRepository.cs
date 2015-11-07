@@ -11,17 +11,17 @@ namespace Connecto.Repositories
     public class SalesDetailRepository
     {
         private static readonly ISalesDetailDao Repo = DataAccess.SalesDetailDao;
-        public IList<Order> GetOrders(bool sold)
+        public IList<Invoice> GetInvoices(bool sold)
         {
-            return Repo.GetOrders(sold);
+            return Repo.GetInvoices(sold);
         }
         public List<SalesDetail> GetSalesDetail(string productCode)
         {
             return Repo.GetSalesDetail(productCode);
         }
-        public IList<SalesDetail> GetAll(int orderId)
+        public IList<SalesDetail> GetAll(int invoiceId)
         {
-            return Repo.GetSalesDetails(orderId);
+            return Repo.GetSalesDetails(invoiceId);
         }
 
         public IList<SalesDetailCart> GetCart(int orderId)
@@ -29,26 +29,26 @@ namespace Connecto.Repositories
             return Repo.GetSalesDetailsCart(orderId);
         }
 
-        public IList<SalesDetail> GetSoldCart(int orderId)
+        public IList<SalesDetail> GetSoldCart(int invoiceId)
         {
-            return Repo.GetSoldSalesDetailsCart(orderId);
+            return Repo.GetSoldSalesDetailsCart(invoiceId);
         }
 
         public int AddToCart(SalesDetailCart salesDetailCart)
         {
             return Repo.AddSalesDetailCart(salesDetailCart);
         }
-        public int Add(int orderId, decimal fluctuation)
+        public int Add(int invoiceId, decimal fluctuation)
         {
-            return Repo.AddSalesDetail(orderId, fluctuation);
+            return Repo.AddSalesDetail(invoiceId, fluctuation);
         }
         public void EditCart(SalesDetailCart salesDetailCart)
         {
             Repo.EditSalesDetailCart(salesDetailCart);
         }
-        public bool UpdateOrder(SalesDetailCart salesDetailCart)
+        public bool UpdateInvoice(SalesDetailCart salesDetailCart)
         {
-            return Repo.UpdateOrder(salesDetailCart);
+            return Repo.UpdateInvoice(salesDetailCart);
         }
         public bool ReturnCart(SalesDetailCart salesDetailCart)
         {

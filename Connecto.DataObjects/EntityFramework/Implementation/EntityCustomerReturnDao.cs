@@ -20,12 +20,12 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                 return context.CustomerReturns.Select(e => e.CustomerReturnId).Distinct().ToList();
             }
         }
-        public List<SalesDetail> GetSalesDetailByOrderId(int orderId)
+        public List<SalesDetail> GetSalesDetailByInvoiceId(int invoiceId)
         {
             var productReturns = new List<SalesDetail>();
             using (var context = DataObjectFactory.CreateContext())
             {
-                var salesDetails = context.SalesDetails.Where(e => e.OrderId.Equals(orderId));
+                var salesDetails = context.SalesDetails.Where(e => e.InvoiceId.Equals(invoiceId));
                 foreach (var salesDetail in salesDetails)
                 {
                     var product = salesDetail.ProductDetail.Product;
@@ -114,7 +114,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                return context.SalesDetails.Any(s => s.OrderId == id && s.Status == RecordStatus.Active);
+                return context.SalesDetails.Any(s => s.InvoiceId == id && s.Status == RecordStatus.Active);
             }
         }
 
