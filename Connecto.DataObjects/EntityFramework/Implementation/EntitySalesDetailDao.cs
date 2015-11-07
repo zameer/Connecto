@@ -84,7 +84,11 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
         {
             using (var context = DataObjectFactory.CreateContext())
             {
+                salesDetailCart.SalesDetailGuid = Guid.NewGuid();
+                salesDetailCart.CreatedOn = DateTime.Now;
+                salesDetailCart.Status = RecordStatus.Active;
                 var entity = Mapper.Map(salesDetailCart);
+
                 if (salesDetailCart.InvoiceId.Equals(0))
                     entity.InvoiceId = AddInvoice(context, salesDetailCart);
 

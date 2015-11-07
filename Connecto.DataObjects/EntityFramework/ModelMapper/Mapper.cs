@@ -616,6 +616,7 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 SalesDetailId = entity.SalesDetailId,
                 SalesDetailGuid = entity.SalesDetailGuid,
                 InvoiceId = entity.InvoiceId,
+                EmployeeId = entity.EmployeeId,
                 ProductDetailId = entity.ProductDetailId,
                 ProductCode = entity.ProductCode,
                 Quantity = entity.Quantity,

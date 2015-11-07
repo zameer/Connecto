@@ -47,11 +47,8 @@ namespace Connecto.App.Controllers
             if (errors.Count > 0) return Json(new ConnectoValidation { Status = "Failure", Exceptions = errors }, JsonRequestBehavior.AllowGet);
 
             item.LocationId = User.LocationId();
-            item.SalesDetailGuid = Guid.NewGuid();
             item.CreatedBy = User.UserId();
-            item.CreatedOn = DateTime.Now;
-            item.DateSold = DateTime.Now;
-            item.Status = RecordStatus.Active;
+            item.DateSold = item.DateSold.Year == 1 ? DateTime.Now : item.DateSold;
             var invoiceId = _repo.AddToCart(item);
             return Json(new { InvoiceId = invoiceId, Status = "Success", Message = "Cart Item Added." }, JsonRequestBehavior.AllowGet);
         }
