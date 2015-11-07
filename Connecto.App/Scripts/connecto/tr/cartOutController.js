@@ -6,17 +6,17 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
       $('#date-timepicker1').datetimepicker().next().on(ace.click_event, function () {
           $(this).prev().focus();
       });
-      
+      $scope.starter = {};
+      $http.get('/Home/GetStarter/').success(function (data) {
+          $scope.starter = data;
+      });
+
       $scope.employee = {};
-      var empId = null;
       $scope.loadEmployees = function () {
           $http.get('/Employee/GetAll/').success(function (data) {
               $scope.employees = data;
               if ($scope.employee.selected == null) {
-                  $http.get('/Employee/GetLoggedEmployeeId/').success(function (employeeId) {
-                      empId = employeeId;
-                      $scope.employee.selected = $filter('getById')(data, employeeId, "EmployeeId");
-                  });
+                  $scope.employee.selected = $filter('getById')(data, $scope.starter.EmployeeId, "EmployeeId");
               }
           });
       };
@@ -127,7 +127,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
           $scope.itemz = [];
           $scope.customer.selected = $scope.invoice.selected != undefined ? $scope.invoice.selected.Customer : null;
           $scope.employee.selected = $scope.invoice.selected != undefined ? $filter('getById')($scope.employees, $scope.invoice.selected.EmployeeId, "EmployeeId")
-              : $filter('getById')($scope.employees, empId, "EmployeeId");
+              : $filter('getById')($scope.employees, $scope.starter.EmployeeId, "EmployeeId");
       };
 
       $scope.DiscountBy = 'None';

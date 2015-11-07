@@ -4,11 +4,22 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Connecto.App.Models;
+using Connecto.BusinessObjects;
 
 namespace Connecto.App.Controllers
 {
     public class HomeController : BaseController
     {
+        public JsonResult GetStarter()
+        {
+            var starter = new Starter
+            {
+                EmployeeId = User.UserId(),
+                Todate = string.Format("{0:g}", DateTime.Now)
+            };
+            return Json(starter, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult Index()
         {
             return View();
