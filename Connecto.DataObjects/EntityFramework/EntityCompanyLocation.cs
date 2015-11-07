@@ -1,11 +1,12 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Connecto.Common.Enumeration;
 
 namespace Connecto.DataObjects.EntityFramework
 {
     [Table("CompanyLocation", Schema = "Connecto")]
-    public class EntityCompanyLocation : EntityConnecto
+    public class EntityCompanyLocation 
     {
         [Key]
         public int CompanyLocationId { get; set; }
@@ -22,6 +23,11 @@ namespace Connecto.DataObjects.EntityFramework
         public int? CompanyId { get; set; }
         public int? CurrencyTypeId { get; set; }
         public string CompanyLogo { get; set; }
+        public RecordStatus Status { get; set; }
+        public int CreatedBy { get; set; }
+        public DateTime CreatedOn { get; set; }
+        public int? EditedBy { get; set; }
+        public DateTime? EditedOn { get; set; }
         public virtual EntityCompany Company { get; set; }
     }
 }

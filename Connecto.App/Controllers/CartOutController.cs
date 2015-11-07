@@ -46,7 +46,7 @@ namespace Connecto.App.Controllers
             var errors = new SalesDetailValidator(item, _repo).Validate();
             if (errors.Count > 0) return Json(new ConnectoValidation { Status = "Failure", Exceptions = errors }, JsonRequestBehavior.AllowGet);
 
-            item.LocationId = 1;
+            item.LocationId = User.LocationId();
             item.SalesDetailGuid = Guid.NewGuid();
             item.CreatedBy = User.UserId();
             item.CreatedOn = DateTime.Now;

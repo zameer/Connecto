@@ -43,5 +43,16 @@ namespace Connecto.App.Models
             }
             return 0;
         }
+        public static int LocationId(this IPrincipal user)
+        {
+            if (!user.Identity.IsAuthenticated) return 0;
+            var claimsIdentity = user.Identity as ClaimsIdentity;
+            foreach (var claim in claimsIdentity.Claims)
+            {
+                if (claim.Type == "LocationId")
+                    return int.Parse(claim.Value);
+            }
+            return 0;
+        }
     }
 }

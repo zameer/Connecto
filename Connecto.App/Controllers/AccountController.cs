@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Connecto.Repositories;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
@@ -16,6 +17,7 @@ namespace Connecto.App.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        private readonly CompanyRepository _company = ConnectoFactory.CompanyRepository;
         public AccountController()
             : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
         {
@@ -64,13 +66,16 @@ namespace Connecto.App.Controllers
             if (ModelState.IsValid)
             {
                 var user = await UserManager.FindAsync(model.UserName, model.Password);
+                var company = _company.Get().FirstOrDefault();
+                var location = company != null ? company.CompanyInLocations.FirstOrDefault() : null;
                 if (user != null)
                 {
                     await SignInAsync(user, model.RememberMe);
                     var claims = new List<Claim>
                     {
                         new Claim("DisplayName", user.DisplayName),
-                        new Claim("EmployeeId", user.EmployeeId.ToString())
+                        new Claim("EmployeeId", user.EmployeeId.ToString()),
+                        new Claim("LocationId", string.Format("{0}", location == null ? 0 : location.CompanyLocationId))
                     };
                     var identity = new ClaimsIdentity(claims, DefaultAuthenticationTypes.ApplicationCookie);
                     var claimsPrincipal = new ClaimsPrincipal(identity);
