@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -66,8 +67,16 @@ namespace Connecto.App.Controllers
                 if (user != null)
                 {
                     await SignInAsync(user, model.RememberMe);
-                    await UserManager.AddClaimAsync(user.Id, new Claim("DisplayName", user.DisplayName));
-                    await UserManager.AddClaimAsync(user.Id, new Claim("EmployeeId", string.Format("{0}", user.EmployeeId)));
+                    var claims = new List<Claim>
+                    {
+                        new Claim("DisplayName", user.DisplayName),
+                        new Claim("EmployeeId", user.EmployeeId.ToString())
+                    };
+                    var identity = new ClaimsIdentity(claims, DefaultAuthenticationTypes.ApplicationCookie);
+                    var claimsPrincipal = new ClaimsPrincipal(identity);
+
+                    // Set current principal
+                    Thread.CurrentPrincipal = claimsPrincipal;
 
                     return RedirectToLocal(returnUrl);
                 }
