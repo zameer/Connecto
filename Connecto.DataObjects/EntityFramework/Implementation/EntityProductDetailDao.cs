@@ -39,9 +39,12 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
         {
             using (var context = DataObjectFactory.CreateContext())
             {
+                productDetailCart.ProductDetailGuid = Guid.NewGuid();
+                productDetailCart.CreatedOn = DateTime.Now;
+                productDetailCart.Status = RecordStatus.Active;
                 var entity = Mapper.Map(productDetailCart);
                 if(productDetailCart.OrderId.Equals(0))
-                    entity.OrderId = AddInvoice(context, OrderType.Buying, productDetailCart);
+                    entity.OrderId = AddInvoice(context, productDetailCart);
 
                 if (!UpdateProductDetailCart(productDetailCart, context)) context.ProductDetailCarts.Add(entity);
                 context.SaveChanges();
@@ -52,6 +55,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
         {
             var cart = context.ProductDetailCarts.FirstOrDefault(e => e.OrderId == productDetailCart.OrderId && e.ProductCode == productDetailCart.ProductCode);
             if (cart == null) return false;
+            cart.EmployeeId = productDetailCart.EmployeeId;
             cart.Quantity = productDetailCart.Quantity;
             cart.QuantityActual = productDetailCart.QuantityActual;
             cart.QuantityLower = productDetailCart.QuantityLower;
@@ -86,12 +90,11 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
             }
         }
 
-        internal int AddInvoice(ConnectoManagerEntities context, OrderType orderType, ProductDetailCart item)
+        internal int AddInvoice(ConnectoManagerEntities context, ProductDetailCart item)
         {
             var entity = new EntityOrder
             {
                 OrderGuid = Guid.NewGuid(),
-                OrderType = orderType,
                 LocationId = item.LocationId,
                 Status = item.Status,
                 OrderDate = item.DateReceived,
@@ -115,6 +118,19 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                 entity.SellingPrice = cart.SellingPrice;
                 entity.EditedBy = cart.EditedBy;
                 entity.EditedOn = cart.EditedOn;
+                return context.SaveChanges() > 0;
+            }
+        }
+        public bool UpdateOrder(ProductDetailCart cart)
+        {
+            using (var context = DataObjectFactory.CreateContext())
+            {
+                var invoice = context.Orders.FirstOrDefault(e => e.OrderId == cart.OrderId);
+                if (invoice == null) return false;
+                invoice.OrderDate = cart.DateReceived;
+                invoice.EmployeeId = cart.EmployeeId;
+                invoice.SupplierId = cart.SupplierId == 0 ? (int?)null : cart.SupplierId;
+                invoice.ReferenceCode = cart.ReferenceCode;
                 return context.SaveChanges() > 0;
             }
         }

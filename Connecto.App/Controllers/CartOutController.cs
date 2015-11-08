@@ -52,7 +52,7 @@ namespace Connecto.App.Controllers
             var invoiceId = _repo.AddToCart(item);
             return Json(new { InvoiceId = invoiceId, Status = "Success", Message = "Cart Item Added." }, JsonRequestBehavior.AllowGet);
         }
-        // POST: /Transaction/Create
+       
         [HttpPost]
         public JsonResult EditHeader(SalesDetailCart item)
         {

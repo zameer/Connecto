@@ -2,14 +2,46 @@
 <div ng-controller="CartInCtrl">
     <form class="form-horizontal" role="form">
         <div class="page-header row">
-            <div class="col-sm-2 no-padding-left"><h1>NEW CART </h1></div>
-            <div class="col-sm-8">
-                <ui-select ng-model="order.selected" on-select="filterOrder($select.selected.OrderId)" theme="select2" ng-disabled="disabled" style="width: 180px;" title="Choose an order">
-                    <ui-select-match allow-clear="true" placeholder="Select an order">{{$select.selected.OrderId}}</ui-select-match>
-                    <ui-select-choices repeat="e in orders">
-                        <div ng-bind="e.OrderId"></div>
+            <div class="col-sm-1 no-padding-left">
+                <h1><small>NEWCART</small> </h1>
+            </div>
+            <div class="col-sm-2 no-padding-left">
+                <ui-select ng-model="employee.selected" theme="select2" ng-disabled="disabled" style="width: 180px;" title="Choose a salesperson">
+                    <ui-select-match allow-clear="true" placeholder="Select a salesperson">{{$select.selected.Person.DisplayName}}</ui-select-match>
+                    <ui-select-choices repeat="e in employees">
+                        <div ng-bind-html="e.Person.DisplayName | highlight: $select.search"></div>
                     </ui-select-choices>
                 </ui-select>
+            </div>
+            <div class="col-sm-2 no-padding-left">
+                <div>
+                    <ui-select ng-model="order.selected" on-select="filterOrder($select.selected.OrderId)" theme="select2" ng-disabled="disabled" style="width: 180px;" title="Choose an order">
+                        <ui-select-match allow-clear="true" placeholder="Select an order">{{$select.selected.OrderId}}</ui-select-match>
+                        <ui-select-choices repeat="e in orders">
+                            <div ng-bind="e.OrderId"></div>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+            <div class="col-sm-2 no-padding-left">
+                <div class="input-group">
+                    <div class="input-group">
+                        <input ng-model="order.selected.ReferenceCode" class="input-medium" type="text" placeholder="Reference Code">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 no-padding-left">
+                <div class="input-group">
+                    <input ng-model="order.selected.OrderDateDisplay" id="date-timepicker1" type="text" class="form-control col-xs-3">
+                    <span class="input-group-addon">
+                        <i class="fa fa-clock-o bigger-110"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-1 no-padding-left">
+                <button class="btn btn-info btn-xs" ng-click="saveHeader()">
+                    <i class="ace-icon fa fa-floppy-o  bigger-110 icon-only"></i>
+                </button>
             </div>
         </div>
 

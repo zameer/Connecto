@@ -8,6 +8,7 @@ namespace Connecto.BusinessObjects
         public int ProductDetailId { get; set; }
         public Guid ProductDetailGuid { get; set; }
         public int OrderId { get; set; }
+        public int EmployeeId { get; set; }
         public int ProductId { get; set; }
         public int SupplierId { get; set; }
         public string ProductCode { get; set; }

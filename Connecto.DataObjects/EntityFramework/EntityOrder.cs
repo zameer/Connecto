@@ -12,11 +12,11 @@ namespace Connecto.DataObjects.EntityFramework
         [Key]
         public int OrderId { get; set; }
         public Guid OrderGuid { get; set; }
-        public OrderType OrderType { get; set; }
-        public int? CustomerId { get; set; }
+        public int? SupplierId { get; set; }
+        public int EmployeeId { get; set; }
         public DateTime OrderDate { get; set; }
         public decimal Fluctuation { get; set; }
         public string ReferenceCode { get; set; }
-        public virtual EntityCustomer Customer { get; set; }
+        public virtual EntitySupplier Supplier { get; set; }
     }
 }

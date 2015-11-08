@@ -37,7 +37,10 @@ namespace Connecto.Repositories
         {
             ProductDetailDao.EditProductDetailCart(productDetailCart);
         }
-
+        public bool UpdateOrder(ProductDetailCart productDetailCart)
+        {
+            return ProductDetailDao.UpdateOrder(productDetailCart);
+        }
         public int Delete(int id, int deletedBy)
         {
             return ProductDetailDao.DeleteProductDetailCart(id, deletedBy);

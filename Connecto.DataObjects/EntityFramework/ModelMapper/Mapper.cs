@@ -440,12 +440,12 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
             {
                 OrderId = entity.OrderId,
                 OrderGuid = entity.OrderGuid,
-                OrderType = entity.OrderType,
-                CustomerId = entity.CustomerId,
+                EmployeeId = entity.EmployeeId,
+                SupplierId = entity.SupplierId,
                 OrderDate = entity.OrderDate,
                 Fluctuation = entity.Fluctuation,
                 ReferenceCode = entity.ReferenceCode,
-                Customer = entity.Customer != null ? Map(entity.Customer) : null
+                Supplier = entity.Supplier != null ? Map(entity.Supplier) : null
             };
         }
         internal static Invoice Map(EntityInvoice entity)
@@ -592,6 +592,7 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 ProductDetailId = entity.ProductDetailId,
                 ProductDetailGuid = entity.ProductDetailGuid,
                 OrderId = entity.OrderId,
+                EmployeeId = entity.EmployeeId,
                 ProductId = entity.ProductId,
                 SupplierId = entity.SupplierId,
                 ProductCode = entity.ProductCode,

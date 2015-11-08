@@ -36,12 +36,9 @@ namespace Connecto.App.Controllers
             var errors = new ProductDetailValidator(item, _repo).Validate();
             if (errors.Count > 0) return Json(new ConnectoValidation { Status = "Failure", Exceptions = errors }, JsonRequestBehavior.AllowGet);
 
-            item.LocationId = 1;
-            item.ProductDetailGuid = Guid.NewGuid();
+            item.LocationId = User.LocationId();
             item.CreatedBy = User.UserId();
-            item.CreatedOn = DateTime.Now;
-            item.DateReceived = DateTime.Now;
-            item.Status = RecordStatus.Active;
+            item.DateReceived = item.DateReceived.Year == 1 ? DateTime.Now : item.DateReceived;
             var orderId = _repo.AddToCart(item);
             return Json(new { OrderId = orderId, Status = "Success", Message = "Cart Item Added." }, JsonRequestBehavior.AllowGet);
         }
@@ -57,6 +54,12 @@ namespace Connecto.App.Controllers
             return Json(new { Status = "Success", Message = "Cart Item Updated." }, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpPost]
+        public JsonResult EditHeader(ProductDetailCart item)
+        {
+            _repo.UpdateOrder(item);
+            return Json(new { Status = "Success", Message = "Order successfully updated." }, JsonRequestBehavior.AllowGet);
+        }
         //
         // POST: /Transaction/Delete/5
         [HttpPost]
