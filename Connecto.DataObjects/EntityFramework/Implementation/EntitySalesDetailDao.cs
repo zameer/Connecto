@@ -173,6 +173,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                         QuantityLower = salesDetailCart.QuantityLower,
                         LocationId = salesDetailCart.LocationId,
                         Status = salesDetailCart.Status,
+                        EmployeeId = salesDetailCart.CreatedBy,
                         CreatedBy = salesDetailCart.CreatedBy,
                         CreatedOn = salesDetailCart.CreatedOn
                     };
