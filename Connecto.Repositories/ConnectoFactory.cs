@@ -66,9 +66,5 @@
         {
             get { return new SalesDetailRepository(); }
         }
-        public static CustomerReturnRepository CustomerReturnRepository
-        {
-            get { return new CustomerReturnRepository(); }
-        }
     }
 }

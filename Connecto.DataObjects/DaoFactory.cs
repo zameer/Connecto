@@ -23,6 +23,5 @@
         IPersonDao PersonDao { get; }
         IProductDetailDao ProductDetailDao { get; }
         ISalesDetailDao SalesDetailDao { get; }
-        ICustomerReturnDao CustomerReturnDao { get; }
     }
 }

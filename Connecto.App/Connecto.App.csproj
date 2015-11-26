@@ -184,8 +184,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartReturnController.cs" />
     <Compile Include="Controllers\CartOutController.cs" />
-    <Compile Include="Controllers\CustomerReturnController.cs" />
-    <Compile Include="Controllers\SupplierReturnController.cs" />
     <Compile Include="Controllers\WriteOffsController.cs" />
     <Compile Include="Controllers\ConnectoController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
@@ -214,7 +212,6 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="ModelValidator\PersonValidator.cs" />
-    <Compile Include="ModelValidator\CustomerReturnValidator.cs" />
     <Compile Include="ModelValidator\SalesDetailValidator.cs" />
     <Compile Include="ModelValidator\ProductTypeValidator.cs" />
     <Compile Include="ModelValidator\MeasureValidator.cs" />
@@ -337,8 +334,6 @@
     <Content Include="Scripts\connecto\respond.js" />
     <Content Include="Scripts\connecto\tr\writeOffController.js" />
     <Content Include="Scripts\connecto\tr\cartReturnController.js" />
-    <Content Include="Scripts\connecto\tr\customerReturnController.js" />
-    <Content Include="Scripts\connecto\tr\supplierReturnController.js" />
     <Content Include="Scripts\connecto\tr\cartOutController.js" />
     <Content Include="Scripts\connecto\tr\cartInController.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -432,10 +427,6 @@
     <Content Include="Views\ReturnReason\Index.cshtml" />
     <Content Include="Views\ReturnReason\List.cshtml" />
     <Content Include="Views\ReturnReason\Edit.cshtml" />
-    <Content Include="Views\SupplierReturn\Checkout.cshtml" />
-    <Content Include="Views\SupplierReturn\Index.cshtml" />
-    <Content Include="Views\CustomerReturn\Checkout.cshtml" />
-    <Content Include="Views\CustomerReturn\Index.cshtml" />
     <Content Include="Views\WriteOffs\Checkout.cshtml" />
     <Content Include="Views\WriteOffs\Index.cshtml" />
     <Content Include="Views\CartReturn\Checkout.cshtml" />

@@ -82,10 +82,5 @@ namespace Connecto.DataObjects
         {
             get { return _factory.SalesDetailDao; }
         }
-
-        public static ICustomerReturnDao CustomerReturnDao
-        {
-            get { return _factory.CustomerReturnDao; }
-        }
     }
 }

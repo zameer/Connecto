@@ -43,6 +43,5 @@ namespace Connecto.DataObjects.EntityFramework
         public DbSet<EntitySalesDetail> SalesDetails { get; set; }
         public DbSet<EntitySalesDetailCart> SalesDetailCarts { get; set; }
         public DbSet<EntityReportSetting> ReportSettings { get; set; }
-        public DbSet<EntityCustomerReturn> CustomerReturns { get; set; }
     }
 }
