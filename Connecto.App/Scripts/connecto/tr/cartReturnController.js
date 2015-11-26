@@ -42,8 +42,11 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
           $scope.filterProductSelection(item.ProductDetailId);
           $scope.item.SalesDetailId = item.SalesDetailId;
           $scope.item.Quantity = item.Quantity;
+          $scope.item.QuantityTmp = item.Quantity;
           $scope.item.QuantityActual = item.QuantityActual;
+          $scope.item.QuantityActualTmp = item.QuantityActual;
           $scope.item.QuantityLower = item.QuantityLower;
+          $scope.item.QuantityLowerTmp = item.QuantityLower;
           $scope.item.Discount = item.Discount;
           $scope.item.Price = item.Price;
           $scope.DiscountBy = discountBy(item.DiscountBy);
@@ -76,7 +79,13 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
           $scope.calculateDiscount();
           
       };
+      $scope.informReturnQuantities = function () {
+          if ($scope.item.RQuantity != undefined) $scope.item.Quantity = ($scope.item.QuantityTmp - $scope.item.RQuantity);
+          if ($scope.item.RQuantityActual != undefined) $scope.item.QuantityActual = ($scope.item.QuantityActualTmp - $scope.item.RQuantityActual);
+          if ($scope.item.RQuantityLower != undefined) $scope.item.QuantityLower = ($scope.item.QuantityLowerTmp - $scope.item.RQuantityLower);
+      };
       $scope.decideSellingPrice = function () {
+          $scope.informReturnQuantities();
           if ($scope.item.SellingMargin && $scope.item.Quantity == 0) {
               if ($scope.item.SellingPrice == $scope.item.SellingPriceActual) $scope.item.SellingPrice += $scope.item.MarginAmount;
           } else $scope.item.SellingPrice = $scope.item.SellingPriceActual;
