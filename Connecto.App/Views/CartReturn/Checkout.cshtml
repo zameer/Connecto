@@ -58,7 +58,7 @@
                         </div>
 
                         <div class="col-sm-8">
-                            <div class="col-sm-3" ng-if="item.StockInHand.Quantity > 0">
+                            <div class="col-sm-3" ng-if="item.StockInHand.Quantity > 0 && item.Quantity > 0">
                                 <div class="row form-group">
                                     <div class="infobox infobox-green width-auto">
                                         <div class="infobox-data no-padding-right">
@@ -72,7 +72,7 @@
                                 <div class="row form-group">
 
                                     <div class="col-sm-8" ng-if="item.SellingLower">
-                                        <div class=" form-group" ng-if="item.Measure.Actual">
+                                        <div class=" form-group" ng-if="item.Measure.Actual && item.QuantityActual > 0">
                                             <div class="col-sm-5 no-padding-left">
                                                 <div ng-if="item.Measure" class="infobox infobox-orange2 width-auto">
                                                     <div class="infobox-data width-auto">
@@ -82,7 +82,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-3" ng-if="item.Measure.Lower != item.Measure.Actual">
+                                            <div class="col-sm-3" ng-if="item.Measure.Lower != item.Measure.Actual && item.QuantityLower > 0">
                                                 <div class="infobox infobox-orange2 width-auto">
                                                     <div class="infobox-data width-auto">
                                                         <span class="infobox-data-number"><input ng-model="item.RQuantityLower" ng-blur="calculatePrice()" class="input-mini" type="number" placeholder=""></span>
