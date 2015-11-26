@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Connecto.Repositories;
+using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
@@ -70,18 +71,15 @@ namespace Connecto.App.Controllers
                 var location = company != null ? company.CompanyInLocations.FirstOrDefault() : null;
                 if (user != null)
                 {
-                    await SignInAsync(user, model.RememberMe);
-                    var claims = new List<Claim>
-                    {
-                        new Claim("DisplayName", user.DisplayName),
-                        new Claim("EmployeeId", user.EmployeeId.ToString()),
-                        new Claim("LocationId", string.Format("{0}", location == null ? 0 : location.CompanyLocationId))
-                    };
-                    var identity = new ClaimsIdentity(claims, DefaultAuthenticationTypes.ApplicationCookie);
-                    var claimsPrincipal = new ClaimsPrincipal(identity);
+                    AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
+                    var identity = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
 
-                    // Set current principal
-                    Thread.CurrentPrincipal = claimsPrincipal;
+                    RemoveClaims(ref identity, new [] { "EmployeeId", "DisplayName", "LocationId" });
+                    
+                    identity.AddClaim(new Claim("DisplayName", user.DisplayName)); 
+                    identity.AddClaim(new Claim("EmployeeId", user.EmployeeId.ToString("")));
+                    identity.AddClaim(new Claim("LocationId", string.Format("{0}", location == null ? 0 : location.CompanyLocationId)));
+                    AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = true }, identity);
 
                     return RedirectToLocal(returnUrl);
                 }
@@ -93,6 +91,16 @@ namespace Connecto.App.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        private void RemoveClaims(ref  ClaimsIdentity identity, IEnumerable<string> claimNames)
+        {
+            foreach (var claimName in claimNames)
+            {
+                var claims = identity.FindAll(claimName);
+                foreach (var claim in claims)
+                    identity.RemoveClaim(claim);
+            }
         }
 
         //
