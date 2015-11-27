@@ -184,7 +184,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartReturnController.cs" />
     <Compile Include="Controllers\CartOutController.cs" />
-    <Compile Include="Controllers\WriteOffsController.cs" />
+    <Compile Include="Controllers\WriteOffController.cs" />
     <Compile Include="Controllers\ConnectoController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
@@ -427,10 +427,10 @@
     <Content Include="Views\ReturnReason\Index.cshtml" />
     <Content Include="Views\ReturnReason\List.cshtml" />
     <Content Include="Views\ReturnReason\Edit.cshtml" />
-    <Content Include="Views\WriteOffs\Checkout.cshtml" />
-    <Content Include="Views\WriteOffs\Index.cshtml" />
     <Content Include="Views\CartReturn\Checkout.cshtml" />
     <Content Include="Views\CartReturn\Index.cshtml" />
+    <Content Include="Views\WriteOff\Checkout.cshtml" />
+    <Content Include="Views\WriteOff\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\App_Data\" />

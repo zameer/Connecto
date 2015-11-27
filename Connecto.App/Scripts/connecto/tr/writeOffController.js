@@ -1,29 +1,49 @@
 'use strict';
 /* Controllers */
 var cName = 'WriteOff';
-trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
-  function ($scope, $http) {
-      $scope.loadOrders = function () {
-          $http.get('/' + cName + '/GetOrders/').success(function (data) {
-              $scope.orders = data;
+trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeParams',
+  function ($scope, $filter, $http) {
+      $('#date-timepicker1').datetimepicker().next().on(ace.click_event, function () {
+          $(this).prev().focus();
+      });
+      $scope.starter = {};
+      $http.get('/Home/GetStarter/').success(function (data) {
+          $scope.starter = data;
+      });
+
+      $scope.employee = {};
+      $scope.loadEmployees = function () {
+          $http.get('/Employee/GetAll/').success(function (data) {
+              $scope.employees = data;
+              if ($scope.employee.selected == null) {
+                  $scope.employee.selected = $filter('getById')(data, $scope.starter.EmployeeId, "EmployeeId");
+              }
           });
       };
+      $scope.invoice = {};
+      $scope.loadInvoices = function () {
+          $http.get('/' + cName + '/GetInvoices/').success(function (data) {
+              $scope.invoices = data;
+              $scope.invoice.selected = $scope.item != undefined ? $filter('getById')($scope.invoices, $scope.item.InvoiceId, "InvoiceId") : null;
+          });
+      };
+      $scope.customer = {};
       $scope.loadCustomers = function () {
           $http.get('/Customer/GetAll/').success(function (data) {
               $scope.customers = data;
           });
       };
 
-      $scope.loadItems = function (orderId) {
-          if (orderId != undefined) {
-              $http.get('/' + cName + '/GetCart/' + orderId).success(function (data) {
-                  $scope.item.CustomerId = data[0] != undefined ? data[0].CustomerId : 0;
+      $scope.loadItems = function (invoiceId) {
+          if (invoiceId != undefined) {
+              $http.get('/' + cName + '/GetCart/' + invoiceId).success(function (data) {
                   $scope.items = data;
                   $scope.calculateGrossPrice();
               });
-          } else  $scope.items = [];
+          } else $scope.items = [];
       };
-      $scope.loadOrders();
+      $scope.loadEmployees();
+      $scope.loadInvoices();
       $scope.loadCustomers();
       $scope.loadItems();
       $scope.filterProductSelection = function (productDetailId) {
@@ -31,10 +51,11 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
           angular.forEach(arrItems, function (item) {
               if (item.ProductDetailId == productDetailId) {
                   setProductDetail(item);
-                  $scope.item.PrductDetailId = productDetailId
+                  $scope.productDetail.selected = item;
               }
           });
       };
+      $scope.productDetail = {};
       $scope.filterProduct = function (item) {
           if ($scope.item.ProductCode != undefined) {
               $http.get('/' + cName + '/GetSalesDetail/?productCode=' + $scope.item.ProductCode).success(function (data) {
@@ -70,9 +91,11 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
       }
       $scope.calculateBalance = function () { $scope.Balance = ($scope.Paid - $scope.GrossNetPrice + ($scope.Fluctuation * 1)); };
       function setProductDetail(data) {
-          var orderId = $scope.item.OrderId;
+          var invoiceId = $scope.item.InvoiceId;
+          $scope.productDetail.selected = data;
+          $scope.calculateAveragePrice();
           $scope.item = data;
-          if ($scope.item != '') $scope.item.OrderId = orderId;
+          if ($scope.item != undefined) $scope.item.InvoiceId = invoiceId;
           $scope.Measure = data.Measure;
       };
 
@@ -84,23 +107,31 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
           var lowerPrice = (lowerUnitPrice / $scope.item.Volume) * $scope.item.QuantityLower;
           $scope.item.Price = Math.round(unitPrice + actualPrice + lowerPrice);
           $scope.calculateDiscount();
-          
       };
+
       $scope.decideSellingPrice = function () {
           if ($scope.item.SellingMargin && $scope.item.Quantity == 0) {
               if ($scope.item.SellingPrice == $scope.item.SellingPriceActual) $scope.item.SellingPrice += $scope.item.MarginAmount;
-          } //else $scope.item.SellingPrice = $scope.item.SellingPriceActual;
+          }
       };
-      $scope.filterOrder = function (orderId) {
-          if (orderId.length > 0) $scope.loadItems(orderId);
+      $scope.filterInvoice = function (invoiceId) {
+          $scope.reset();
+          if (invoiceId > 0) $scope.loadItems(invoiceId);
           else {
               $scope.items = [];
               $scope.calculateGrossPrice();
-          } 
+          }
       };
+      $scope.reset = function () {
+          $scope.item = {};
+          $scope.itemz = [];
+          $scope.customer.selected = $scope.invoice.selected != undefined ? $scope.invoice.selected.Customer : null;
+          $scope.employee.selected = $scope.invoice.selected != undefined ? $filter('getById')($scope.employees, $scope.invoice.selected.EmployeeId, "EmployeeId")
+              : $filter('getById')($scope.employees, $scope.starter.EmployeeId, "EmployeeId");
+      };
+
       $scope.DiscountBy = 'None';
-      $scope.setDiscount = function (discountBy)
-      {
+      $scope.setDiscount = function (discountBy) {
           $scope.item.DiscountBy = discountBy;
           $scope.DiscountBy = discountBy;
           $scope.calculateDiscount();
@@ -121,9 +152,8 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
       };
       $scope.calculateNetPrice = function () {
           $scope.item.NetPrice = $scope.item.Price - ($scope.item.Discount != undefined ? $scope.item.Discount : 0);
-          
       };
-      
+
       $scope.calculateGrossPrice = function () {
           $scope.GrossNetPrice = 0; $scope.GrossPrice = 0; $scope.GrossDiscount = 0;
           $scope.Paid = 0; $scope.Balance = 0; $scope.Fluctuation = 0;
@@ -133,14 +163,32 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
               $scope.GrossDiscount = $scope.GrossDiscount + item.Discount;
           });
       };
+      $scope.calculateAveragePrice = function () {
+          var priceSum = 0;
+          angular.forEach($scope.itemz, function (item) { priceSum = priceSum + item.SellingPriceActual; });
+          $scope.AveragePrice = (priceSum / $scope.itemz.length).toFixed(2);
+      };
+      $scope.setHeader = function () {
+          if ($scope.item == null) $scope.item = {};
+          $scope.item.CustomerId = $scope.customer.selected == null ? null : $scope.customer.selected.CustomerId;
+          $scope.item.EmployeeId = $scope.employee.selected == null ? null : $scope.employee.selected.EmployeeId;
+          if ($scope.invoice.selected != null) {
+              $scope.item.InvoiceId = $scope.invoice.selected.InvoiceId;
+              $scope.item.ReferenceCode = $scope.invoice.selected.ReferenceCode;
+              $scope.item.DateSold = $scope.invoice.selected.InvoiceDateDisplay;
+          }
+      };
       $scope.add = function () {
+          $scope.setHeader();
           $http.post('/' + cName + '/Create/', $scope.item).success(function (data) {
               showMessage(data);
-              $scope.item.OrderId = data.OrderId != undefined && data.OrderId > 0 ? data.OrderId : $scope.item.OrderId;
-              if (data.Status != "Failure") $scope.loadItems($scope.item.OrderId);
-              
+              if ($scope.item.InvoiceId == undefined) $scope.loadInvoices();
+
+              $scope.reset();
+              $scope.item.InvoiceId = data.InvoiceId != undefined && data.InvoiceId > 0 ? data.InvoiceId : $scope.item.InvoiceId;
+              if (data.Status != "Failure") $scope.loadItems($scope.item.InvoiceId);
           });
-          
+
       };
       $scope.edit = function (item) {
           $scope.item = item;
@@ -150,21 +198,28 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$http', '$routeParams',
           $http.post('/' + cName + '/Delete/', { id: salesDetailId }).success(function (data) {
               showMessage(data);
               if (data.Status != "Failure") {
-                  $scope.loadItems($scope.item.OrderId);
+                  $scope.loadItems($scope.item.InvoiceId);
               }
           });
       };
+      $scope.saveHeader = function () {
+          $scope.setHeader();
+          $http.post('/' + cName + '/EditHeader/', $scope.item).success(function (data) {
+              showMessage(data);
+          });
+
+      };
       $scope.complete = function () {
-          $http.post('/' + cName + '/Complete/', { id: $scope.item.OrderId, fluctuation: $scope.Fluctuation }).success(function (data) {
+          $http.post('/' + cName + '/Complete/', { id: $scope.invoice.selected.InvoiceId, fluctuation: $scope.Fluctuation }).success(function (data) {
               showMessage(data);
               if (data.Status != "Failure") {
-                  $scope.loadOrders();
+                  $scope.loadInvoices();
                   $scope.loadItems();
               }
           });
       };
       $scope.print = function () {
-          $http.post('/' + cName + '/Print/', { orderId: 64 }).success(function (data) {
+          $http.post('/' + cName + '/Print/', { invoiceId: $scope.invoice.selected.InvoiceId }).success(function (data) {
               showMessage(data);
           });
       };

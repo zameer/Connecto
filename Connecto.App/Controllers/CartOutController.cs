@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
 using Connecto.App.BusinessIntelligence.Dataset.TransactionsTableAdapters;
 using Connecto.App.Models;
 using Connecto.App.Utilities;
 using Connecto.BusinessObjects;
-using Connecto.Common.Enumeration;
 using Connecto.Repositories;
 using System;
 using System.Web.Mvc;
