@@ -88,7 +88,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
           $http.post('/' + cName + '/Create/', $scope.item).success(function (data) {
               showMessage(data);
               if ($scope.item.OrderId == undefined) $scope.loadOrders();
-
+              $scope.reset();
               $scope.item.OrderId = data.OrderId != undefined && data.OrderId > 0 ? data.OrderId : $scope.item.OrderId;
               if (data.Status != "Failure") $scope.loadItems($scope.item.OrderId);
           });
