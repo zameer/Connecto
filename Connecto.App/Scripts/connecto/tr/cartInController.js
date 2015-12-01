@@ -24,6 +24,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
       $scope.loadOrders = function () {
           $http.get('/' + cName + '/GetOrders/').success(function (data) {
               $scope.orders = data;
+              $scope.order.selected = $scope.item != undefined ? $filter('getById')($scope.orders, $scope.item.OrderId, "OrderId") : null;
           });
       };
       $scope.loadItems = function (orderId) {
@@ -86,6 +87,8 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
           $scope.setHeader();
           $http.post('/' + cName + '/Create/', $scope.item).success(function (data) {
               showMessage(data);
+              if ($scope.item.OrderId == undefined) $scope.loadOrders();
+
               $scope.item.OrderId = data.OrderId != undefined && data.OrderId > 0 ? data.OrderId : $scope.item.OrderId;
               if (data.Status != "Failure") $scope.loadItems($scope.item.OrderId);
           });
