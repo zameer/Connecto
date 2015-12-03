@@ -146,5 +146,13 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
             }
         }
 
+        public List<ProductDetail> GetProductCodes(int locationId)
+        {
+            using (var context = DataObjectFactory.CreateContext())
+            {
+                var productDetails = context.ProductDetails.Where(s => s.LocationId == locationId).ToList();
+                return productDetails.Select(Mapper.Map).ToList();
+            }
+        }
     }
 }

@@ -261,6 +261,7 @@
     <Content Include="Scripts\angular\angular-resource.js" />
     <Content Include="Scripts\angular\angular-route.js" />
     <Content Include="Scripts\angular\angular.js" />
+    <Content Include="Scripts\angular\angular.min.js" />
     <Content Include="Scripts\bootbox.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -331,11 +332,13 @@
     <Content Include="Scripts\connecto\plugins\elements.wizard.js" />
     <Content Include="Scripts\connecto\plugins\elements.wysiwyg.js" />
     <Content Include="Scripts\connecto\plugins\select2.js" />
+    <Content Include="Scripts\connecto\plugins\ui-bootstrap-tpls-0.14.3.min.js" />
     <Content Include="Scripts\connecto\respond.js" />
     <Content Include="Scripts\connecto\tr\writeOffController.js" />
     <Content Include="Scripts\connecto\tr\cartReturnController.js" />
     <Content Include="Scripts\connecto\tr\cartOutController.js" />
     <Content Include="Scripts\connecto\tr\cartInController.js" />
+    <Content Include="Scripts\connecto\plugins\ui-bootstrap-tpls-0.14.3.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />

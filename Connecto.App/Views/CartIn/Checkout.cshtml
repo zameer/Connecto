@@ -54,7 +54,14 @@
                             <div class="form-group">
                                 <label class="col-sm-4 control-label">Code</label>
                                 <div class="col-sm-9">
-                                    <input ng-model="item.ProductCode" class="input-sm" type="text" placeholder="Product Code">
+                                    <script type="text/ng-template" id="productCodeTemplate.html">
+                                        <a>
+                                            <span ng-bind-html="match.label | uibTypeaheadHighlight:query"></span>
+                                            <span>{{match.model.Name}}</span>
+                                        </a>
+                                    </script>
+                                    <input type="text" ng-model="productCodeSelected" ng-blur="setProduct()" placeholder="Product Code" uib-typeahead="code as code.ProductCode for code in productCodes | filter:{ProductCode:$viewValue}" typeahead-template-url="productCodeTemplate.html" class="form-control">
+                                    @*<input ng-model="item.ProductCode" class="input-sm" ng-blur="filterProduct()" type="text" placeholder="Product Code">*@
                                 </div>
                             </div>
                         </div>

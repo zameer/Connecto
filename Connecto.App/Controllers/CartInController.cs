@@ -17,6 +17,11 @@ namespace Connecto.App.Controllers
             var items = _repo.GetOrders();
             return Json(items, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult GetProductCodes()
+        {
+            var items = _repo.GetProductCodes(User.LocationId());
+            return Json(items, JsonRequestBehavior.AllowGet);
+        }
         public JsonResult Get(int orderId)
         {
             var items = _repo.GetAll(orderId);

@@ -25,7 +25,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
             var salesDetails = new List<SalesDetail>();
             using (var context = DataObjectFactory.CreateContext())
             {
-                var productDetails = context.ProductDetails.Where(e => e.ProductCode.Equals(productCode));
+                var productDetails = context.ProductDetails.Where(e => e.ProductCode.Equals(productCode) && (e.Quantity + e.QuantityActual + e.QuantityLower) > 0).ToList();
                 foreach (var productDetail in productDetails)
                 {
                     var measure = productDetail.Product.ProductType.Measure;
@@ -46,7 +46,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                         MarginAmount = productDetail.Product.MarginAmount,
                         Measure = new Measure { Actual = measure.Actual, Lower = measure.Lower },
                         CreatedOnText = productDetail.CreatedOn.ToShortDateString(),
-                        ReceivedInfo = string.Format("{0} - {1}{2}{3}", productDetail.CreatedOn.ToShortDateString(),
+                        ReceivedInfo = string.Format("{0} {1}- {2}{3}{4}", productDetail.CreatedOn.ToShortDateString(), productDetail.Product.Name,
                         productDetail.Quantity > 0 ? string.Format("{0} {1}s ", productDetail.Quantity, productDetail.Product.ProductType.StockAs) : string.Empty,
                         productDetail.QuantityActual > 0 ? string.Format("{0} {1}s ", productDetail.QuantityActual, measure.Actual) : string.Empty,
                         productDetail.QuantityLower > 0 ? string.Format("{0} {1}s ", productDetail.QuantityLower, measure.Lower) : string.Empty) 

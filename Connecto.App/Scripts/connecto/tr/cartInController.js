@@ -3,6 +3,10 @@
 var cName = 'CartIn';
 trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeParams',
   function ($scope, $filter, $http) {
+      $http.get('/' + cName + '/GetProductCodes/').success(function (data) {
+          $scope.productCodes = data;
+      });
+     
       $('#date-timepicker1').datetimepicker().next().on(ace.click_event, function () {
           $(this).prev().focus();
       });
@@ -49,6 +53,14 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
       $scope.loadOrders();
       $scope.loadItems();
       $scope.loadSelections();
+      $scope.setProduct = function () {
+          if ($scope.productCodeSelected != undefined) {
+              $scope.product.selected = $filter('getById')($scope.products, $scope.productCodeSelected.ProductId, "ProductId");
+              if ($scope.item == undefined) $scope.item = {};
+              $scope.item.ProductCode = $scope.productCodeSelected.ProductCode == undefined ? $scope.productCodeSelected : $scope.productCodeSelected.ProductCode;
+              $scope.filterProduct();
+          }
+      };
       $scope.filterProduct = function () {
           var productId = $scope.product.selected == undefined ? undefined : $scope.product.selected.ProductId;
           if (productId != undefined) {

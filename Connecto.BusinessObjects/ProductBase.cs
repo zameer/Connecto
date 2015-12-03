@@ -10,5 +10,6 @@ namespace Connecto.BusinessObjects
         public int QuantityLower { get; set; }
         public string DisplayQuantity { get; set; }
         public string DisplayDiscount { get; set; }
+        public string Name { get; set; }
     }
 }

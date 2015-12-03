@@ -45,5 +45,10 @@ namespace Connecto.Repositories
         {
             return ProductDetailDao.DeleteProductDetailCart(id, deletedBy);
         }
+
+        public List<ProductDetail> GetProductCodes(int locationId)
+        {
+            return ProductDetailDao.GetProductCodes(locationId);
+        }
     }
 }

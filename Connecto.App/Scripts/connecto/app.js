@@ -18,6 +18,7 @@ var trControllers = angular.module('trControllers', []);
 var trApp = angular.module('trApp', [
   'ngRoute',
   'trControllers',
+  'ui.bootstrap',
   'ui.select',
   'ngSanitize'
 ]);

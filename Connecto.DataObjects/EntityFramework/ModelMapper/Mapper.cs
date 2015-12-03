@@ -482,6 +482,7 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 CreatedOn = entity.CreatedOn,
                 EditedBy = entity.EditedBy,
                 EditedOn = entity.EditedOn,
+                Name = string.Format("{0} {1}", entity.Product.Name, entity.Product.ProductType.Type)
             };
         }
         internal static EntityProductDetail Map(ProductDetail entity)

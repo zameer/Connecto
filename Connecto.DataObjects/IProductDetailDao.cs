@@ -13,5 +13,6 @@ namespace Connecto.DataObjects
         bool UpdateOrder(ProductDetailCart productDetailCart);
         int DeleteProductDetailCart(int id, int deletedBy);
         int AddProductDetail(int orderId);
+        List<ProductDetail> GetProductCodes(int locationId);
     }
 }
