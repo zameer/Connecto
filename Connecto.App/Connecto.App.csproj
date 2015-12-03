@@ -332,7 +332,6 @@
     <Content Include="Scripts\connecto\plugins\elements.wizard.js" />
     <Content Include="Scripts\connecto\plugins\elements.wysiwyg.js" />
     <Content Include="Scripts\connecto\plugins\select2.js" />
-    <Content Include="Scripts\connecto\plugins\ui-bootstrap-tpls-0.14.3.min.js" />
     <Content Include="Scripts\connecto\respond.js" />
     <Content Include="Scripts\connecto\tr\writeOffController.js" />
     <Content Include="Scripts\connecto\tr\cartReturnController.js" />
