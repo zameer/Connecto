@@ -50,100 +50,99 @@
                 <!-- PAGE CONTENT BEGINS -->
                 <div class="row">
                     <div class="col-sm-7">
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <label class="col-sm-4 control-label">Code</label>
-                                <div class="col-sm-9">
-                                    <script type="text/ng-template" id="productCodeTemplate.html">
-                                        <a>
-                                            <span ng-bind-html="match.label | uibTypeaheadHighlight:query"></span>
-                                            <span>{{match.model.Name}}</span>
-                                        </a>
-                                    </script>
-                                    <input type="text" ng-model="productCodeSelected" ng-blur="setProduct()" placeholder="Product Code" uib-typeahead="code as code.ProductCode for code in productCodes | filter:{ProductCode:$viewValue}" typeahead-template-url="productCodeTemplate.html" class="form-control">
-                                    @*<input ng-model="item.ProductCode" class="input-sm" ng-blur="filterProduct()" type="text" placeholder="Product Code">*@
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-8">
-                            <div class="col-sm-6">
-                                <div class="row form-group">
-                                    <label class="col-sm-4 control-label">Product</label>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Code</label>
                                     <div class="col-sm-9">
-                                        <ui-select ng-model="product.selected" on-select="filterProduct()" theme="select2" ng-disabled="disabled" style="width: 180px;" title="Choose an order">
-                                            <ui-select-match allow-clear="true" placeholder="Select a product">{{$select.selected.Name}}</ui-select-match>
-                                            <ui-select-choices repeat="e in products">
-                                                <div ng-bind-html="e.Name"></div>
-                                            </ui-select-choices>
-                                        </ui-select>
+                                        <script type="text/ng-template" id="productCodeTemplate.html">
+                                            <a>
+                                                <span ng-bind-html="match.label | uibTypeaheadHighlight:query"></span>
+                                                <span>{{match.model.Name}}</span>
+                                            </a>
+                                        </script>
+                                        <input type="text" ng-model="productCodeSelected" ng-blur="setProduct()" placeholder="Product Code" uib-typeahead="code as code.ProductCode for code in productCodes | filter:{ProductCode:$viewValue}" typeahead-template-url="productCodeTemplate.html" class="form-control">
+                                        @*<input ng-model="item.ProductCode" class="input-sm" ng-blur="filterProduct()" type="text" placeholder="Product Code">*@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                                <div class="row form-group">
-                                    <label class="col-sm-4 control-label">Supplier</label>
-                                    <div class="col-sm-9">
-                                        <ui-select ng-model="supplier.selected" theme="select2" ng-disabled="disabled" style="width: 180px;" title="Choose an order">
-                                            <ui-select-match allow-clear="true" placeholder="Select a product">{{$select.selected.Person.FirstName}}</ui-select-match>
-                                            <ui-select-choices repeat="e in suppliers">
-                                                <div ng-bind-html="e.Person.FirstName"></div>
-                                            </ui-select-choices>
-                                        </ui-select>
+
+                            <div class="col-sm-8">
+                                <div class="col-sm-6">
+                                    <div class="row form-group">
+                                        <label class="col-sm-4 control-label">Product</label>
+                                        <div class="col-sm-9">
+                                            <ui-select ng-model="product.selected" on-select="filterProduct()" theme="select2" ng-disabled="disabled" style="width: 180px;" title="Choose an order">
+                                                <ui-select-match allow-clear="true" placeholder="Select a product">{{$select.selected.Name}}</ui-select-match>
+                                                <ui-select-choices repeat="e in products">
+                                                    <div ng-bind-html="e.Name"></div>
+                                                </ui-select-choices>
+                                            </ui-select>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="space-6"></div>
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <label class="col-sm-4 control-label">&nbsp; </label>
-                                <div class="col-sm-9">
-                                    <span class="label label-lg label-yellow arrowed-in arrowed-in-right" ng-show="info.ContainsQty > 0">Price applies to {{info.ProductType.StockAs}}</span>
-                                    <span class="label label-lg label-purple arrowed-in arrowed-in-right" ng-show="info.ContainsQty == 0">Price applies to {{info.ProductType.Measure.Actual}}</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-8">
-                            <div class="col-sm-6">
-                                <div class="row form-group">
-                                    <label class="col-sm-6 control-label no-padding-left">Unit Price</label>
-                                    <div class="col-sm-9">
-                                        <input ng-model="item.UnitPrice" class="input-sm" type="text" placeholder="Unit Price">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="row form-group">
-                                    <label class="col-sm-7 control-label no-padding-left">Selling Price</label>
-                                    <div class="col-sm-9">
-                                        <input ng-model="item.SellingPrice" class="input-sm" type="text" placeholder="Selling Price">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="space-6"></div>
-
-                        <div class="col-sm-8">
-                            <div class="col-sm-3" ng-if="info.ContainsQty > 0">
-                                <div class="row form-group">
-                                    <div class="infobox infobox-green width-auto">
-                                        <div class="infobox-data no-padding-right">
-                                            <input ng-model="item.Quantity" class="input-mini" type="text">
-                                            <div class="infobox-content">{{info.ProductType.StockAs}}s</div>
+                                <div class="col-sm-6">
+                                    <div class="row form-group">
+                                        <label class="col-sm-4 control-label">Supplier</label>
+                                        <div class="col-sm-9">
+                                            <ui-select ng-model="supplier.selected" theme="select2" ng-disabled="disabled" style="width: 180px;" title="Choose an order">
+                                                <ui-select-match allow-clear="true" placeholder="Select a product">{{$select.selected.Person.FirstName}}</ui-select-match>
+                                                <ui-select-choices repeat="e in suppliers">
+                                                    <div ng-bind-html="e.Person.FirstName"></div>
+                                                </ui-select-choices>
+                                            </ui-select>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-8">
-                                <div class="row form-group">
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">&nbsp; </label>
+                                    <div class="col-sm-9">
+                                        <span class="label label-lg label-yellow arrowed-in arrowed-in-right" ng-show="info.ContainsQty > 0">Price applies to {{info.ProductType.StockAs}}</span>
+                                        <span class="label label-lg label-purple arrowed-in arrowed-in-right" ng-show="info.ContainsQty == 0">Price applies to {{info.ProductType.Measure.Actual}}</span>
+                                    </div>
+                                </div>
+                            </div>
 
-                                    <div class="col-sm-8" ng-if="info.SellingLower">
+                            <div class="col-sm-8">
+                                <div class="col-sm-6">
+                                    <div class="row form-group">
+                                        <label class="col-sm-6 control-label no-padding-left">Unit Price</label>
+                                        <div class="col-sm-9">
+                                            <input ng-model="item.UnitPrice" class="input-sm" type="text" placeholder="Unit Price">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="row form-group">
+                                        <label class="col-sm-7 control-label no-padding-left">Selling Price</label>
+                                        <div class="col-sm-9">
+                                            <input ng-model="item.SellingPrice" class="input-sm" type="text" placeholder="Selling Price">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="col-sm-2" ng-if="info.ContainsQty > 0">
+                                    <div class="row form-group">
+                                        <div class="infobox infobox-green width-auto">
+                                            <div class="infobox-data no-padding-right">
+                                                <input ng-model="item.Quantity" class="input-mini" type="text">
+                                                <div class="infobox-content">{{info.ProductType.StockAs}}s</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-7">
+                                    <div class="col-sm-9" ng-if="info.SellingLower">
                                         <div class=" form-group" ng-if="info.ProductType.Measure.Actual">
-                                            <div class="col-sm-5 no-padding-left">
+                                            <div class="col-sm-4 no-padding-left">
                                                 <div class="infobox infobox-orange2 width-auto">
                                                     <div class="infobox-data width-auto">
                                                         <span class="infobox-data-number"><input ng-model="item.QuantityActual" ng-blur="calculatePrice()" class="input-mini" type="text" placeholder=""></span>
@@ -152,7 +151,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-3" ng-if="info.ProductType.Measure.Lower != info.ProductType.Measure.Actual">
+                                            <div class="col-sm-4" ng-if="info.ProductType.Measure.Lower != info.ProductType.Measure.Actual">
                                                 <div class="infobox infobox-orange2 width-auto">
                                                     <div class="infobox-data width-auto">
                                                         <span class="infobox-data-number"><input ng-model="item.QuantityLower" ng-blur="calculatePrice()" class="input-mini" type="text" placeholder=""></span>
@@ -162,15 +161,13 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-sm-3">
+                                        <button class="btn btn-app btn-yellow btn-xs" type="button" ng-click="add()">
+                                            <i class="ace-icon fa fa-shopping-cart bigger-160"></i>
+                                            Shop
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 align-right">
-                            <div class="col-md-offset-3 col-sm-8">
-                                <button class="btn btn-app btn-yellow btn-xs" type="button" ng-click="add()">
-                                    <i class="ace-icon fa fa-shopping-cart bigger-160"></i>
-                                    Shop
-                                </button>
                             </div>
                         </div>
                     </div><!-- /.col -->
