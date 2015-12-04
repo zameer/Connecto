@@ -59,11 +59,16 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
       $scope.filterProduct = function (item) {
           if ($scope.item.ProductCode != undefined) {
               $http.get('/' + cName + '/GetSalesDetail/?productCode=' + $scope.item.ProductCode).success(function (data) {
-                  $scope.itemz = data;
-                  if (item) $scope.setEditDetails(item);
-                  else {
-                      setProductDetail(data[0]);
-                      $scope.decideSellingPrice();
+                  if (data.length > 0) {
+                      $scope.itemz = data;
+                      if (item) $scope.setEditDetails(item);
+                      else {
+                          setProductDetail(data[0]);
+                          $scope.decideSellingPrice();
+                      }
+                  } else {
+                      $scope.reset();
+                      showMessage({ Status: "Fail", Message: "No products found." });
                   }
               });
           }
@@ -182,6 +187,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
       $scope.add = function () {
           $scope.setHeader();
           $http.post('/' + cName + '/Create/', $scope.item).success(function (data) {
+              console.log(data);
               showMessage(data);
               if ($scope.item.InvoiceId == undefined) $scope.loadInvoices();
 
