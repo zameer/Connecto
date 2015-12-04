@@ -154,7 +154,7 @@
 
                         <div class="space-6"></div>
 
-                        <div class="col-sm-11">
+                        <div class="col-sm-11" ng-if="item.StockInHand.Quantity > 0 || item.SellingLower">
                             <div class="col-sm-4">
                                 <div class="row form-group">
                                     <div class="control-label align-left btn-group">
@@ -195,7 +195,7 @@
                         </div>
 
                         <div class="space-6"></div>
-                        <div class="col-sm-12 align-right">
+                        <div class="col-sm-12 align-right" ng-if="item.StockInHand.Quantity > 0 || item.SellingLower">
                             <div class="col-md-offset-3 col-sm-8">
                                 <button class="btn btn-app btn-yellow btn-xs" type="button" ng-click="add()">
                                     <i class="ace-icon fa fa-shopping-cart bigger-160"></i>
