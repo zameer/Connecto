@@ -3,6 +3,10 @@
 var cName = 'CartOut';
 trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeParams',
   function ($scope, $filter, $http) {
+      $http.get('/CartIn/GetProductCodes/').success(function (data) {
+          $scope.productCodes = data;
+      });
+
       $('#date-timepicker1').datetimepicker().next().on(ace.click_event, function () {
           $(this).prev().focus();
       });
@@ -54,6 +58,14 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
                   $scope.productDetail.selected = item;
               }
           });
+      };
+      
+      $scope.setProduct = function () {
+          if ($scope.productCodeSelected != undefined) {
+              if ($scope.item == undefined) $scope.item = {};
+              $scope.item.ProductCode = $scope.productCodeSelected.ProductCode == undefined ? $scope.productCodeSelected : $scope.productCodeSelected.ProductCode;
+              $scope.filterProduct();
+          }
       };
       $scope.productDetail = {};
       $scope.filterProduct = function (item) {

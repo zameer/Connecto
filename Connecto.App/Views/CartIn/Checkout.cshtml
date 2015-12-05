@@ -62,7 +62,6 @@
                                             </a>
                                         </script>
                                         <input type="text" ng-model="productCodeSelected" ng-blur="setProduct()" placeholder="Product Code" uib-typeahead="code as code.ProductCode for code in productCodes | filter:{ProductCode:$viewValue}" typeahead-template-url="productCodeTemplate.html" class="form-control">
-                                        @*<input ng-model="item.ProductCode" class="input-sm" ng-blur="filterProduct()" type="text" placeholder="Product Code">*@
                                     </div>
                                 </div>
                             </div>
@@ -74,7 +73,7 @@
                                         <div class="col-sm-9">
                                             <ui-select ng-model="product.selected" on-select="filterProduct()" theme="select2" ng-disabled="disabled" style="width: 180px;" title="Choose an order">
                                                 <ui-select-match allow-clear="true" placeholder="Select a product">{{$select.selected.Name}}</ui-select-match>
-                                                <ui-select-choices repeat="e in products">
+                                                <ui-select-choices repeat="e in products | filter: {Name: $select.search}">
                                                     <div ng-bind-html="e.Name"></div>
                                                 </ui-select-choices>
                                             </ui-select>
@@ -86,7 +85,7 @@
                                         <label class="col-sm-4 control-label">Supplier</label>
                                         <div class="col-sm-9">
                                             <ui-select ng-model="supplier.selected" theme="select2" ng-disabled="disabled" style="width: 180px;" title="Choose an order">
-                                                <ui-select-match allow-clear="true" placeholder="Select a product">{{$select.selected.Person.FirstName}}</ui-select-match>
+                                                <ui-select-match allow-clear="true" placeholder="Select a supplier">{{$select.selected.Person.FirstName}}</ui-select-match>
                                                 <ui-select-choices repeat="e in suppliers">
                                                     <div ng-bind-html="e.Person.FirstName"></div>
                                                 </ui-select-choices>

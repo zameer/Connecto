@@ -106,7 +106,15 @@
                             <div class="form-group">
                                 <div class="infobox infobox-orange2">
                                     <div class="infobox-data">
-                                        <input ng-model="item.ProductCode" ng-blur="filterProduct()" class="input-sm" type="text" placeholder="Product Code">
+                                        <div>
+                                            <script type="text/ng-template" id="productCodeTemplate.html">
+                                                <a>
+                                                    <span ng-bind-html="match.label | uibTypeaheadHighlight:query"></span>
+                                                    <span>{{match.model.Name}}</span>
+                                                </a>
+                                            </script>
+                                            <input type="text" ng-model="productCodeSelected" ng-blur="setProduct()" placeholder="Product Code" uib-typeahead="code as code.ProductCode for code in productCodes | filter:{ProductCode:$viewValue}" typeahead-template-url="productCodeTemplate.html" class="form-control">
+                                        </div>
                                         <div class="infobox-content">Product Code</div>
                                     </div>
                                 </div>
