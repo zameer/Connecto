@@ -151,7 +151,12 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
             using (var context = DataObjectFactory.CreateContext())
             {
                 var productDetails = context.ProductDetails.Where(s => s.LocationId == locationId).ToList();
-                return productDetails.Select(Mapper.Map).ToList();
+                var items = new List<ProductDetail>();
+                foreach (var detail in productDetails.Where(detail => !items.Any(e => e.ProductCode == detail.ProductCode && e.ProductId == detail.ProductId)))
+                {
+                    items.Add(Mapper.Map(detail));
+                }
+                return items;
             }
         }
     }
