@@ -21,6 +21,9 @@ namespace Connecto.DataObjects.EntityFramework
         public decimal Price { get; set; }
         public decimal NetPrice { get; set; }
         public DateTime DateReceived { get; set; }
+        public int OpeningQuantity { get; set; }
+        public int OpeningQuantityActual { get; set; }
+        public int OpeningQuantityLower { get; set; }
         public DiscountBy DiscountBy { get; set; }
         public double DiscountAs { get; set; }
         public decimal Discount { get; set; }

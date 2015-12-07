@@ -80,6 +80,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                     product.QuantityActual += item.QuantityActual;
                     product.QuantityLower += item.QuantityLower;
                     product.StockInHand += item.Quantity;
+
                     context.ProductDetails.Add(Mapper.MapDiff(item));
                     cartsToRemove.Add(item);
                 }
