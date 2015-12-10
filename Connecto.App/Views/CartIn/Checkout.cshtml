@@ -17,8 +17,9 @@
                 <div>
                     <ui-select ng-model="order.selected" on-select="filterOrder($select.selected.OrderId)" theme="select2" ng-disabled="disabled" style="width: 180px;" title="Choose an order">
                         <ui-select-match allow-clear="true" placeholder="Select an order">{{$select.selected.OrderId}}</ui-select-match>
-                        <ui-select-choices repeat="e in orders">
-                            <div ng-bind="e.OrderId"></div>
+                        <ui-select-choices repeat="e in orders | filter: $select.search">
+                            <span ng-bind-html="''+e.OrderId | highlight: $select.search"></span>
+                            <span ng-if="e.ReferenceCode"> - {{e.ReferenceCode}}</span>
                         </ui-select-choices>
                     </ui-select>
                 </div>

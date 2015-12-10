@@ -17,8 +17,9 @@
                 <div>
                     <ui-select ng-model="invoice.selected" on-select="filterInvoice($select.selected.InvoiceId)" theme="select2" ng-disabled="disabled" style="width: 180px;" title="Choose an invoice">
                         <ui-select-match allow-clear="true" placeholder="Select an invoice">{{$select.selected.InvoiceId}}</ui-select-match>
-                        <ui-select-choices repeat="e in invoices | filter: {InvoiceId: $select.search}">
-                            <div ng-bind-html="''+e.InvoiceId | highlight: $select.search"></div>
+                        <ui-select-choices repeat="e in invoices | filter: $select.search">
+                            <span ng-bind-html="''+e.InvoiceId | highlight: $select.search"></span>
+                            <span ng-if="e.ReferenceCode"> - {{e.ReferenceCode}}</span>
                             <small>
                                 <span ng-bind-html="''+e.Customer.Person.DisplayName"></span>
                             </small>
