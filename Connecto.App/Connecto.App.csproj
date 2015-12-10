@@ -238,7 +238,6 @@
     <Content Include="Content\connecto\ace.css" />
     <Content Include="Content\connecto\bootstrap.css" />
     <Content Include="Content\connecto\font-awesome.css" />
-    <Content Include="Content\connecto\preloader-21.gif" />
     <Content Include="Content\connecto\select2-spinner.gif" />
     <Content Include="Content\connecto\select2.css" />
     <Content Include="Content\connecto\select2.png" />

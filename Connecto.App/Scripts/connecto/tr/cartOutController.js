@@ -5,7 +5,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
   function ($scope, $filter, $http) {
       $http.get('/CartIn/GetProductCodes/').success(function (data) {
           $scope.productCodes = data;
-          setTimeout($.unblockUI, 1000);
+          AppCommonFunction.HideWaitBlock();
       });
 
       $('#date-timepicker1').datetimepicker().next().on(ace.click_event, function () {
@@ -18,12 +18,12 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
 
       $scope.employee = {};
       $scope.loadEmployees = function () {
-          $.blockUI({
-              message: $('#displayBox'),
-              showOverlay: false,
-              css: { border: 'none', opacity: .6 }
-          });
-          
+          //$.blockUI({
+          //    message: $('#displayBox'),
+          //    showOverlay: false,
+          //    css: { border: 'none', opacity: .6 }
+          //});
+          AppCommonFunction.ShowWaitBlock();
           $http.get('/Employee/GetAll/').success(function (data) {
               $scope.employees = data;
               if ($scope.employee.selected == null) {
