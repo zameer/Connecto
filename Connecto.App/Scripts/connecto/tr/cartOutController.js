@@ -5,6 +5,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
   function ($scope, $filter, $http) {
       $http.get('/CartIn/GetProductCodes/').success(function (data) {
           $scope.productCodes = data;
+          $('#productCode').focus();
           AppCommonFunction.HideWaitBlock();
       });
 
@@ -66,7 +67,14 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
               }
           });
       };
-      
+      $scope.submit = function () {
+          if ($scope.productCodeSelected != undefined && $scope.productCodeSelected.ProductCode == undefined) {
+              $scope.setProduct();
+          }
+      };
+      $scope.onSelect = function () {
+          $scope.setProduct();
+      };
       $scope.setProduct = function () {
           if ($scope.productCodeSelected != undefined) {
               if ($scope.item == undefined) $scope.item = {};
@@ -80,7 +88,13 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
               $http.get('/' + cName + '/GetSalesDetail/?productCode=' + $scope.item.ProductCode).success(function (data) {
                   if (data.length > 0) {
                       $scope.itemz = data;
-                      if (item) $scope.setEditDetails(item);
+                      if (item) {
+                          $scope.setEditDetails(item);
+                          if ($scope.item.AutoSelling) {
+                              $scope.item.Quantity = $scope.item.AutoSellingQty;
+                              $scope.calculatePrice();
+                          }
+                      }
                       else {
                           setProductDetail(data[0]);
                           $scope.decideSellingPrice();
@@ -152,6 +166,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
           $scope.customer.selected = $scope.invoice.selected != undefined ? $scope.invoice.selected.Customer : null;
           $scope.employee.selected = $scope.invoice.selected != undefined ? $filter('getById')($scope.employees, $scope.invoice.selected.EmployeeId, "EmployeeId")
               : $filter('getById')($scope.employees, $scope.starter.EmployeeId, "EmployeeId");
+          $('#productCode').focus();
       };
 
       $scope.DiscountBy = 'None';
@@ -177,6 +192,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
       };
       $scope.calculateNetPrice = function () {
           $scope.item.NetPrice = $scope.item.Price - ($scope.item.Discount != undefined ? $scope.item.Discount : 0);
+          if ($scope.item.SalesDetailId == 0 && $scope.item.AutoSelling) $scope.add();
       };
       
       $scope.calculateGrossPrice = function () {
@@ -206,12 +222,13 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
       $scope.add = function () {
           $scope.setHeader();
           $http.post('/' + cName + '/Create/', $scope.item).success(function (data) {
-              console.log(data);
               showMessage(data);
               if ($scope.item.InvoiceId == undefined) $scope.loadInvoices();
 
+              $scope.productCodeSelected = undefined;
               $scope.reset();
               $scope.item.InvoiceId = data.InvoiceId != undefined && data.InvoiceId > 0 ? data.InvoiceId : $scope.item.InvoiceId;
+
               if (data.Status != "Failure") $scope.loadItems($scope.item.InvoiceId);
           });
           
@@ -224,7 +241,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
           $http.post('/' + cName + '/Delete/', { id: salesDetailId }).success(function (data) {
               showMessage(data);
               if (data.Status != "Failure") {
-                  $scope.loadItems($scope.item.InvoiceId);
+                  $scope.loadItems($scope.invoice.selected.InvoiceId);
               }
           });
       };
@@ -233,7 +250,6 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
           $http.post('/' + cName + '/EditHeader/', $scope.item).success(function (data) {
               showMessage(data);
           });
-
       };
       $scope.complete = function () {
           $http.post('/' + cName + '/Complete/', { id: $scope.invoice.selected.InvoiceId, fluctuation: $scope.Fluctuation }).success(function (data) {

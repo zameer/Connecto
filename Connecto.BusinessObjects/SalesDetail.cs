@@ -33,6 +33,8 @@ namespace Connecto.BusinessObjects
         public decimal Discount { get; set; }
         public string ProductName { get; set; }
         public string ReceivedInfo { get; set; }
+        public bool AutoSelling { get; set; }
+        public int AutoSellingQty { get; set; }
 
     }
 }

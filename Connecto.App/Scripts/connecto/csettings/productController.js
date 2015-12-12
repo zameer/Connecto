@@ -123,4 +123,9 @@ cSettingControllers.controller(cName + 'EditCtrl', ['$scope', '$filter','$http',
               $scope.ContainsQtyDesc = ptype.Measure.Actual + '(s) in a ' + ptype.StockAs;
           else $scope.ContainsQtyDesc = undefined;
       };
+      $scope.allowAutoSelling = function () {
+          if ($scope.item.AutoSelling)
+              $scope.item.AutoSellingQty = 1;
+          else $scope.item.AutoSellingQty = undefined;
+      };
   }]);

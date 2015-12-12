@@ -25,14 +25,14 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
             var salesDetails = new List<SalesDetail>();
             using (var context = DataObjectFactory.CreateContext())
             {
-                var productDetails = context.ProductDetails.Where(e => e.ProductCode.Equals(productCode) && (e.Quantity + e.QuantityActual + e.QuantityLower) > 0).ToList();
+                var productDetails = context.ProductDetails.Where(e => (e.ProductCode.Equals(productCode) || e.Barcode.Equals(productCode)) && (e.Quantity + e.QuantityActual + e.QuantityLower) > 0).ToList();
                 foreach (var productDetail in productDetails)
                 {
                     var measure = productDetail.Product.ProductType.Measure;
                     salesDetails.Add( new SalesDetail
                     {
                         ProductDetailId = productDetail.ProductDetailId,
-                        ProductCode = productCode,
+                        ProductCode = productDetail.ProductCode,
                         SellingLower = productDetail.Product.SellingLower,
                         StockInHand = new StockInHand { Quantity = productDetail.Product.StockInHand, QuantityActual = productDetail.Product.QuantityActual, QuantityLower = productDetail.Product.QuantityLower },
                         RowStockInHand = new StockInHand { Quantity = productDetail.Quantity, QuantityActual = productDetail.QuantityActual, QuantityLower = productDetail.QuantityLower },
@@ -44,6 +44,8 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                         ContainsQty = productDetail.Product.ContainsQty,
                         SellingMargin = productDetail.Product.SellingMargin,
                         MarginAmount = productDetail.Product.MarginAmount,
+                        AutoSelling = productDetail.Product.AutoSelling,
+                        AutoSellingQty = productDetail.Product.AutoSellingQty,
                         Measure = new Measure { Actual = measure.Actual, Lower = measure.Lower },
                         CreatedOnText = productDetail.CreatedOn.ToShortDateString(),
                         ReceivedInfo = string.Format("{0} {1}- {2}{3}{4}", productDetail.CreatedOn.ToShortDateString(), productDetail.Product.Name,

@@ -1,5 +1,5 @@
 ﻿@{ Layout = null; }
-<form class="form-horizontal" role="form">
+<form class="form-horizontal" ng-submit="submit()" role="form">
     <div class="page-header row">
         <div class="col-sm-1 no-padding-left">
             <h1><small>NEWCART</small> </h1>
@@ -79,7 +79,7 @@
                             <div class="profile-info-name"> Selling Price </div>
                             <div class="profile-info-value">
                                 <span class="widget-title blue smaller">
-                                    <span ng-show ="item.StockInHand.QuantityActual >= 0">
+                                    <span ng-show="item.StockInHand.QuantityActual >= 0">
                                         <input ng-model="item.SellingPrice" class="input-sm" type="text" placeholder="Selling price">
                                         Rs {{AveragePrice}}
                                         <small>/Average</small>
@@ -108,13 +108,13 @@
                                 <div class="infobox-data">
                                     <div>
                                         <script type="text/ng-template" id="productCodeTemplate.html">
-                                                <a>
-                                                    <span ng-bind-html="match.label | uibTypeaheadHighlight:query"></span>
-                                                    <span>{{match.model.Name}}</span>
-                                                </a>
-                                            </script>
-                                        <input type="text" ng-model="productCodeSelected" ng-blur="setProduct()" placeholder="Product Code" uib-typeahead="code as code.ProductCode for code in productCodes | filter:{ProductCode:$viewValue}" typeahead-template-url="productCodeTemplate.html" class="form-control">
-                                    </div>
+                                            <a>
+                                                <span ng-bind-html="match.label | uibTypeaheadHighlight:query"></span>
+                                                <span>{{match.model.Name}}</span>
+                                            </a>
+                                        </script>
+                                        <input id="productCode" type="text" ng-model="productCodeSelected" placeholder="Product Code" uib-typeahead="code as code.ProductCode for code in productCodes | filter:{ProductCode:$viewValue}" typeahead-template-url="productCodeTemplate.html"
+                                               typeahead-on-select="onSelect()" class="form-control"></div>
                                     <div class="infobox-content">Product Code</div>
                                 </div>
                             </div>

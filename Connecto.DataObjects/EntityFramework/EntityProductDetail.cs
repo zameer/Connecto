@@ -16,6 +16,7 @@ namespace Connecto.DataObjects.EntityFramework
         public int SupplierId { get; set; }
         public int EmployeeId { get; set; }
         public string ProductCode { get; set; }
+        public string Barcode { get; set; }
         public decimal UnitPrice { get; set; }
         public decimal SellingPrice { get; set; }
         public decimal Price { get; set; }

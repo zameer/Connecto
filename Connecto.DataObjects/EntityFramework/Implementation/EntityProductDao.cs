@@ -71,12 +71,15 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                 entity.ProductTypeId = product.ProductTypeId;
                 entity.VendorId = product.VendorId;
                 entity.Name = product.Name;
+                entity.Barcode = product.Barcode;
                 entity.ContainsQty = product.ContainsQty;
                 entity.StockInHand = product.StockInHand;
                 entity.SellingDown = product.SellingDown;
                 entity.SellingLower = product.SellingLower;
                 entity.SellingMargin = product.SellingMargin;
                 entity.MarginAmount = product.MarginAmount;
+                entity.AutoSelling = product.AutoSelling;
+                entity.AutoSellingQty = product.AutoSellingQty;
                 entity.EditedBy = product.EditedBy;
                 entity.EditedOn = product.EditedOn;
                 return context.SaveChanges() > 0;
