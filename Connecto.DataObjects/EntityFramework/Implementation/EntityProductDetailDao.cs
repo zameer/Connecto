@@ -55,6 +55,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
         {
             var cart = context.ProductDetailCarts.FirstOrDefault(e => e.OrderId == productDetailCart.OrderId && e.ProductCode == productDetailCart.ProductCode);
             if (cart == null) return false;
+            cart.Barcode = productDetailCart.Barcode;
             cart.EmployeeId = productDetailCart.EmployeeId;
             cart.Quantity = productDetailCart.Quantity;
             cart.QuantityActual = productDetailCart.QuantityActual;
@@ -112,6 +113,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
             {
                 var entity = context.ProductDetailCarts.FirstOrDefault(s => s.ProductDetailId == cart.ProductDetailId);
                 entity.ProductCode = cart.ProductCode;
+                entity.Barcode = cart.Barcode;
                 entity.ProductId = cart.ProductId;
                 entity.SupplierId = cart.SupplierId;
                 entity.Quantity = cart.Quantity;

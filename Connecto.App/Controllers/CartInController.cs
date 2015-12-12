@@ -20,7 +20,7 @@ namespace Connecto.App.Controllers
         public JsonResult GetProductCodes()
         {
             var items = _repo.GetProductCodes(User.LocationId());
-            return Json(items, JsonRequestBehavior.AllowGet);
+           return Json(items, JsonRequestBehavior.AllowGet);
         }
         public JsonResult Get(int orderId)
         {

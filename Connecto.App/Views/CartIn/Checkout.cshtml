@@ -39,9 +39,9 @@
             </div>
         </div>
         <div class="col-sm-1 no-padding-left">
-            <button class="btn btn-info btn-xs" ng-click="saveHeader()">
+            <a class="btn btn-info btn-xs" ng-click="saveHeader()">
                 <i class="ace-icon fa fa-floppy-o  bigger-110 icon-only"></i>
-            </button>
+            </a>
         </div>
     </div>
 
@@ -91,6 +91,16 @@
                                             </ui-select-choices>
                                         </ui-select>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Barcode</label>
+                                <div class="col-sm-9">
+                                    <input ng-model="item.Barcode" type="text" id="form-field-1" placeholder="Barcode">
                                 </div>
                             </div>
                         </div>

@@ -70,6 +70,8 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
       $scope.submit = function () {
           if ($scope.productCodeSelected != undefined && $scope.productCodeSelected.ProductCode == undefined) {
               $scope.setProduct();
+          } else {
+              
           }
       };
       $scope.onSelect = function () {
@@ -90,13 +92,13 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
                       $scope.itemz = data;
                       if (item) {
                           $scope.setEditDetails(item);
+                      }
+                      else {
+                          setProductDetail(data[0]);
                           if ($scope.item.AutoSelling) {
                               $scope.item.Quantity = $scope.item.AutoSellingQty;
                               $scope.calculatePrice();
                           }
-                      }
-                      else {
-                          setProductDetail(data[0]);
                           $scope.decideSellingPrice();
                       }
                   } else {

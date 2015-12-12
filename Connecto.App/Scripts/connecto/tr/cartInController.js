@@ -57,8 +57,10 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
           if ($scope.productCodeSelected != undefined) {
               $scope.product.selected = $filter('getById')($scope.products, $scope.productCodeSelected.ProductId, "ProductId");
               $scope.supplier.selected = $filter('getById')($scope.suppliers, $scope.productCodeSelected.SupplierId, "SupplierId");
+
               if ($scope.item == undefined) $scope.item = {};
               $scope.item.ProductCode = $scope.productCodeSelected.ProductCode == undefined ? $scope.productCodeSelected : $scope.productCodeSelected.ProductCode;
+              $scope.item.Barcode = $scope.productCodeSelected.Barcode;
               $scope.filterProduct();
           }
       };
