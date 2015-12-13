@@ -224,11 +224,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="BusinessIntelligence\Scripts\fn-Oct10th.sql" />
-    <Content Include="BusinessIntelligence\Scripts\sp-Oct10th.sql" />
-    <Content Include="BusinessIntelligence\Scripts\sp-may30th.sql" />
-    <Content Include="BusinessIntelligence\Scripts\sp-may25th.sql" />
     <Content Include="BusinessIntelligence\Scripts\ReportSetting.sql" />
-    <Content Include="BusinessIntelligence\Scripts\sp-may17th.sql" />
+    <Content Include="BusinessIntelligence\Scripts\sp-Dec13th.sql" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\connecto\ace-fonts.css" />
