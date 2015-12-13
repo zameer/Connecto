@@ -263,7 +263,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
           });
       };
       $scope.print = function () {
-          $http.post('/' + cName + '/Print/', { invoiceId: $scope.invoice.selected.InvoiceId }).success(function (data) {
+          $http.post('/' + cName + '/Print/', { orderId: $scope.invoice.selected.InvoiceId }).success(function (data) {
               showMessage(data);
           });
       };
