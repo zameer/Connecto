@@ -462,6 +462,7 @@
     <EmbeddedResource Include="BusinessIntelligence\Transaction\AllCustomerDetails.rdlc" />
     <EmbeddedResource Include="BusinessIntelligence\Transaction\AllEmployeeDetails.rdlc" />
     <EmbeddedResource Include="BusinessIntelligence\Transaction\AllSupplierDetails.rdlc" />
+    <EmbeddedResource Include="BusinessIntelligence\Transaction\ProductDetails.rdlc" />
     <EmbeddedResource Include="BusinessIntelligence\Transaction\DiscountDetailsForTheMonth.rdlc" />
     <EmbeddedResource Include="BusinessIntelligence\Transaction\DiscountDetailsForTheDay.rdlc" />
     <EmbeddedResource Include="BusinessIntelligence\Transaction\LowerQuantityDetails.rdlc" />
@@ -477,7 +478,6 @@
     <EmbeddedResource Include="BusinessIntelligence\Transaction\CustomerDetails.rdlc" />
     <EmbeddedResource Include="BusinessIntelligence\Transaction\ProductData.rdlc" />
     <EmbeddedResource Include="BusinessIntelligence\Transaction\SalesDetailsByOrderId.rdlc" />
-    <EmbeddedResource Include="BusinessIntelligence\Transaction\ProductDetails.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
