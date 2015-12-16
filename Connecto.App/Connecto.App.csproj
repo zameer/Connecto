@@ -459,6 +459,7 @@
     <EmbeddedResource Include="BusinessIntelligence\Transaction\AllCustomerDetails.rdlc" />
     <EmbeddedResource Include="BusinessIntelligence\Transaction\AllEmployeeDetails.rdlc" />
     <EmbeddedResource Include="BusinessIntelligence\Transaction\AllSupplierDetails.rdlc" />
+    <EmbeddedResource Include="BusinessIntelligence\Transaction\SalesInvoice.rdlc" />
     <EmbeddedResource Include="BusinessIntelligence\Transaction\ProductDetails.rdlc" />
     <EmbeddedResource Include="BusinessIntelligence\Transaction\DiscountDetailsForTheMonth.rdlc" />
     <EmbeddedResource Include="BusinessIntelligence\Transaction\DiscountDetailsForTheDay.rdlc" />
