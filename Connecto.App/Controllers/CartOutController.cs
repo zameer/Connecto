@@ -76,7 +76,7 @@ namespace Connecto.App.Controllers
 
         public ActionResult Print(int orderId)
         {
-            var path = Path.Combine(Server.MapPath("~/BusinessIntelligence/Transaction"), "SalesDetailsByOrderId.rdlc");
+            var path = Path.Combine(Server.MapPath("~/BusinessIntelligence/Transaction"), "SalesInvoice.rdlc");
             if (!System.IO.File.Exists(path))
                 return Json(new { Status = "Failure", Message = "Report not found." }, JsonRequestBehavior.AllowGet);
 
@@ -85,7 +85,7 @@ namespace Connecto.App.Controllers
             var lr = new LocalReport { ReportPath = path };
             lr.DataSources.Add(rd);
 
-            var info = new PrintoDeviceInfo { OutputFormat = "EMF", SizeUnit = "in", PageWidth = 5.3, PageHeight = 3, MarginTop = 0.5, MarginLeft = 0, MarginRight = 0, MarginBottom = 0.5 };
+            var info = new PrintoDeviceInfo { OutputFormat = "EMF", SizeUnit = "mm", PageWidth = 76, PageHeight = 100, MarginTop = 0.5, MarginLeft = 0, MarginRight = 0, MarginBottom = 0.5 };
             Printo.Printer(lr, info.Xml);
             return Json(new { Status = "Success", Message = "Invoice Successfully Printed." }, JsonRequestBehavior.AllowGet);
         }
