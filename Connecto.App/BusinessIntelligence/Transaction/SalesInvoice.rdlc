@@ -960,14 +960,16 @@
                   </Style>
                 </TextRun>
               </TextRuns>
-              <Style />
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox3</rd:DefaultName>
           <Top>0.49027in</Top>
           <Left>1.94242in</Left>
           <Height>0.18403in</Height>
-          <Width>0.68899in</Width>
+          <Width>0.79815in</Width>
           <ZIndex>2</ZIndex>
           <Style>
             <Border>
@@ -1001,7 +1003,7 @@
           <Top>0.25556in</Top>
           <Left>0.25808in</Left>
           <Height>0.19305in</Height>
-          <Width>2.37333in</Width>
+          <Width>2.48249in</Width>
           <ZIndex>3</ZIndex>
           <Style>
             <Border>
