@@ -15,6 +15,7 @@ namespace Connecto.App.Controllers
     public class CartOutController : BaseController
     {
         private readonly SalesDetailRepository _repo = ConnectoFactory.SalesDetailRepository;
+        private readonly CompanyRepository _company = ConnectoFactory.CompanyRepository;
         public JsonResult GetInvoices()
         {
             var items = _repo.GetInvoices(false);
@@ -82,13 +83,28 @@ namespace Connecto.App.Controllers
 
             var data = new InvoiceByIdAdapter().GetData((byte?)orderId).ToList();
             var rd = new ReportDataSource("Dataset", data);
+
             var lr = new LocalReport { ReportPath = path };
+
+            //lr.SetParameters(BuildReportParameter());
+            
             lr.DataSources.Add(rd);
 
             var info = new PrintoDeviceInfo { OutputFormat = "EMF", SizeUnit = "mm", PageWidth = 76, PageHeight = 100, MarginTop = 0.5, MarginLeft = 0, MarginRight = 0, MarginBottom = 0.5 };
             Printo.Printer(lr, info.Xml);
             return Json(new { Status = "Success", Message = "Invoice Successfully Printed." }, JsonRequestBehavior.AllowGet);
         }
+
+        //private ReportParameter[] BuildReportParameter()
+        //{
+        //    var company = _company.Get().FirstOrDefault();
+        //    var location = company != null ? company.CompanyInLocations.FirstOrDefault(w => w.CompanyLocationId == User.LocationId()) : null;
+        //    if (location == null) return new ReportParameter[]{};
+
+        //    var p1 = new ReportParameter("CompanyName", location.Company.Name);
+        //    var p2 = new ReportParameter("LocationName", location.Name);
+        //    return new []{p1,p2};
+        //}
         public ActionResult Index()
         {
             return View();
