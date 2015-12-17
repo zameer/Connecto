@@ -76,7 +76,7 @@ namespace Connecto.App.Controllers
                     AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
                     var identity = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
 
-                    RemoveClaims(ref identity, new[] { "EmployeeId", "DisplayName", "LocationId", "LocationInfo" });
+                    RemoveClaims(ref identity, new[] { "LocationInfo" });
                     
                     var locationInfo = new LocationInfo
                     {
@@ -90,12 +90,10 @@ namespace Connecto.App.Controllers
                         locationInfo.LocationId = location.CompanyLocationId;
                         locationInfo.LocationName = location.Name;
                         locationInfo.Address = string.Format("{0} {1}, {2}", location.AddressNo, location.AddressStreet, location.City);
+                        locationInfo.Contact = location.Contact;
                     }
                     var locationInfoString = JsonConvert.SerializeObject(locationInfo);
 
-                    identity.AddClaim(new Claim("DisplayName", user.DisplayName)); 
-                    identity.AddClaim(new Claim("EmployeeId", user.EmployeeId.ToString("")));
-                    identity.AddClaim(new Claim("LocationId", string.Format("{0}", location == null ? 0 : location.CompanyLocationId)));
                     identity.AddClaim(new Claim("LocationInfo", locationInfoString));
                     AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = true }, identity);
 

@@ -19,11 +19,6 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
 
       $scope.employee = {};
       $scope.loadEmployees = function () {
-          //$.blockUI({
-          //    message: $('#displayBox'),
-          //    showOverlay: false,
-          //    css: { border: 'none', opacity: .6 }
-          //});
           AppCommonFunction.ShowWaitBlock();
           $http.get('/Employee/GetAll/').success(function (data) {
               $scope.employees = data;
@@ -165,6 +160,8 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
       $scope.reset = function () {
           $scope.item = {};
           $scope.itemz = [];
+          $scope.Paid = 0;
+          $scope.Balance = 0;
           $scope.customer.selected = $scope.invoice.selected != undefined ? $scope.invoice.selected.Customer : null;
           $scope.employee.selected = $scope.invoice.selected != undefined ? $filter('getById')($scope.employees, $scope.invoice.selected.EmployeeId, "EmployeeId")
               : $filter('getById')($scope.employees, $scope.starter.EmployeeId, "EmployeeId");
@@ -263,8 +260,12 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
           });
       };
       $scope.print = function () {
-          $http.post('/' + cName + '/Print/', { orderId: $scope.invoice.selected.InvoiceId }).success(function (data) {
+          $http.post('/' + cName + '/Print/', { id: $scope.invoice.selected.InvoiceId, fluctuation: $scope.Fluctuation, paid: $scope.Paid, balance: $scope.Balance }).success(function (data) {
               showMessage(data);
+              if (data.Status != "Failure") {
+                  $scope.loadInvoices();
+                  $scope.loadItems();
+              }
           });
       };
   }]);

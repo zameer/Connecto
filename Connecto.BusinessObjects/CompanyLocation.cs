@@ -12,6 +12,7 @@ namespace Connecto.BusinessObjects
         public string City { get; set; }
         public string Province { get; set; }
         public int? CountryId { get; set; }
+        public string Contact { get; set; }
         public string Timezone { get; set; }
         public int WorkingHrs { get; set; }
         public int? CompanyId { get; set; }

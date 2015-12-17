@@ -183,6 +183,7 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 City = entity.City,
                 Province = entity.Province,
                 CountryId = entity.CountryId,
+                Contact = entity.Contact,
                 Timezone = entity.Timezone,
                 WorkingHrs = entity.WorkingHrs,
                 CompanyId = entity.CompanyId,

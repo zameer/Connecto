@@ -73,24 +73,28 @@ namespace Connecto.App.Controllers
             return Json(new {Status = "Success", Message = "Invoice Successfully Added."}, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Print(int orderId)
+        public ActionResult Print(int id, decimal fluctuation, decimal paid, decimal balance)
         {
             var path = Path.Combine(Server.MapPath("~/BusinessIntelligence/Transaction"), "SalesInvoice.rdlc");
             if (!System.IO.File.Exists(path))
                 return Json(new { Status = "Failure", Message = "Report not found." }, JsonRequestBehavior.AllowGet);
 
-            var data = new InvoiceByIdAdapter().GetData((byte?)orderId).ToList();
+            var data = new InvoiceByIdAdapter().GetData((byte?)id).ToList();
             var rd = new ReportDataSource("Dataset", data);
 
             var lr = new LocalReport { ReportPath = path };
-
+           
             var rptParams = new[]
             {
                 new ReportParameter("CompanyName", Location.CompanyName),
                 new ReportParameter("LocationName", Location.LocationName),
                 new ReportParameter("Address", Location.Address),
                 new ReportParameter("UserName", Location.DisplayName),
-                new ReportParameter("OrderId", orderId.ToString(""))
+                new ReportParameter("Contact", Location.Contact),
+                new ReportParameter("OrderId", id.ToString("")),
+                new ReportParameter("PrintDate", DateTime.Now.ToString("g")),
+                new ReportParameter("Paid", paid.ToString("")),
+                new ReportParameter("Balance", balance.ToString(""))
             };
             lr.SetParameters(rptParams);
             
@@ -98,7 +102,8 @@ namespace Connecto.App.Controllers
 
             var info = new PrintoDeviceInfo { OutputFormat = "EMF", SizeUnit = "mm", PageWidth = 76, PageHeight = 100, MarginTop = 0.5, MarginLeft = 0, MarginRight = 0, MarginBottom = 0.5 };
             Printo.Printer(lr, info.Xml);
-            return Json(new { Status = "Success", Message = "Invoice Successfully Printed." }, JsonRequestBehavior.AllowGet);
+            _repo.Add(id, fluctuation);
+            return Json(new { Status = "Success", Message = "Invoice Successfully Added." }, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Index()
