@@ -1,5 +1,4 @@
-﻿using Connecto.App.Models;
-using Connecto.BusinessObjects;
+﻿using Connecto.BusinessObjects;
 using Connecto.Common.Enumeration;
 using Connecto.Repositories;
 using System;
@@ -35,7 +34,7 @@ namespace Connecto.App.Controllers
             if (id <= 0) errors.Add(new ConnectoException { Message = "Please provide none" });
             if (errors.Count > 0) return Json(new ConnectoValidation { Status = "Failure", Exceptions = errors }, JsonRequestBehavior.AllowGet);
 
-            _repo.Add(new Supplier{ PersonId = id, LocationId = 1, CreatedBy = User.UserId(), CreatedOn = DateTime.Now, Status = RecordStatus.Active});
+            _repo.Add(new Supplier { PersonId = id, LocationId = 1, CreatedBy = Location.UserId, CreatedOn = DateTime.Now, Status = RecordStatus.Active });
             return Json(true, JsonRequestBehavior.AllowGet);
         }
 
@@ -58,7 +57,7 @@ namespace Connecto.App.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            _repo.Delete(id, User.UserId());
+            _repo.Delete(id, Location.UserId);
             return Json(true, JsonRequestBehavior.AllowGet);
         }
     }

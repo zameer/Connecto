@@ -24,7 +24,7 @@ namespace Connecto.App.Controllers
         }
         public JsonResult GetLoggedEmployeeId()
         {
-            return Json(User.UserId(), JsonRequestBehavior.AllowGet);
+            return Json(Location.UserId, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetPeople()
@@ -40,7 +40,7 @@ namespace Connecto.App.Controllers
             if (id <= 0) errors.Add(new ConnectoException { Message = "Please provide none" });
             if (errors.Count > 0) return Json(new ConnectoValidation { Status = "Failure", Exceptions = errors }, JsonRequestBehavior.AllowGet);
 
-            _repo.Add(new Employee { PersonId = id, LocationId = 1, CreatedBy = User.UserId(), CreatedOn = DateTime.Now, Status = RecordStatus.Active });
+            _repo.Add(new Employee { PersonId = id, LocationId = 1, CreatedBy = Location.UserId, CreatedOn = DateTime.Now, Status = RecordStatus.Active });
             return Json(true, JsonRequestBehavior.AllowGet);
         }
 
@@ -63,7 +63,7 @@ namespace Connecto.App.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            _repo.Delete(id, User.UserId());
+            _repo.Delete(id, Location.UserId);
             return Json(true, JsonRequestBehavior.AllowGet);
         }
     }

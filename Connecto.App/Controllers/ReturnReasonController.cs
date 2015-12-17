@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using Connecto.App.Models;
-using Connecto.App.ModelValidator;
+﻿using Connecto.App.ModelValidator;
 using Connecto.BusinessObjects;
 using Connecto.Common.Enumeration;
 using Connecto.Repositories;
@@ -38,7 +36,7 @@ namespace Connecto.App.Controllers
 
             item.LocationId = 1;
             item.ReturnReasonGuid = Guid.NewGuid();
-            item.CreatedBy = User.UserId();
+            item.CreatedBy = Location.UserId;
             item.CreatedOn = DateTime.Now;
             item.Status = RecordStatus.Active;
             _repo.Add(item);
@@ -53,7 +51,7 @@ namespace Connecto.App.Controllers
             var errors = new ReturnReasonValidator(item, _repo).Validate();
             if (errors.Count > 0) return Json(new ConnectoValidation { Status = "Failure", Exceptions = errors }, JsonRequestBehavior.AllowGet);
             
-            item.EditedBy = User.UserId();
+            item.EditedBy = Location.UserId;
             item.EditedOn = DateTime.Now;
             _repo.Edit(item);
             return Json(true, JsonRequestBehavior.AllowGet);
@@ -67,7 +65,7 @@ namespace Connecto.App.Controllers
             var errors = new ReturnReasonValidator(_repo).Validate(id);
             if (errors.Count > 0) return Json(new ConnectoValidation { Status = "Failure", Exceptions = errors }, JsonRequestBehavior.AllowGet);
 
-            _repo.Delete(id, User.UserId());
+            _repo.Delete(id, Location.UserId);
             return Json(true, JsonRequestBehavior.AllowGet);
         }
 

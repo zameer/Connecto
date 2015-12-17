@@ -48,7 +48,7 @@ namespace Connecto.App.Controllers
 
             item.LocationId = 1;
             item.SalesDetailGuid = Guid.NewGuid();
-            item.CreatedBy = User.UserId();
+            item.CreatedBy = Location.UserId;
             item.CreatedOn = DateTime.Now;
             item.DateSold = DateTime.Now;
             item.Status = RecordStatus.Active;
@@ -61,7 +61,7 @@ namespace Connecto.App.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            _repo.Delete(id, User.UserId());
+            _repo.Delete(id, Location.UserId);
             return Json(new { Status = "Success", Message = "Person Successfully Deleted." }, JsonRequestBehavior.AllowGet);
         }
 

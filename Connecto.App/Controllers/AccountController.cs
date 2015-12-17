@@ -6,12 +6,14 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Connecto.BusinessObjects;
 using Connecto.Repositories;
 using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using Connecto.App.Models;
+using Newtonsoft.Json;
 
 namespace Connecto.App.Controllers
 {
@@ -74,11 +76,27 @@ namespace Connecto.App.Controllers
                     AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
                     var identity = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
 
-                    RemoveClaims(ref identity, new [] { "EmployeeId", "DisplayName", "LocationId" });
+                    RemoveClaims(ref identity, new[] { "EmployeeId", "DisplayName", "LocationId", "LocationInfo" });
                     
+                    var locationInfo = new LocationInfo
+                    {
+                        DisplayName = user.DisplayName,
+                        UserId = user.EmployeeId,
+                        EmployeeId = user.EmployeeId
+                    };
+                    if (location != null)
+                    {
+                        locationInfo.CompanyName = company.Name;
+                        locationInfo.LocationId = location.CompanyLocationId;
+                        locationInfo.LocationName = location.Name;
+                        locationInfo.Address = string.Format("{0} {1}, {2}", location.AddressNo, location.AddressStreet, location.City);
+                    }
+                    var locationInfoString = JsonConvert.SerializeObject(locationInfo);
+
                     identity.AddClaim(new Claim("DisplayName", user.DisplayName)); 
                     identity.AddClaim(new Claim("EmployeeId", user.EmployeeId.ToString("")));
                     identity.AddClaim(new Claim("LocationId", string.Format("{0}", location == null ? 0 : location.CompanyLocationId)));
+                    identity.AddClaim(new Claim("LocationInfo", locationInfoString));
                     AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = true }, identity);
 
                     return RedirectToLocal(returnUrl);
@@ -93,6 +111,15 @@ namespace Connecto.App.Controllers
             return View(model);
         }
 
+        private LocationInfo GetLocationInfo(CompanyLocation location)
+        {
+            var locationInfo = new LocationInfo
+            {
+                CompanyName = location.Company.Name,
+                LocationName = location.Name
+            };
+            return locationInfo;
+        }
         private void RemoveClaims(ref  ClaimsIdentity identity, IEnumerable<string> claimNames)
         {
             foreach (var claimName in claimNames)

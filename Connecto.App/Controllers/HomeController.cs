@@ -14,7 +14,7 @@ namespace Connecto.App.Controllers
         {
             var starter = new Starter
             {
-                EmployeeId = User.UserId(),
+                EmployeeId = Location.UserId,
                 Todate = string.Format("{0:g}", DateTime.Now)
             };
             return Json(starter, JsonRequestBehavior.AllowGet);

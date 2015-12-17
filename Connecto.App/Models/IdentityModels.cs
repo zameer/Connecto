@@ -2,6 +2,7 @@
 using System.Security.Principal;
 using Connecto.BusinessObjects;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Newtonsoft.Json;
 
 namespace Connecto.App.Models
 {
@@ -11,48 +12,36 @@ namespace Connecto.App.Models
         public string DisplayName { get; set; }
         public int EmployeeId { get; set; }
     }
-
+    public class LocationInfo
+    {
+        public string DisplayName { get; set; }
+        public int UserId { get; set; }
+        public int EmployeeId { get; set; }
+        public int LocationId { get; set; }
+        public string CompanyName { get; set; }
+        public string LocationName { get; set; }
+        public string Address { get; set; }
+        public string Contact { get; set; }
+    }
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext()
-            : base("ConnectoDb")
+        public ApplicationDbContext() : base("ConnectoDb")
         {
         }
     }
     public static class GenericPrincipalExtensions
     {
-        public static string DisplayName(this IPrincipal user)
+        public static LocationInfo LocationInfo(this IPrincipal user)
         {
-            if (!user.Identity.IsAuthenticated) return string.Empty;
+            if (user == null) return new LocationInfo();
+            if (!user.Identity.IsAuthenticated) return new LocationInfo();
             var claimsIdentity = user.Identity as ClaimsIdentity;
             foreach (var claim in claimsIdentity.Claims)
             {
-                if (claim.Type == "DisplayName")
-                    return claim.Value;
+                if (claim.Type == "LocationInfo")
+                    return JsonConvert.DeserializeObject<LocationInfo>(claim.Value);
             }
-            return string.Empty;
-        }
-        public static int UserId(this IPrincipal user)
-        {
-            if (!user.Identity.IsAuthenticated) return 0;
-            var claimsIdentity = user.Identity as ClaimsIdentity;
-            foreach (var claim in claimsIdentity.Claims)
-            {
-                if (claim.Type == "EmployeeId")
-                    return int.Parse(claim.Value);
-            }
-            return 0;
-        }
-        public static int LocationId(this IPrincipal user)
-        {
-            if (!user.Identity.IsAuthenticated) return 0;
-            var claimsIdentity = user.Identity as ClaimsIdentity;
-            foreach (var claim in claimsIdentity.Claims)
-            {
-                if (claim.Type == "LocationId")
-                    return int.Parse(claim.Value);
-            }
-            return 0;
+            return new LocationInfo();
         }
     }
 }

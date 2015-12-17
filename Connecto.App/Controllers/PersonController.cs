@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Connecto.App.Models;
 using Connecto.BusinessObjects;
 using Connecto.Common.Enumeration;
 using Connecto.Repositories;
@@ -35,7 +34,7 @@ namespace Connecto.App.Controllers
 
             item.LocationId = 1;
             item.PersonGuid = Guid.NewGuid();
-            item.CreatedBy = User.UserId();
+            item.CreatedBy = Location.UserId;
             item.CreatedOn = DateTime.Now;
             item.Status = RecordStatus.Active;
             _repo.Add(item);
@@ -47,7 +46,7 @@ namespace Connecto.App.Controllers
         [HttpPost]
         public ActionResult Edit(Person item)
         {
-            item.EditedBy = User.UserId();
+            item.EditedBy = Location.UserId;
             item.EditedOn = DateTime.Now;
             _repo.Edit(item);
             return Json(new { Status = "Success", Message = "Person Successfully Updated." }, JsonRequestBehavior.AllowGet);
@@ -61,7 +60,7 @@ namespace Connecto.App.Controllers
             var errors = new PersonValidator(_repo).Validate(id);
             if (errors.Count > 0) return Json(new ConnectoValidation { Status = "Failure", Exceptions = errors }, JsonRequestBehavior.AllowGet);
 
-            _repo.Delete(id, User.UserId());
+            _repo.Delete(id, Location.UserId);
             return Json(new { Status = "Success", Message = "Person Successfully Deleted." }, JsonRequestBehavior.AllowGet);
         }
 

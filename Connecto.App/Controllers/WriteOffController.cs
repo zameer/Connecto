@@ -44,8 +44,8 @@ namespace Connecto.App.Controllers
             var errors = new SalesDetailValidator(item, _repo).Validate();
             if (errors.Count > 0) return Json(new ConnectoValidation { Status = "Failure", Exceptions = errors }, JsonRequestBehavior.AllowGet);
 
-            item.LocationId = User.LocationId();
-            item.CreatedBy = User.UserId();
+            item.LocationId = Location.LocationId;
+            item.CreatedBy = Location.UserId;
             item.DateSold = item.DateSold.Year == 1 ? DateTime.Now : item.DateSold;
             var invoiceId = _repo.AddToCart(item);
             return Json(new { InvoiceId = invoiceId, Status = "Success", Message = "Cart Item Added." }, JsonRequestBehavior.AllowGet);
@@ -63,7 +63,7 @@ namespace Connecto.App.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            _repo.Delete(id, User.UserId());
+            _repo.Delete(id, Location.UserId);
             return Json(new { Status = "Success", Message = "Cart Item Successfully Deleted." }, JsonRequestBehavior.AllowGet);
         }
 

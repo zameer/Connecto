@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using Connecto.App.Models;
-using Connecto.BusinessObjects;
-using Connecto.Common.Enumeration;
+﻿using Connecto.BusinessObjects;
 using Connecto.Repositories;
 using System;
 using System.Web.Mvc;
@@ -19,7 +16,7 @@ namespace Connecto.App.Controllers
         }
         public JsonResult GetProductCodes()
         {
-            var items = _repo.GetProductCodes(User.LocationId());
+            var items = _repo.GetProductCodes(Location.LocationId);
            return Json(items, JsonRequestBehavior.AllowGet);
         }
         public JsonResult Get(int orderId)
@@ -41,8 +38,8 @@ namespace Connecto.App.Controllers
             var errors = new ProductDetailValidator(item, _repo).Validate();
             if (errors.Count > 0) return Json(new ConnectoValidation { Status = "Failure", Exceptions = errors }, JsonRequestBehavior.AllowGet);
 
-            item.LocationId = User.LocationId();
-            item.CreatedBy = User.UserId();
+            item.LocationId = Location.LocationId;
+            item.CreatedBy = Location.UserId;
             item.DateReceived = item.DateReceived.Year == 1 ? DateTime.Now : item.DateReceived;
             var orderId = _repo.AddToCart(item);
             return Json(new { OrderId = orderId, Status = "Success", Message = "Cart Item Added." }, JsonRequestBehavior.AllowGet);
@@ -53,7 +50,7 @@ namespace Connecto.App.Controllers
         [HttpPost]
         public ActionResult Edit(ProductDetailCart item)
         {
-            item.EditedBy = User.UserId();
+            item.EditedBy = Location.UserId;
             item.EditedOn = DateTime.Now;
             _repo.EditCart(item);
             return Json(new { Status = "Success", Message = "Cart Item Updated." }, JsonRequestBehavior.AllowGet);
@@ -70,7 +67,7 @@ namespace Connecto.App.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            _repo.Delete(id, User.UserId());
+            _repo.Delete(id, Location.UserId);
             return Json(new { Status = "Success", Message = "Cart Item Successfully Deleted." }, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
