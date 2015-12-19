@@ -9,13 +9,13 @@
               <Width>0.17708in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.49597in</Width>
+              <Width>0.38139in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.53064in</Width>
+              <Width>0.48897in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.4355in</Width>
+              <Width>0.53967in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>0.36459in</Width>
@@ -383,7 +383,7 @@
                               <Value>=RowNumber(nothing)</Value>
                               <Style>
                                 <FontFamily>Courier New</FontFamily>
-                                <FontSize>8pt</FontSize>
+                                <FontSize>7pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -417,7 +417,7 @@
                               <Value>= Fields!ProductCode.Value</Value>
                               <Style>
                                 <FontFamily>Courier New</FontFamily>
-                                <FontSize>8pt</FontSize>
+                                <FontSize>7pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -451,7 +451,7 @@
 &amp; " " &amp; IIF(Fields!QuantityLower.Value &gt; 0, Fields!QuantityLower.Value &amp; " " &amp; Fields!Lower.Value, "")</Value>
                               <Style>
                                 <FontFamily>Courier New</FontFamily>
-                                <FontSize>8pt</FontSize>
+                                <FontSize>7pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -483,7 +483,7 @@
                               <Value>=Fields!SellingPrice.Value</Value>
                               <Style>
                                 <FontFamily>Courier New</FontFamily>
-                                <FontSize>8pt</FontSize>
+                                <FontSize>7pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -515,7 +515,7 @@
                               <Value>=Fields!Discount.Value</Value>
                               <Style>
                                 <FontFamily>Courier New</FontFamily>
-                                <FontSize>8pt</FontSize>
+                                <FontSize>7pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -547,7 +547,7 @@
                               <Value>=Fields!NetPrice.Value</Value>
                               <Style>
                                 <FontFamily>Courier New</FontFamily>
-                                <FontSize>8pt</FontSize>
+                                <FontSize>7pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1698,7 +1698,7 @@
         <Top>0.04875in</Top>
         <Left>0.25808in</Left>
         <Height>1.98958in</Height>
-        <Width>2.53457in</Width>
+        <Width>2.48249in</Width>
         <Style>
           <Border>
             <Color>White</Color>

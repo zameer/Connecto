@@ -91,6 +91,7 @@ namespace Connecto.App.Controllers
                         locationInfo.LocationName = location.Name;
                         locationInfo.Address = string.Format("{0} {1}, {2}", location.AddressNo, location.AddressStreet, location.City);
                         locationInfo.Contact = location.Contact;
+                        locationInfo.PrinterName = string.IsNullOrEmpty(location.PrinterName) ? string.Empty : location.PrinterName;
                     }
                     var locationInfoString = JsonConvert.SerializeObject(locationInfo);
 

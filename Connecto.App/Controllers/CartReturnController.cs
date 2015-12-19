@@ -83,7 +83,7 @@ namespace Connecto.App.Controllers
             lr.DataSources.Add(rd);
 
             var info = new PrintoDeviceInfo { OutputFormat = "EMF", SizeUnit = "in", PageWidth = 5.3, PageHeight = 3, MarginTop = 0.5, MarginLeft = 0, MarginRight = 0, MarginBottom = 0.5 };
-            Printo.Printer(lr, info.Xml);
+            Printo.Printer(lr, info.Xml, Location.PrinterName);
             return Json(new { Status = "Success", Message = "Invoice Successfully Printed." }, JsonRequestBehavior.AllowGet);
         }
         public ActionResult Index()

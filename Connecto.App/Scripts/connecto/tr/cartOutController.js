@@ -162,6 +162,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
           $scope.itemz = [];
           $scope.Paid = 0;
           $scope.Balance = 0;
+          $scope.GrossNetPrice = 0;
           $scope.customer.selected = $scope.invoice.selected != undefined ? $scope.invoice.selected.Customer : null;
           $scope.employee.selected = $scope.invoice.selected != undefined ? $filter('getById')($scope.employees, $scope.invoice.selected.EmployeeId, "EmployeeId")
               : $filter('getById')($scope.employees, $scope.starter.EmployeeId, "EmployeeId");
@@ -253,6 +254,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
       $scope.complete = function () {
           $http.post('/' + cName + '/Complete/', { id: $scope.invoice.selected.InvoiceId, fluctuation: $scope.Fluctuation }).success(function (data) {
               showMessage(data);
+              $scope.reset();
               if (data.Status != "Failure") {
                   $scope.loadInvoices();
                   $scope.loadItems();
@@ -262,6 +264,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
       $scope.print = function () {
           $http.post('/' + cName + '/Print/', { id: $scope.invoice.selected.InvoiceId, fluctuation: $scope.Fluctuation, paid: $scope.Paid, balance: $scope.Balance }).success(function (data) {
               showMessage(data);
+              $scope.reset();
               if (data.Status != "Failure") {
                   $scope.loadInvoices();
                   $scope.loadItems();

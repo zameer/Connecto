@@ -14,6 +14,7 @@ namespace Connecto.App.Utilities
         static Warning[] _warnings;
         private static int _mCurrentPageIndex;
         private static IList<Stream> _mStreams;
+        private static string _printerName;
         public static Tuple<byte[], string> File(LocalReport report, string deviceInfo, string reportType)
         {
             string mimeType;
@@ -29,12 +30,13 @@ namespace Connecto.App.Utilities
         }
 
         // Export the given report as an EMF (Enhanced Metafile) file.
-        public static void Printer(LocalReport report, string deviceInfo)
+        public static void Printer(LocalReport report, string deviceInfo, string printerName)
         {
             _mStreams = new List<Stream>();
             report.Render("Image", deviceInfo, CreateStream, out _warnings);
             foreach (var stream in _mStreams)
                 stream.Position = 0;
+            _printerName = printerName;
             Print();
         }
         private static Stream CreateStream(string name, string fileNameExtension, Encoding encoding, string mimeType, bool willSeek)
@@ -70,7 +72,10 @@ namespace Connecto.App.Utilities
             if (_mStreams == null || _mStreams.Count == 0) throw new Exception("Error: no stream to print.");
             var printDoc = new PrintDocument();
             if (!printDoc.PrinterSettings.IsValid)
-                throw new Exception("Error: cannot find the default printer.");
+            {
+                printDoc.PrinterSettings.PrinterName = _printerName;//"EPSON TM-U220 Receipt";
+                //throw new Exception("Error: cannot find the default printer.");
+            }
 
             printDoc.PrintPage += PrintPage;
             _mCurrentPageIndex = 0;

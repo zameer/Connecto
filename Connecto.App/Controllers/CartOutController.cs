@@ -101,7 +101,7 @@ namespace Connecto.App.Controllers
             lr.DataSources.Add(rd);
 
             var info = new PrintoDeviceInfo { OutputFormat = "EMF", SizeUnit = "mm", PageWidth = 76, PageHeight = 100, MarginTop = 0.5, MarginLeft = 0, MarginRight = 0, MarginBottom = 0.5 };
-            Printo.Printer(lr, info.Xml);
+            Printo.Printer(lr, info.Xml, Location.PrinterName);
             _repo.Add(id, fluctuation);
             return Json(new { Status = "Success", Message = "Invoice Successfully Added." }, JsonRequestBehavior.AllowGet);
         }

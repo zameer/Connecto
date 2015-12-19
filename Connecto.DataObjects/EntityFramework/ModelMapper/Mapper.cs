@@ -184,6 +184,7 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 Province = entity.Province,
                 CountryId = entity.CountryId,
                 Contact = entity.Contact,
+                PrinterName = entity.PrinterName,
                 Timezone = entity.Timezone,
                 WorkingHrs = entity.WorkingHrs,
                 CompanyId = entity.CompanyId,

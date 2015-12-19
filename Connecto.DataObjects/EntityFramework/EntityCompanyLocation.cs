@@ -24,6 +24,7 @@ namespace Connecto.DataObjects.EntityFramework
         public int? CompanyId { get; set; }
         public int? CurrencyTypeId { get; set; }
         public string CompanyLogo { get; set; }
+        public string PrinterName { get; set; }
         public RecordStatus Status { get; set; }
         public int CreatedBy { get; set; }
         public DateTime CreatedOn { get; set; }

@@ -32,7 +32,7 @@ namespace Connecto.App.Controllers
 
             if (vm.ReportType.Equals("EMF"))
             {
-                Printo.Printer(lr, info.Xml);
+                Printo.Printer(lr, info.Xml, Location.PrinterName);
                 return View(vm.Page);
             }
 
