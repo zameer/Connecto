@@ -137,14 +137,12 @@
                           <Style>None</Style>
                         </Border>
                         <TopBorder>
-                          <Color>Black</Color>
+                          <Color>Gray</Color>
                           <Style>Solid</Style>
-                          <Width>1pt</Width>
                         </TopBorder>
                         <BottomBorder>
-                          <Color>Black</Color>
+                          <Color>Gray</Color>
                           <Style>Solid</Style>
-                          <Width>1pt</Width>
                         </BottomBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -179,14 +177,12 @@
                           <Style>None</Style>
                         </Border>
                         <TopBorder>
-                          <Color>Black</Color>
+                          <Color>Gray</Color>
                           <Style>Solid</Style>
-                          <Width>1pt</Width>
                         </TopBorder>
                         <BottomBorder>
-                          <Color>Black</Color>
+                          <Color>Gray</Color>
                           <Style>Solid</Style>
-                          <Width>1pt</Width>
                         </BottomBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -221,10 +217,14 @@
                           <Style>None</Style>
                         </Border>
                         <TopBorder>
+                          <Color>Gray</Color>
                           <Style>Solid</Style>
+                          <Width>1pt</Width>
                         </TopBorder>
                         <BottomBorder>
+                          <Color>Gray</Color>
                           <Style>Solid</Style>
+                          <Width>1pt</Width>
                         </BottomBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -261,12 +261,12 @@
                           <Style>None</Style>
                         </Border>
                         <TopBorder>
-                          <Color>Black</Color>
+                          <Color>Gray</Color>
                           <Style>Solid</Style>
                           <Width>1pt</Width>
                         </TopBorder>
                         <BottomBorder>
-                          <Color>Black</Color>
+                          <Color>Gray</Color>
                           <Style>Solid</Style>
                           <Width>1pt</Width>
                         </BottomBorder>
@@ -305,12 +305,12 @@
                           <Style>None</Style>
                         </Border>
                         <TopBorder>
-                          <Color>Black</Color>
+                          <Color>Gray</Color>
                           <Style>Solid</Style>
                           <Width>1pt</Width>
                         </TopBorder>
                         <BottomBorder>
-                          <Color>Black</Color>
+                          <Color>Gray</Color>
                           <Style>Solid</Style>
                           <Width>1pt</Width>
                         </BottomBorder>
@@ -349,12 +349,12 @@
                           <Style>None</Style>
                         </Border>
                         <TopBorder>
-                          <Color>Black</Color>
+                          <Color>Gray</Color>
                           <Style>Solid</Style>
                           <Width>1pt</Width>
                         </TopBorder>
                         <BottomBorder>
-                          <Color>Black</Color>
+                          <Color>Gray</Color>
                           <Style>Solid</Style>
                           <Width>1pt</Width>
                         </BottomBorder>
@@ -702,7 +702,9 @@
                           <Style>None</Style>
                         </Border>
                         <TopBorder>
+                          <Color>Gray</Color>
                           <Style>Solid</Style>
+                          <Width>1pt</Width>
                         </TopBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -737,7 +739,9 @@
                           <Style>None</Style>
                         </Border>
                         <TopBorder>
+                          <Color>Gray</Color>
                           <Style>Solid</Style>
+                          <Width>1pt</Width>
                         </TopBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -774,7 +778,9 @@
                           <Style>None</Style>
                         </Border>
                         <TopBorder>
+                          <Color>Gray</Color>
                           <Style>Solid</Style>
+                          <Width>1pt</Width>
                         </TopBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -811,7 +817,9 @@
                           <Style>None</Style>
                         </Border>
                         <TopBorder>
+                          <Color>Gray</Color>
                           <Style>Solid</Style>
+                          <Width>1pt</Width>
                         </TopBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -846,6 +854,7 @@
                           <Style>None</Style>
                         </Border>
                         <TopBorder>
+                          <Color>Gray</Color>
                           <Style>Solid</Style>
                         </TopBorder>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -1717,7 +1726,7 @@
   <Width>2.8864in</Width>
   <Page>
     <PageHeader>
-      <Height>0.55in</Height>
+      <Height>0.76875in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -1731,6 +1740,7 @@
                   <Value>=Parameters!CompanyName.Value</Value>
                   <Style>
                     <FontFamily>Courier New</FontFamily>
+                    <FontSize>12pt</FontSize>
                     <FontWeight>Bold</FontWeight>
                   </Style>
                 </TextRun>
@@ -1738,6 +1748,7 @@
                   <Value xml:space="preserve"> </Value>
                   <Style>
                     <FontFamily>Courier New</FontFamily>
+                    <FontSize>12pt</FontSize>
                     <FontWeight>Bold</FontWeight>
                   </Style>
                 </TextRun>
@@ -1745,6 +1756,7 @@
                   <Value>=Parameters!LocationName.Value</Value>
                   <Style>
                     <FontFamily>Courier New</FontFamily>
+                    <FontSize>12pt</FontSize>
                     <FontWeight>Bold</FontWeight>
                   </Style>
                 </TextRun>
@@ -1790,7 +1802,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Address</rd:DefaultName>
-          <Top>0.18056in</Top>
+          <Top>0.31806in</Top>
           <Left>0.25808in</Left>
           <Height>0.14097in</Height>
           <Width>2.48249in</Width>
@@ -1825,11 +1837,46 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Address</rd:DefaultName>
-          <Top>0.31875in</Top>
+          <Top>0.47292in</Top>
           <Left>0.25808in</Left>
-          <Height>0.17569in</Height>
+          <Height>0.21806in</Height>
           <Width>2.48249in</Width>
           <ZIndex>2</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Address3">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Shoes &amp; Bags</Value>
+                  <Style>
+                    <FontFamily>Courier New</FontFamily>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Address</rd:DefaultName>
+          <Top>0.1507in</Top>
+          <Left>0.25808in</Left>
+          <Height>0.16597in</Height>
+          <Width>2.48249in</Width>
+          <ZIndex>3</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
