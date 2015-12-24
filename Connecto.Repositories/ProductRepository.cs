@@ -34,5 +34,14 @@ namespace Connecto.Repositories
         {
             ProductDao.EditProduct(product);
         }
+        public bool IsExist(Product product)
+        {
+            return ProductDao.IsExist(product);
+        }
+
+        public bool IsUsed(int id)
+        {
+            return ProductDao.IsUsed(id);
+        }
     }
 }

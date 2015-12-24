@@ -66,7 +66,7 @@ namespace Connecto.App.Controllers
             if (errors.Count > 0) return Json(new ConnectoValidation { Status = "Failure", Exceptions = errors }, JsonRequestBehavior.AllowGet);
 
             _repo.Delete(id, Location.UserId);
-            return Json(true, JsonRequestBehavior.AllowGet);
+            return Json(new { Status = "Success", Message = "Vendor has been deleted successfully." }, JsonRequestBehavior.AllowGet);
         }
 
         //

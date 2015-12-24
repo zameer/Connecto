@@ -1,4 +1,5 @@
-﻿using Connecto.BusinessObjects;
+﻿using Connecto.App.ModelValidator;
+using Connecto.BusinessObjects;
 using Connecto.Common.Enumeration;
 using Connecto.Repositories;
 using System;
@@ -72,8 +73,10 @@ namespace Connecto.App.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
+            var errors = new ProductValidator(_repo).Validate(id);
+            if (errors.Count > 0) return Json(new ConnectoValidation { Status = "Failure", Exceptions = errors }, JsonRequestBehavior.AllowGet);
             _repo.Delete(id, Location.UserId);
-            return Json(true, JsonRequestBehavior.AllowGet);
+            return Json(new { Status = "Success", Message = "Product has been deleted successfully." }, JsonRequestBehavior.AllowGet);
         }
     }
 }

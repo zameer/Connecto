@@ -17,16 +17,16 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
             using (var context = DataObjectFactory.CreateContext())
             {
                 List<Product> items;
-                var count = context.Products.Count();
+                var count = context.Products.Count(e => e.Status == RecordStatus.Active);
                 if (!string.IsNullOrEmpty(filter.sSearch))
                 {
-                    count = context.Products.Count(e => e.Name.ToLower().Contains(filter.sSearch));
-                    items = context.Products.Where(e => e.Name.ToLower().Contains(filter.sSearch))
+                    count = context.Products.Count(e => e.Status == RecordStatus.Active && e.Name.ToLower().Contains(filter.sSearch));
+                    items = context.Products.Where(e => e.Status == RecordStatus.Active && e.Name.ToLower().Contains(filter.sSearch))
                         .OrderBy(e => e.ProductId).Skip(filter.iDisplayStart).Take(filter.iDisplayLength).Select(Mapper.Map).ToList();
                 }
                 else
                 {
-                    items = context.Products.OrderBy(e => e.ProductId).Skip(filter.iDisplayStart).Take(filter.iDisplayLength).Select(Mapper.Map).ToList();
+                    items = context.Products.Where(e => e.Status == RecordStatus.Active).OrderBy(e => e.ProductId).Skip(filter.iDisplayStart).Take(filter.iDisplayLength).Select(Mapper.Map).ToList();
                 }
                 return new Tuple<IList<Product>, int>(items, count);
             }
@@ -96,6 +96,22 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                 return context.SaveChanges();
             }
         }
+        public bool IsExist(Product product)
+        {
+            using (var context = DataObjectFactory.CreateContext())
+            {
+                if (product.ProductId > 0)
+                    return context.Products.Any(e => e.ProductId != product.VendorId && e.Name.ToLower() == product.Name.ToLower());
+                return context.Products.Any(e => e.Name.ToLower() == product.Name.ToLower());
+            }
+        }
 
+        public bool IsUsed(int id)
+        {
+            using (var context = DataObjectFactory.CreateContext())
+            {
+                return context.ProductDetails.Any(e => e.ProductId == id && e.Status == RecordStatus.Active);
+            }
+        }
     }
 }

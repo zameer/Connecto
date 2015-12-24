@@ -21,5 +21,7 @@ namespace Connecto.DataObjects
         int AddProduct(Product product);
         bool EditProduct(Product product);
         int DeleteProduct(int id, int deletedBy);
+        bool IsExist(Product product);
+        bool IsUsed(int id);
     }
 }

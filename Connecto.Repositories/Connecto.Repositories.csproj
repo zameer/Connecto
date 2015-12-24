@@ -67,6 +67,10 @@
       <Project>{0f58834e-44cd-4360-a004-c16e72847dfa}</Project>
       <Name>Connecto.BusinessObjects</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Connecto.Common\Connecto.Common.csproj">
+      <Project>{8ABB07EE-A696-4145-8E7E-CEC3C785C153}</Project>
+      <Name>Connecto.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Connecto.DataObjects\Connecto.DataObjects.csproj">
       <Project>{9def5150-7b6d-44ab-bc89-3e13917aa7e8}</Project>
       <Name>Connecto.DataObjects</Name>

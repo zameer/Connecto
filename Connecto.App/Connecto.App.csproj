@@ -211,6 +211,7 @@
     <Compile Include="Models\ReportCriteriaViewModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="ModelValidator\ProductValidator.cs" />
     <Compile Include="ModelValidator\PersonValidator.cs" />
     <Compile Include="ModelValidator\SalesDetailValidator.cs" />
     <Compile Include="ModelValidator\ProductTypeValidator.cs" />

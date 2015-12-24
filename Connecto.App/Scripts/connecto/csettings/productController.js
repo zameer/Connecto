@@ -40,7 +40,7 @@ cSettingControllers.controller(cName + 'ListCtrl', ['$scope', '$http', '$routePa
                   ]
               });
               mapSearchKeyup(dataTable);
-              $('#example tbody').on('click', '.delete-row', function () {
+              $('#product-list tbody').on('click', '.delete-row', function () {
                   $scope.delete($(this).data('id'));
               });
           }
@@ -50,8 +50,10 @@ cSettingControllers.controller(cName + 'ListCtrl', ['$scope', '$http', '$routePa
           bootbox.confirm("Are you sure want to delete?", function (result) {
               if (result) {
                   $http.post('/' + cName + '/Delete/', { id: itemId }).success(function (data) {
-                      if (data.Status == "Failure") showMessage(data);
-                      else $location.path('/');
+                      showMessage(data);
+                      if (data.Status == "Success") {
+                          dataTable.fnDraw();
+                      }
                   });
               }
           });
