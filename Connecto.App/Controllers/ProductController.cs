@@ -49,6 +49,9 @@ namespace Connecto.App.Controllers
         [HttpPost]
         public JsonResult Create(Product item)
         {
+            var errors = new ProductValidator(item, _repo).Validate();
+            if (errors.Count > 0) return Json(new ConnectoValidation { Status = "Failure", Exceptions = errors }, JsonRequestBehavior.AllowGet);
+
             item.ProductGuid = Guid.NewGuid();
             item.CreatedBy = Location.UserId;
             item.CreatedOn = DateTime.Now;
@@ -62,6 +65,9 @@ namespace Connecto.App.Controllers
         [HttpPost]
         public ActionResult Edit(Product item)
         {
+            var errors = new ProductValidator(item, _repo).Validate();
+            if (errors.Count > 0) return Json(new ConnectoValidation { Status = "Failure", Exceptions = errors }, JsonRequestBehavior.AllowGet);
+
             item.EditedBy = Location.UserId;
             item.EditedOn = DateTime.Now;
             _repo.Edit(item);
