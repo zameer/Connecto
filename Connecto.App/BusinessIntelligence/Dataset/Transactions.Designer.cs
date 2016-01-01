@@ -1378,9 +1378,9 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
             
             private global::System.Data.DataColumn columnCustomerName;
             
-            private global::System.Data.DataColumn columnUnitPrice;
+            private global::System.Data.DataColumn columnPrice;
             
-            private global::System.Data.DataColumn columnCostPrice;
+            private global::System.Data.DataColumn columnDateSold;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -1537,17 +1537,17 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn UnitPriceColumn {
+            public global::System.Data.DataColumn PriceColumn {
                 get {
-                    return this.columnUnitPrice;
+                    return this.columnPrice;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CostPriceColumn {
+            public global::System.Data.DataColumn DateSoldColumn {
                 get {
-                    return this.columnCostPrice;
+                    return this.columnDateSold;
                 }
             }
             
@@ -1604,8 +1604,8 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
                         decimal SellingPrice, 
                         string SoldOn, 
                         string CustomerName, 
-                        decimal UnitPrice, 
-                        decimal CostPrice) {
+                        decimal Price, 
+                        System.DateTime DateSold) {
                 SalesDetailsRow rowSalesDetailsRow = ((SalesDetailsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Quantity,
@@ -1623,8 +1623,8 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
                         SellingPrice,
                         SoldOn,
                         CustomerName,
-                        UnitPrice,
-                        CostPrice};
+                        Price,
+                        DateSold};
                 rowSalesDetailsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSalesDetailsRow);
                 return rowSalesDetailsRow;
@@ -1662,8 +1662,8 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
                 this.columnSellingPrice = base.Columns["SellingPrice"];
                 this.columnSoldOn = base.Columns["SoldOn"];
                 this.columnCustomerName = base.Columns["CustomerName"];
-                this.columnUnitPrice = base.Columns["UnitPrice"];
-                this.columnCostPrice = base.Columns["CostPrice"];
+                this.columnPrice = base.Columns["Price"];
+                this.columnDateSold = base.Columns["DateSold"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1699,10 +1699,10 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
                 base.Columns.Add(this.columnSoldOn);
                 this.columnCustomerName = new global::System.Data.DataColumn("CustomerName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCustomerName);
-                this.columnUnitPrice = new global::System.Data.DataColumn("UnitPrice", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnUnitPrice);
-                this.columnCostPrice = new global::System.Data.DataColumn("CostPrice", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCostPrice);
+                this.columnPrice = new global::System.Data.DataColumn("Price", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPrice);
+                this.columnDateSold = new global::System.Data.DataColumn("DateSold", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDateSold);
                 this.columnQuantity.AllowDBNull = false;
                 this.columnStockAs.MaxLength = 2147483647;
                 this.columnQuantityActual.AllowDBNull = false;
@@ -1722,8 +1722,8 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
                 this.columnSoldOn.MaxLength = 30;
                 this.columnCustomerName.ReadOnly = true;
                 this.columnCustomerName.MaxLength = 2147483647;
-                this.columnUnitPrice.AllowDBNull = false;
-                this.columnCostPrice.ReadOnly = true;
+                this.columnPrice.AllowDBNull = false;
+                this.columnDateSold.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9132,28 +9132,23 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal UnitPrice {
+            public decimal Price {
                 get {
-                    return ((decimal)(this[this.tableSalesDetails.UnitPriceColumn]));
+                    return ((decimal)(this[this.tableSalesDetails.PriceColumn]));
                 }
                 set {
-                    this[this.tableSalesDetails.UnitPriceColumn] = value;
+                    this[this.tableSalesDetails.PriceColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal CostPrice {
+            public System.DateTime DateSold {
                 get {
-                    try {
-                        return ((decimal)(this[this.tableSalesDetails.CostPriceColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'CostPrice\' in table \'SalesDetails\' is DBNull.", e);
-                    }
+                    return ((global::System.DateTime)(this[this.tableSalesDetails.DateSoldColumn]));
                 }
                 set {
-                    this[this.tableSalesDetails.CostPriceColumn] = value;
+                    this[this.tableSalesDetails.DateSoldColumn] = value;
                 }
             }
             
@@ -9239,18 +9234,6 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetCustomerNameNull() {
                 this[this.tableSalesDetails.CustomerNameColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCostPriceNull() {
-                return this.IsNull(this.tableSalesDetails.CostPriceColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCostPriceNull() {
-                this[this.tableSalesDetails.CostPriceColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -13607,8 +13590,8 @@ namespace Connecto.App.BusinessIntelligence.Dataset.TransactionsTableAdapters {
             tableMapping.ColumnMappings.Add("SellingPrice", "SellingPrice");
             tableMapping.ColumnMappings.Add("SoldOn", "SoldOn");
             tableMapping.ColumnMappings.Add("CustomerName", "CustomerName");
-            tableMapping.ColumnMappings.Add("UnitPrice", "UnitPrice");
-            tableMapping.ColumnMappings.Add("CostPrice", "CostPrice");
+            tableMapping.ColumnMappings.Add("Price", "Price");
+            tableMapping.ColumnMappings.Add("DateSold", "DateSold");
             this._adapter.TableMappings.Add(tableMapping);
         }
         

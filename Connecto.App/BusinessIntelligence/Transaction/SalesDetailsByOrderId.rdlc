@@ -195,7 +195,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>SellingPrice</Value>
+                              <Value>Cost Price</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
                                 <FontWeight>Bold</FontWeight>
@@ -409,14 +409,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="SoldOn">
+                    <Textbox Name="DateSold">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!SoldOn.Value</Value>
+                              <Value>=Fields!DateSold.Value</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
                               </Style>
@@ -427,7 +427,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>SoldOn</rd:DefaultName>
+                      <rd:DefaultName>DateSold</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -480,14 +480,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="SellingPrice">
+                    <Textbox Name="Price">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!SellingPrice.Value</Value>
+                              <Value>=Fields!Price.Value</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
                               </Style>
@@ -498,7 +498,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>SellingPrice</rd:DefaultName>
+                      <rd:DefaultName>Price</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -589,7 +589,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!CostPrice.Value</Value>
+                              <Value>=Fields!Price.Value</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
                               </Style>
@@ -1287,7 +1287,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!CostPrice.Value, "Dataset")</Value>
+                              <Value>=Sum(Fields!Price.Value, "Dataset")</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -1532,7 +1532,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!NetPrice.Value, "Dataset") - Sum(Fields!CostPrice.Value, "Dataset")</Value>
+                              <Value>=(Sum(Fields!NetPrice.Value, "Dataset") + Sum(Fields!Discount.Value, "Dataset")) - Sum(Fields!Price.Value, "Dataset")</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -1719,7 +1719,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=First(Fields!SoldOn.Value, "Dataset")</Value>
+                  <Value>=First(Fields!DateSold.Value, "Dataset")</Value>
                   <Style>
                     <FontWeight>Bold</FontWeight>
                   </Style>
@@ -1959,18 +1959,18 @@
           <DataField>CustomerName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="UnitPrice">
-          <DataField>UnitPrice</DataField>
+        <Field Name="Price">
+          <DataField>Price</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
-        <Field Name="CostPrice">
-          <DataField>CostPrice</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
+        <Field Name="DateSold">
+          <DataField>DateSold</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>Transactions</rd:DataSetName>
-        <rd:SchemaPath>C:\Projects\Connecto\Connecto\Connecto\Connecto\Connecto.App\BusinessIntelligence\Dataset\Transactions.xsd</rd:SchemaPath>
+        <rd:SchemaPath>D:\Projects\AdvPos\HelpBiz\Connecto\Connecto.App\BusinessIntelligence\Dataset\Transactions.xsd</rd:SchemaPath>
         <rd:TableName>SalesDetails</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
