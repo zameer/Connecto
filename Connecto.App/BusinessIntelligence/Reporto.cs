@@ -40,6 +40,7 @@ namespace Connecto.App.BusinessIntelligence
             var items = new List<SqlParameter>();
             if (vm.Id > 0) items.Add(new SqlParameter(string.Format("@Id"), vm.Id));
             if (vm.ProductId > 0) items.Add(new SqlParameter(string.Format("@ProductId"), vm.ProductId));
+            if (!string.IsNullOrEmpty(vm.ProductName)) items.Add(new SqlParameter(string.Format("@ProductName"), vm.ProductName));
             if (!string.IsNullOrEmpty(vm.Date)) items.Add(new SqlParameter(string.Format("@Date"), vm.Date));
 
             if (string.IsNullOrEmpty(vm.DateRange)) return items;

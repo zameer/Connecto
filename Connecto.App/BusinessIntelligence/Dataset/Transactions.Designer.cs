@@ -66,6 +66,8 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
         
         private InvoiceByIdDataTable tableInvoiceById;
         
+        private GetPurchasedProductsByReferenceCodeDataTable tableGetPurchasedProductsByReferenceCode;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -156,6 +158,9 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
                 }
                 if ((ds.Tables["InvoiceById"] != null)) {
                     base.Tables.Add(new InvoiceByIdDataTable(ds.Tables["InvoiceById"]));
+                }
+                if ((ds.Tables["GetPurchasedProductsByReferenceCode"] != null)) {
+                    base.Tables.Add(new GetPurchasedProductsByReferenceCodeDataTable(ds.Tables["GetPurchasedProductsByReferenceCode"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -387,6 +392,16 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public GetPurchasedProductsByReferenceCodeDataTable GetPurchasedProductsByReferenceCode {
+            get {
+                return this.tableGetPurchasedProductsByReferenceCode;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -514,6 +529,9 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
                 }
                 if ((ds.Tables["InvoiceById"] != null)) {
                     base.Tables.Add(new InvoiceByIdDataTable(ds.Tables["InvoiceById"]));
+                }
+                if ((ds.Tables["GetPurchasedProductsByReferenceCode"] != null)) {
+                    base.Tables.Add(new GetPurchasedProductsByReferenceCodeDataTable(ds.Tables["GetPurchasedProductsByReferenceCode"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -674,6 +692,12 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
                     this.tableInvoiceById.InitVars();
                 }
             }
+            this.tableGetPurchasedProductsByReferenceCode = ((GetPurchasedProductsByReferenceCodeDataTable)(base.Tables["GetPurchasedProductsByReferenceCode"]));
+            if ((initTable == true)) {
+                if ((this.tableGetPurchasedProductsByReferenceCode != null)) {
+                    this.tableGetPurchasedProductsByReferenceCode.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -726,6 +750,8 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
             base.Tables.Add(this.tableGetPurchaseOrderDatails);
             this.tableInvoiceById = new InvoiceByIdDataTable();
             base.Tables.Add(this.tableInvoiceById);
+            this.tableGetPurchasedProductsByReferenceCode = new GetPurchasedProductsByReferenceCodeDataTable();
+            base.Tables.Add(this.tableGetPurchasedProductsByReferenceCode);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -856,6 +882,12 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeGetPurchasedProductsByReferenceCode() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void SchemaChanged(object sender, global::System.ComponentModel.CollectionChangeEventArgs e) {
             if ((e.Action == global::System.ComponentModel.CollectionChangeAction.Remove)) {
                 this.InitVars();
@@ -971,6 +1003,9 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void InvoiceByIdRowChangeEventHandler(object sender, InvoiceByIdRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void GetPurchasedProductsByReferenceCodeRowChangeEventHandler(object sender, GetPurchasedProductsByReferenceCodeRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -8735,6 +8770,392 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class GetPurchasedProductsByReferenceCodeDataTable : global::System.Data.TypedTableBase<GetPurchasedProductsByReferenceCodeRow> {
+            
+            private global::System.Data.DataColumn columnProductInfo;
+            
+            private global::System.Data.DataColumn columnOpeningQuantity;
+            
+            private global::System.Data.DataColumn columnOpeningQuantityActual;
+            
+            private global::System.Data.DataColumn columnOpeningQuantityLower;
+            
+            private global::System.Data.DataColumn columnStockAs;
+            
+            private global::System.Data.DataColumn columnActual;
+            
+            private global::System.Data.DataColumn columnLower;
+            
+            private global::System.Data.DataColumn columnReceivedOn;
+            
+            private global::System.Data.DataColumn columnReferenceCode;
+            
+            private global::System.Data.DataColumn columnSupplier;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public GetPurchasedProductsByReferenceCodeDataTable() {
+                this.TableName = "GetPurchasedProductsByReferenceCode";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal GetPurchasedProductsByReferenceCodeDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected GetPurchasedProductsByReferenceCodeDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ProductInfoColumn {
+                get {
+                    return this.columnProductInfo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn OpeningQuantityColumn {
+                get {
+                    return this.columnOpeningQuantity;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn OpeningQuantityActualColumn {
+                get {
+                    return this.columnOpeningQuantityActual;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn OpeningQuantityLowerColumn {
+                get {
+                    return this.columnOpeningQuantityLower;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn StockAsColumn {
+                get {
+                    return this.columnStockAs;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ActualColumn {
+                get {
+                    return this.columnActual;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn LowerColumn {
+                get {
+                    return this.columnLower;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ReceivedOnColumn {
+                get {
+                    return this.columnReceivedOn;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ReferenceCodeColumn {
+                get {
+                    return this.columnReferenceCode;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SupplierColumn {
+                get {
+                    return this.columnSupplier;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public GetPurchasedProductsByReferenceCodeRow this[int index] {
+                get {
+                    return ((GetPurchasedProductsByReferenceCodeRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event GetPurchasedProductsByReferenceCodeRowChangeEventHandler GetPurchasedProductsByReferenceCodeRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event GetPurchasedProductsByReferenceCodeRowChangeEventHandler GetPurchasedProductsByReferenceCodeRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event GetPurchasedProductsByReferenceCodeRowChangeEventHandler GetPurchasedProductsByReferenceCodeRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event GetPurchasedProductsByReferenceCodeRowChangeEventHandler GetPurchasedProductsByReferenceCodeRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddGetPurchasedProductsByReferenceCodeRow(GetPurchasedProductsByReferenceCodeRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public GetPurchasedProductsByReferenceCodeRow AddGetPurchasedProductsByReferenceCodeRow(string ProductInfo, int OpeningQuantity, int OpeningQuantityActual, int OpeningQuantityLower, string StockAs, string Actual, string Lower, string ReceivedOn, string ReferenceCode, string Supplier) {
+                GetPurchasedProductsByReferenceCodeRow rowGetPurchasedProductsByReferenceCodeRow = ((GetPurchasedProductsByReferenceCodeRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        ProductInfo,
+                        OpeningQuantity,
+                        OpeningQuantityActual,
+                        OpeningQuantityLower,
+                        StockAs,
+                        Actual,
+                        Lower,
+                        ReceivedOn,
+                        ReferenceCode,
+                        Supplier};
+                rowGetPurchasedProductsByReferenceCodeRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowGetPurchasedProductsByReferenceCodeRow);
+                return rowGetPurchasedProductsByReferenceCodeRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                GetPurchasedProductsByReferenceCodeDataTable cln = ((GetPurchasedProductsByReferenceCodeDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new GetPurchasedProductsByReferenceCodeDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnProductInfo = base.Columns["ProductInfo"];
+                this.columnOpeningQuantity = base.Columns["OpeningQuantity"];
+                this.columnOpeningQuantityActual = base.Columns["OpeningQuantityActual"];
+                this.columnOpeningQuantityLower = base.Columns["OpeningQuantityLower"];
+                this.columnStockAs = base.Columns["StockAs"];
+                this.columnActual = base.Columns["Actual"];
+                this.columnLower = base.Columns["Lower"];
+                this.columnReceivedOn = base.Columns["ReceivedOn"];
+                this.columnReferenceCode = base.Columns["ReferenceCode"];
+                this.columnSupplier = base.Columns["Supplier"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnProductInfo = new global::System.Data.DataColumn("ProductInfo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProductInfo);
+                this.columnOpeningQuantity = new global::System.Data.DataColumn("OpeningQuantity", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOpeningQuantity);
+                this.columnOpeningQuantityActual = new global::System.Data.DataColumn("OpeningQuantityActual", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOpeningQuantityActual);
+                this.columnOpeningQuantityLower = new global::System.Data.DataColumn("OpeningQuantityLower", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOpeningQuantityLower);
+                this.columnStockAs = new global::System.Data.DataColumn("StockAs", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStockAs);
+                this.columnActual = new global::System.Data.DataColumn("Actual", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnActual);
+                this.columnLower = new global::System.Data.DataColumn("Lower", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLower);
+                this.columnReceivedOn = new global::System.Data.DataColumn("ReceivedOn", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnReceivedOn);
+                this.columnReferenceCode = new global::System.Data.DataColumn("ReferenceCode", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnReferenceCode);
+                this.columnSupplier = new global::System.Data.DataColumn("Supplier", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSupplier);
+                this.columnProductInfo.ReadOnly = true;
+                this.columnProductInfo.MaxLength = 2147483647;
+                this.columnOpeningQuantity.AllowDBNull = false;
+                this.columnOpeningQuantityActual.AllowDBNull = false;
+                this.columnOpeningQuantityLower.AllowDBNull = false;
+                this.columnStockAs.MaxLength = 2147483647;
+                this.columnActual.MaxLength = 2147483647;
+                this.columnLower.MaxLength = 2147483647;
+                this.columnReceivedOn.ReadOnly = true;
+                this.columnReceivedOn.MaxLength = 30;
+                this.columnReferenceCode.MaxLength = 2147483647;
+                this.columnSupplier.ReadOnly = true;
+                this.columnSupplier.MaxLength = 2147483647;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public GetPurchasedProductsByReferenceCodeRow NewGetPurchasedProductsByReferenceCodeRow() {
+                return ((GetPurchasedProductsByReferenceCodeRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new GetPurchasedProductsByReferenceCodeRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(GetPurchasedProductsByReferenceCodeRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.GetPurchasedProductsByReferenceCodeRowChanged != null)) {
+                    this.GetPurchasedProductsByReferenceCodeRowChanged(this, new GetPurchasedProductsByReferenceCodeRowChangeEvent(((GetPurchasedProductsByReferenceCodeRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.GetPurchasedProductsByReferenceCodeRowChanging != null)) {
+                    this.GetPurchasedProductsByReferenceCodeRowChanging(this, new GetPurchasedProductsByReferenceCodeRowChangeEvent(((GetPurchasedProductsByReferenceCodeRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.GetPurchasedProductsByReferenceCodeRowDeleted != null)) {
+                    this.GetPurchasedProductsByReferenceCodeRowDeleted(this, new GetPurchasedProductsByReferenceCodeRowChangeEvent(((GetPurchasedProductsByReferenceCodeRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.GetPurchasedProductsByReferenceCodeRowDeleting != null)) {
+                    this.GetPurchasedProductsByReferenceCodeRowDeleting(this, new GetPurchasedProductsByReferenceCodeRowChangeEvent(((GetPurchasedProductsByReferenceCodeRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveGetPurchasedProductsByReferenceCodeRow(GetPurchasedProductsByReferenceCodeRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                Transactions ds = new Transactions();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "GetPurchasedProductsByReferenceCodeDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class ProductDetailsRow : global::System.Data.DataRow {
@@ -12535,6 +12956,257 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class GetPurchasedProductsByReferenceCodeRow : global::System.Data.DataRow {
+            
+            private GetPurchasedProductsByReferenceCodeDataTable tableGetPurchasedProductsByReferenceCode;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal GetPurchasedProductsByReferenceCodeRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableGetPurchasedProductsByReferenceCode = ((GetPurchasedProductsByReferenceCodeDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ProductInfo {
+                get {
+                    try {
+                        return ((string)(this[this.tableGetPurchasedProductsByReferenceCode.ProductInfoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ProductInfo\' in table \'GetPurchasedProductsByReferenceCode\'" +
+                                " is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableGetPurchasedProductsByReferenceCode.ProductInfoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int OpeningQuantity {
+                get {
+                    return ((int)(this[this.tableGetPurchasedProductsByReferenceCode.OpeningQuantityColumn]));
+                }
+                set {
+                    this[this.tableGetPurchasedProductsByReferenceCode.OpeningQuantityColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int OpeningQuantityActual {
+                get {
+                    return ((int)(this[this.tableGetPurchasedProductsByReferenceCode.OpeningQuantityActualColumn]));
+                }
+                set {
+                    this[this.tableGetPurchasedProductsByReferenceCode.OpeningQuantityActualColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int OpeningQuantityLower {
+                get {
+                    return ((int)(this[this.tableGetPurchasedProductsByReferenceCode.OpeningQuantityLowerColumn]));
+                }
+                set {
+                    this[this.tableGetPurchasedProductsByReferenceCode.OpeningQuantityLowerColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string StockAs {
+                get {
+                    try {
+                        return ((string)(this[this.tableGetPurchasedProductsByReferenceCode.StockAsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'StockAs\' in table \'GetPurchasedProductsByReferenceCode\' is " +
+                                "DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableGetPurchasedProductsByReferenceCode.StockAsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Actual {
+                get {
+                    try {
+                        return ((string)(this[this.tableGetPurchasedProductsByReferenceCode.ActualColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Actual\' in table \'GetPurchasedProductsByReferenceCode\' is D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableGetPurchasedProductsByReferenceCode.ActualColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Lower {
+                get {
+                    try {
+                        return ((string)(this[this.tableGetPurchasedProductsByReferenceCode.LowerColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Lower\' in table \'GetPurchasedProductsByReferenceCode\' is DB" +
+                                "Null.", e);
+                    }
+                }
+                set {
+                    this[this.tableGetPurchasedProductsByReferenceCode.LowerColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ReceivedOn {
+                get {
+                    try {
+                        return ((string)(this[this.tableGetPurchasedProductsByReferenceCode.ReceivedOnColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ReceivedOn\' in table \'GetPurchasedProductsByReferenceCode\' " +
+                                "is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableGetPurchasedProductsByReferenceCode.ReceivedOnColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ReferenceCode {
+                get {
+                    try {
+                        return ((string)(this[this.tableGetPurchasedProductsByReferenceCode.ReferenceCodeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ReferenceCode\' in table \'GetPurchasedProductsByReferenceCod" +
+                                "e\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableGetPurchasedProductsByReferenceCode.ReferenceCodeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Supplier {
+                get {
+                    try {
+                        return ((string)(this[this.tableGetPurchasedProductsByReferenceCode.SupplierColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Supplier\' in table \'GetPurchasedProductsByReferenceCode\' is" +
+                                " DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableGetPurchasedProductsByReferenceCode.SupplierColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsProductInfoNull() {
+                return this.IsNull(this.tableGetPurchasedProductsByReferenceCode.ProductInfoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetProductInfoNull() {
+                this[this.tableGetPurchasedProductsByReferenceCode.ProductInfoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsStockAsNull() {
+                return this.IsNull(this.tableGetPurchasedProductsByReferenceCode.StockAsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetStockAsNull() {
+                this[this.tableGetPurchasedProductsByReferenceCode.StockAsColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsActualNull() {
+                return this.IsNull(this.tableGetPurchasedProductsByReferenceCode.ActualColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetActualNull() {
+                this[this.tableGetPurchasedProductsByReferenceCode.ActualColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsLowerNull() {
+                return this.IsNull(this.tableGetPurchasedProductsByReferenceCode.LowerColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetLowerNull() {
+                this[this.tableGetPurchasedProductsByReferenceCode.LowerColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsReceivedOnNull() {
+                return this.IsNull(this.tableGetPurchasedProductsByReferenceCode.ReceivedOnColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetReceivedOnNull() {
+                this[this.tableGetPurchasedProductsByReferenceCode.ReceivedOnColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsReferenceCodeNull() {
+                return this.IsNull(this.tableGetPurchasedProductsByReferenceCode.ReferenceCodeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetReferenceCodeNull() {
+                this[this.tableGetPurchasedProductsByReferenceCode.ReferenceCodeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSupplierNull() {
+                return this.IsNull(this.tableGetPurchasedProductsByReferenceCode.SupplierColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSupplierNull() {
+                this[this.tableGetPurchasedProductsByReferenceCode.SupplierColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -13234,6 +13906,40 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public InvoiceByIdRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class GetPurchasedProductsByReferenceCodeRowChangeEvent : global::System.EventArgs {
+            
+            private GetPurchasedProductsByReferenceCodeRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public GetPurchasedProductsByReferenceCodeRowChangeEvent(GetPurchasedProductsByReferenceCodeRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public GetPurchasedProductsByReferenceCodeRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -17086,6 +17792,196 @@ namespace Connecto.App.BusinessIntelligence.Dataset.TransactionsTableAdapters {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             Transactions.InvoiceByIdDataTable dataTable = new Transactions.InvoiceByIdDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class GetPurchasedProductsByReferenceCodeAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public GetPurchasedProductsByReferenceCodeAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "GetPurchasedProductsByReferenceCode";
+            tableMapping.ColumnMappings.Add("ProductInfo", "ProductInfo");
+            tableMapping.ColumnMappings.Add("OpeningQuantity", "OpeningQuantity");
+            tableMapping.ColumnMappings.Add("OpeningQuantityActual", "OpeningQuantityActual");
+            tableMapping.ColumnMappings.Add("OpeningQuantityLower", "OpeningQuantityLower");
+            tableMapping.ColumnMappings.Add("StockAs", "StockAs");
+            tableMapping.ColumnMappings.Add("Actual", "Actual");
+            tableMapping.ColumnMappings.Add("Lower", "Lower");
+            tableMapping.ColumnMappings.Add("ReceivedOn", "ReceivedOn");
+            tableMapping.ColumnMappings.Add("ReferenceCode", "ReferenceCode");
+            tableMapping.ColumnMappings.Add("Supplier", "Supplier");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectoDb"].ConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "Product.GetPurchasedProductsByReferenceCode";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ProductName", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(Transactions.GetPurchasedProductsByReferenceCodeDataTable dataTable, string ProductName) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((ProductName == null)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(ProductName));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual Transactions.GetPurchasedProductsByReferenceCodeDataTable GetData(string ProductName) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((ProductName == null)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(ProductName));
+            }
+            Transactions.GetPurchasedProductsByReferenceCodeDataTable dataTable = new Transactions.GetPurchasedProductsByReferenceCodeDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }

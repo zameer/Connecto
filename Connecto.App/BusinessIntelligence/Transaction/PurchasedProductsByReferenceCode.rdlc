@@ -744,18 +744,6 @@
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="StockAs">
-          <DataField>StockAs</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Actual">
-          <DataField>Actual</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Lower">
-          <DataField>Lower</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="ProductInfo">
           <DataField>ProductInfo</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -772,6 +760,18 @@
           <DataField>OpeningQuantityLower</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
+        <Field Name="StockAs">
+          <DataField>StockAs</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Actual">
+          <DataField>Actual</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Lower">
+          <DataField>Lower</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="ReceivedOn">
           <DataField>ReceivedOn</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -787,11 +787,11 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>Transactions</rd:DataSetName>
-        <rd:SchemaPath>C:\Projects\Connecto\Connecto\Connecto.App\BusinessIntelligence\Dataset\Transactions.xsd</rd:SchemaPath>
-        <rd:TableName>PurchasedProductByReferenceCode</rd:TableName>
+        <rd:SchemaPath>D:\Projects\AdvPos\HelpBiz\Connecto\Connecto.App\BusinessIntelligence\Dataset\Transactions.xsd</rd:SchemaPath>
+        <rd:TableName>GetPurchasedProductsByReferenceCode</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>PurchasedProductByReferenceCodeTableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterName>GetPurchasedProductsByReferenceCodeAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
