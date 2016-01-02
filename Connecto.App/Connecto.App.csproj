@@ -224,9 +224,9 @@
     <Compile Include="Utilities\Printo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BusinessIntelligence\Scripts\SP_Jan02.sql" />
     <Content Include="BusinessIntelligence\Scripts\fn-Oct10th.sql" />
     <Content Include="BusinessIntelligence\Scripts\ReportSetting.sql" />
-    <Content Include="BusinessIntelligence\Scripts\sp-Dec17th.sql" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\connecto\ace-fonts.css" />
@@ -460,6 +460,7 @@
     <EmbeddedResource Include="BusinessIntelligence\Transaction\AllCustomerDetails.rdlc" />
     <EmbeddedResource Include="BusinessIntelligence\Transaction\AllEmployeeDetails.rdlc" />
     <EmbeddedResource Include="BusinessIntelligence\Transaction\AllSupplierDetails.rdlc" />
+    <EmbeddedResource Include="BusinessIntelligence\Transaction\StockDetailsByProductType.rdlc" />
     <EmbeddedResource Include="BusinessIntelligence\Transaction\PurchasedProductsByReferenceCode.rdlc" />
     <EmbeddedResource Include="BusinessIntelligence\Transaction\SalesInvoice.rdlc" />
     <EmbeddedResource Include="BusinessIntelligence\Transaction\ProductDetails.rdlc" />
