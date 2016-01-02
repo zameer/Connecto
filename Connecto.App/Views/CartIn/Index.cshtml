@@ -10,7 +10,8 @@
     trApp.config(['$routeProvider',
     function ($routeProvider) {
         $routeProvider.
-             when('/', { templateUrl: '/CartIn/Checkout', controller: 'CartInCtrl' })
+             when('/', { templateUrl: '/CartIn/Checkout', controller: 'CartInCtrl' }).
+             when('/Edit/', { templateUrl: '/CartIn/Checkout', controller: 'CartInCtrl' })
             .otherwise({ redirectTo: '/' });
     }]);
 </script>

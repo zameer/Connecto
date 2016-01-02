@@ -1,8 +1,9 @@
 'use strict';
 /* Controllers */
 var cName = 'CartIn';
-trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeParams',
-  function ($scope, $filter, $http) {
+trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$location' ,'$routeParams',
+  function ($scope, $filter, $http, $location) {
+      $scope.fromCart = $location.path() != '/Edit/';
       $http.get('/' + cName + '/GetProductCodes/').success(function (data) {
           $scope.productCodes = data;
       });
@@ -26,14 +27,14 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
       };
       $scope.order = {};
       $scope.loadOrders = function () {
-          $http.get('/' + cName + '/GetOrders/').success(function (data) {
+          $http.get('/' + cName + '/GetOrders/?fromCart=' + $scope.fromCart).success(function (data) {
               $scope.orders = data;
               $scope.order.selected = $scope.item != undefined ? $filter('getById')($scope.orders, $scope.item.OrderId, "OrderId") : null;
           });
       };
       $scope.loadItems = function (orderId) {
           if (orderId != undefined) {
-              $http.get('/' + cName + '/GetCart/' + orderId).success(function (data) {
+              $http.get('/' + cName + ($scope.fromCart ? '/GetCart/' : '/Get/') + orderId).success(function (data) {
                   $scope.items = data;
               });
           } else $scope.items = [];
@@ -100,7 +101,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
       };
       $scope.add = function () {
           $scope.setHeader();
-          $http.post('/' + cName + '/Create/', $scope.item).success(function (data) {
+          $http.post('/' + cName + ($scope.fromCart ? '/Create/' : '/Update/'), $scope.item).success(function (data) {
               showMessage(data);
               if ($scope.item.OrderId == undefined) $scope.loadOrders();
               $scope.reset();

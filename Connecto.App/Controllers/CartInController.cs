@@ -9,9 +9,9 @@ namespace Connecto.App.Controllers
     public class CartInController : BaseController
     {
         private readonly ProductDetailRepository _repo = ConnectoFactory.ProductDetailRepository;
-        public JsonResult GetOrders()
+        public JsonResult GetOrders(bool fromCart)
         {
-            var items = _repo.GetOrders();
+            var items = _repo.GetOrders(fromCart);
             return Json(items, JsonRequestBehavior.AllowGet);
         }
         public JsonResult GetProductCodes()
@@ -19,9 +19,9 @@ namespace Connecto.App.Controllers
             var items = _repo.GetProductCodes(Location.LocationId);
            return Json(items, JsonRequestBehavior.AllowGet);
         }
-        public JsonResult Get(int orderId)
+        public JsonResult Get(int id)
         {
-            var items = _repo.GetAll(orderId);
+            var items = _repo.GetAll(id);
             return Json(items, JsonRequestBehavior.AllowGet);
         }
         public JsonResult GetCart(int id)
@@ -43,6 +43,18 @@ namespace Connecto.App.Controllers
             item.DateReceived = item.DateReceived.Year == 1 ? DateTime.Now : item.DateReceived;
             var orderId = _repo.AddToCart(item);
             return Json(new { OrderId = orderId, Status = "Success", Message = "Cart Item Added." }, JsonRequestBehavior.AllowGet);
+        }
+
+        //
+        // POST: /Transaction/Create
+        [HttpPost]
+        public JsonResult Update(ProductDetail item)
+        {
+            item.LocationId = Location.LocationId;
+            item.EditedBy = Location.UserId;
+            item.DateReceived = item.DateReceived.Year == 1 ? DateTime.Now : item.DateReceived;
+            var orderId = _repo.Update(item);
+            return Json(new { OrderId = orderId, Status = "Success", Message = "Produ Updated Successfully." }, JsonRequestBehavior.AllowGet);
         }
 
         //

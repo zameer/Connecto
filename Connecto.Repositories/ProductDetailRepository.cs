@@ -10,9 +10,9 @@ namespace Connecto.Repositories
     public class ProductDetailRepository
     {
         private static readonly IProductDetailDao ProductDetailDao = DataAccess.ProductDetailDao;
-        public IList<Order> GetOrders()
+        public IList<Order> GetOrders(bool fromCart)
         {
-            return ProductDetailDao.GetOrders();
+            return ProductDetailDao.GetOrders(fromCart);
         }
         public IList<ProductDetail> GetAll(int orderId)
         {
@@ -27,6 +27,10 @@ namespace Connecto.Repositories
         public int AddToCart(ProductDetailCart productDetailCart)
         {
             return ProductDetailDao.AddProductDetailCart(productDetailCart);
+        }
+        public int Update(ProductDetail productDetail)
+        {
+            return ProductDetailDao.Update(productDetail);
         }
         public int Add(int orderId)
         {

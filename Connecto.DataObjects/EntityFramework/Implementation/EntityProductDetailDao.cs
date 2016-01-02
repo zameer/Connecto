@@ -9,11 +9,12 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
 {
     public class EntityProductDetailDao : IProductDetailDao
     {
-        public List<Order> GetOrders()
+        public List<Order> GetOrders(bool fromCart)
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var orderIds = context.ProductDetailCarts.Select(e => e.OrderId).Distinct().ToList();
+                var orderIds = fromCart ? context.ProductDetailCarts.Select(e => e.OrderId).Distinct().ToList() :
+                    context.ProductDetails.Select(e => e.OrderId).Distinct().ToList();
                 return context.Orders.Where(e => orderIds.Contains(e.OrderId)).Select(Mapper.Map).ToList();
             }
         }
@@ -49,6 +50,42 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                 if (!UpdateProductDetailCart(productDetailCart, context)) context.ProductDetailCarts.Add(entity);
                 context.SaveChanges();
                 return entity.OrderId;
+            }
+        }
+
+        public int Update(ProductDetail productDetail)
+        {
+            using (var context = DataObjectFactory.CreateContext())
+            {
+                var cart = context.ProductDetails.FirstOrDefault(e => e.OrderId == productDetail.OrderId && e.ProductCode == productDetail.ProductCode);
+                if (cart == null) return productDetail.OrderId;
+                var product = cart.Product;
+                var qtyDif = productDetail.Quantity - cart.Quantity;
+                var qtyActDif = productDetail.QuantityActual - cart.QuantityActual;
+                var qtyLowDif = productDetail.QuantityLower - cart.QuantityLower;
+                product.Quantity += qtyDif;
+                product.QuantityActual += qtyActDif;
+                product.QuantityLower += qtyLowDif;
+                product.StockInHand += qtyDif;
+
+
+                cart.Barcode = productDetail.Barcode;
+                cart.EmployeeId = productDetail.EmployeeId;
+                cart.Quantity = productDetail.Quantity;
+                cart.QuantityActual = productDetail.QuantityActual;
+                cart.QuantityLower = productDetail.QuantityLower;
+                cart.OpeningQuantity = productDetail.Quantity;
+                cart.OpeningQuantityActual = productDetail.QuantityActual;
+                cart.OpeningQuantityLower = productDetail.QuantityLower;
+                cart.UnitPrice = productDetail.UnitPrice;
+                cart.SellingPrice = productDetail.SellingPrice;
+                cart.ProductId = productDetail.ProductId;
+                cart.SupplierId = productDetail.SupplierId;
+                cart.Status = productDetail.Status;
+                cart.EditedBy = productDetail.EditedBy;
+                cart.EditedOn = DateTime.Now;
+                context.SaveChanges();
+                return productDetail.OrderId;
             }
         }
         private bool UpdateProductDetailCart(ProductDetailCart productDetailCart, ConnectoManagerEntities context)

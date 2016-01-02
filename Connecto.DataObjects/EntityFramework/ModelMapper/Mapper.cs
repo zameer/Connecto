@@ -482,6 +482,8 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 ProductCode = entity.ProductCode,
                 Barcode = string.IsNullOrEmpty(entity.Barcode) ? entity.Product.Barcode : entity.Barcode,
                 Quantity = entity.Quantity,
+                QuantityActual = entity.QuantityActual,
+                QuantityLower = entity.QuantityLower,
                 UnitPrice = entity.UnitPrice,
                 SellingPrice = entity.SellingPrice,
                 DateReceived = entity.DateReceived,
@@ -491,6 +493,8 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 CreatedOn = entity.CreatedOn,
                 EditedBy = entity.EditedBy,
                 EditedOn = entity.EditedOn,
+                Product = Map(entity.Product),
+                DisplayQuantity = BuildQuantity(entity.Product, entity.Quantity, entity.QuantityActual, entity.QuantityLower),
                 Name = string.Format("{0} {1}", entity.Product.Name, entity.Product.ProductType.Type)
             };
         }
