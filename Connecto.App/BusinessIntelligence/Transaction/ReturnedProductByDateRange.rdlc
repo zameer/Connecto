@@ -367,7 +367,7 @@
   <Width>6.39499in</Width>
   <Page>
     <PageHeader>
-      <Height>0.53125in</Height>
+      <Height>0.875in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -392,10 +392,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
-          <Top>0.1905cm</Top>
-          <Left>1.17848in</Left>
+          <Top>0.381cm</Top>
+          <Left>1.24098in</Left>
           <Height>0.28125in</Height>
-          <Width>2.95806in</Width>
+          <Width>2.80181in</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -408,7 +408,7 @@
           </Style>
         </Textbox>
         <Line Name="Line1">
-          <Top>0.45416in</Top>
+          <Top>0.82916in</Top>
           <Height>0in</Height>
           <Width>6.38458in</Width>
           <ZIndex>1</ZIndex>
@@ -436,8 +436,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox3</rd:DefaultName>
-          <Top>0.10625in</Top>
-          <Left>5.26041in</Left>
+          <Top>0.18125in</Top>
+          <Left>5.24791in</Left>
           <Height>0.25in</Height>
           <Width>1.0825in</Width>
           <ZIndex>2</ZIndex>
@@ -458,7 +458,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>Date: </Value>
+                  <Value>DateFrom: </Value>
                   <Style>
                     <FontFamily>Calibri</FontFamily>
                     <FontSize>14pt</FontSize>
@@ -472,11 +472,81 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
-          <Top>0.1905cm</Top>
-          <Left>4.08826in</Left>
+          <Top>0.381cm</Top>
+          <Left>4.07576in</Left>
           <Height>0.28125in</Height>
           <Width>1.09348in</Width>
           <ZIndex>3</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <VerticalAlign>Top</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox5">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=First(Fields!ReturnedOn.Value, "Dataset")</Value>
+                  <Style>
+                    <FontSize>12pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox3</rd:DefaultName>
+          <Top>0.40312in</Top>
+          <Left>5.24232in</Left>
+          <Height>0.25in</Height>
+          <Width>1.0825in</Width>
+          <ZIndex>4</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox6">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>DateTo: </Value>
+                  <Style>
+                    <FontFamily>Calibri</FontFamily>
+                    <FontSize>14pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox2</rd:DefaultName>
+          <Top>0.94456cm</Top>
+          <Left>4.07017in</Left>
+          <Height>0.28125in</Height>
+          <Width>1.09348in</Width>
+          <ZIndex>5</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -683,10 +753,10 @@
       <rd:DataSetInfo>
         <rd:DataSetName>Transactions</rd:DataSetName>
         <rd:SchemaPath>C:\Projects\Connecto\Connecto\Connecto.App\BusinessIntelligence\Dataset\Transactions.xsd</rd:SchemaPath>
-        <rd:TableName>GetReturnDetailsByDate</rd:TableName>
+        <rd:TableName>GetReturnDetailsByDateRange</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>GetReturnDetailsByDateAdapter</rd:TableAdapterName>
+        <rd:TableAdapterName>GetReturnDetailsByDateRangeTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>

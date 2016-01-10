@@ -460,6 +460,7 @@
     <EmbeddedResource Include="BusinessIntelligence\Transaction\AllCustomerDetails.rdlc" />
     <EmbeddedResource Include="BusinessIntelligence\Transaction\AllEmployeeDetails.rdlc" />
     <EmbeddedResource Include="BusinessIntelligence\Transaction\AllSupplierDetails.rdlc" />
+    <EmbeddedResource Include="BusinessIntelligence\Transaction\ReturnedProductByDateRange.rdlc" />
     <EmbeddedResource Include="BusinessIntelligence\Transaction\ReturnedProductByDate.rdlc" />
     <EmbeddedResource Include="BusinessIntelligence\Transaction\StockDetailsByProductType.rdlc" />
     <EmbeddedResource Include="BusinessIntelligence\Transaction\PurchasedProductsByReferenceCode.rdlc" />
