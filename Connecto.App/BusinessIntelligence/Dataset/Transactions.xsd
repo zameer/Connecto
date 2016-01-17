@@ -207,6 +207,7 @@
               <Mapping SourceColumn="Type" DataSetColumn="Type" />
               <Mapping SourceColumn="StockAs" DataSetColumn="StockAs" />
               <Mapping SourceColumn="Actual" DataSetColumn="Actual" />
+              <Mapping SourceColumn="ProductId" DataSetColumn="ProductId" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -1015,6 +1016,7 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="ProductId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnProductId" msprop:Generator_ColumnPropNameInRow="ProductId" msprop:Generator_ColumnPropNameInTable="ProductIdColumn" msprop:Generator_UserColumnName="ProductId" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

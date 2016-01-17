@@ -3708,6 +3708,8 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
             
             private global::System.Data.DataColumn columnActual;
             
+            private global::System.Data.DataColumn columnProductId;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public GetProductTypeDatailsDataTable() {
@@ -3775,6 +3777,14 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ProductIdColumn {
+                get {
+                    return this.columnProductId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3816,7 +3826,8 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
                         null,
                         Type,
                         StockAs,
-                        Actual};
+                        Actual,
+                        null};
                 rowGetProductTypeDatailsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowGetProductTypeDatailsRow);
                 return rowGetProductTypeDatailsRow;
@@ -3850,6 +3861,7 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
                 this.columnType = base.Columns["Type"];
                 this.columnStockAs = base.Columns["StockAs"];
                 this.columnActual = base.Columns["Actual"];
+                this.columnProductId = base.Columns["ProductId"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3863,6 +3875,8 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
                 base.Columns.Add(this.columnStockAs);
                 this.columnActual = new global::System.Data.DataColumn("Actual", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnActual);
+                this.columnProductId = new global::System.Data.DataColumn("ProductId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProductId);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnProductTypeId}, true));
                 this.columnProductTypeId.AutoIncrement = true;
@@ -3874,6 +3888,10 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
                 this.columnType.MaxLength = 2147483647;
                 this.columnStockAs.MaxLength = 2147483647;
                 this.columnActual.MaxLength = 2147483647;
+                this.columnProductId.AutoIncrement = true;
+                this.columnProductId.AutoIncrementSeed = -1;
+                this.columnProductId.AutoIncrementStep = -1;
+                this.columnProductId.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11962,6 +11980,22 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int ProductId {
+                get {
+                    try {
+                        return ((int)(this[this.tableGetProductTypeDatails.ProductIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ProductId\' in table \'GetProductTypeDatails\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableGetProductTypeDatails.ProductIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsTypeNull() {
                 return this.IsNull(this.tableGetProductTypeDatails.TypeColumn);
             }
@@ -11994,6 +12028,18 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetActualNull() {
                 this[this.tableGetProductTypeDatails.ActualColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsProductIdNull() {
+                return this.IsNull(this.tableGetProductTypeDatails.ProductIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetProductIdNull() {
+                this[this.tableGetProductTypeDatails.ProductIdColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -17773,6 +17819,7 @@ namespace Connecto.App.BusinessIntelligence.Dataset.TransactionsTableAdapters {
             tableMapping.ColumnMappings.Add("Type", "Type");
             tableMapping.ColumnMappings.Add("StockAs", "StockAs");
             tableMapping.ColumnMappings.Add("Actual", "Actual");
+            tableMapping.ColumnMappings.Add("ProductId", "ProductId");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
