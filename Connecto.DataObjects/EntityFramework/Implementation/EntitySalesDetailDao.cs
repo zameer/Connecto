@@ -149,9 +149,10 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                 if (salesDetail != null)
                 {
                     var productDetail = context.ProductDetails.FirstOrDefault(e => e.ProductDetailId == salesDetail.ProductDetailId);
-                    Stock.SyncStock(productDetail, (salesDetail.Quantity - salesDetailCart.Quantity),
-                        (salesDetail.QuantityActual - salesDetailCart.QuantityActual), 
-                        (salesDetail.QuantityLower - salesDetailCart.QuantityLower), false);
+                    var rQty = salesDetail.Quantity - salesDetailCart.Quantity;
+                    var rActQty = salesDetail.QuantityActual - salesDetailCart.QuantityActual;
+                    var rLwrQty = salesDetail.QuantityLower - salesDetailCart.QuantityLower;
+                    Stock.SyncStock(productDetail, rQty, rActQty, rLwrQty, false);
 
                     salesDetail.Quantity = salesDetailCart.Quantity;
                     salesDetail.QuantityActual = salesDetailCart.QuantityActual;
@@ -170,9 +171,9 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                         DateReturned = salesDetailCart.CreatedOn,
                         ProductDetailId = salesDetail.ProductDetailId,
                         SalesDetailId = salesDetail.SalesDetailId,
-                        Quantity = salesDetailCart.Quantity,
-                        QuantityActual = salesDetailCart.QuantityActual,
-                        QuantityLower = salesDetailCart.QuantityLower,
+                        Quantity = rQty,
+                        QuantityActual = rActQty,
+                        QuantityLower = rLwrQty,
                         LocationId = salesDetailCart.LocationId,
                         Status = salesDetailCart.Status,
                         EmployeeId = salesDetailCart.CreatedBy,

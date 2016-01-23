@@ -454,6 +454,7 @@
                                 <FontFamily>Calibri</FontFamily>
                                 <FontSize>12pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
+                                <Format>#,0.00;(#,0.00)</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>

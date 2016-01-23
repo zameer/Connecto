@@ -10035,7 +10035,6 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
                 this.columnActual.MaxLength = 2147483647;
                 this.columnSoldOn.ReadOnly = true;
                 this.columnSoldOn.MaxLength = 30;
-                this.columnNetPrice.AllowDBNull = false;
                 this.columnProductCode.MaxLength = 2147483647;
             }
             
@@ -10450,7 +10449,6 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
                 this.columnActual.MaxLength = 2147483647;
                 this.columnSoldOn.ReadOnly = true;
                 this.columnSoldOn.MaxLength = 30;
-                this.columnNetPrice.AllowDBNull = false;
                 this.columnDiscount.AllowDBNull = false;
                 this.columnProductCode.MaxLength = 2147483647;
             }
@@ -15304,7 +15302,13 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public decimal NetPrice {
                 get {
-                    return ((decimal)(this[this.tableGetReturnDetailsByDateRange.NetPriceColumn]));
+                    try {
+                        return ((decimal)(this[this.tableGetReturnDetailsByDateRange.NetPriceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'NetPrice\' in table \'GetReturnDetailsByDateRange\' is DBNull." +
+                                "", e);
+                    }
                 }
                 set {
                     this[this.tableGetReturnDetailsByDateRange.NetPriceColumn] = value;
@@ -15398,6 +15402,18 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetSoldOnNull() {
                 this[this.tableGetReturnDetailsByDateRange.SoldOnColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNetPriceNull() {
+                return this.IsNull(this.tableGetReturnDetailsByDateRange.NetPriceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNetPriceNull() {
+                this[this.tableGetReturnDetailsByDateRange.NetPriceColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -15560,7 +15576,12 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public decimal NetPrice {
                 get {
-                    return ((decimal)(this[this.tableGetReturnDetailsByDate.NetPriceColumn]));
+                    try {
+                        return ((decimal)(this[this.tableGetReturnDetailsByDate.NetPriceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'NetPrice\' in table \'GetReturnDetailsByDate\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableGetReturnDetailsByDate.NetPriceColumn] = value;
@@ -15664,6 +15685,18 @@ namespace Connecto.App.BusinessIntelligence.Dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetSoldOnNull() {
                 this[this.tableGetReturnDetailsByDate.SoldOnColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNetPriceNull() {
+                return this.IsNull(this.tableGetReturnDetailsByDate.NetPriceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNetPriceNull() {
+                this[this.tableGetReturnDetailsByDate.NetPriceColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
