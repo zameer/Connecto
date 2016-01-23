@@ -8,6 +8,13 @@
     <meta name="description" content="User login page" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery.alert.js"></script>
+    <script src="~/Scripts/jquery.blockUI.js"></script>
+    <script src="~/Scripts/bootbox.js"></script>
+    <script src="~/Scripts/connecto/Connectojs.js"></script>
+    <script src="~/Scripts/connecto/date-time/bootstrap-datepicker.js"></script>
+    <script src="~/Scripts/connecto/date-time/daterangepicker.js"></script>
     <!-- bootstrap & fontawesome -->
     <link rel="stylesheet" href="~/Content/bootstrap.css" />
     <link rel="stylesheet" href="~/Content/connecto/font-awesome.css" />
@@ -15,6 +22,7 @@
     <!-- text fonts -->
     <link rel="stylesheet" href="~/Content/connecto/ace-fonts.css" />
 
+    <link rel="stylesheet" href="~/Content/jquery.alert.css" />
     <!-- ace styles -->
     <link rel="stylesheet" href="~/Content/connecto/ace.css" />
 
@@ -47,7 +55,7 @@
                             </h1>
                             <h4 class="blue" id="id-company-text">&copy; Dots</h4>
                         </div>
-
+                        <input type="hidden" id="ServerAjaxMessage" value="@TempData["ServerAjaxMessage"]" />
                         <div class="space-6"></div>                        
                         @RenderSection("featured", required: false)
                         @RenderBody()
@@ -80,7 +88,7 @@
     <!-- <![endif]-->
     <!--[if IE]>
     <script type="text/javascript">
-     window.jQuery || document.write("<script src='/Scripts/connecto/jquery1x.js'>"+"<"+"/script>");
+        window.jQuery || document.write("<script src='/Scripts/connecto/jquery1x.js'>"+"<"+"/script>");
     </script>
     <![endif]-->
     <script type="text/javascript">

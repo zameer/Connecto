@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using Connecto.BusinessObjects;
 using Connecto.Repositories;
 using Microsoft.Ajax.Utilities;
@@ -103,6 +104,7 @@ namespace Connecto.App.Controllers
                 else
                 {
                     ModelState.AddModelError("", "Invalid username or password.");
+                    TempData["ServerAjaxMessage"] = new JavaScriptSerializer().Serialize(new { Status = "Fail", Message = "Invalid username or password." });
                     return RedirectToAction("Connect");
                 }
             }

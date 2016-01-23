@@ -1,4 +1,10 @@
-﻿$(function() {
+﻿$(function () {
+    if ($("#ServerAjaxMessage").val() != undefined && $("#ServerAjaxMessage").val() != '') {
+        console.log($("#ServerAjaxMessage").val());
+        AppCommonFunction.HideWaitBlock();
+        showMessage($.parseJSON($("#ServerAjaxMessage").val()));
+        $("#ServerAjaxMessage").val('');
+    }
     //datepicker plugin
     //link
     $('.date-picker').datepicker({
