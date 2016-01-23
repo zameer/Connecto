@@ -79,7 +79,7 @@ namespace Connecto.App.Controllers
             if (!System.IO.File.Exists(path))
                 return Json(new { Status = "Failure", Message = "Report not found." }, JsonRequestBehavior.AllowGet);
 
-            var data = new InvoiceByIdAdapter().GetData((byte?)id).ToList();
+            var data = new InvoiceByIdAdapter().GetData(id).ToList();
             var rd = new ReportDataSource("Dataset", data);
 
             var lr = new LocalReport { ReportPath = path };
