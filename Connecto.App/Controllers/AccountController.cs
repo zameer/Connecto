@@ -103,6 +103,7 @@ namespace Connecto.App.Controllers
                 else
                 {
                     ModelState.AddModelError("", "Invalid username or password.");
+                    return RedirectToAction("Connect");
                 }
             }
 
