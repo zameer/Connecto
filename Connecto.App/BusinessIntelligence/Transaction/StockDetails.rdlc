@@ -640,7 +640,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>2.58333in</Height>
+              <Height>3.91666in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -683,7 +683,9 @@
                                     <FontSize>8pt</FontSize>
                                     <Format>#,0;(#,0)</Format>
                                   </Style>
-                                  <UseValueAsLabel>true</UseValueAsLabel>
+                                  <Label>=IIF(Fields!Quantity.Value &gt; 0, Fields!Quantity.Value &amp; " " &amp; Fields!StockAs.Value, "") 
+&amp; " " &amp; IIF(Fields!QuantityActual.Value &gt; 0, Fields!QuantityActual.Value &amp; " " &amp; Fields!Actual.Value, "")
+&amp; " " &amp; IIF(Fields!QuantityLower.Value &gt; 0, Fields!QuantityLower.Value &amp; " " &amp; Fields!Lower.Value, "")</Label>
                                   <Visible>true</Visible>
                                 </ChartDataLabel>
                                 <Style>
@@ -979,7 +981,7 @@
         <DataSetName>Dataset</DataSetName>
         <Top>0.12375in</Top>
         <Left>0.00535in</Left>
-        <Height>3.83333in</Height>
+        <Height>5.16666in</Height>
         <Width>6.45452in</Width>
         <Style>
           <Border>
@@ -988,7 +990,7 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>3.95708in</Height>
+    <Height>5.29041in</Height>
     <Style />
   </Body>
   <Width>6.46474in</Width>

@@ -1046,7 +1046,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!NetPrice.Value, "Dataset") - Sum(Fields!CostPrice.Value, "Dataset")</Value>
+                              <Value>=Sum(Fields!NetPrice.Value, "Dataset") - Sum(Fields!CostPrice.Value, "Dataset") - Sum(Fields!Discount.Value, "Dataset")</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
                                 <FontSize>12pt</FontSize>

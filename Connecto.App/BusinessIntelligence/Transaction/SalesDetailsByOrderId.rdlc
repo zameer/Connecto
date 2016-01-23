@@ -1026,15 +1026,15 @@
                           <ChartMember>
                             <Group Name="Chart1_CategoryGroup">
                               <GroupExpressions>
-                                <GroupExpression>=Fields!ProductInfo.Value</GroupExpression>
+                                <GroupExpression>=Fields!ProductCode.Value</GroupExpression>
                               </GroupExpressions>
                             </Group>
                             <SortExpressions>
                               <SortExpression>
-                                <Value>=Fields!ProductInfo.Value</Value>
+                                <Value>=Fields!ProductCode.Value</Value>
                               </SortExpression>
                             </SortExpressions>
-                            <Label>=Fields!ProductInfo.Value</Label>
+                            <Label>=Fields!ProductCode.Value</Label>
                           </ChartMember>
                         </ChartMembers>
                       </ChartCategoryHierarchy>
@@ -1042,6 +1042,12 @@
                         <ChartMembers>
                           <ChartMember>
                             <Label>Quantity</Label>
+                          </ChartMember>
+                          <ChartMember>
+                            <Label>Quantity Actual</Label>
+                          </ChartMember>
+                          <ChartMember>
+                            <Label>Quantity Lower</Label>
                           </ChartMember>
                         </ChartMembers>
                       </ChartSeriesHierarchy>
@@ -1055,6 +1061,85 @@
                                 </ChartDataPointValues>
                                 <ChartDataLabel>
                                   <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <Format>#,0;(#,0)</Format>
+                                  </Style>
+                                  <UseValueAsLabel>true</UseValueAsLabel>
+                                  <Visible>true</Visible>
+                                </ChartDataLabel>
+                                <Style />
+                                <ChartMarker>
+                                  <Style />
+                                </ChartMarker>
+                                <DataElementOutput>Output</DataElementOutput>
+                              </ChartDataPoint>
+                            </ChartDataPoints>
+                            <Style />
+                            <ChartEmptyPoints>
+                              <Style />
+                              <ChartMarker>
+                                <Style />
+                              </ChartMarker>
+                              <ChartDataLabel>
+                                <Style />
+                              </ChartDataLabel>
+                            </ChartEmptyPoints>
+                            <ValueAxisName>Primary</ValueAxisName>
+                            <CategoryAxisName>Primary</CategoryAxisName>
+                            <ChartSmartLabel>
+                              <CalloutLineColor>Black</CalloutLineColor>
+                              <MinMovingDistance>0pt</MinMovingDistance>
+                            </ChartSmartLabel>
+                          </ChartSeries>
+                          <ChartSeries Name="QuantityActual">
+                            <ChartDataPoints>
+                              <ChartDataPoint>
+                                <ChartDataPointValues>
+                                  <Y>=Sum(Fields!QuantityActual.Value)</Y>
+                                </ChartDataPointValues>
+                                <ChartDataLabel>
+                                  <Style>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <Format>#,0;(#,0)</Format>
+                                  </Style>
+                                  <UseValueAsLabel>true</UseValueAsLabel>
+                                  <Visible>true</Visible>
+                                </ChartDataLabel>
+                                <Style />
+                                <ChartMarker>
+                                  <Style />
+                                </ChartMarker>
+                                <DataElementOutput>Output</DataElementOutput>
+                              </ChartDataPoint>
+                            </ChartDataPoints>
+                            <Style />
+                            <ChartEmptyPoints>
+                              <Style />
+                              <ChartMarker>
+                                <Style />
+                              </ChartMarker>
+                              <ChartDataLabel>
+                                <Style />
+                              </ChartDataLabel>
+                            </ChartEmptyPoints>
+                            <ValueAxisName>Primary</ValueAxisName>
+                            <CategoryAxisName>Primary</CategoryAxisName>
+                            <ChartSmartLabel>
+                              <CalloutLineColor>Black</CalloutLineColor>
+                              <MinMovingDistance>0pt</MinMovingDistance>
+                            </ChartSmartLabel>
+                          </ChartSeries>
+                          <ChartSeries Name="QuantityLower">
+                            <ChartDataPoints>
+                              <ChartDataPoint>
+                                <ChartDataPointValues>
+                                  <Y>=Sum(Fields!QuantityLower.Value)</Y>
+                                </ChartDataPointValues>
+                                <ChartDataLabel>
+                                  <Style>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontSize>8pt</FontSize>
                                     <Format>#,0;(#,0)</Format>
                                   </Style>
                                   <UseValueAsLabel>true</UseValueAsLabel>
@@ -1246,6 +1331,7 @@
                           <Style>
                             <BackgroundGradientType>None</BackgroundGradientType>
                             <BackgroundHatchType>None</BackgroundHatchType>
+                            <ShadowOffset>0pt</ShadowOffset>
                           </Style>
                         </ChartArea>
                       </ChartAreas>
@@ -1273,6 +1359,7 @@
                           <Caption>Units Sold</Caption>
                           <Style>
                             <BackgroundGradientType>None</BackgroundGradientType>
+                            <FontSize>11pt</FontSize>
                             <FontWeight>Bold</FontWeight>
                             <TextAlign>General</TextAlign>
                             <VerticalAlign>Top</VerticalAlign>
@@ -1768,6 +1855,10 @@
         <Field Name="CostPrice">
           <DataField>CostPrice</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ProductCode">
+          <DataField>ProductCode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
