@@ -670,6 +670,12 @@
                           <ChartMember>
                             <Label>Quantity</Label>
                           </ChartMember>
+                          <ChartMember>
+                            <Label>Quantity Actual</Label>
+                          </ChartMember>
+                          <ChartMember>
+                            <Label>Quantity Lower</Label>
+                          </ChartMember>
                         </ChartMembers>
                       </ChartSeriesHierarchy>
                       <ChartData>
@@ -682,6 +688,8 @@
                                 </ChartDataPointValues>
                                 <ChartDataLabel>
                                   <Style>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontSize>8pt</FontSize>
                                     <Format>#,0;(#,0)</Format>
                                   </Style>
                                   <UseValueAsLabel>true</UseValueAsLabel>
@@ -694,7 +702,6 @@
                                 <DataElementOutput>Output</DataElementOutput>
                               </ChartDataPoint>
                             </ChartDataPoints>
-                            <Type>Shape</Type>
                             <Style />
                             <ChartEmptyPoints>
                               <Style />
@@ -705,6 +712,93 @@
                                 <Style />
                               </ChartDataLabel>
                             </ChartEmptyPoints>
+                            <ChartItemInLegend>
+                              <LegendText>=First(Fields!StockAs.Value, "Dataset")</LegendText>
+                            </ChartItemInLegend>
+                            <ValueAxisName>Primary</ValueAxisName>
+                            <CategoryAxisName>Primary</CategoryAxisName>
+                            <ChartSmartLabel>
+                              <CalloutLineColor>Black</CalloutLineColor>
+                              <MinMovingDistance>0pt</MinMovingDistance>
+                            </ChartSmartLabel>
+                          </ChartSeries>
+                          <ChartSeries Name="QuantityActual">
+                            <ChartDataPoints>
+                              <ChartDataPoint>
+                                <ChartDataPointValues>
+                                  <Y>=Sum(Fields!QuantityActual.Value)</Y>
+                                </ChartDataPointValues>
+                                <ChartDataLabel>
+                                  <Style>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <Format>#,0;(#,0)</Format>
+                                  </Style>
+                                  <UseValueAsLabel>true</UseValueAsLabel>
+                                  <Visible>true</Visible>
+                                </ChartDataLabel>
+                                <Style />
+                                <ChartMarker>
+                                  <Style />
+                                </ChartMarker>
+                                <DataElementOutput>Output</DataElementOutput>
+                              </ChartDataPoint>
+                            </ChartDataPoints>
+                            <Style />
+                            <ChartEmptyPoints>
+                              <Style />
+                              <ChartMarker>
+                                <Style />
+                              </ChartMarker>
+                              <ChartDataLabel>
+                                <Style />
+                              </ChartDataLabel>
+                            </ChartEmptyPoints>
+                            <ChartItemInLegend>
+                              <LegendText>= First(Fields!Actual.Value, "Dataset")</LegendText>
+                            </ChartItemInLegend>
+                            <ValueAxisName>Primary</ValueAxisName>
+                            <CategoryAxisName>Primary</CategoryAxisName>
+                            <ChartSmartLabel>
+                              <CalloutLineColor>Black</CalloutLineColor>
+                              <MinMovingDistance>0pt</MinMovingDistance>
+                            </ChartSmartLabel>
+                          </ChartSeries>
+                          <ChartSeries Name="QuantityLower">
+                            <ChartDataPoints>
+                              <ChartDataPoint>
+                                <ChartDataPointValues>
+                                  <Y>=Sum(Fields!QuantityLower.Value)</Y>
+                                </ChartDataPointValues>
+                                <ChartDataLabel>
+                                  <Style>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <Format>#,0;(#,0)</Format>
+                                  </Style>
+                                  <UseValueAsLabel>true</UseValueAsLabel>
+                                  <Visible>true</Visible>
+                                </ChartDataLabel>
+                                <Style />
+                                <ChartMarker>
+                                  <Style />
+                                </ChartMarker>
+                                <DataElementOutput>Output</DataElementOutput>
+                              </ChartDataPoint>
+                            </ChartDataPoints>
+                            <Style />
+                            <ChartEmptyPoints>
+                              <Style />
+                              <ChartMarker>
+                                <Style />
+                              </ChartMarker>
+                              <ChartDataLabel>
+                                <Style />
+                              </ChartDataLabel>
+                            </ChartEmptyPoints>
+                            <ChartItemInLegend>
+                              <LegendText>=First(Fields!Lower.Value, "Dataset")</LegendText>
+                            </ChartItemInLegend>
                             <ValueAxisName>Primary</ValueAxisName>
                             <CategoryAxisName>Primary</CategoryAxisName>
                             <ChartSmartLabel>
@@ -719,12 +813,15 @@
                           <ChartCategoryAxes>
                             <ChartAxis Name="Primary">
                               <Style>
-                                <FontSize>8pt</FontSize>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontSize>6pt</FontSize>
                               </Style>
                               <ChartAxisTitle>
-                                <Caption>Axis Title</Caption>
+                                <Caption>Product</Caption>
                                 <Style>
-                                  <FontSize>8pt</FontSize>
+                                  <FontFamily>Calibri</FontFamily>
+                                  <FontSize>9pt</FontSize>
+                                  <FontWeight>Bold</FontWeight>
                                 </Style>
                               </ChartAxisTitle>
                               <ChartMajorGridLines>
@@ -749,6 +846,7 @@
                               <CrossAt>NaN</CrossAt>
                               <Minimum>NaN</Minimum>
                               <Maximum>NaN</Maximum>
+                              <AllowLabelRotation>Rotate45</AllowLabelRotation>
                               <ChartAxisScaleBreak>
                                 <Style />
                               </ChartAxisScaleBreak>
@@ -794,12 +892,16 @@
                           <ChartValueAxes>
                             <ChartAxis Name="Primary">
                               <Style>
+                                <FontFamily>Calibri</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <Format>#,0;(#,0)</Format>
                               </Style>
                               <ChartAxisTitle>
-                                <Caption>Axis Title</Caption>
+                                <Caption>Units</Caption>
                                 <Style>
-                                  <FontSize>8pt</FontSize>
+                                  <FontFamily>Calibri</FontFamily>
+                                  <FontSize>9pt</FontSize>
+                                  <FontWeight>Bold</FontWeight>
                                 </Style>
                               </ChartAxisTitle>
                               <ChartMajorGridLines>
@@ -873,8 +975,10 @@
                         <ChartLegend Name="Default">
                           <Style>
                             <BackgroundGradientType>None</BackgroundGradientType>
+                            <FontFamily>Calibri</FontFamily>
                             <FontSize>8pt</FontSize>
                           </Style>
+                          <Position>TopRight</Position>
                           <ChartLegendTitle>
                             <Caption />
                             <Style>
@@ -889,7 +993,7 @@
                       </ChartLegends>
                       <ChartTitles>
                         <ChartTitle Name="Default">
-                          <Caption>Top 5 Total Products</Caption>
+                          <Caption>Moving Products</Caption>
                           <Style>
                             <BackgroundGradientType>None</BackgroundGradientType>
                             <FontWeight>Bold</FontWeight>

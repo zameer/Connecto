@@ -545,6 +545,9 @@
                                 <Style />
                               </ChartDataLabel>
                             </ChartEmptyPoints>
+                            <ChartItemInLegend>
+                              <LegendText>=First(Fields!StockAs.Value, "Dataset")</LegendText>
+                            </ChartItemInLegend>
                             <ValueAxisName>Primary</ValueAxisName>
                             <CategoryAxisName>Primary</CategoryAxisName>
                             <ChartSmartLabel>
@@ -580,6 +583,9 @@
                                 <Style />
                               </ChartDataLabel>
                             </ChartEmptyPoints>
+                            <ChartItemInLegend>
+                              <LegendText>=First(Fields!Actual.Value, "Dataset")</LegendText>
+                            </ChartItemInLegend>
                             <ValueAxisName>Primary</ValueAxisName>
                             <CategoryAxisName>Primary</CategoryAxisName>
                             <ChartSmartLabel>
@@ -615,6 +621,9 @@
                                 <Style />
                               </ChartDataLabel>
                             </ChartEmptyPoints>
+                            <ChartItemInLegend>
+                              <LegendText>=First(Fields!Lower.Value, "Dataset")</LegendText>
+                            </ChartItemInLegend>
                             <ValueAxisName>Primary</ValueAxisName>
                             <CategoryAxisName>Primary</CategoryAxisName>
                             <ChartSmartLabel>
@@ -842,6 +851,7 @@
                       </Style>
                     </Chart>
                     <ColSpan>5</ColSpan>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell />

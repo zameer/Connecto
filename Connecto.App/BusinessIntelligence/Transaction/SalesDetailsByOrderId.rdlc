@@ -6,7 +6,7 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.27052in</Width>
+              <Width>2.0533in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>1.11234in</Width>
@@ -21,7 +21,7 @@
               <Width>0.66667in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.78321in</Width>
+              <Width>1.00043in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>0.03125in</Width>
@@ -1026,15 +1026,15 @@
                           <ChartMember>
                             <Group Name="Chart1_CategoryGroup">
                               <GroupExpressions>
-                                <GroupExpression>=Fields!ProductCode.Value</GroupExpression>
+                                <GroupExpression>=Fields!Type.Value</GroupExpression>
                               </GroupExpressions>
                             </Group>
                             <SortExpressions>
                               <SortExpression>
-                                <Value>=Fields!ProductCode.Value</Value>
+                                <Value>=Fields!Type.Value</Value>
                               </SortExpression>
                             </SortExpressions>
-                            <Label>=Fields!ProductCode.Value</Label>
+                            <Label>=Fields!Type.Value</Label>
                           </ChartMember>
                         </ChartMembers>
                       </ChartCategoryHierarchy>
@@ -1084,6 +1084,9 @@
                                 <Style />
                               </ChartDataLabel>
                             </ChartEmptyPoints>
+                            <ChartItemInLegend>
+                              <LegendText>=First(Fields!StockAs.Value, "Dataset")</LegendText>
+                            </ChartItemInLegend>
                             <ValueAxisName>Primary</ValueAxisName>
                             <CategoryAxisName>Primary</CategoryAxisName>
                             <ChartSmartLabel>
@@ -1123,6 +1126,9 @@
                                 <Style />
                               </ChartDataLabel>
                             </ChartEmptyPoints>
+                            <ChartItemInLegend>
+                              <LegendText>=First(Fields!Actual.Value, "Dataset")</LegendText>
+                            </ChartItemInLegend>
                             <ValueAxisName>Primary</ValueAxisName>
                             <CategoryAxisName>Primary</CategoryAxisName>
                             <ChartSmartLabel>
@@ -1162,6 +1168,9 @@
                                 <Style />
                               </ChartDataLabel>
                             </ChartEmptyPoints>
+                            <ChartItemInLegend>
+                              <LegendText>=First(Fields!Lower.Value, "Dataset")</LegendText>
+                            </ChartItemInLegend>
                             <ValueAxisName>Primary</ValueAxisName>
                             <CategoryAxisName>Primary</CategoryAxisName>
                             <ChartSmartLabel>
@@ -1180,7 +1189,7 @@
                                 <FontSize>9pt</FontSize>
                               </Style>
                               <ChartAxisTitle>
-                                <Caption>Product</Caption>
+                                <Caption>Product Category</Caption>
                                 <Style>
                                   <FontFamily>Calibri</FontFamily>
                                   <FontWeight>Bold</FontWeight>
@@ -1339,6 +1348,7 @@
                         <ChartLegend Name="Default">
                           <Style>
                             <BackgroundGradientType>None</BackgroundGradientType>
+                            <FontFamily>Calibri</FontFamily>
                             <FontSize>8pt</FontSize>
                           </Style>
                           <Position>TopRight</Position>
@@ -1505,7 +1515,7 @@
   <Width>6.38458in</Width>
   <Page>
     <PageHeader>
-      <Height>0.875in</Height>
+      <Height>0.89583in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -1858,6 +1868,10 @@
         </Field>
         <Field Name="ProductCode">
           <DataField>ProductCode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Type">
+          <DataField>Type</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>

@@ -13,8 +13,8 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var orderIds = fromCart ? context.ProductDetailCarts.Select(e => e.OrderId).Distinct().ToList() :
-                    context.ProductDetails.Select(e => e.OrderId).Distinct().ToList();
+                var orderIds = fromCart ? context.ProductDetailCarts.Where(e => e.Status == RecordStatus.Active).Select(e => e.OrderId).Distinct().ToList() :
+                    context.ProductDetails.Where(e => e.Status == RecordStatus.Active).Select(e => e.OrderId).Distinct().ToList();
                 return context.Orders.Where(e => orderIds.Contains(e.OrderId)).Select(Mapper.Map).ToList();
             }
         }
@@ -178,10 +178,21 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var entity = context.ProductDetailCarts.FirstOrDefault(s => s.ProductDetailId == id);
-                entity.Status = RecordStatus.Deleted;
-                entity.EditedOn = DateTime.Now;
-                entity.EditedBy = deletedBy;
+                var entityCart = context.ProductDetailCarts.FirstOrDefault(s => s.ProductDetailId == id);
+                if (entityCart == null )
+                {
+                    var entity = context.ProductDetails.FirstOrDefault(s => s.ProductDetailId == id && s.Status == RecordStatus.Active);
+                    entity.Status = RecordStatus.Deleted;
+                    entity.EditedOn = DateTime.Now;
+                    entity.EditedBy = deletedBy;
+                }
+                else
+                {
+
+                    entityCart.Status = RecordStatus.Deleted;
+                    entityCart.EditedOn = DateTime.Now;
+                    entityCart.EditedBy = deletedBy;
+                }
                 return context.SaveChanges();
             }
         }
@@ -190,7 +201,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var productDetails = context.ProductDetails.Where(s => s.LocationId == locationId).ToList();
+                var productDetails = context.ProductDetails.Where(s => s.LocationId == locationId && (s.Quantity + s.QuantityActual + s.QuantityLower) >0 && s.Status == RecordStatus.Active ).ToList();
                 var items = new List<ProductDetail>();
                 foreach (var detail in productDetails.Where(detail => !items.Any(e => e.ProductCode == detail.ProductCode && e.ProductId == detail.ProductId)))
                 {

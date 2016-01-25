@@ -14,8 +14,8 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
         {
             using (var context = DataObjectFactory.CreateContext())
             {
-                var invoiceIds = sold ? context.SalesDetails.Select(e => e.InvoiceId).Distinct().ToList()
-                            : context.SalesDetailCarts.Select(e => e.InvoiceId).Distinct().ToList();
+                var invoiceIds = sold ? context.SalesDetails.Where(e => (e.Quantity + e.QuantityActual + e.QuantityLower) > 0).Select(e => e.InvoiceId).Distinct().ToList()
+                            : context.SalesDetailCarts.Where(e => (e.Quantity + e.QuantityActual + e.QuantityLower) > 0).Select(e => e.InvoiceId).Distinct().ToList();
                 return context.Invoices.Where(e => invoiceIds.Contains(e.InvoiceId)).Select(Mapper.Map).ToList();
             }
         }
@@ -48,7 +48,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                         AutoSellingQty = productDetail.Product.AutoSellingQty,
                         Measure = new Measure { Actual = measure.Actual, Lower = measure.Lower },
                         CreatedOnText = productDetail.CreatedOn.ToShortDateString(),
-                        ReceivedInfo = string.Format("{0} {1}- {2}{3}{4}", productDetail.CreatedOn.ToShortDateString(), productDetail.Product.Name,
+                        ReceivedInfo = string.Format("{0} - {1} - {2}{3}{4}", productDetail.CreatedOn.ToShortDateString(), productDetail.Product.Name,
                         productDetail.Quantity > 0 ? string.Format("{0} {1}s ", productDetail.Quantity, productDetail.Product.ProductType.StockAs) : string.Empty,
                         productDetail.QuantityActual > 0 ? string.Format("{0} {1}s ", productDetail.QuantityActual, measure.Actual) : string.Empty,
                         productDetail.QuantityLower > 0 ? string.Format("{0} {1}s ", productDetail.QuantityLower, measure.Lower) : string.Empty) 
