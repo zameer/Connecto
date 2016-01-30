@@ -101,7 +101,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
             using (var context = DataObjectFactory.CreateContext())
             {
                 if (product.ProductId > 0)
-                    return context.Products.Any(e => e.ProductId != product.VendorId && e.Name.ToLower() == product.Name.ToLower());
+                    return context.Products.Any(e => e.ProductId != product.ProductId && e.Name.ToLower() == product.Name.ToLower());
                 return context.Products.Any(e => e.Name.ToLower() == product.Name.ToLower());
             }
         }
