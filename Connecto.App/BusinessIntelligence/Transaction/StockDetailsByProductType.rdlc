@@ -653,15 +653,15 @@
                           <ChartMember>
                             <Group Name="Chart1_CategoryGroup">
                               <GroupExpressions>
-                                <GroupExpression>=Fields!Name.Value</GroupExpression>
+                                <GroupExpression>=Fields!ProductCode.Value</GroupExpression>
                               </GroupExpressions>
                             </Group>
                             <SortExpressions>
                               <SortExpression>
-                                <Value>=Fields!Name.Value</Value>
+                                <Value>=Fields!ProductCode.Value</Value>
                               </SortExpression>
                             </SortExpressions>
-                            <Label>=Fields!Name.Value</Label>
+                            <Label>=Fields!ProductCode.Value</Label>
                           </ChartMember>
                         </ChartMembers>
                       </ChartCategoryHierarchy>
@@ -684,7 +684,7 @@
                             <ChartDataPoints>
                               <ChartDataPoint>
                                 <ChartDataPointValues>
-                                  <Y>=Sum(Fields!Quantity.Value)</Y>
+                                  <Y>=IIf((Fields!Quantity.Value&gt;0),Sum(Fields!Quantity.Value),"")</Y>
                                 </ChartDataPointValues>
                                 <ChartDataLabel>
                                   <Style>
@@ -713,7 +713,7 @@
                               </ChartDataLabel>
                             </ChartEmptyPoints>
                             <ChartItemInLegend>
-                              <LegendText>=First(Fields!StockAs.Value, "Dataset")</LegendText>
+                              <LegendText>=IIf((Fields!Quantity.Value&gt;0),First(Fields!StockAs.Value),"")</LegendText>
                             </ChartItemInLegend>
                             <ValueAxisName>Primary</ValueAxisName>
                             <CategoryAxisName>Primary</CategoryAxisName>
@@ -726,7 +726,7 @@
                             <ChartDataPoints>
                               <ChartDataPoint>
                                 <ChartDataPointValues>
-                                  <Y>=Sum(Fields!QuantityActual.Value)</Y>
+                                  <Y>=IIf((Fields!QuantityActual.Value&gt;0),Sum(Fields!QuantityActual.Value),"")</Y>
                                 </ChartDataPointValues>
                                 <ChartDataLabel>
                                   <Style>
@@ -755,7 +755,7 @@
                               </ChartDataLabel>
                             </ChartEmptyPoints>
                             <ChartItemInLegend>
-                              <LegendText>= First(Fields!Actual.Value, "Dataset")</LegendText>
+                              <LegendText>=IIf((Fields!QuantityActual.Value)&gt;0,Fields!QuantityActual.Value,"")</LegendText>
                             </ChartItemInLegend>
                             <ValueAxisName>Primary</ValueAxisName>
                             <CategoryAxisName>Primary</CategoryAxisName>
@@ -768,12 +768,10 @@
                             <ChartDataPoints>
                               <ChartDataPoint>
                                 <ChartDataPointValues>
-                                  <Y>=Sum(Fields!QuantityLower.Value)</Y>
+                                  <Y>=IIf((Fields!QuantityLower.Value&gt;0),Sum(Fields!QuantityLower.Value),"")</Y>
                                 </ChartDataPointValues>
                                 <ChartDataLabel>
                                   <Style>
-                                    <FontFamily>Calibri</FontFamily>
-                                    <FontSize>8pt</FontSize>
                                     <Format>#,0;(#,0)</Format>
                                   </Style>
                                   <UseValueAsLabel>true</UseValueAsLabel>
@@ -797,7 +795,7 @@
                               </ChartDataLabel>
                             </ChartEmptyPoints>
                             <ChartItemInLegend>
-                              <LegendText>=First(Fields!Lower.Value, "Dataset")</LegendText>
+                              <LegendText>=IIf((Fields!QuantityLower.Value&gt;0),Fields!Lower.Value,"")</LegendText>
                             </ChartItemInLegend>
                             <ValueAxisName>Primary</ValueAxisName>
                             <CategoryAxisName>Primary</CategoryAxisName>

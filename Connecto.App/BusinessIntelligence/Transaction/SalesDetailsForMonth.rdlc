@@ -1362,6 +1362,7 @@
                             <BackgroundGradientType>None</BackgroundGradientType>
                             <FontFamily>Calibri</FontFamily>
                             <FontSize>8pt</FontSize>
+                            <FontWeight>Bold</FontWeight>
                           </Style>
                           <Position>TopRight</Position>
                           <Layout>TallTable</Layout>
@@ -1705,7 +1706,9 @@
                         <ChartLegend Name="Default">
                           <Style>
                             <BackgroundGradientType>None</BackgroundGradientType>
+                            <FontFamily>Calibri</FontFamily>
                             <FontSize>8pt</FontSize>
+                            <FontWeight>Bold</FontWeight>
                           </Style>
                           <Position>TopRight</Position>
                           <ChartLegendTitle>
@@ -1760,7 +1763,6 @@
                       </Style>
                     </Chart>
                     <ColSpan>7</ColSpan>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell />
