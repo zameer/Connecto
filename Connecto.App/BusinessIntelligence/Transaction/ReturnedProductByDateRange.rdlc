@@ -490,38 +490,32 @@
                           <ChartMember>
                             <Group Name="Chart1_CategoryGroup">
                               <GroupExpressions>
-                                <GroupExpression>=Fields!ProductCode.Value</GroupExpression>
+                                <GroupExpression>=Fields!ReturnedOn.Value</GroupExpression>
                               </GroupExpressions>
                             </Group>
                             <SortExpressions>
                               <SortExpression>
-                                <Value>=Fields!ProductCode.Value</Value>
+                                <Value>=Fields!ReturnedOn.Value</Value>
                               </SortExpression>
                             </SortExpressions>
-                            <Label>=Fields!ProductCode.Value</Label>
+                            <Label>=Fields!ReturnedOn.Value</Label>
                           </ChartMember>
                         </ChartMembers>
                       </ChartCategoryHierarchy>
                       <ChartSeriesHierarchy>
                         <ChartMembers>
                           <ChartMember>
-                            <Label>Quantity</Label>
-                          </ChartMember>
-                          <ChartMember>
-                            <Label>Quantity Actual</Label>
-                          </ChartMember>
-                          <ChartMember>
-                            <Label>Quantity Lower</Label>
+                            <Label>Net Price</Label>
                           </ChartMember>
                         </ChartMembers>
                       </ChartSeriesHierarchy>
                       <ChartData>
                         <ChartSeriesCollection>
-                          <ChartSeries Name="Quantity">
+                          <ChartSeries Name="NetPrice">
                             <ChartDataPoints>
                               <ChartDataPoint>
                                 <ChartDataPointValues>
-                                  <Y>=Sum(Fields!Quantity.Value)</Y>
+                                  <Y>=Sum(Fields!NetPrice.Value)</Y>
                                 </ChartDataPointValues>
                                 <ChartDataLabel>
                                   <Style />
@@ -535,6 +529,8 @@
                                 <DataElementOutput>Output</DataElementOutput>
                               </ChartDataPoint>
                             </ChartDataPoints>
+                            <Type>Line</Type>
+                            <Subtype>Smooth</Subtype>
                             <Style />
                             <ChartEmptyPoints>
                               <Style />
@@ -546,83 +542,7 @@
                               </ChartDataLabel>
                             </ChartEmptyPoints>
                             <ChartItemInLegend>
-                              <LegendText>=First(Fields!StockAs.Value, "Dataset")</LegendText>
-                            </ChartItemInLegend>
-                            <ValueAxisName>Primary</ValueAxisName>
-                            <CategoryAxisName>Primary</CategoryAxisName>
-                            <ChartSmartLabel>
-                              <CalloutLineColor>Black</CalloutLineColor>
-                              <MinMovingDistance>0pt</MinMovingDistance>
-                            </ChartSmartLabel>
-                          </ChartSeries>
-                          <ChartSeries Name="QuantityActual">
-                            <ChartDataPoints>
-                              <ChartDataPoint>
-                                <ChartDataPointValues>
-                                  <Y>=Sum(Fields!QuantityActual.Value)</Y>
-                                </ChartDataPointValues>
-                                <ChartDataLabel>
-                                  <Style />
-                                  <UseValueAsLabel>true</UseValueAsLabel>
-                                  <Visible>true</Visible>
-                                </ChartDataLabel>
-                                <Style />
-                                <ChartMarker>
-                                  <Style />
-                                </ChartMarker>
-                                <DataElementOutput>Output</DataElementOutput>
-                              </ChartDataPoint>
-                            </ChartDataPoints>
-                            <Style />
-                            <ChartEmptyPoints>
-                              <Style />
-                              <ChartMarker>
-                                <Style />
-                              </ChartMarker>
-                              <ChartDataLabel>
-                                <Style />
-                              </ChartDataLabel>
-                            </ChartEmptyPoints>
-                            <ChartItemInLegend>
-                              <LegendText>=First(Fields!Actual.Value, "Dataset")</LegendText>
-                            </ChartItemInLegend>
-                            <ValueAxisName>Primary</ValueAxisName>
-                            <CategoryAxisName>Primary</CategoryAxisName>
-                            <ChartSmartLabel>
-                              <CalloutLineColor>Black</CalloutLineColor>
-                              <MinMovingDistance>0pt</MinMovingDistance>
-                            </ChartSmartLabel>
-                          </ChartSeries>
-                          <ChartSeries Name="QuantityLower">
-                            <ChartDataPoints>
-                              <ChartDataPoint>
-                                <ChartDataPointValues>
-                                  <Y>=Sum(Fields!QuantityLower.Value)</Y>
-                                </ChartDataPointValues>
-                                <ChartDataLabel>
-                                  <Style />
-                                  <UseValueAsLabel>true</UseValueAsLabel>
-                                  <Visible>true</Visible>
-                                </ChartDataLabel>
-                                <Style />
-                                <ChartMarker>
-                                  <Style />
-                                </ChartMarker>
-                                <DataElementOutput>Output</DataElementOutput>
-                              </ChartDataPoint>
-                            </ChartDataPoints>
-                            <Style />
-                            <ChartEmptyPoints>
-                              <Style />
-                              <ChartMarker>
-                                <Style />
-                              </ChartMarker>
-                              <ChartDataLabel>
-                                <Style />
-                              </ChartDataLabel>
-                            </ChartEmptyPoints>
-                            <ChartItemInLegend>
-                              <LegendText>=First(Fields!Lower.Value, "Dataset")</LegendText>
+                              <LegendText>Total Returns</LegendText>
                             </ChartItemInLegend>
                             <ValueAxisName>Primary</ValueAxisName>
                             <CategoryAxisName>Primary</CategoryAxisName>
@@ -638,10 +558,11 @@
                           <ChartCategoryAxes>
                             <ChartAxis Name="Primary">
                               <Style>
+                                <FontFamily>Calibri</FontFamily>
                                 <FontSize>8pt</FontSize>
                               </Style>
                               <ChartAxisTitle>
-                                <Caption>Product</Caption>
+                                <Caption>Returned On</Caption>
                                 <Style>
                                   <FontFamily>Calibri</FontFamily>
                                   <FontSize>8pt</FontSize>
@@ -718,7 +639,7 @@
                                 <FontSize>8pt</FontSize>
                               </Style>
                               <ChartAxisTitle>
-                                <Caption>Total</Caption>
+                                <Caption>Total Sum</Caption>
                                 <Style>
                                   <FontFamily>Calibri</FontFamily>
                                   <FontSize>8pt</FontSize>
@@ -796,7 +717,9 @@
                         <ChartLegend Name="Default">
                           <Style>
                             <BackgroundGradientType>None</BackgroundGradientType>
+                            <FontFamily>Calibri</FontFamily>
                             <FontSize>8pt</FontSize>
+                            <FontWeight>Bold</FontWeight>
                           </Style>
                           <Position>TopRight</Position>
                           <ChartLegendTitle>
@@ -813,7 +736,7 @@
                       </ChartLegends>
                       <ChartTitles>
                         <ChartTitle Name="Default">
-                          <Caption>Total Returned Products</Caption>
+                          <Caption>Sum of Returns</Caption>
                           <Style>
                             <BackgroundGradientType>None</BackgroundGradientType>
                             <FontFamily>Calibri</FontFamily>
@@ -851,7 +774,6 @@
                       </Style>
                     </Chart>
                     <ColSpan>5</ColSpan>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell />
@@ -916,7 +838,7 @@
   <Width>6.38459in</Width>
   <Page>
     <PageHeader>
-      <Height>0.60624in</Height>
+      <Height>1.00207in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -957,7 +879,7 @@
           </Style>
         </Textbox>
         <Line Name="Line1">
-          <Top>0.55416in</Top>
+          <Top>0.92916in</Top>
           <Height>0in</Height>
           <Width>6.38458in</Width>
           <ZIndex>1</ZIndex>
@@ -967,6 +889,78 @@
             </Border>
           </Style>
         </Line>
+        <Textbox Name="Textbox5">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Most Returned :</Value>
+                  <Style>
+                    <FontFamily>Calibri</FontFamily>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox2</rd:DefaultName>
+          <Top>0.56805in</Top>
+          <Left>2.99397in</Left>
+          <Height>0.29167in</Height>
+          <Width>1.3142in</Width>
+          <ZIndex>2</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <VerticalAlign>Top</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox7">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=Max(Fields!ProductInfo.Value, "Dataset")</Value>
+                  <Style>
+                    <FontFamily>Calibri</FontFamily>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox2</rd:DefaultName>
+          <Top>0.57098in</Top>
+          <Left>4.37761in</Left>
+          <Height>0.2568in</Height>
+          <Width>2.00697in</Width>
+          <ZIndex>3</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <VerticalAlign>Top</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
       </ReportItems>
       <Style>
         <Border>

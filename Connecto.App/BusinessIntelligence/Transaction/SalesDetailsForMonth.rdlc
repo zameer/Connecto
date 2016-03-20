@@ -1418,6 +1418,7 @@
                       </Style>
                     </Chart>
                     <ColSpan>7</ColSpan>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell />
@@ -1937,7 +1938,7 @@
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
         <Line Name="Line2">
-          <Top>0.13333in</Top>
+          <Top>0.00833in</Top>
           <Height>0in</Height>
           <Width>6.34487in</Width>
           <Style>

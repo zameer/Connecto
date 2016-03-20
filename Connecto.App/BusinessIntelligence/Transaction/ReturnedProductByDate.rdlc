@@ -521,7 +521,7 @@
                             <ChartDataPoints>
                               <ChartDataPoint>
                                 <ChartDataPointValues>
-                                  <Y>=Sum(Fields!Quantity.Value)</Y>
+                                  <Y>=IIf((Fields!Quantity.Value&gt;0),Sum(Fields!Quantity.Value),"")</Y>
                                 </ChartDataPointValues>
                                 <ChartDataLabel>
                                   <Style />
@@ -546,7 +546,7 @@
                               </ChartDataLabel>
                             </ChartEmptyPoints>
                             <ChartItemInLegend>
-                              <LegendText>=First(Fields!StockAs.Value, "Dataset")</LegendText>
+                              <LegendText>Qty</LegendText>
                             </ChartItemInLegend>
                             <ValueAxisName>Primary</ValueAxisName>
                             <CategoryAxisName>Primary</CategoryAxisName>
@@ -559,7 +559,7 @@
                             <ChartDataPoints>
                               <ChartDataPoint>
                                 <ChartDataPointValues>
-                                  <Y>=Sum(Fields!QuantityActual.Value)</Y>
+                                  <Y>=IIf((Fields!QuantityActual.Value&gt;0),Sum(Fields!QuantityActual.Value),"")</Y>
                                 </ChartDataPointValues>
                                 <ChartDataLabel>
                                   <Style />
@@ -584,7 +584,7 @@
                               </ChartDataLabel>
                             </ChartEmptyPoints>
                             <ChartItemInLegend>
-                              <LegendText>=First(Fields!Actual.Value, "Dataset")</LegendText>
+                              <LegendText>QtyActl</LegendText>
                             </ChartItemInLegend>
                             <ValueAxisName>Primary</ValueAxisName>
                             <CategoryAxisName>Primary</CategoryAxisName>
@@ -597,7 +597,7 @@
                             <ChartDataPoints>
                               <ChartDataPoint>
                                 <ChartDataPointValues>
-                                  <Y>=Sum(Fields!QuantityLower.Value)</Y>
+                                  <Y>=IIf((Fields!QuantityLower.Value&gt;0),Sum(Fields!QuantityLower.Value),"")</Y>
                                 </ChartDataPointValues>
                                 <ChartDataLabel>
                                   <Style />
@@ -622,7 +622,7 @@
                               </ChartDataLabel>
                             </ChartEmptyPoints>
                             <ChartItemInLegend>
-                              <LegendText>=First(Fields!Lower.Value, "Dataset")</LegendText>
+                              <LegendText>QtyLwr</LegendText>
                             </ChartItemInLegend>
                             <ValueAxisName>Primary</ValueAxisName>
                             <CategoryAxisName>Primary</CategoryAxisName>
@@ -851,7 +851,6 @@
                       </Style>
                     </Chart>
                     <ColSpan>5</ColSpan>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell />
@@ -916,7 +915,7 @@
   <Width>6.42208in</Width>
   <Page>
     <PageHeader>
-      <Height>0.90625in</Height>
+      <Height>1.20833in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -957,7 +956,7 @@
           </Style>
         </Textbox>
         <Line Name="Line1">
-          <Top>0.81666in</Top>
+          <Top>1.19166in</Top>
           <Height>0in</Height>
           <Width>6.38458in</Width>
           <ZIndex>1</ZIndex>
@@ -976,7 +975,7 @@
                 <TextRun>
                   <Value>=First(Fields!ReturnedOn.Value, "Dataset")</Value>
                   <Style>
-                    <FontSize>12pt</FontSize>
+                    <FontFamily>Calibri</FontFamily>
                     <FontWeight>Bold</FontWeight>
                   </Style>
                 </TextRun>
@@ -988,7 +987,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox3</rd:DefaultName>
           <Top>0.46875in</Top>
-          <Left>5.41368in</Left>
+          <Left>5.4248in</Left>
           <Height>0.25in</Height>
           <Width>0.96355in</Width>
           <ZIndex>2</ZIndex>
@@ -1012,7 +1011,6 @@
                   <Value>Date: </Value>
                   <Style>
                     <FontFamily>Calibri</FontFamily>
-                    <FontSize>12pt</FontSize>
                     <FontWeight>Bold</FontWeight>
                   </Style>
                 </TextRun>
@@ -1028,6 +1026,78 @@
           <Height>0.28125in</Height>
           <Width>0.71848in</Width>
           <ZIndex>3</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <VerticalAlign>Top</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox5">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Most Returned :</Value>
+                  <Style>
+                    <FontFamily>Calibri</FontFamily>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox2</rd:DefaultName>
+          <Top>0.76943in</Top>
+          <Left>4.04254in</Left>
+          <Height>0.29167in</Height>
+          <Width>1.3142in</Width>
+          <ZIndex>4</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <VerticalAlign>Top</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox7">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=Max(Fields!ProductCode.Value, "Dataset")</Value>
+                  <Style>
+                    <FontFamily>Calibri</FontFamily>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox2</rd:DefaultName>
+          <Top>0.77014in</Top>
+          <Left>5.4248in</Left>
+          <Height>0.2568in</Height>
+          <Width>0.95243in</Width>
+          <ZIndex>5</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
