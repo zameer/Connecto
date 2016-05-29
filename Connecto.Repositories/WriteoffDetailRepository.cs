@@ -10,58 +10,61 @@ namespace Connecto.Repositories
 {
     public class WriteoffDetailRepository
     {
-        private static readonly ISalesDetailDao Repo = DataAccess.SalesDetailDao;
-        public IList<int> GetOrders(bool sold)
+        private static readonly IWriteoffDetailDao Repo = DataAccess.WriteoffDetailDao;
+
+
+        public Tuple<IList<WriteoffDetail>, int> GetDetailList(FilterCriteria filter)
         {
-            return Repo.GetOrders(sold);
-        }
-        public List<SalesDetail> GetSalesDetail(string productCode)
-        {
-            return Repo.GetSalesDetail(productCode);
-        }
-        public IList<SalesDetail> GetAll(int orderId)
-        {
-            return Repo.GetSalesDetails(orderId);
+            return Repo.GetListofWriteoffDetails(filter);
         }
 
-        public IList<SalesDetailCart> GetCart(int orderId)
+
+
+
+
+        public IList<Writeoff> GetWriteoffs(bool writeoff)
         {
-            return Repo.GetSalesDetailsCart(orderId);
+            return Repo.GetWriteoffs(writeoff);
+        }
+        
+        public IList<WriteoffDetail> GetAll(int writeoffId)
+        {
+            return Repo.GetWriteoffDetails(writeoffId);
+        }
+        public List<WriteoffDetail> GetWriteoffDetail(string productCode)
+        {
+            return Repo.GetWriteoffDetail(productCode);
         }
 
-        public IList<SalesDetail> GetSoldCart(int orderId)
+        public IList<WriteoffDetailCart> GetCart(int ProductDetailId)
         {
-            return Repo.GetSoldSalesDetailsCart(orderId);
+            return Repo.GetWriteoffDetailsCart(ProductDetailId);
         }
 
-        public int AddToCart(SalesDetailCart salesDetailCart)
+        public int AddToCart(WriteoffDetailCart writeoffDetailCart)
         {
-            return Repo.AddSalesDetailCart(salesDetailCart);
+            return Repo.AddWriteoffDetailCart(writeoffDetailCart);
         }
-        public int Add(int orderId, decimal fluctuation)
+
+        public int Add(int WriteoffId)
         {
-            return Repo.AddSalesDetail(orderId, fluctuation);
-        }
-        public void EditCart(SalesDetailCart salesDetailCart)
-        {
-            Repo.EditSalesDetailCart(salesDetailCart);
-        }
-        public bool ReturnCart(SalesDetailCart salesDetailCart)
-        {
-            return Repo.ReturnCart(salesDetailCart);
+            return Repo.AddWriteoffDetail(WriteoffId);
         }
 
         public int Delete(int id, int deletedBy)
         {
-            return Repo.DeleteSalesDetailCart(id, deletedBy);
+            return Repo.DeleteWriteoffDetailCart(id, deletedBy);
         }
-        public ProductBase SyncSales(int volume, int containsQty, ProductBase stock, ProductBase sold)
+
+        public int DeleteWriteoffDetail(int id, int deletedBy)
         {
-            return Stock.SyncStock(volume, containsQty, stock, sold);
+            return Repo.DeleteWriteoffDetails(id, deletedBy);
         }
-        public ProductBase SyncSales(int volume, int containsQty, ProductBase stock, ProductBase sold, bool buildQuantity)
+
+        public bool UpdateWriteoff(WriteoffDetailCart writeoffDetailCart)
         {
-            return Stock.SyncStock(volume, containsQty, stock, sold, buildQuantity);
+            return Repo.UpdateWriteoff(writeoffDetailCart);
         }
+        
     }
 }

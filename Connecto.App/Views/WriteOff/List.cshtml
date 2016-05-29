@@ -1,0 +1,67 @@
+﻿@{ Layout = null; }
+
+<div ng-controller="WriteOffListCtrl">
+
+    <a href="#/Checkout/" class="btn btn-white btn-info btn-bold">
+        <i class="ace-icon fa glyphicon-plus bigger-120 blue"></i>
+        New Cart
+    </a>
+    <div>
+        <table id="example" class="table table-striped table-bordered table-hover">
+            <thead>
+
+                <tr>
+                    <th>Writeoff Id</th>
+                    <th>Item Count</th>
+                    <th>Date Writeoff</th>
+                    <th>Amount</th>
+                    <th></th>
+                </tr>
+
+                                
+                @*<tr ng-repeat="item in items">
+                    <td>{{item.WriteoffId}}</td>
+                    <td>{{item.ItemCount}} </td>
+                    <td>{{item.DisplayDate}} </td>
+                    <td>{{item.GrossPrice}} </td>
+                    <td>
+                        <div class="hidden-sm hidden-xs btn-group">
+                            <a class="btn btn-xs btn-info" href="#/Edit/{{item.WriteoffId}}"><i class="ace-icon fa fa-pencil bigger-120"></i></a>
+                            <a class="btn btn-xs btn-warning" href="#"><i class="ace-icon fa fa-eye bigger-120"></i></a>
+                            <button class="btn btn-xs btn-danger" ng-click="DeleteWriteoffDetail(item.WriteoffId)"><i class="ace-icon fa fa-trash-o bigger-120"></i></button>
+                        </div>
+                    </td>
+                </tr>*@
+            </thead>
+        </table>
+    </div>
+</div>
+
+@*@{ Layout = null; }
+<div>
+    <a href="#/Checkout/" class="btn btn-white btn-info btn-bold">
+        <i class="ace-icon fa glyphicon-plus bigger-120 blue"></i>
+        New Cart
+    </a>
+    <div>
+        <table id="example" class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th ng-click="sortData('WriteoffId')">
+                        Writeoff Id <div ng-class="getSortClass('WriteoffId')"></div>
+                    </th>
+                    <th ng-click="sortData('ItemCount')">
+                        Item Count <div ng-class="getSortClass('ItemCount')"></div>
+                    </th>
+                    <th ng-click="sortData('DisplayDate')">
+                        Date Writeoff <div ng-class="getSortClass('DisplayDate')"></div>
+                    </th>
+                    <th ng-click="sortData('GrossPrice')">
+                        Amount <div ng-class="getSortClass('GrossPrice')"></div>
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>*@

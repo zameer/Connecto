@@ -1,19 +1,27 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Connecto.BusinessObjects;
 
 namespace Connecto.DataObjects
 {
     public interface IWriteoffDetailDao
     {
-        List<int> GetOrders(bool sold);
-        List<WriteoffDetail> GetSalesDetail(string productCode);
-        List<WriteoffDetail> GetSalesDetails(int orderId);
-        List<WriteoffDetailCart> GetSalesDetailsCart(int orderId);
-        List<WriteoffDetail> GetSoldSalesDetailsCart(int orderId);
-        int AddSalesDetailCart(WriteoffDetailCart salesDetailCart);
-        bool EditSalesDetailCart(WriteoffDetailCart salesDetailCart);
-        int DeleteSalesDetailCart(int id, int deletedBy);
-        int AddSalesDetail(int orderId, decimal fluctuation);
-        bool ReturnCart(WriteoffDetailCart salesDetailCart);
+
+        Tuple<IList<WriteoffDetail>, int> GetListofWriteoffDetails(FilterCriteria filter);
+
+        //IList<WriteoffDetail> GetListofWriteoffDetails();
+
+        List<Writeoff> GetWriteoffs(bool writeoff);
+        List<WriteoffDetail> GetWriteoffDetails(int writeoffId);
+        List<WriteoffDetail> GetWriteoffDetail(string productCode);
+        List<WriteoffDetailCart> GetWriteoffDetailsCart(int WriteoffId);
+        int AddWriteoffDetailCart(WriteoffDetailCart writeoffDetailCart);
+        int AddWriteoffDetail(int WriteoffId);
+        int DeleteWriteoffDetailCart(int id, int deletedBy);
+        bool UpdateWriteoff(WriteoffDetailCart writeoffDetailCart);
+        bool EditWriteoffDetailCart(WriteoffDetailCart writeoffDetailCart);
+        List<WriteoffDetail> GetWriteoffedWriteoffDetailsCart(int writeoffId);
+        int DeleteWriteoffDetails(int id, int deletedBy);
+
     }
 }

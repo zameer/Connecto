@@ -178,7 +178,6 @@
     <Compile Include="BaseController.cs" />
     <Compile Include="BusinessIntelligence\Dataset\Transactions.cs">
       <DependentUpon>Transactions.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="BusinessIntelligence\Reporto.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -213,6 +212,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="ModelValidator\ProductValidator.cs" />
     <Compile Include="ModelValidator\PersonValidator.cs" />
+    <Compile Include="ModelValidator\WriteoffDetailValidator.cs" />
     <Compile Include="ModelValidator\SalesDetailValidator.cs" />
     <Compile Include="ModelValidator\ProductTypeValidator.cs" />
     <Compile Include="ModelValidator\MeasureValidator.cs" />
@@ -224,6 +224,38 @@
     <Compile Include="Utilities\Printo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Antlr3.Runtime.dll" />
+    <Content Include="bin\Connecto.BusinessObjects.dll" />
+    <Content Include="bin\Connecto.Common.dll" />
+    <Content Include="bin\EntityFramework.dll" />
+    <Content Include="bin\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\Microsoft.AspNet.Identity.Core.dll" />
+    <Content Include="bin\Microsoft.AspNet.Identity.EntityFramework.dll" />
+    <Content Include="bin\Microsoft.AspNet.Identity.Owin.dll" />
+    <Content Include="bin\Microsoft.Owin.dll" />
+    <Content Include="bin\Microsoft.Owin.Host.SystemWeb.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Cookies.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Facebook.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Google.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.MicrosoftAccount.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.OAuth.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Twitter.dll" />
+    <Content Include="bin\Microsoft.ReportViewer.WebForms.dll" />
+    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\Owin.dll" />
+    <Content Include="bin\System.Net.Http.Formatting.dll" />
+    <Content Include="bin\System.Web.Helpers.dll" />
+    <Content Include="bin\System.Web.Http.dll" />
+    <Content Include="bin\System.Web.Http.WebHost.dll" />
+    <Content Include="bin\System.Web.Mvc.dll" />
+    <Content Include="bin\System.Web.Optimization.dll" />
+    <Content Include="bin\System.Web.Razor.dll" />
+    <Content Include="bin\System.Web.WebPages.Deployment.dll" />
+    <Content Include="bin\System.Web.WebPages.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.dll" />
+    <Content Include="bin\WebGrease.dll" />
     <Content Include="BusinessIntelligence\Scripts\SP_Jan06.sql" />
     <Content Include="BusinessIntelligence\Scripts\fn-Oct10th.sql" />
     <Content Include="BusinessIntelligence\Scripts\ReportSetting.sql" />
@@ -431,8 +463,19 @@
     <Content Include="Views\CartReturn\Index.cshtml" />
     <Content Include="Views\WriteOff\Checkout.cshtml" />
     <Content Include="Views\WriteOff\Index.cshtml" />
+    <Content Include="Views\WriteOff\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="bin\de\" />
+    <Folder Include="bin\es\" />
+    <Folder Include="bin\fr\" />
+    <Folder Include="bin\it\" />
+    <Folder Include="bin\ja\" />
+    <Folder Include="bin\ko\" />
+    <Folder Include="bin\pt\" />
+    <Folder Include="bin\ru\" />
+    <Folder Include="bin\zh-CHS\" />
+    <Folder Include="bin\zh-CHT\" />
     <Folder Include="Properties\App_Data\" />
   </ItemGroup>
   <ItemGroup>

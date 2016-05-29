@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Company.cs" />
+    <Compile Include="Writeoff.cs" />
     <Compile Include="Starter.cs" />
     <Compile Include="ConnectoValidation.cs" />
     <Compile Include="Connecto.cs" />

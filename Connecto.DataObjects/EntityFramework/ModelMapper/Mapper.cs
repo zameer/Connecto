@@ -470,6 +470,16 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 Customer = entity.Customer != null ? Map(entity.Customer) : null
             };
         }
+        internal static Writeoff Map(EntityWriteoff entity)
+        {
+            return new Writeoff
+            {
+                WriteoffId = entity.WriteoffId,
+                WriteoffGuid = entity.WriteoffGuid,
+                EmployeeId = entity.EmployeeId,
+                WriteoffDate = entity.WriteoffDate
+            };
+        }
         internal static ProductDetail Map(EntityProductDetail entity)
         {
             return new ProductDetail
@@ -518,7 +528,7 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 CreatedBy = entity.CreatedBy,
                 CreatedOn = entity.CreatedOn,
                 EditedBy = entity.EditedBy,
-                EditedOn = entity.EditedOn,
+                EditedOn = entity.EditedOn
             };
         }
         internal static EntityProductDetail MapDiff(EntityProductDetailCart entity)
@@ -546,7 +556,7 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 CreatedBy = entity.CreatedBy,
                 CreatedOn = entity.CreatedOn,
                 EditedBy = entity.EditedBy,
-                EditedOn = entity.EditedOn,
+                EditedOn = entity.EditedOn
             };
         }
         internal static EntitySalesDetail MapDiff(EntitySalesDetailCart entity)
@@ -575,7 +585,33 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 CreatedBy = entity.CreatedBy,
                 CreatedOn = entity.CreatedOn,
                 EditedBy = entity.EditedBy,
+                EditedOn = entity.EditedOn
+            };
+        }
+        internal static EntityWriteoffDetail MapDiff(EntityWriteoffDetailCart entity)
+        {
+            return new EntityWriteoffDetail
+            {
+                WriteoffDetailId = entity.WriteoffDetailId,
+                WriteoffDetailGuid = entity.WriteoffGuid,
+                ProductDetailId = entity.ProductDetailId,
+                ProductCode = entity.ProductCode,
+                Quantity = entity.Quantity,
+                QuantityActual = entity.QuantityActual,
+                QuantityLower = entity.QuantityLower,
+                UnitPrice = entity.UnitPrice,
+                EmployeeId = entity.EmployeeId,
+                Price = entity.Price,
+                NetPrice = entity.NetPrice,
+                DateWriteoff = entity.DateWriteoff,
+                LocationId = entity.LocationId,
+                Status = entity.Status,
+                CreatedBy = entity.CreatedBy,
+                CreatedOn = entity.CreatedOn,
+                EditedBy = entity.EditedBy,
                 EditedOn = entity.EditedOn,
+                WriteoffId=entity.WriteoffId
+                
             };
         }
         internal static ProductDetailCart Map(EntityProductDetailCart entity)
@@ -628,7 +664,7 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 CreatedBy = entity.CreatedBy,
                 CreatedOn = entity.CreatedOn,
                 EditedBy = entity.EditedBy,
-                EditedOn = entity.EditedOn,
+                EditedOn = entity.EditedOn
             };
         }
         internal static EntitySalesDetailCart Map(SalesDetailCart entity)
@@ -657,7 +693,7 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 CreatedBy = entity.CreatedBy,
                 CreatedOn = entity.CreatedOn,
                 EditedBy = entity.EditedBy,
-                EditedOn = entity.EditedOn,
+                EditedOn = entity.EditedOn
             };
         }
         internal static SalesDetailCart Map(EntitySalesDetailCart entity)
@@ -727,6 +763,117 @@ namespace Connecto.DataObjects.EntityFramework.ModelMapper
                 EditedOn = entity.EditedOn,
                 DisplayDiscount = string.Format("{0} {1}", (entity.DiscountAs > 0 && entity.DiscountBy == DiscountBy.Rate ? string.Format("{0}%", entity.DiscountAs) : string.Empty), entity.Discount),
                 DisplayQuantity = BuildQuantity(entity.ProductDetail.Product, entity.Quantity, entity.QuantityActual, entity.QuantityLower)
+            };
+        }
+        internal static WriteoffDetailCart Map(EntityWriteoffDetailCart entity)
+        {
+            var product = entity.ProductDetail.Product;
+            return new WriteoffDetailCart
+            {
+                WriteoffDetailId = entity.WriteoffDetailId,
+                WriteoffDetailGuid = entity.WriteoffGuid,
+                ProductDetailId = entity.ProductDetailId,
+                WriteoffId = entity.WriteoffId,
+                ProductCode = entity.ProductCode,
+                Name=entity.ProductDetail.Product.Name,
+                Quantity = entity.Quantity,
+                QuantityActual = entity.QuantityActual,
+                QuantityLower = entity.QuantityLower,
+                UnitPrice = entity.UnitPrice,
+                EmployeeId = entity.EmployeeId,
+                Price = entity.Price,
+                NetPrice = entity.NetPrice,
+                DateWriteoff = entity.DateWriteoff,
+                LocationId = entity.LocationId,
+                Status = entity.Status,
+                CreatedBy = entity.CreatedBy,
+                CreatedOn = entity.CreatedOn,
+                EditedBy = entity.EditedBy,
+                EditedOn = entity.EditedOn,
+                DisplayQuantity = BuildQuantity(entity.ProductDetail.Product, entity.Quantity, entity.QuantityActual, entity.QuantityLower)
+            };
+        }
+        internal static EntityWriteoffDetailCart Map(WriteoffDetailCart entity)
+        {
+            
+            return new EntityWriteoffDetailCart
+            {
+                WriteoffDetailId = entity.WriteoffDetailId,
+                WriteoffGuid = entity.WriteoffDetailGuid,
+                WriteoffId = entity.WriteoffId,
+                ProductDetailId = entity.ProductDetailId,
+                ProductCode = entity.ProductCode,
+                Quantity = entity.Quantity,
+                QuantityActual = entity.QuantityActual,
+                QuantityLower = entity.QuantityLower,
+                UnitPrice = entity.UnitPrice,
+                EmployeeId = entity.EmployeeId,
+                Price = entity.Price,
+                NetPrice = entity.NetPrice,
+                DateWriteoff = entity.DateWriteoff,
+                LocationId = entity.LocationId,
+                Status = entity.Status,
+                CreatedBy = entity.CreatedBy,
+                CreatedOn = entity.CreatedOn,
+                EditedBy = entity.EditedBy,
+                EditedOn = entity.EditedOn
+            };
+        }
+        internal static WriteoffDetail Map(EntityWriteoffDetail entity)
+        {
+            var product = entity.ProductDetail.Product;
+            return new WriteoffDetail
+            {
+                WriteoffDetailId = entity.WriteoffDetailId,
+                WriteoffDetailGuid = entity.WriteoffDetailGuid,
+                WriteoffId = entity.WriteoffId,
+                ProductDetailId = entity.ProductDetailId,
+                ProductCode = entity.ProductCode,
+                ContainsQty = entity.ProductDetail.Product.ContainsQty,
+                ProductName = entity.ProductDetail.Product.Name,
+                Quantity = entity.Quantity,
+                QuantityActual = entity.QuantityActual,
+                QuantityLower = entity.QuantityLower,
+                UnitPrice = entity.UnitPrice,
+                Price = entity.Price,
+                NetPrice = entity.NetPrice,
+                DateWriteoff = entity.DateWriteoff,
+                DisplayDate = entity.DateWriteoff.ToShortDateString(),
+                LocationId = entity.LocationId,
+                Status = entity.Status,
+                CreatedBy = entity.CreatedBy,
+                CreatedOn = entity.CreatedOn,
+                EditedBy = entity.EditedBy,
+                EditedOn = entity.EditedOn,
+                DisplayQuantity = BuildQuantity(entity.ProductDetail.Product, entity.Quantity, entity.QuantityActual, entity.QuantityLower),
+                StockAs = entity.ProductDetail.Product.ProductType.StockAs,
+                Actual = entity.ProductDetail.Product.ProductType.Measure.Actual,
+                Lower = entity.ProductDetail.Product.ProductType.Measure.Lower,
+                Volume = entity.ProductDetail.Product.ProductType.Measure.Volume,
+                
+            };
+        }
+        internal static EntityWriteoffDetail Map(WriteoffDetail entity)
+        {
+            return new EntityWriteoffDetail
+            {
+                WriteoffDetailId = entity.WriteoffDetailId,
+                WriteoffDetailGuid = entity.WriteoffDetailGuid,
+                ProductDetailId = entity.ProductDetailId,
+                ProductCode = entity.ProductCode,
+                Quantity = entity.Quantity,
+                QuantityActual = entity.QuantityActual,
+                QuantityLower = entity.QuantityLower,
+                UnitPrice = entity.UnitPrice,
+                Price = entity.Price,
+                NetPrice = entity.NetPrice,
+                DateWriteoff = entity.DateWriteoff,
+                LocationId = entity.LocationId,
+                Status = entity.Status,
+                CreatedBy = entity.CreatedBy,
+                CreatedOn = entity.CreatedOn,
+                EditedBy = entity.EditedBy,
+                EditedOn = entity.EditedOn
             };
         }
         internal static ProductSupplier Map(EntityProductSupplier entity)

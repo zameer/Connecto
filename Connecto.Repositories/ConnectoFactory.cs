@@ -66,5 +66,9 @@
         {
             get { return new SalesDetailRepository(); }
         }
+        public static WriteoffDetailRepository WriteoffDetailRepository
+        {
+            get { return new WriteoffDetailRepository(); }
+        }
     }
 }

@@ -9,11 +9,12 @@ namespace Connecto.BusinessObjects
         public Guid WriteoffDetailGuid { get; set; }
         public string ProductCode { get; set; }
         public string ProductName { get; set; }
-        public int OrderId { get; set; }
         public int ProductDetailId { get; set; }
         public decimal UnitPrice { get; set; }
         public decimal Price { get; set; }
         public decimal NetPrice { get; set; }
+        public int EmployeeId { get; set; }
+        public int WriteoffId { get; set; }
         public DateTime DateWriteoff { get; set; }
     }
 }

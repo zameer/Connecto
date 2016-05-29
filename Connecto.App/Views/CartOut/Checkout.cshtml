@@ -1,18 +1,19 @@
 ﻿@{ Layout = null; }
 <form class="form-horizontal" ng-submit="submit()" role="form">
     <div class="page-header row">
-        <div class="col-sm-1 no-padding-left">
+        @*<div class="col-sm-1 no-padding-left">
             <h1><small>NEWCART</small> </h1>
-        </div>
-        <div class="col-sm-2 no-padding-left">
-            <ui-select ng-model="employee.selected" theme="select2" ng-disabled="disabled" style="width: 180px;" title="Choose a salesperson">
+        </div>*@
+        <div class="col-sm-1 no-padding-left"><h1>SALLING</h1></div>
+        <div class="col-sm-2 no-padding-right">
+            <ui-select ng-model="employee.selected" theme="select2" ng-disabled="disabled" style="width: 180px;" title="Choose a sales person">
                 <ui-select-match allow-clear="true" placeholder="Select a salesperson">{{$select.selected.Person.DisplayName}}</ui-select-match>
                 <ui-select-choices repeat="e in employees">
                     <div ng-bind-html="e.Person.DisplayName | highlight: $select.search"></div>
                 </ui-select-choices>
             </ui-select>
         </div>
-        <div class="col-sm-2 no-padding-left">
+        <div class="col-sm-2 no-padding-right">
             <div>
                 <ui-select ng-model="invoice.selected" on-select="filterInvoice($select.selected.InvoiceId)" theme="select2" ng-disabled="disabled" style="width: 180px;" title="Choose an invoice">
                     <ui-select-match allow-clear="true" placeholder="Select an invoice">{{$select.selected.InvoiceId}}</ui-select-match>
@@ -26,12 +27,12 @@
                 </ui-select>
             </div>
         </div>
-        <div class="col-sm-2 no-padding-left">
+        <div class="col-sm-2 no-padding-right">
             <div class="input-group">
                 <input ng-model="invoice.selected.ReferenceCode" class="input-medium" type="text" placeholder="Reference Code">
             </div>
         </div>
-        <div class="col-sm-2 no-padding-left">
+        <div class="col-sm-2 no-padding-right">
             <div class="input-group">
                 <input ng-model="invoice.selected.InvoiceDateDisplay" id="date-timepicker1" type="text" class="form-control col-xs-3" required="required">
                 <span class="input-group-addon">
@@ -39,18 +40,19 @@
                 </span>
             </div>
         </div>
-        <div class="col-sm-3 no-padding-left">
+        <div class="col-sm-3 no-padding-right">
             <ui-select ng-model="customer.selected" theme="select2" ng-disabled="disabled" style="width: 180px;" title="Choose a customer">
                 <ui-select-match allow-clear="true" placeholder="Select a cutomer">{{$select.selected.Person.DisplayName}}</ui-select-match>
                 <ui-select-choices repeat="e in customers">
                     <div ng-bind-html="e.Person.DisplayName | highlight: $select.search"></div>
                 </ui-select-choices>
             </ui-select>
-            &nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a class="btn btn-info btn-xs" ng-click="saveHeader()">
                 <i class="ace-icon fa fa-floppy-o  bigger-110 icon-only"></i>
             </a>
         </div>
+       
     </div>
     <div class="row">
         <div class="col-xs-12">
@@ -126,7 +128,7 @@
                             <div class="row form-group">
                                 <div class="infobox infobox-green width-auto">
                                     <div class="infobox-data no-padding-right">
-                                        <input ng-model="item.Quantity" type="number" min="0" max="100" ng-blur="calculatePrice()" class="input-mini">
+                                        <input ng-model="item.Quantity" type="number" ng-blur="calculatePrice()" class="input-mini">
                                         <div class="infobox-content">{{item.StockAs}}s</div>
                                     </div>
                                 </div>

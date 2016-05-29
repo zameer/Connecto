@@ -23,5 +23,6 @@
         IPersonDao PersonDao { get; }
         IProductDetailDao ProductDetailDao { get; }
         ISalesDetailDao SalesDetailDao { get; }
+        IWriteoffDetailDao WriteoffDetailDao { get; }
     }
 }

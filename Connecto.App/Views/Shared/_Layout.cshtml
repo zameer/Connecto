@@ -151,11 +151,11 @@
             <div class="sidebar-shortcuts" id="sidebar-shortcuts">
                 <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
                     <button class="btn btn-success">
-                        <i class="ace-icon fa fa-signal"></i>
+                        <i class="ace-icon fa fa-calendar"></i>
                     </button>
 
                     <button class="btn btn-info">
-                        <i class="ace-icon fa fa-pencil"></i>
+                        <i class="ace-icon fa fa-calculator"></i>
                     </button>
 
                     <!-- #section:basics/sidebar.layout.shortcuts -->
@@ -164,7 +164,7 @@
                     </button>
 
                     <button class="btn btn-danger">
-                        <i class="ace-icon fa fa-cogs"></i>
+                        <i class="ace-icon fa fa-d"></i>
                     </button>
 
                     <!-- /section:basics/sidebar.layout.shortcuts -->
@@ -224,13 +224,13 @@
                             <b class="arrow"></b>
                         </li>
 
-                        @*<li id="menu-writeOff" data-menu="writeOff" class="">
-                            <a href="@Url.Action("Index", "WriteOff")">
+                        <li id="menu-writeOff" data-menu="writeOff" class="">
+                            <a href="@Url.Action("Index", "Writeoff")">
                                 <i class="menu-icon fa fa-caret-right"></i>
                                 Write Offs
                             </a>
                             <b class="arrow"></b>
-                        </li>*@
+                        </li>
                     </ul>
                 </li>
                 <li id="menu-hr" class="">
@@ -497,7 +497,7 @@
                 <div class="footer-content">
                     <span class="bigger-120">
                         <span class="blue bolder">Connecto</span>
-                        Application &copy; 2015-2016
+                        Application &copy; @DateTime.Now.Year
                     </span>
 
                     &nbsp; &nbsp;

@@ -82,5 +82,10 @@ namespace Connecto.DataObjects
         {
             get { return _factory.SalesDetailDao; }
         }
+
+        public static IWriteoffDetailDao WriteoffDetailDao
+        {
+            get { return _factory.WriteoffDetailDao; }
+        }
     }
 }

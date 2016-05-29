@@ -6,13 +6,16 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.91556in</Width>
+              <Width>2.15514in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.93908in</Width>
+              <Width>1.25894in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.60523in</Width>
+              <Width>1.6995in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1.34629in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -42,6 +45,44 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox1</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>LightBlue</BackgroundColor>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox3">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Received On</Value>
+                              <Style>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontWeight>Bold</FontWeight>
+                                <TextDecoration>Underline</TextDecoration>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox3</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -174,6 +215,40 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
+                    <Textbox Name="ReceivedOn">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!ReceivedOn.Value</Value>
+                              <Style>
+                                <FontFamily>Calibri</FontFamily>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>ReceivedOn</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
                     <Textbox Name="MarginAmount">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -283,9 +358,10 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <ColSpan>2</ColSpan>
+                    <ColSpan>3</ColSpan>
                   </CellContents>
                 </TablixCell>
+                <TablixCell />
                 <TablixCell />
                 <TablixCell>
                   <CellContents>
@@ -333,6 +409,7 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
@@ -362,10 +439,10 @@
     <Height>0.95833in</Height>
     <Style />
   </Body>
-  <Width>6.47098in</Width>
+  <Width>6.45987in</Width>
   <Page>
     <PageHeader>
-      <Height>1.1875in</Height>
+      <Height>1.01042in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -406,7 +483,7 @@
           </Style>
         </Textbox>
         <Line Name="Line1">
-          <Top>1.08125in</Top>
+          <Top>0.95625in</Top>
           <Height>0in</Height>
           <Width>6.45987in</Width>
           <ZIndex>1</ZIndex>
@@ -416,80 +493,6 @@
             </Border>
           </Style>
         </Line>
-        <Textbox Name="Textbox9">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>=First(Fields!ReceivedOn.Value, "Dataset")</Value>
-                  <Style>
-                    <FontFamily>Calibri</FontFamily>
-                    <FontSize>12pt</FontSize>
-                    <FontWeight>Bold</FontWeight>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style>
-                <TextAlign>Left</TextAlign>
-              </Style>
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>Textbox2</rd:DefaultName>
-          <Top>0.73487in</Top>
-          <Left>5.58129in</Left>
-          <Height>0.29167in</Height>
-          <Width>0.84559in</Width>
-          <ZIndex>2</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <VerticalAlign>Top</VerticalAlign>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
-        <Textbox Name="Textbox12">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>Recieved On:</Value>
-                  <Style>
-                    <FontFamily>Calibri</FontFamily>
-                    <FontSize>12pt</FontSize>
-                    <FontWeight>Bold</FontWeight>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style>
-                <TextAlign>Right</TextAlign>
-              </Style>
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>Textbox2</rd:DefaultName>
-          <Top>0.72098in</Top>
-          <Left>4.2634in</Left>
-          <Height>0.29167in</Height>
-          <Width>1.21789in</Width>
-          <ZIndex>3</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <VerticalAlign>Top</VerticalAlign>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
       </ReportItems>
       <Style>
         <Border>

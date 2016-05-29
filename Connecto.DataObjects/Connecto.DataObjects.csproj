@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityFramework\EntityWriteoff.cs" />
     <Compile Include="EntityFramework\EntityWriteoffDetailCart.cs" />
     <Compile Include="EntityFramework\EntityInvoice.cs" />
     <Compile Include="EntityFramework\EntityReturnReason.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="EntityFramework\EntityProductDetailCart.cs" />
     <Compile Include="EntityFramework\EntityCustomer.cs" />
     <Compile Include="EntityFramework\Implementation\EntityCustomerDao.cs" />
+    <Compile Include="EntityFramework\Implementation\EntityWriteoffDetailDao.cs" />
     <Compile Include="EntityFramework\Implementation\EntitySalesDetailDao.cs" />
     <Compile Include="EntityFramework\Implementation\EntityProductDetailDao.cs" />
     <Compile Include="EntityFramework\Implementation\EntityProductTypeDao.cs" />

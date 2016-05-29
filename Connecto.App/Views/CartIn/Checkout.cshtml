@@ -1,9 +1,10 @@
 ﻿@{ Layout = null; }
 <form class="form-horizontal" role="form">
     <div class="page-header row">
-        <div class="col-sm-1 no-padding-left">
-            <h1><small>NEWCART</small> </h1>
-        </div>
+        @*<div class="col-sm-1 no-padding-left">
+            <h1><small>PURCHASING CART</small> </h1>
+        </div>*@
+        <div class="col-sm-2 no-padding-right"><h1>SHOPPING CART </h1></div>
         <div class="col-sm-2 no-padding-left">
             <ui-select ng-model="employee.selected" theme="select2" ng-disabled="disabled" style="width: 180px;" title="Choose a salesperson">
                 <ui-select-match allow-clear="true" placeholder="Select a salesperson">{{$select.selected.Person.DisplayName}}</ui-select-match>
@@ -30,7 +31,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-3 no-padding-left">
+        <div class="col-sm-2 no-padding-left">
             <div class="input-group">
                 <input ng-model="order.selected.OrderDateDisplay" id="date-timepicker1" type="text" class="form-control col-xs-3">
                 <span class="input-group-addon">
@@ -192,7 +193,7 @@
                                 <th class="hidden-480">Selling Price</th>
                                 <th>
                                     <div ng-show="fromCart" class="hidden-sm hidden-xs btn-group">
-                                       @* <button class="btn btn-xs btn-info">
+                                        @*<button class="btn btn-xs btn-info">
                                             <i class="ace-icon fa fa-print bigger-120"></i>
                                         </button>*@
 

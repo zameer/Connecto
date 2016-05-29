@@ -45,5 +45,6 @@ namespace Connecto.DataObjects.EntityFramework
         public DbSet<EntityReportSetting> ReportSettings { get; set; }
         public DbSet<EntityWriteoffDetail> WriteoffDetails { get; set; }
         public DbSet<EntityWriteoffDetailCart> WriteoffDetailCarts { get; set; }
+        public DbSet<EntityWriteoff> Writeoffs { get; set; }
     }
 }

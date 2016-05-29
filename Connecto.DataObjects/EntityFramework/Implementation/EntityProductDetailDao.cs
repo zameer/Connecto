@@ -138,7 +138,9 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                 Status = item.Status,
                 OrderDate = item.DateReceived,
                 CreatedBy = item.CreatedBy,
-                CreatedOn = item.CreatedOn
+                CreatedOn = item.CreatedOn,
+                SupplierId = item.SupplierId,
+                EmployeeId = item.EmployeeId
             };
             context.Orders.Add(entity);
             context.SaveChanges();
@@ -169,7 +171,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
                 if (invoice == null) return false;
                 invoice.OrderDate = cart.DateReceived;
                 invoice.EmployeeId = cart.EmployeeId;
-                invoice.SupplierId = cart.SupplierId == 0 ? (int?)null : cart.SupplierId;
+                invoice.SupplierId = cart.SupplierId == 0 ? invoice.SupplierId : cart.SupplierId;
                 invoice.ReferenceCode = cart.ReferenceCode;
                 return context.SaveChanges() > 0;
             }

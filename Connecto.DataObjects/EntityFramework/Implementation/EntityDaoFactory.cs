@@ -77,5 +77,10 @@
             get { return new EntitySalesDetailDao(); }
         }
 
+        public IWriteoffDetailDao WriteoffDetailDao
+        {
+            get { return new EntityWriteoffDetailDao(); }
+        }
+
     }
 }

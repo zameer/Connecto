@@ -18,6 +18,9 @@ namespace Connecto.DataObjects.EntityFramework
         public decimal Price { get; set; }
         public decimal NetPrice { get; set; }
         public DateTime DateWriteoff { get; set; }
+        public int EmployeeId { get; set; }
+        public int WriteoffId { get; set; }
+
         public virtual EntityProductDetail ProductDetail { get; set; }
     }
 }

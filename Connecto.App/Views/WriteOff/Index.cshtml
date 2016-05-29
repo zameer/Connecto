@@ -1,17 +1,61 @@
-﻿@{
-    ViewBag.Title = "Selling Cart";
+﻿@model Connecto.BusinessObjects.Writeoff
+@{
+    ViewBag.Title = "Writeoff Cart";
 }
 <div ng-app="trApp">
     <div ng-view></div>
 </div>
+<script src="~/Scripts/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/jquery.dataTables.bootstrap.js"></script>
 <script src="~/Scripts/connecto/tr/writeOffController.js"></script>
 <script type="text/javascript">
     $('#menu-tr').syncMenu([{ name: "writeOff", option: "a" }]);
     trApp.config(['$routeProvider',
     function ($routeProvider) {
         $routeProvider.
-             when('/', { templateUrl: '/WriteOff/Checkout', controller: 'WriteOffCtrl' })
-            .otherwise({ redirectTo: '/' });
+            when('/', { templateUrl: '/WriteOff/List', controller: 'WriteOffListCtrl' })
+           .when('/Checkout/', { templateUrl: '/Writeoff/Checkout', controller: 'WriteOffCtrl' })
+           .when('/Edit/:writeoffId', { templateUrl: '/Writeoff/Edit', controller: 'WriteOffEditCtrl' })
+           .when('/WriteoffDetails/:writeoffId', { templateUrl: '/Writeoff/WriteoffDetails', controller: 'WriteOffWriteoffDetailsCtrl' })
+           .otherwise({ redirectTo: '/' });
     }]);
     
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*@model Connecto.BusinessObjects.Writeoff
+@{
+    ViewBag.Title = "Writeoff Cart";
+}
+<div ng-app="trApp">
+    <div ng-view></div>
+</div>
+<script src="~/Scripts/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/jquery.dataTables.bootstrap.js"></script>
+<script src="~/Scripts/connecto/tr/writeOffController.js"></script>
+<script type="text/javascript">
+    $('#menu-tr').syncMenu([{ name: "writeoff", option: "a" }]);
+    trApp.config(['$routeProvider',
+    function ($routeProvider) {
+        $routeProvider.
+             when('/', { templateUrl: '/Writeoff/List', controller: 'WriteoffListCtrl' })
+            .when('/Checkout/', { templateUrl: '/Writeoff/Checkout', controller: 'WriteOffCtrl' })
+            .when('/Edit/:writeoffId', { templateUrl: '/Writeoff/Edit', controller: 'WriteoffEditCtrl' })
+            .when('/WriteoffDetails/:writeoffId', { templateUrl: '/Writeoff/WriteoffDetails', controller: 'WriteoffWriteoffDetailsCtrl' })
+            .otherwise({ redirectTo: '/' });
+    }]);
+</script>*@

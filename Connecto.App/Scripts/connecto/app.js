@@ -40,6 +40,9 @@ trApp.filter('getById', function () {
             
             if (propName == 'EmployeeId')
                 if (+input[i].EmployeeId == +id) return input[i];
+
+            if (propName == 'WriteoffId')
+                if (+input[i].WriteoffId == +id) return input[i];
         }
         return null;
     };

@@ -150,6 +150,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
           }
       };
       $scope.filterInvoice = function (invoiceId) {
+          console.log(item);
           $scope.reset();
           if (invoiceId > 0) $scope.loadItems(invoiceId);
           else {
@@ -252,6 +253,7 @@ trControllers.controller(cName + 'Ctrl', ['$scope', '$filter', '$http', '$routeP
           });
       };
       $scope.complete = function () {
+
           $http.post('/' + cName + '/Complete/', { id: $scope.invoice.selected.InvoiceId, fluctuation: $scope.Fluctuation }).success(function (data) {
               showMessage(data);
               $scope.reset();

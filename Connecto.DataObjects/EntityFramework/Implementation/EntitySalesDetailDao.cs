@@ -15,7 +15,7 @@ namespace Connecto.DataObjects.EntityFramework.Implementation
             using (var context = DataObjectFactory.CreateContext())
             {
                 var invoiceIds = sold ? context.SalesDetails.Where(e => (e.Quantity + e.QuantityActual + e.QuantityLower) > 0).Select(e => e.InvoiceId).Distinct().ToList()
-                            : context.SalesDetailCarts.Where(e => (e.Quantity + e.QuantityActual + e.QuantityLower) > 0).Select(e => e.InvoiceId).Distinct().ToList();
+                            : context.SalesDetailCarts.Where(e => (e.Quantity + e.QuantityActual + e.QuantityLower) > 0 && e.Status == RecordStatus.Active).Select(e => e.InvoiceId).Distinct().ToList();
                 return context.Invoices.Where(e => invoiceIds.Contains(e.InvoiceId)).Select(Mapper.Map).ToList();
             }
         }
